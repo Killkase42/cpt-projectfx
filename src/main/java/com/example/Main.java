@@ -15,6 +15,11 @@ public class Main extends Application {
         launch(args);
     }
 
+    //reads the file
+
+    //launches the application
+        //Application.launch(LogIn.class, args);
+
     @Override
     public void start(Stage primaryStage) {
         Parent root = null;

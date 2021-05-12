@@ -3,6 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.Main">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainController">
     <Label layoutX="77.0" layoutY="53.0" text="Hello again, comrade">Hello again, comrade</Label>
+   <Button fx:id="button1" layoutX="274.0" layoutY="242.0" mnemonicParsing="false" onAction="#buttonpress" text="Button" />
 </AnchorPane>
