@@ -1,7 +1,6 @@
 package com.example;
 
 
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-//import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -64,9 +63,9 @@ public class removeAssignmentController {
         //Getting the assignment array id
         id = Arrays.asList(addAssignmentController.assignmentName).indexOf(choice);
 
-        //addAssignmentController.assignmentName = ArrayUtils.remove(addAssignmentController.assignmentName,id);
-        //addAssignmentController.assignmentMarks = ArrayUtils.remove(addAssignmentController.assignmentMarks,id);
-        //addAssignmentController.assignmentDueDate = ArrayUtils.remove(addAssignmentController.assignmentDueDate,id);
+        addAssignmentController.assignmentName = ArrayUtils.remove(addAssignmentController.assignmentName,id);
+        addAssignmentController.assignmentMarks = ArrayUtils.remove(addAssignmentController.assignmentMarks,id);
+        addAssignmentController.assignmentDueDate = ArrayUtils.remove(addAssignmentController.assignmentDueDate,id);
 
 
 
