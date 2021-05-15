@@ -1,0 +1,138 @@
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    id 'java'\r\n    id 'application'\r\n    id 'org.openjfx.javafxplugin' version '0.0.10'\r\n}\r\n\r\ngroup 'org.example'\r\nversion '1.0-SNAPSHOT'\r\n\r\nmainClassName = 'com.example.SheetsQuickstart'\r\n//mainClassName = 'com.example.Main'\r\nsourceCompatibility = 1.8\r\ntargetCompatibility = 1.8\r\nversion = '1.0'\r\n\r\ndependencies {\r\n    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'\r\n    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'\r\n}\r\n\r\ntest {\r\n    useJUnitPlatform()\r\n}\r\n\r\njavafx {\r\n    modules = [ 'javafx.controls', 'javafx.fxml' ]\r\n    version = '16'\r\n}\r\n\r\nrepositories {\r\n    mavenCentral()\r\n}\r\n\r\ndependencies {\r\n    compile 'com.google.api-client:google-api-client:1.30.4'\r\n    compile 'com.google.oauth-client:google-oauth-client-jetty:1.30.6'\r\n    compile 'com.google.apis:google-api-services-sheets:v4-rev581-1.25.0'\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 64590813decaff9869aa35d1f92e9493e8d6a9c7)
++++ build.gradle	(date 1620921411675)
+@@ -7,8 +7,8 @@
+ group 'org.example'
+ version '1.0-SNAPSHOT'
+ 
+-mainClassName = 'com.example.SheetsQuickstart'
+-//mainClassName = 'com.example.Main'
++//mainClassName = 'com.example.SheetsQuickstart'
++mainClassName = 'com.example.Main'
+ sourceCompatibility = 1.8
+ targetCompatibility = 1.8
+ version = '1.0'
+Index: src/main/java/com/example/MainController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.*;\r\n\r\npublic class MainController {\r\n    @FXML\r\n    Button button1;\r\n\r\n    @FXML\r\n    public void buttonpress(ActionEvent actionEvent) {\r\n        System.out.println(\"it worked\");\r\n    }\r\n}\r\n
+===================================================================
+--- src/main/java/com/example/MainController.java	(revision 64590813decaff9869aa35d1f92e9493e8d6a9c7)
++++ src/main/java/com/example/MainController.java	(date 1620921411693)
+@@ -11,11 +11,110 @@
+ import java.io.*;
+ 
+ public class MainController {
++
+     @FXML
+     Button button1;
++    @FXML
++    Button LoginButton;
++    @FXML
++    Button CreateAccountButton;
++    @FXML
++    TextField UsernameField;
++    @FXML
++    TextField PasswordField;
++    @FXML
++    Label Title;
++
++    /*
++    changeScene
++    Pre: requires the fxml.
++    Post:changes the scene
++    */
++    public void changeScene(String fxml) throws IOException {
++        Parent pane = FXMLLoader.load(
++                getClass().getResource(fxml));
++        LogIn.stage.getScene().setRoot(pane);
++    }
++
++
+ 
+     @FXML
+     public void buttonpress(ActionEvent actionEvent) {
+         System.out.println("it worked");
+     }
++
++
++    /*
++   validate
++   Pre: button press
++   Post: validates if the inputted user and password are valid.
++    */
++    @FXML
++    public void validate(ActionEvent actionEvent) {
++        //gets info from text field
++        String name = UsernameField.getText();
++        String passw = PasswordField.getText();
++        //if the fields are empty and tries to validate. Returns an error
++        if(name.isEmpty() || passw.isEmpty()){
++            Alert alert = new Alert(Alert.AlertType.ERROR);
++            alert.setHeaderText(null);
++            alert.setContentText("Fields left Empty");
++            alert.showAndWait();
++        }else{
++
++            //Finds file based off of username entered entered
++            try (BufferedReader br = new BufferedReader(new FileReader(name))) {
++                String AccountNumInFile = null;
++            }catch (FileNotFoundException e1) {
++                Alert alert = new Alert(Alert.AlertType.ERROR);
++                alert.setHeaderText(null);
++                alert.setContentText("Incorrect Credentials");
++                alert.showAndWait();
++                UsernameField.clear();
++                PasswordField.clear();
++            } catch (IOException e1) {
++            }
++
++            //Reads and assigns variables for the username and password in the file
++            FileInputStream fs= null;
++            try {
++                fs = new FileInputStream(name);
++            } catch (FileNotFoundException fileNotFoundException) {
++                fileNotFoundException.printStackTrace();
++            }
++            BufferedReader br = new BufferedReader(new InputStreamReader(fs));
++            String NameInFile = null;
++            String PasswordInFile = null;
++            try{
++                NameInFile = br.readLine();
++                PasswordInFile = br.readLine();
++            } catch (IOException e) {
++                e.printStackTrace();
++            }
++
++            // if they equal what is said, changes scenes
++            if(name.equals(NameInFile) && passw.equals(PasswordInFile)){
++                try {
++                    changeScene("resources/CreateAccount.fxml");
++                } catch (IOException e) {
++                    e.printStackTrace();
++                }
++            }else{
++                //any other case, returns an alert error
++                Alert alert = new Alert(Alert.AlertType.ERROR);
++                alert.setHeaderText(null);
++                alert.setContentText("Incorrect Credentials");
++                alert.showAndWait();
++                UsernameField.clear();
++                PasswordField.clear();
++            }
++        }
++    }
++
++    @FXML
++    public void CreateAccount(ActionEvent actionEvent) throws IOException {
++        System.out.println("validate button works");
++        changeScene("CreateNewAccount.fxml");
++
++    }
+ }
