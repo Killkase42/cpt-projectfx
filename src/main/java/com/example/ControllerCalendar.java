@@ -21,4 +21,24 @@ public class ControllerCalendar {
         window.setScene(addAssignmentScene);
         window.show();
 }
+    public void changeScreenButton2(ActionEvent event) throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+
+    public void changeScreenButton3(ActionEvent event) throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("removeAssignment.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = (Stage) ((Node)event.getSource()).getScene().getWindow();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+
 }
