@@ -1,12 +1,10 @@
 com/example/ControllerCalendar.java
  com.example.ControllerCalendar
-com/example/mainController2.java
- com.example.mainController2
-com/example/SheetsQuickstart.java
- com.example.SheetsQuickstart
 com/example/Main.java
  com.example.Main
-com/example/removeAssignmentController.java
- com.example.removeAssignmentController
 com/example/addAssignmentController.java
  com.example.addAssignmentController
+com/example/SheetsAPI.java
+ com.example.SheetsAPI
+com/example/mainController2.java
+ com.example.mainController2

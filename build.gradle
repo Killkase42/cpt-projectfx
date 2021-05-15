@@ -7,8 +7,8 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-//mainClassName = 'com.example.SheetsQuickstart'
 mainClassName = 'com.example.Main'
+//mainClassName = 'com.example.SheetsAPI'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 version = '1.0'
