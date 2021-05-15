@@ -138,7 +138,7 @@ public class SheetsAPI {
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
 
-        //Example of what format the array for UploadAssignment method must be in.
+        //Example of what format the arrays for UploadAssignment method must be in.
         String[] assignmentInfo = {"Geography ISP", "120", "05-20-21", "Hard"};
 
 
