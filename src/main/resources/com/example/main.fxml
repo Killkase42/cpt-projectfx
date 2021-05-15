@@ -7,4 +7,5 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.mainController2">
     <Label layoutX="77.0" layoutY="53.0" text="Hello again, comrade">Hello again, comrade</Label>
    <Button fx:id="button1" layoutX="274.0" layoutY="242.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Go to Calendar Screen" />
+   <Button fx:id="CreateAccountButton" layoutX="76.0" layoutY="107.0" mnemonicParsing="false" onAction="#CreateAccountScreen" prefHeight="25.0" prefWidth="113.0" text="CreateAccount" />
 </AnchorPane>

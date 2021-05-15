@@ -29,7 +29,7 @@ public class SheetsAPI {
     private static String APPLICATION_NAME = "cpt-projectfx";
     private static String SPREADSHEET_ID = "1HmUxAeaJO-PCz1HqXX6xWF91AjeV0B0MV1ELB5I0yUA";
 
-    private static Credential authorize() throws IOException, GeneralSecurityException {
+    public static Credential authorize() throws IOException, GeneralSecurityException {
         InputStream in = SheetsAPI.class.getResourceAsStream("/credentials.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
                 JacksonFactory.getDefaultInstance(), new InputStreamReader(in)
@@ -63,6 +63,7 @@ public class SheetsAPI {
      *pre:
      *post: Data from the spreadsheet is printed.
      */
+
     public static void DataReading() throws IOException, GeneralSecurityException {
         String range = "data!A1:B4";
 

@@ -13,6 +13,7 @@ public class Main extends Application {
     //launches the application
         //Application.launch(LogIn.class, args);
 
+
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
