@@ -114,11 +114,33 @@ public class SheetsAPI {
                 .execute();
     }
 
+    /**
+     * Writes an assignment's name, total marks, due date, and difficulty to a new row in the Sheet.
+     *pre: Is called from another class.
+     *post: Assignment data is written to a new row of the spreadsheet.
+     */
+    public static void UploadAssignment(String[] assignmentData) throws IOException, GeneralSecurityException {
+        sheetsService = getSheetsService();
+
+        ValueRange appendBody = new ValueRange()
+                .setValues(Arrays.asList(
+                        Arrays.asList(assignmentData[0], assignmentData[1], assignmentData[2], assignmentData[3])
+                ));
+
+        AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
+                .append(SPREADSHEET_ID, "data!D:D", appendBody)
+                .setValueInputOption("USER_ENTERED")
+                .setInsertDataOption("OVERWRITE")
+                .setIncludeValuesInResponse(true)
+                .execute();
+    }
+
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
 
-        DataReading();
-        DataWriting("newUser", "examplePass");
+        //Example of what format the array for UploadAssignment method must be in.
+        String[] assignmentInfo = {"Geography ISP", "120", "05-20-21", "Hard"};
+
 
     }
 }
