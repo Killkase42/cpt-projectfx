@@ -29,7 +29,12 @@ public class SheetsAPI {
     private static String APPLICATION_NAME = "cpt-projectfx";
     private static String SPREADSHEET_ID = "1HmUxAeaJO-PCz1HqXX6xWF91AjeV0B0MV1ELB5I0yUA";
 
-    private static Credential authorize() throws IOException, GeneralSecurityException {
+    /**
+     * An authorization method that grants the application access to Google Sheets
+     *pre: The class is run.
+     *post: The application is granted access to Google Sheets via the credentials file.
+     */
+    public static Credential authorize() throws IOException, GeneralSecurityException {
         InputStream in = SheetsAPI.class.getResourceAsStream("/credentials.json");
         GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(
                 JacksonFactory.getDefaultInstance(), new InputStreamReader(in)
@@ -50,6 +55,11 @@ public class SheetsAPI {
         return credential;
     }
 
+    /**
+     * The actual Sheets service that the application makes use of.
+     *pre: The class is run.
+     *post: This application can directly interface with sheets via the new service.
+     */
     public static Sheets getSheetsService() throws IOException, GeneralSecurityException {
         Credential credential = authorize();
         return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),
@@ -60,10 +70,12 @@ public class SheetsAPI {
 
     /**
      * Reads data from the specified rows spreadsheet.
-     *pre:
+     *pre: Is called from another class.
      *post: Data from the spreadsheet is printed.
      */
     public static void DataReading() throws IOException, GeneralSecurityException {
+        sheetsService = getSheetsService();
+
         String range = "data!A1:B4";
 
         ValueRange response = sheetsService.spreadsheets().values()
@@ -83,13 +95,15 @@ public class SheetsAPI {
 
     /**
      * Writes data to the next available row of the spreadsheet.
-     *pre:
+     *pre: Is called from another class.
      *post: Data is written to a new row of the spreadsheet.
      */
     public static void DataWriting(String username, String password) throws IOException, GeneralSecurityException {
+        sheetsService = getSheetsService();
+
         ValueRange appendBody = new ValueRange()
                 .setValues(Arrays.asList(
-                        Arrays.asList(username, password) // More commas and strings can be added if disired.
+                        Arrays.asList(username, password) // More commas and strings can be added if desired.
                 ));
 
         AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
@@ -107,5 +121,4 @@ public class SheetsAPI {
         DataWriting("newUser", "examplePass");
 
     }
-
 }
