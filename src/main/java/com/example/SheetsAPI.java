@@ -111,9 +111,53 @@ public class SheetsAPI {
     }
 
     /**
-     * Writes an assignment's name, total marks, due date, and difficulty to a new row in the Sheet.
+     * Writes a new account's username and password to a new row in the Sheet.
      *pre: Is called from another class.
-     *post: Assignment data is written to a new row of the spreadsheet.
+     *post: New account is written to a new row of the spreadsheet.
+     * @return
+     */
+    public static String UploadAccount(String enteredUsername, String enteredPassword) throws IOException,
+            GeneralSecurityException {
+        sheetsService = getSheetsService();
+
+        String range = "data!A:A";
+        String authenticationResult = "Account successfully created";
+
+        ValueRange response = sheetsService.spreadsheets().values()
+                .get(SPREADSHEET_ID, range)
+                .execute();
+
+        List<List<Object>> values = response.getValues();
+
+        // Checks all rows to see if the entered username is taken.
+        for (List row : values) {
+            if (String.valueOf(row.get(0)).equals(enteredUsername)) {
+                authenticationResult = "Account name taken";
+                break;
+            }
+        }
+
+        // If the for loop did not find any accounts with the same name, the new account is then created.
+        if (authenticationResult.equals("Account successfully created")){
+            ValueRange appendBody = new ValueRange()
+                    .setValues(Arrays.asList(
+                            Arrays.asList(enteredUsername, enteredPassword) // More commas and strings can be added if desired.
+                    ));
+
+            AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
+                    .append(SPREADSHEET_ID, "data", appendBody)
+                    .setValueInputOption("USER_ENTERED")
+                    .setInsertDataOption("OVERWRITE")
+                    .setIncludeValuesInResponse(true)
+                    .execute();
+        }
+        return authenticationResult;
+    }
+
+    /**
+     * Writes a new assignment's name, total marks, due date, and difficulty to a new row in the Sheet.
+     *pre: Is called from another class.
+     *post: New assignment data is written to a new row of the spreadsheet.
      */
     public static void UploadAssignment(String[] assignmentData) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
@@ -135,6 +179,7 @@ public class SheetsAPI {
      * Checks the Sheet for the entered username and, subsequently, password (returns errors if they are not found.)
      *pre: Is called from another class.
      *post: Confirmation or error is returned based on whether or not username and password are valid.
+     * @return
      */
     public static String ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,
             GeneralSecurityException {
@@ -174,9 +219,13 @@ public class SheetsAPI {
         String[] assignmentInfo = {"Geography ISP", "120", "05-20-21", "Hard"};
 
         //Example of how you would use the ConfirmUserCredentials method.
-        String result = ConfirmUserCredentials("Sleepy", "Sonic123");
-        System.out.println(result);
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+//        String result = ConfirmUserCredentials("Sleepy", "Sonic123");
+//        System.out.println(result);
+//        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+
+        //Example of how you would use the UploadAccount method.
+        String accountVar = UploadAccount("Java   >", "Python");
+        System.out.println(accountVar);
 
     }
 }
