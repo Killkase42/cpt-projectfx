@@ -39,4 +39,14 @@ public class mainController2 {
         window.setScene(CreateAccountScene);
         window.show();
     }
+
+    public void GoToLoginScreen(ActionEvent event) throws IOException {
+        Parent LoginParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+        Scene LoginScene = new Scene(LoginParent);
+
+        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+        window.setScene(LoginScene);
+        window.show();
+    }
 }
