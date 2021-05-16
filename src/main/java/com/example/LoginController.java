@@ -10,15 +10,16 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.Objects;
 
-public class LoginController {
+public class LoginController extends SheetsAPI{
 
     public TextField UsernameTextField;
     public TextField PasswordTextField;
 
     //validates login information
-    public void Validate(ActionEvent event) {
+    public void Validate(ActionEvent event) throws IOException, GeneralSecurityException {
         //gets info from text field
         String Username = UsernameTextField.getText();
         String Password = PasswordTextField.getText();
@@ -33,10 +34,21 @@ public class LoginController {
             alert.setContentText("Fields left Empty");
             alert.showAndWait();
         } else {
+            boolean Result = ConfirmUserCredentials(Username,Password);
+            if (Result == false){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Credentials are Incorrect");
+                alert.showAndWait();
+            } else if (Result) {
+                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulLogin.fxml")));
+                Scene MainScene = new Scene(MainParent);
 
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-
-
+                window.setScene(MainScene);
+                window.show();
+            }
 
         }
     }

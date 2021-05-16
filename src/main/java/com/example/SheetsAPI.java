@@ -135,13 +135,14 @@ public class SheetsAPI {
      * Checks the Sheet for the entered username and, subsequently, password (returns errors if they are not found.)
      *pre: Is called from another class.
      *post: Confirmation or error is returned based on whether or not username and password are valid.
+     * @return
      */
-    public static String ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,
+    public static boolean ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,
             GeneralSecurityException {
         sheetsService = getSheetsService();
 
         String range = "data!A:B";
-        String authenticationResult = "Account not found";
+        boolean authenticationResult = false;
 
         ValueRange response = sheetsService.spreadsheets().values()
                 .get(SPREADSHEET_ID, range)
@@ -156,9 +157,9 @@ public class SheetsAPI {
                 //Below statements check to see if the entered credentials are found in the Sheet.
                 if (String.valueOf(row.get(0)).equals(enteredUsername)) {
                     if (String.valueOf(row.get(1)).equals(enteredPassword)) {
-                        authenticationResult = "Account found, logging you in...";
+                        authenticationResult = true;
                     } else {
-                        authenticationResult = "Password is incorrect";
+                        authenticationResult = false;
                     }
                     break;
                 }
@@ -174,9 +175,9 @@ public class SheetsAPI {
         String[] assignmentInfo = {"Geography ISP", "120", "05-20-21", "Hard"};
 
         //Example of how you would use the ConfirmUserCredentials method.
-        String result = ConfirmUserCredentials("Sleepy", "Sonic123");
-        System.out.println(result);
-        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+        //String result = ConfirmUserCredentials("Sleepy", "Sonic123");
+        //System.out.println(result);
+        //System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
     }
 }
