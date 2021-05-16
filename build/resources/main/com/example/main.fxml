@@ -12,5 +12,6 @@
       </padding>
    </Label>
    <Button fx:id="button1" layoutX="13.0" layoutY="81.0" mnemonicParsing="false" onAction="#changeScreenButton" text="Go to Calendar Screen" />
-   <Button fx:id="CreateAccountButton" layoutX="45.0" layoutY="125.0" mnemonicParsing="false" onAction="#CreateAccount" text="Create Account" />
+   <Button fx:id="CreateAccountButton" layoutX="31.0" layoutY="122.0" mnemonicParsing="false" onAction="#CreateAccount" text="Create Account" />
+   <Button fx:id="LoginButton" layoutX="57.0" layoutY="159.0" mnemonicParsing="false" onAction="#GoToLoginScreen" text="Login" />
 </AnchorPane>

@@ -41,8 +41,14 @@ public class CreateNewAccountController extends SheetsAPI{
             alert.setContentText("Fields left Empty");
             alert.showAndWait();
         } else {
-            System.out.println(name);
             DataWriting(name, passw);
+            Parent SuccessAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulCreateAccount.fxml")));
+            Scene SuccessAccountScene = new Scene(SuccessAccountParent);
+
+            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+            window.setScene(SuccessAccountScene);
+            window.show();
 
 
 
@@ -59,5 +65,7 @@ public class CreateNewAccountController extends SheetsAPI{
 
         window.setScene(MainScene);
         window.show();
+
+
     }
 }
