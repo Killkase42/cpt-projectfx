@@ -6,22 +6,18 @@ import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
 import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
 import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
 import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
-import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
-import com.google.api.services.sheets.v4.model.*;
-import com.sun.tools.javac.jvm.Gen;
+import com.google.api.services.sheets.v4.model.AppendValuesResponse;
+import com.google.api.services.sheets.v4.model.ValueRange;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class SheetsAPI {
@@ -135,12 +131,52 @@ public class SheetsAPI {
                 .execute();
     }
 
+    /**
+     * Checks the Sheet for the entered username and, subsequently, password (returns errors if they are not found.)
+     *pre: Is called from another class.
+     *post: Confirmation or error is returned based on whether or not username and password are valid.
+     */
+    public static String ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,
+            GeneralSecurityException {
+        sheetsService = getSheetsService();
+
+        String range = "data!A:B";
+        String authenticationResult = "Account not found";
+
+        ValueRange response = sheetsService.spreadsheets().values()
+                .get(SPREADSHEET_ID, range)
+                .execute();
+
+        List<List<Object>> values = response.getValues();
+
+        if (values == null || values.isEmpty()) {
+            System.out.println("No data found.");
+        } else {
+            for (List row : values) {
+                //Below statements check to see if the entered credentials are found in the Sheet.
+                if (String.valueOf(row.get(0)).equals(enteredUsername)) {
+                    if (String.valueOf(row.get(1)).equals(enteredPassword)) {
+                        authenticationResult = "Account found, logging you in...";
+                    } else {
+                        authenticationResult = "Password is incorrect";
+                    }
+                    break;
+                }
+            }
+        }
+        return authenticationResult;
+    }
+
     public static void main(String[] args) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
 
         //Example of what format the arrays for UploadAssignment method must be in.
         String[] assignmentInfo = {"Geography ISP", "120", "05-20-21", "Hard"};
 
+        //Example of how you would use the ConfirmUserCredentials method.
+        String result = ConfirmUserCredentials("Sleepy", "Sonic123");
+        System.out.println(result);
+        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
     }
 }
