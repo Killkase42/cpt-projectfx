@@ -111,53 +111,9 @@ public class SheetsAPI {
     }
 
     /**
-     * Writes a new account's username and password to a new row in the Sheet.
+     * Writes an assignment's name, total marks, due date, and difficulty to a new row in the Sheet.
      *pre: Is called from another class.
-     *post: New account is written to a new row of the spreadsheet.
-     * @return
-     */
-    public static String UploadAccount(String enteredUsername, String enteredPassword) throws IOException,
-            GeneralSecurityException {
-        sheetsService = getSheetsService();
-
-        String range = "data!A:A";
-        String authenticationResult = "Account successfully created";
-
-        ValueRange response = sheetsService.spreadsheets().values()
-                .get(SPREADSHEET_ID, range)
-                .execute();
-
-        List<List<Object>> values = response.getValues();
-
-        // Checks all rows to see if the entered username is taken.
-        for (List row : values) {
-            if (String.valueOf(row.get(0)).equals(enteredUsername)) {
-                authenticationResult = "Account name taken";
-                break;
-            }
-        }
-
-        // If the for loop did not find any accounts with the same name, the new account is then created.
-        if (authenticationResult.equals("Account successfully created")){
-            ValueRange appendBody = new ValueRange()
-                    .setValues(Arrays.asList(
-                            Arrays.asList(enteredUsername, enteredPassword) // More commas and strings can be added if desired.
-                    ));
-
-            AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
-                    .append(SPREADSHEET_ID, "data", appendBody)
-                    .setValueInputOption("USER_ENTERED")
-                    .setInsertDataOption("OVERWRITE")
-                    .setIncludeValuesInResponse(true)
-                    .execute();
-        }
-        return authenticationResult;
-    }
-
-    /**
-     * Writes a new assignment's name, total marks, due date, and difficulty to a new row in the Sheet.
-     *pre: Is called from another class.
-     *post: New assignment data is written to a new row of the spreadsheet.
+     *post: Assignment data is written to a new row of the spreadsheet.
      */
     public static void UploadAssignment(String[] assignmentData) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
@@ -176,45 +132,17 @@ public class SheetsAPI {
     }
 
     /**
-     * Converts the data from each assignment on the Sheet into an array and puts them all into an ARRAY OF ARRAYS!!
-     *pre: Is called from another class.
-     *post: An array of arrays is returned that contains the data of each assignment on the Sheet.
-     */
-    public static String[][] PullAssignments() throws IOException, GeneralSecurityException {
-        sheetsService = getSheetsService();
-
-        String range = "data!D:G";
-
-        ValueRange response = sheetsService.spreadsheets().values()
-                .get(SPREADSHEET_ID, range)
-                .execute();
-
-        List<List<Object>> values = response.getValues();
-
-
-        String[][] assignmentArrayOfArrays = new String[values.size()][];
-
-        int i = 0;
-        for (List<Object> nestedList : values){
-            assignmentArrayOfArrays[i++] = nestedList.toArray(new String[nestedList.size()]);
-        }
-        return assignmentArrayOfArrays;
-    }
-
-
-
-    /**
      * Checks the Sheet for the entered username and, subsequently, password (returns errors if they are not found.)
      *pre: Is called from another class.
      *post: Confirmation or error is returned based on whether or not username and password are valid.
      * @return
      */
-    public static String ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,
+    public static boolean ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,
             GeneralSecurityException {
         sheetsService = getSheetsService();
 
         String range = "data!A:B";
-        String authenticationResult = "Account not found";
+        boolean authenticationResult = false;
 
         ValueRange response = sheetsService.spreadsheets().values()
                 .get(SPREADSHEET_ID, range)
@@ -229,9 +157,9 @@ public class SheetsAPI {
                 //Below statements check to see if the entered credentials are found in the Sheet.
                 if (String.valueOf(row.get(0)).equals(enteredUsername)) {
                     if (String.valueOf(row.get(1)).equals(enteredPassword)) {
-                        authenticationResult = "Account found, logging you in...";
+                        authenticationResult = true;
                     } else {
-                        authenticationResult = "Password is incorrect";
+                        authenticationResult = false;
                     }
                     break;
                 }
@@ -247,22 +175,9 @@ public class SheetsAPI {
         String[] assignmentInfo = {"Geography ISP", "120", "05-20-21", "Hard"};
 
         //Example of how you would use the ConfirmUserCredentials method.
-//        String result = ConfirmUserCredentials("Sleepy", "Sonic123");
-//        System.out.println(result);
-//        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-
-        //Example of how you would use the UploadAccount method.
-//        String accountVar = UploadAccount("Java   >", "Python");
-//        System.out.println(accountVar);
-
-        //Example of how you would use the PullAssignments method/how it is formatted.
-        String[][] assignmentArray = PullAssignments();
-        for (int i = 0; i < 150; i++){
-            System.out.println(Arrays.toString(assignmentArray[i]));
-        }
-
-
-
+        //String result = ConfirmUserCredentials("Sleepy", "Sonic123");
+        //System.out.println(result);
+        //System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
     }
 }
