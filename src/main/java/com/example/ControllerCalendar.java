@@ -22,6 +22,8 @@ public class ControllerCalendar {
     public static String[] assignmentHours = new String[0];
     public static String[] assignmentScore = new String[0];
 
+    public static String[] dates = new String[0];
+
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;
     public Label May_6;public Label May_7;public Label May_8;public Label May_9;public Label May_10;

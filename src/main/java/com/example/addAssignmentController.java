@@ -94,7 +94,7 @@ public class addAssignmentController {
         assignmentInfo[0] = nameOfAssignment.getText();
         assignmentInfo[1] = marksAssignment.getText();
         assignmentInfo[2] = String.valueOf(dueDateAssignment.getValue());
-        assignmentInfo[3] = hoursOfAssignment.getText();
+        assignmentInfo[3] = String.valueOf(score);
 
         // Storing assignment to online stuff
         SheetsAPI.UploadAssignment(assignmentInfo);
