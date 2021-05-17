@@ -41,17 +41,23 @@ public class CreateNewAccountController extends SheetsAPI{
             alert.setContentText("Fields left Empty");
             alert.showAndWait();
         } else {
-            DataWriting(name, passw);
-            Parent SuccessAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulCreateAccount.fxml")));
-            Scene SuccessAccountScene = new Scene(SuccessAccountParent);
+            String Result = UploadAccount(name, passw);
+            if (Result == "Account name taken"){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Account Name Taken");
+                alert.showAndWait();
+            } else if (Result == "Account successfully created") {
+                Parent SuccessAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulCreateAccount.fxml")));
+                Scene SuccessAccountScene = new Scene(SuccessAccountParent);
 
-            Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
-            window.setScene(SuccessAccountScene);
-            window.show();
+                window.setScene(SuccessAccountScene);
+                window.show();
 
 
-
+            }
         }
 
     }
