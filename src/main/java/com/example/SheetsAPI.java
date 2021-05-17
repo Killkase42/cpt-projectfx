@@ -120,7 +120,7 @@ public class SheetsAPI {
             GeneralSecurityException {
         sheetsService = getSheetsService();
 
-        String range = "data!A:A";
+        String range = "data!A:B";
         String authenticationResult = "Account successfully created";
 
         ValueRange response = sheetsService.spreadsheets().values()
@@ -145,7 +145,7 @@ public class SheetsAPI {
                     ));
 
             AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
-                    .append(SPREADSHEET_ID, "data", appendBody)
+                    .append(SPREADSHEET_ID, "data!A:B", appendBody)
                     .setValueInputOption("USER_ENTERED")
                     .setInsertDataOption("OVERWRITE")
                     .setIncludeValuesInResponse(true)
@@ -201,6 +201,17 @@ public class SheetsAPI {
         return assignmentArrayOfArrays;
     }
 
+    /**
+     * Deletes the specified assignment from the Sheet.
+     *pre: Is called from another class.
+     *post: The assignment is removed from the Sheet.
+     */
+    public static void DeleteAssignment(String[] assignmentToDelete) throws IOException, GeneralSecurityException {
+        sheetsService = getSheetsService();
+
+
+
+    }
 
 
     /**
@@ -252,14 +263,14 @@ public class SheetsAPI {
 //        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
         //Example of how you would use the UploadAccount method.
-//        String accountVar = UploadAccount("Java   >", "Python");
-//        System.out.println(accountVar);
+        String accountVar = UploadAccount("Java   >", "Python");
+        System.out.println(accountVar);
 
         //Example of how you would use the PullAssignments method/how it is formatted
-        String[][] assignmentArray = PullAssignments();
-        for (int i = 0; i < 150; i++){
-            System.out.println(Arrays.toString(assignmentArray[i]));
-        }
+//        String[][] assignmentArray = PullAssignments();
+//        for (int i = 0; i < 150; i++){
+//            System.out.println(Arrays.toString(assignmentArray[i]));
+//        }
 
 
 
