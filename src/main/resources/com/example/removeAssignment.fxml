@@ -27,10 +27,6 @@
             <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Button mnemonicParsing="false" onAction="#changeScreenButton" text="Go back to Calendar" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin></Button>
       <Text fx:id="assignmentNames" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="180.0">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -41,7 +37,7 @@
             <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <TextField fx:id="selectAssignment" onMouseClicked="#removeText" text="Select Assignment" GridPane.rowIndex="1">
+      <TextField fx:id="selectAssignment" onMouseClicked="#removeText" promptText="Select Assignment" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
