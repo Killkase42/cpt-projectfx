@@ -176,6 +176,34 @@ public class SheetsAPI {
     }
 
     /**
+     * Converts the data from each assignment on the Sheet into an array and puts them all into an ARRAY OF ARRAYS!!
+     *pre: Is called from another class.
+     *post: An array of arrays is returned that contains the data of each assignment on the Sheet.
+     */
+    public static String[][] PullAssignments() throws IOException, GeneralSecurityException {
+        sheetsService = getSheetsService();
+
+        String range = "data!D:G";
+
+        ValueRange response = sheetsService.spreadsheets().values()
+                .get(SPREADSHEET_ID, range)
+                .execute();
+
+        List<List<Object>> values = response.getValues();
+
+
+        String[][] assignmentArrayOfArrays = new String[values.size()][];
+
+        int i = 0;
+        for (List<Object> nestedList : values){
+            assignmentArrayOfArrays[i++] = nestedList.toArray(new String[nestedList.size()]);
+        }
+        return assignmentArrayOfArrays;
+    }
+
+
+
+    /**
      * Checks the Sheet for the entered username and, subsequently, password (returns errors if they are not found.)
      *pre: Is called from another class.
      *post: Confirmation or error is returned based on whether or not username and password are valid.
@@ -224,8 +252,17 @@ public class SheetsAPI {
 //        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
         //Example of how you would use the UploadAccount method.
-        String accountVar = UploadAccount("Java   >", "Python");
-        System.out.println(accountVar);
+//        String accountVar = UploadAccount("Java   >", "Python");
+//        System.out.println(accountVar);
+
+        //Example of how you would use the PullAssignments method/how it is formatted.
+        String[][] assignmentArray = PullAssignments();
+        for (int i = 0; i < 150; i++){
+            System.out.println(Arrays.toString(assignmentArray[i]));
+        }
+
+
+
 
     }
 }
