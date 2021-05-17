@@ -255,7 +255,7 @@ public class SheetsAPI {
 //        String accountVar = UploadAccount("Java   >", "Python");
 //        System.out.println(accountVar);
 
-        //Example of how you would use the PullAssignments method/how it is formatted.
+        //Example of how you would use the PullAssignments method/how it is formatted
         String[][] assignmentArray = PullAssignments();
         for (int i = 0; i < 150; i++){
             System.out.println(Arrays.toString(assignmentArray[i]));
