@@ -34,13 +34,8 @@ public class LoginController extends SheetsAPI{
             alert.setContentText("Fields left Empty");
             alert.showAndWait();
         } else {
-            boolean Result = ConfirmUserCredentials(Username,Password);
-            if (Result == false){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Credentials are Incorrect");
-                alert.showAndWait();
-            } else if (Result) {
+            String Result = ConfirmUserCredentials(Username,Password);
+            if (Result == "Account found, logging you in...") {
                 Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulLogin.fxml")));
                 Scene MainScene = new Scene(MainParent);
 
@@ -48,6 +43,11 @@ public class LoginController extends SheetsAPI{
 
                 window.setScene(MainScene);
                 window.show();
+            } else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("Credentials are Incorrect");
+                alert.showAndWait();
             }
 
         }

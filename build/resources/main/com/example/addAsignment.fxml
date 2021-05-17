@@ -22,23 +22,28 @@
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
       <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button mnemonicParsing="false" onAction="#changeScreenButton" text="Go Back" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-      <Button mnemonicParsing="false" onAction="#checkFieldStatus" text="Submit Assignment" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Button mnemonicParsing="false" onAction="#checkFieldStatus" text="Submit Assignment" GridPane.columnIndex="2" GridPane.rowIndex="7" />
       <TextField fx:id="nameOfAssignment" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-      <TextField fx:id="marksAssignment" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+      <TextField fx:id="marksAssignment" GridPane.columnIndex="2" GridPane.rowIndex="4" />
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name of Assignment" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marks of Assignment" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When is assignment Due?" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-      <DatePicker fx:id="dueDateAssignment" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How many totals hours will this assignment take?" wrappingWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When is assignment Due?" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <DatePicker fx:id="dueDateAssignment" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
       <Text fx:id="notFilledField" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="There are some fields that are not filled out!" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
       <Text fx:id="creationSuccess" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! Your new assignment has been created." visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
       <Text fx:id="incorrectField" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Some fields are not correctly submited." visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
       <Text fx:id="showAssignmentName" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
       <Text fx:id="showAssignmentMarks" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
       <Text fx:id="showAssignmentDate" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How much is this assignment weighted towards the next report card  (1-10)" wrappingWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+      <TextField fx:id="hoursOfAssignment" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+      <Text fx:id="showAssignmentScore" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
+      <Text fx:id="showAssignmentHours" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
