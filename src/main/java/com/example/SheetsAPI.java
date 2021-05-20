@@ -11,13 +11,16 @@ import com.google.api.client.util.store.FileDataStoreFactory;
 import com.google.api.services.sheets.v4.Sheets;
 import com.google.api.services.sheets.v4.SheetsScopes;
 import com.google.api.services.sheets.v4.model.AppendValuesResponse;
+import com.google.api.services.sheets.v4.model.UpdateValuesResponse;
 import com.google.api.services.sheets.v4.model.ValueRange;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.security.GeneralSecurityException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class SheetsAPI {
@@ -206,11 +209,75 @@ public class SheetsAPI {
      *pre: Is called from another class.
      *post: The assignment is removed from the Sheet.
      */
-    public static void DeleteAssignment(String[] assignmentToDelete) throws IOException, GeneralSecurityException {
+    public static String DeleteAssignment(String[] assignmentToDelete) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
 
+        String range = "data!D:G";
+        String deletionResult = "Specified assignment not found";
+        ArrayList<String> checkAssignment = new ArrayList<String>();
+        checkAssignment.add(assignmentToDelete[0]);
+        checkAssignment.add(assignmentToDelete[1]);
+        checkAssignment.add(assignmentToDelete[2]);
+        checkAssignment.add(assignmentToDelete[3]);
+        ArrayList<String> replacer = new ArrayList<String>();
+        replacer.add("");
+        replacer.add("");
+        replacer.add("");
+        replacer.add("");
 
+        ValueRange response = sheetsService.spreadsheets().values()
+                .get(SPREADSHEET_ID, range)
+                .execute();
 
+        List<List<Object>> values = response.getValues();
+
+        if (values == null || values.isEmpty()) {
+            System.out.println("No data found.");
+        } else {
+            for (List row : values){
+                // If specified assignment is found in the list, remove it from the list.
+
+                if (row.equals(checkAssignment)){
+                    //Clearing the old space in the Sheet
+                    for (int i = 1; i <= values.size(); i++) {
+                        List<List<Object>> values1 = Arrays.asList(
+                                Arrays.asList("", "", "", "")
+                        );
+                        ValueRange body1 = new ValueRange()
+                                .setValues(values1);
+                        UpdateValuesResponse result =
+                                sheetsService.spreadsheets().values().update(SPREADSHEET_ID, "data!D" + i, body1)
+                                        .setValueInputOption("USER_ENTERED")
+                                        .execute();
+                    }
+
+                    // Remove the row that contains the assignment to delete.
+                    values.remove(row);
+
+                    values.add(Collections.singletonList(replacer));
+                    deletionResult = "Assignment deleted";
+
+                    break;
+                }
+            }
+            // Uploading the list (without the deleted assignment) to the Sheet.
+            int j = 1;
+            for (List row3 : values) {
+                ValueRange appendBody3 = new ValueRange()
+                        .setValues(Arrays.asList(
+                                Arrays.asList(row3.get(0), row3.get(1), row3.get(2), row3.get(3))
+                        ));
+
+                AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
+                        .append(SPREADSHEET_ID, "data!D"+j, appendBody3)
+                        .setValueInputOption("USER_ENTERED")
+                        .setInsertDataOption("OVERWRITE")
+                        .setIncludeValuesInResponse(true)
+                        .execute();
+                j++;
+            }
+        }
+        return deletionResult;
     }
 
 
@@ -263,8 +330,8 @@ public class SheetsAPI {
 //        System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
         //Example of how you would use the UploadAccount method.
-        String accountVar = UploadAccount("Java   >", "Python");
-        System.out.println(accountVar);
+//        String accountVar = UploadAccount("Java   >", "Python");
+//        System.out.println(accountVar);
 
         //Example of how you would use the PullAssignments method/how it is formatted
 //        String[][] assignmentArray = PullAssignments();
@@ -272,8 +339,10 @@ public class SheetsAPI {
 //            System.out.println(Arrays.toString(assignmentArray[i]));
 //        }
 
-
-
+        //Example of how you would use the DeleteAssignment method.
+        String[] assignmentToDelete = {"ben","10","2021-05-20","20"};
+        String result = DeleteAssignment(assignmentToDelete);
+        System.out.println(result);
 
     }
 }
