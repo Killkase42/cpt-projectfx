@@ -1,0 +1,650 @@
+Index: build/resources/main/com/example/addAsignment.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.DatePicker?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.ColumnConstraints?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.RowConstraints?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<GridPane hgap=\"10.0\" maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefWidth=\"500.0\" vgap=\"10.0\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.addAssignmentController\">\r\n  <columnConstraints>\r\n    <ColumnConstraints />\r\n    <ColumnConstraints halignment=\"RIGHT\" hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"180.0\" />\r\n      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"180.0\" />\r\n      <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"150.0\" />\r\n  </columnConstraints>\r\n  <rowConstraints>\r\n    <RowConstraints />\r\n    <RowConstraints prefHeight=\"30.0\" />\r\n      <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n      <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n      <RowConstraints vgrow=\"SOMETIMES\" />\r\n      <RowConstraints vgrow=\"SOMETIMES\" />\r\n  </rowConstraints>\r\n   <children>\r\n      <Button mnemonicParsing=\"false\" onAction=\"#changeScreenButton\" text=\"Go Back\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"5\" />\r\n      <Button mnemonicParsing=\"false\" onAction=\"#checkFieldStatus\" text=\"Submit Assignment\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"5\" />\r\n      <TextField fx:id=\"nameOfAssignment\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"2\" />\r\n      <TextField fx:id=\"marksAssignment\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"3\" />\r\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Name of Assignment\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"2\" />\r\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Marks of Assignment\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"3\" />\r\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"When is assignment Due?\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"4\" />\r\n      <DatePicker fx:id=\"dueDateAssignment\" prefWidth=\"200.0\" GridPane.columnIndex=\"2\" GridPane.rowIndex=\"4\" />\r\n      <Text fx:id=\"notFilledField\" fill=\"RED\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"There are some fields that are not filled out!\" visible=\"false\" GridPane.columnIndex=\"1\" GridPane.columnSpan=\"2147483647\" GridPane.rowIndex=\"1\" />\r\n      <Text fx:id=\"creationSuccess\" fill=\"GREEN\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Congratulations! Your new assignment has been created.\" visible=\"false\" GridPane.columnIndex=\"1\" GridPane.columnSpan=\"2147483647\" GridPane.rowIndex=\"1\" />\r\n      <Text fx:id=\"incorrectField\" fill=\"RED\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Some fields are not correctly submited.\" visible=\"false\" GridPane.columnIndex=\"1\" GridPane.columnSpan=\"2147483647\" GridPane.rowIndex=\"1\" />\r\n      <Text fx:id=\"showAssignmentName\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" wrappingWidth=\"130.0\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"2\" />\r\n      <Text fx:id=\"showAssignmentMarks\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"3\" />\r\n      <Text fx:id=\"showAssignmentDate\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" GridPane.columnIndex=\"3\" GridPane.rowIndex=\"4\" />\r\n   </children>\r\n   <padding>\r\n      <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\r\n   </padding>\r\n</GridPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/resources/main/com/example/addAsignment.fxml b/build/resources/main/com/example/addAsignment.fxml
+--- a/build/resources/main/com/example/addAsignment.fxml	(revision ef16fbc3997c3c75146bac681c091286aa814f2d)
++++ b/build/resources/main/com/example/addAsignment.fxml	(date 1621265984787)
+@@ -22,23 +22,28 @@
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints vgrow="SOMETIMES" />
++      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints vgrow="SOMETIMES" />
++      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+    <children>
+-      <Button mnemonicParsing="false" onAction="#changeScreenButton" text="Go Back" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+-      <Button mnemonicParsing="false" onAction="#checkFieldStatus" text="Submit Assignment" GridPane.columnIndex="2" GridPane.rowIndex="5" />
++      <Button mnemonicParsing="false" onAction="#checkFieldStatus" text="Submit Assignment" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+       <TextField fx:id="nameOfAssignment" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+-      <TextField fx:id="marksAssignment" GridPane.columnIndex="2" GridPane.rowIndex="3" />
++      <TextField fx:id="marksAssignment" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Name of Assignment" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Marks of Assignment" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When is assignment Due?" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+-      <DatePicker fx:id="dueDateAssignment" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
++      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How many totals hours will this assignment take?" wrappingWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
++      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="When is assignment Due?" GridPane.columnIndex="1" GridPane.rowIndex="3" />
++      <DatePicker fx:id="dueDateAssignment" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+       <Text fx:id="notFilledField" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="There are some fields that are not filled out!" visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+       <Text fx:id="creationSuccess" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Congratulations! Your new assignment has been created." visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+       <Text fx:id="incorrectField" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="Some fields are not correctly submited." visible="false" GridPane.columnIndex="1" GridPane.columnSpan="2147483647" GridPane.rowIndex="1" />
+       <Text fx:id="showAssignmentName" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+       <Text fx:id="showAssignmentMarks" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+       <Text fx:id="showAssignmentDate" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
++      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="How much is this assignment weighted towards the next report card  (1-10)" wrappingWidth="160.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
++      <TextField fx:id="hoursOfAssignment" GridPane.columnIndex="2" GridPane.rowIndex="5" />
++      <Text fx:id="showAssignmentScore" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="7" />
++      <Text fx:id="showAssignmentHours" strokeType="OUTSIDE" strokeWidth="0.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
+    </children>
+    <padding>
+       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+Index: build/resources/main/com/example/calendarScreen.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.layout.ColumnConstraints?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.RowConstraints?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<GridPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"381.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.ControllerCalendar\">\r\n  <columnConstraints> \r\n    <ColumnConstraints halignment=\"LEFT\" hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n    <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\r\n  </columnConstraints>\r\n  <rowConstraints>\r\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\r\n  </rowConstraints>\r\n   <children>\r\n      <Button mnemonicParsing=\"false\" onAction=\"#changeScreenButton\" text=\"Add Assignment\" />\r\n      <Button mnemonicParsing=\"false\" onAction=\"#changeScreenButton3\" text=\"Remove Assignment\" GridPane.rowIndex=\"1\" />\r\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"AREA FOR CALENDAR\" GridPane.columnIndex=\"1\" />\r\n      <Button mnemonicParsing=\"false\" onAction=\"#changeScreenButton2\" text=\"Go back to Account Creation\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"1\" />\r\n   </children>\r\n   <padding>\r\n      <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\r\n   </padding>\r\n</GridPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/resources/main/com/example/calendarScreen.fxml b/build/resources/main/com/example/calendarScreen.fxml
+--- a/build/resources/main/com/example/calendarScreen.fxml	(revision ef16fbc3997c3c75146bac681c091286aa814f2d)
++++ b/build/resources/main/com/example/calendarScreen.fxml	(date 1621265984792)
+@@ -2,25 +2,446 @@
+ 
+ <?import javafx.geometry.Insets?>
+ <?import javafx.scene.control.Button?>
++<?import javafx.scene.control.Label?>
+ <?import javafx.scene.layout.ColumnConstraints?>
+ <?import javafx.scene.layout.GridPane?>
+ <?import javafx.scene.layout.RowConstraints?>
++<?import javafx.scene.text.Font?>
+ <?import javafx.scene.text.Text?>
+ 
+-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="381.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
++<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="487.0" prefWidth="744.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
+   <columnConstraints> 
+-    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+-  </columnConstraints>
+-  <rowConstraints>
+-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+-  </rowConstraints>
+-   <children>
+-      <Button mnemonicParsing="false" onAction="#changeScreenButton" text="Add Assignment" />
+-      <Button mnemonicParsing="false" onAction="#changeScreenButton3" text="Remove Assignment" GridPane.rowIndex="1" />
+-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="AREA FOR CALENDAR" GridPane.columnIndex="1" />
+-      <Button mnemonicParsing="false" onAction="#changeScreenButton2" text="Go back to Account Creation" GridPane.columnIndex="1" GridPane.rowIndex="1" />
++    <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="130.0" minWidth="10.0" prefWidth="100.0" />
++    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++  </columnConstraints>
++  <rowConstraints>
++      <RowConstraints maxHeight="20.0" minHeight="50.0" prefHeight="30.0" vgrow="SOMETIMES" />
++    <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++    <RowConstraints maxHeight="60.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++  </rowConstraints>
++   <children>
++      <Button mnemonicParsing="false" onAction="#addAssignmentPopUp" text="Add Assignment" GridPane.rowIndex="1">
++         <GridPane.margin>
++            <Insets bottom="200.0" />
++         </GridPane.margin></Button>
++      <Button mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" text="Remove Assignment" GridPane.rowIndex="1">
++         <GridPane.margin>
++            <Insets top="200.0" />
++         </GridPane.margin></Button>
++      <Button mnemonicParsing="false" onAction="#BackToAccountScreen" text="Go back to Account Creation" GridPane.columnIndex="1" GridPane.rowIndex="2">
++         <GridPane.margin>
++            <Insets left="130.0" />
++         </GridPane.margin></Button>
++      <GridPane gridLinesVisible="true" prefWidth="450.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
++        <columnConstraints>
++            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
++        </columnConstraints>
++        <rowConstraints>
++          <RowConstraints maxHeight="20.0" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++          <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++            <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++        </rowConstraints>
++         <children>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunday" textAlignment="CENTER" wrappingWidth="63.45654296875" />
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" textAlignment="CENTER" wrappingWidth="64.0546875" GridPane.columnIndex="6" />
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" textAlignment="CENTER" wrappingWidth="63.56640625" GridPane.columnIndex="5" />
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" textAlignment="CENTER" wrappingWidth="62.51123046875" GridPane.columnIndex="4" />
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wednesday" textAlignment="CENTER" wrappingWidth="63.4697265625" GridPane.columnIndex="3">
++               <font>
++                  <Font size="12.0" />
++               </font>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" textAlignment="CENTER" wrappingWidth="61.15673828125" GridPane.columnIndex="2" />
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" textAlignment="CENTER" wrappingWidth="62.5986328125" GridPane.columnIndex="1" />
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="25" GridPane.columnIndex="2" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="24" GridPane.columnIndex="1" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="23" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="22" GridPane.columnIndex="6" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="21" GridPane.columnIndex="5" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20" GridPane.columnIndex="4" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="19" GridPane.columnIndex="3" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="18" GridPane.columnIndex="2" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="17" GridPane.columnIndex="1" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="16" GridPane.rowIndex="4">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15" GridPane.columnIndex="6" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="14" GridPane.columnIndex="5" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="13" GridPane.columnIndex="4" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="12" GridPane.columnIndex="3" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="11" GridPane.columnIndex="2" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="9" GridPane.rowIndex="3">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" GridPane.columnIndex="6" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" GridPane.columnIndex="5" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" GridPane.columnIndex="4" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" GridPane.columnIndex="2" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.rowIndex="2">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="6" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="30" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="29" GridPane.columnIndex="6" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="28" GridPane.columnIndex="5" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="27" GridPane.columnIndex="4" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="26" GridPane.columnIndex="3" GridPane.rowIndex="5">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="31" GridPane.columnIndex="1" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="30" GridPane.columnIndex="5" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="29" GridPane.columnIndex="4" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="28" GridPane.columnIndex="3" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="27" GridPane.columnIndex="2" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="26" GridPane.columnIndex="1" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="25" GridPane.rowIndex="1">
++               <font>
++                  <Font size="16.0" />
++               </font>
++               <GridPane.margin>
++                  <Insets bottom="40.0" left="3.0" />
++               </GridPane.margin>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.columnIndex="6" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="4" GridPane.columnIndex="5" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="3" GridPane.columnIndex="4" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.columnIndex="3" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++            </Text>
++            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.rowIndex="6">
++               <font>
++                  <Font size="16.0" />
++               </font>
++            </Text>
++            <Label fx:id="May_1" prefHeight="57.0" prefWidth="85.0" wrapText="true" GridPane.columnIndex="6" GridPane.rowIndex="1" />
++            <Label fx:id="May_17" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
++            <Label fx:id="May_16" prefHeight="57.0" prefWidth="85.0" GridPane.rowIndex="4" />
++            <Label fx:id="May_15" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="6" GridPane.rowIndex="3" />
++            <Label fx:id="May_14" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="5" GridPane.rowIndex="3" />
++            <Label fx:id="May_13" prefHeight="56.0" prefWidth="81.0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3" />
++            <Label fx:id="May_12" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
++            <Label fx:id="May_11" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
++            <Label fx:id="May_10" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
++            <Label fx:id="May_9" prefHeight="57.0" prefWidth="85.0" GridPane.rowIndex="3" />
++            <Label fx:id="May_8" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="6" GridPane.rowIndex="2" />
++            <Label fx:id="May_7" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="5" GridPane.rowIndex="2" />
++            <Label prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
++            <Label fx:id="May_6" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
++            <Label fx:id="May_5" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
++            <Label fx:id="May_4" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
++            <Label fx:id="May_3" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
++            <Label fx:id="May_2" prefHeight="57.0" prefWidth="85.0" GridPane.rowIndex="2" />
++            <Label fx:id="May_18" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
++            <Label fx:id="May_19" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
++            <Label prefHeight="57.0" prefWidth="85.0" />
++            <Label fx:id="May_20" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
++            <Label fx:id="May_21" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="5" GridPane.rowIndex="4" />
++            <Label fx:id="May_22" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="6" GridPane.rowIndex="4" />
++            <Label fx:id="May_23" prefHeight="57.0" prefWidth="85.0" GridPane.rowIndex="5" />
++            <Label fx:id="May_24" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
++            <Label fx:id="May_25" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="2" GridPane.rowIndex="5" />
++            <Label prefHeight="57.0" prefWidth="85.0" />
++            <Label fx:id="May_26" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="3" GridPane.rowIndex="5" />
++            <Label fx:id="May_27" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="4" GridPane.rowIndex="5" />
++            <Label fx:id="May_28" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="5" GridPane.rowIndex="5" />
++            <Label fx:id="May_29" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="6" GridPane.rowIndex="5" />
++            <Label prefHeight="57.0" prefWidth="85.0" />
++            <Label fx:id="May_30" prefHeight="57.0" prefWidth="85.0" GridPane.rowIndex="6" />
++            <Label fx:id="May_31" prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
++            <Label prefHeight="57.0" prefWidth="85.0" />
++         </children>
++         <GridPane.margin>
++            <Insets left="19.0" right="10.0" />
++         </GridPane.margin>
++      </GridPane>
++      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="May" wrappingWidth="46.6513671875" GridPane.columnIndex="1">
++         <GridPane.margin>
++            <Insets bottom="5.0" left="80.0" />
++         </GridPane.margin>
++         <font>
++            <Font name="System Bold" size="23.0" />
++         </font>
++      </Text>
++      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2021" GridPane.columnIndex="1">
++         <GridPane.margin>
++            <Insets bottom="5.0" left="410.0" />
++         </GridPane.margin>
++         <font>
++            <Font size="23.0" />
++         </font>
++      </Text>
++      <Button mnemonicParsing="false" onAction="#addAssignmentToCalendar" text="Update Assignments" wrapText="true" GridPane.rowIndex="1" />
+    </children>
+    <padding>
+       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:origin/development\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/mainController2.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/mainController2.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/mainController2.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/mainController2.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/removeAssignment.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/removeAssignment.fxml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Dependencies\" type=\"6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaFXApplication\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"full.screen.before.presentation.mode\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.116009295\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.13140604\" />\r\n    <property name=\"restartRequiresConfirmation\" value=\"false\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/calendar\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.cpt-projectfx [run]\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MainCalendar\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.calendar.MainCalendar\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"--info\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Application.MainCalendar\" />\r\n      <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n        <item itemvalue=\"Application.MainCalendar\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"working on storing account info\" />\r\n      <created>1620660623527</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620660623527</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Improved Sheets API functionality.\">\r\n      <created>1620936254927</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620936254927</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Added method to upload assignments to Sheet.\">\r\n      <created>1621092667835</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621092667835</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added method to upload assignments to Sheet.\">\r\n      <created>1621092757329</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621092757329</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Fixed problem with build.gradle.\">\r\n      <created>1621103078139</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621103078139</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\r\n      <created>1621210448900</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621210448900</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/development\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"master\" />\r\n                </option>\r\n              </RecentGroup>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/development\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Improved Sheets API functionality.\" />\r\n    <MESSAGE value=\"working on storing account info\" />\r\n    <MESSAGE value=\"Fixed problem with build.gradle.\" />\r\n    <MESSAGE value=\"Added method to pull assignments in Sheet as array of arrays.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added method to pull assignments in Sheet as array of arrays.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ef16fbc3997c3c75146bac681c091286aa814f2d)
++++ b/.idea/workspace.xml	(date 1621266371359)
+@@ -29,23 +29,26 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="">
++    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Fixed SheetsAPI issue.">
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-12__9_08_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-12__9_08_p_m___Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/mainController2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/mainController2.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/addAsignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/addAsignment.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/calendarScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/removeAssignment.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mainController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mainController2.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/removeAssignment.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -263,7 +266,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1621210448900</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Fixed SheetsAPI issue.">
++      <created>1621266156048</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1621266156048</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -316,7 +326,8 @@
+     <MESSAGE value="working on storing account info" />
+     <MESSAGE value="Fixed problem with build.gradle." />
+     <MESSAGE value="Added method to pull assignments in Sheet as array of arrays." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added method to pull assignments in Sheet as array of arrays." />
++    <MESSAGE value="Fixed SheetsAPI issue." />
++    <option name="LAST_COMMIT_MESSAGE" value="Fixed SheetsAPI issue." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: build/tmp/compileJava/source-classes-mapping.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>com/example/ControllerCalendar.java\r\n com.example.ControllerCalendar\r\ncom/example/removeAssignmentController.java\r\n com.example.removeAssignmentController\r\ncom/example/SuccessfulLoginController.java\r\n com.example.SuccessfulLoginController\r\ncom/example/SheetsAPI.java\r\n com.example.SheetsAPI\r\ncom/example/addAssignmentController.java\r\n com.example.addAssignmentController\r\ncom/example/Main.java\r\n com.example.Main\r\ncom/example/CreateNewAccountController.java\r\n com.example.CreateNewAccountController\r\ncom/example/mainController2.java\r\n com.example.mainController2\r\ncom/example/SuccessfulCreateAccountController.java\r\n com.example.SuccessfulCreateAccountController\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/compileJava/source-classes-mapping.txt b/build/tmp/compileJava/source-classes-mapping.txt
+--- a/build/tmp/compileJava/source-classes-mapping.txt	(revision ef16fbc3997c3c75146bac681c091286aa814f2d)
++++ b/build/tmp/compileJava/source-classes-mapping.txt	(date 1621266081529)
+@@ -4,15 +4,15 @@
+  com.example.removeAssignmentController
+ com/example/SuccessfulLoginController.java
+  com.example.SuccessfulLoginController
+-com/example/SheetsAPI.java
+- com.example.SheetsAPI
+-com/example/addAssignmentController.java
+- com.example.addAssignmentController
++com/example/SuccessfulCreateAccountController.java
++ com.example.SuccessfulCreateAccountController
+ com/example/Main.java
+  com.example.Main
++com/example/addAssignmentController.java
++ com.example.addAssignmentController
++com/example/SheetsAPI.java
++ com.example.SheetsAPI
+ com/example/CreateNewAccountController.java
+  com.example.CreateNewAccountController
+ com/example/mainController2.java
+  com.example.mainController2
+-com/example/SuccessfulCreateAccountController.java
+- com.example.SuccessfulCreateAccountController
+Index: build/resources/main/com/example/removeAssignment.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.TextField?>\r\n<?import javafx.scene.layout.ColumnConstraints?>\r\n<?import javafx.scene.layout.GridPane?>\r\n<?import javafx.scene.layout.RowConstraints?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<GridPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.removeAssignmentController\">\r\n  <columnConstraints>\r\n    <ColumnConstraints hgrow=\"SOMETIMES\" prefWidth=\"300.0\" />\r\n    <ColumnConstraints hgrow=\"SOMETIMES\" prefWidth=\"300.0\" />\r\n  </columnConstraints>\r\n  <rowConstraints>\r\n    <RowConstraints vgrow=\"SOMETIMES\" />\r\n      <RowConstraints minHeight=\"10.0\" prefHeight=\"50.0\" vgrow=\"SOMETIMES\" />\r\n    <RowConstraints vgrow=\"SOMETIMES\" />\r\n  </rowConstraints>\r\n   <children>\r\n      <Button alignment=\"CENTER\" mnemonicParsing=\"false\" onAction=\"#removeAssignment\" text=\"Remove Assignment\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"2\">\r\n         <opaqueInsets>\r\n            <Insets />\r\n         </opaqueInsets>\r\n         <GridPane.margin>\r\n            <Insets bottom=\"10.0\" left=\"90.0\" right=\"10.0\" top=\"10.0\" />\r\n         </GridPane.margin>\r\n      </Button>\r\n      <Button mnemonicParsing=\"false\" onAction=\"#changeScreenButton\" text=\"Go back to Calendar\" GridPane.rowIndex=\"2\">\r\n         <GridPane.margin>\r\n            <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\r\n         </GridPane.margin></Button>\r\n      <Text fx:id=\"assignmentNames\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" wrappingWidth=\"180.0\">\r\n         <GridPane.margin>\r\n            <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\r\n         </GridPane.margin>\r\n      </Text>\r\n      <Button mnemonicParsing=\"false\" onAction=\"#setText\" text=\"Show assignments\" GridPane.columnIndex=\"1\">\r\n         <GridPane.margin>\r\n            <Insets bottom=\"10.0\" left=\"90.0\" right=\"10.0\" top=\"10.0\" />\r\n         </GridPane.margin>\r\n      </Button>\r\n      <TextField fx:id=\"selectAssignment\" onMouseClicked=\"#removeText\" text=\"Select Assignment\" GridPane.rowIndex=\"1\">\r\n         <GridPane.margin>\r\n            <Insets bottom=\"10.0\" left=\"10.0\" right=\"10.0\" top=\"10.0\" />\r\n         </GridPane.margin>\r\n      </TextField>\r\n   </children>\r\n</GridPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/resources/main/com/example/removeAssignment.fxml b/build/resources/main/com/example/removeAssignment.fxml
+--- a/build/resources/main/com/example/removeAssignment.fxml	(revision ef16fbc3997c3c75146bac681c091286aa814f2d)
++++ b/build/resources/main/com/example/removeAssignment.fxml	(date 1621265984814)
+@@ -27,10 +27,6 @@
+             <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
+          </GridPane.margin>
+       </Button>
+-      <Button mnemonicParsing="false" onAction="#changeScreenButton" text="Go back to Calendar" GridPane.rowIndex="2">
+-         <GridPane.margin>
+-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+-         </GridPane.margin></Button>
+       <Text fx:id="assignmentNames" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="180.0">
+          <GridPane.margin>
+             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+@@ -41,7 +37,7 @@
+             <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
+          </GridPane.margin>
+       </Button>
+-      <TextField fx:id="selectAssignment" onMouseClicked="#removeText" text="Select Assignment" GridPane.rowIndex="1">
++      <TextField fx:id="selectAssignment" onMouseClicked="#removeText" promptText="Select Assignment" GridPane.rowIndex="1">
+          <GridPane.margin>
+             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+          </GridPane.margin>

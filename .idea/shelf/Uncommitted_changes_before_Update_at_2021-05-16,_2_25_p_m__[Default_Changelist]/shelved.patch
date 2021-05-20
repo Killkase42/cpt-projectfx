@@ -1,0 +1,227 @@
+Index: src/main/java/com/example/CreateNewAccountController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example;\n\n\n\n\nimport javafx.event.ActionEvent;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Node;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.scene.control.Alert;\nimport javafx.scene.control.TextField;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\n\n\nimport java.security.GeneralSecurityException;\nimport java.util.Objects;\n\n\npublic class CreateNewAccountController extends SheetsAPI{\n    public TextField UsernameTextField;\n    public TextField PasswordTextField;\n\n\n\n\n\n    public void CreateAccount(ActionEvent event)  throws IOException, GeneralSecurityException {\n        //gets info from text field\n        String name = UsernameTextField.getText();\n        String passw = PasswordTextField.getText();\n\n\n\n        //if the fields are empty and tries to validate. Returns an error\n        if (name.isEmpty() || passw.isEmpty()) {\n            Alert alert = new Alert(Alert.AlertType.ERROR);\n            alert.setHeaderText(null);\n            alert.setContentText(\"Fields left Empty\");\n            alert.showAndWait();\n        } else {\n            System.out.println(name);\n            DataWriting(name, passw);\n\n\n\n        }\n\n    }\n\n\n    public void GoToMainMenu(ActionEvent event) throws IOException {\n        Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(\"main.fxml\")));\n        Scene MainScene = new Scene(MainParent);\n\n        Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();\n\n        window.setScene(MainScene);\n        window.show();\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/CreateNewAccountController.java b/src/main/java/com/example/CreateNewAccountController.java
+--- a/src/main/java/com/example/CreateNewAccountController.java	
++++ b/src/main/java/com/example/CreateNewAccountController.java	
+@@ -1,8 +1,5 @@
+ package com.example;
+ 
+-
+-
+-
+ import javafx.event.ActionEvent;
+ import javafx.fxml.FXMLLoader;
+ import javafx.scene.Node;
+@@ -23,17 +20,11 @@
+     public TextField UsernameTextField;
+     public TextField PasswordTextField;
+ 
+-
+-
+-
+-
+     public void CreateAccount(ActionEvent event)  throws IOException, GeneralSecurityException {
+         //gets info from text field
+         String name = UsernameTextField.getText();
+         String passw = PasswordTextField.getText();
+ 
+-
+-
+         //if the fields are empty and tries to validate. Returns an error
+         if (name.isEmpty() || passw.isEmpty()) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+@@ -43,13 +34,8 @@
+         } else {
+             System.out.println(name);
+             DataWriting(name, passw);
+-
+-
+-
+         }
+-
+     }
+-
+ 
+     public void GoToMainMenu(ActionEvent event) throws IOException {
+         Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
+Index: build/tmp/compileJava/source-classes-mapping.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>com/example/ControllerCalendar.java\n com.example.ControllerCalendar\ncom/example/removeAssignmentController.java\n com.example.removeAssignmentController\ncom/example/addAssignmentController.java\n com.example.addAssignmentController\ncom/example/SheetsAPI.java\n com.example.SheetsAPI\ncom/example/Main.java\n com.example.Main\ncom/example/CreateNewAccountController.java\n com.example.CreateNewAccountController\ncom/example/mainController2.java\n com.example.mainController2\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/compileJava/source-classes-mapping.txt b/build/tmp/compileJava/source-classes-mapping.txt
+--- a/build/tmp/compileJava/source-classes-mapping.txt	
++++ b/build/tmp/compileJava/source-classes-mapping.txt	
+@@ -2,10 +2,10 @@
+  com.example.ControllerCalendar
+ com/example/removeAssignmentController.java
+  com.example.removeAssignmentController
+-com/example/addAssignmentController.java
+- com.example.addAssignmentController
+ com/example/SheetsAPI.java
+  com.example.SheetsAPI
++com/example/addAssignmentController.java
++ com.example.addAssignmentController
+ com/example/Main.java
+  com.example.Main
+ com/example/CreateNewAccountController.java
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\n    id 'java'\n    id 'application'\n    id 'org.openjfx.javafxplugin' version '0.0.10'\n}\n\ngroup 'org.example'\nversion '1.0-SNAPSHOT'\n\nmainClassName = 'com.example.Main'\n//mainClassName = 'com.example.SheetsAPI'\nsourceCompatibility = 1.8\ntargetCompatibility = 1.8\nversion = '1.0'\n\ndependencies {\n    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'\n    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'\n}\n\ntest {\n    useJUnitPlatform()\n}\n\njavafx {\n    modules = [ 'javafx.controls', 'javafx.fxml' ]\n    version = '16'\n}\n\nrepositories {\n    mavenCentral()\n}\n\ndependencies {\n    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'\n    compile 'com.google.api-client:google-api-client:1.30.4'\n    compile 'com.google.oauth-client:google-oauth-client-jetty:1.30.6'\n    compile 'com.google.apis:google-api-services-sheets:v4-rev581-1.25.0'\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	
++++ b/build.gradle	
+@@ -31,6 +31,10 @@
+     mavenCentral()
+ }
+ 
++dependencies {
++    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'
++}
++
+ dependencies {
+     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.3.2'
+     compile 'com.google.api-client:google-api-client:1.30.4'
+Index: src/main/java/com/example/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example;\n\nimport javafx.application.Application;\nimport javafx.fxml.FXMLLoader;\nimport javafx.scene.Parent;\nimport javafx.scene.Scene;\nimport javafx.stage.Stage;\n\nimport java.io.IOException;\n\npublic class Main extends Application {\n\n\n    @Override\n    public void start(Stage primaryStage) throws IOException {\n        Parent root = FXMLLoader.load(getClass().getResource(\"main.fxml\"));\n        primaryStage.setTitle(\"Hello World\");\n        primaryStage.setScene(new Scene(root, 600, 400));\n        primaryStage.show();\n    }\n\n    public static void main(String[] args) {\n        launch(args);\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/Main.java b/src/main/java/com/example/Main.java
+--- a/src/main/java/com/example/Main.java	
++++ b/src/main/java/com/example/Main.java	
+@@ -24,3 +24,4 @@
+     }
+ 
+ }
++
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"BranchesTreeState\">\n    <expand>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </expand>\n    <select>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"BRANCH:origin/development\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </select>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"working on storing account info\">\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-14_11_53_a_m___Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-14_11_53_a_m___Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-14_9_31_p_m___Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-14_9_31_p_m___Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-15_10_25_a_m___Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-15_10_25_a_m___Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build.gradle\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build.gradle\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"CodeInsightWorkspaceSettings\">\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <task path=\"$PROJECT_DIR$\">\n          <activation />\n        </task>\n        <projects_view>\n          <tree_state>\n            <expand>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Dependencies\" type=\"6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode\" />\n              </path>\n            </expand>\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"FxmlFile\" />\n        <option value=\"JavaFXApplication\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\n    <property name=\"full.screen.before.presentation.mode\" value=\"false\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\n    <property name=\"project.structure.proportion\" value=\"0.116009295\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.13140604\" />\n    <property name=\"restartRequiresConfirmation\" value=\"false\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/calendar\" />\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.example\" />\n    </key>\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\n      <recent name=\"com.example\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Gradle.cpt-projectfx [run]\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\n      <module name=\"cpt-projectfx.main\" />\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.example.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"MainCalendar\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.calendar.MainCalendar\" />\n      <module name=\"cpt-projectfx.main\" />\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.example.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" value=\"--info\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"run\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.Main\" />\n      <item itemvalue=\"Application.MainCalendar\" />\n      <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\n        <item itemvalue=\"Application.MainCalendar\" />\n        <item itemvalue=\"Application.Main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"working on storing account info\" />\n      <created>1620660623527</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1620660623527</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Improved Sheets API functionality.\">\n      <created>1620936254927</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1620936254927</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Added method to upload assignments to Sheet.\">\n      <created>1621092667835</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621092667835</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Added method to upload assignments to Sheet.\">\n      <created>1621092757329</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621092757329</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"4\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/development\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"Branch\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"master\" />\n                </option>\n              </RecentGroup>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/development\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"Improved Sheets API functionality.\" />\n    <MESSAGE value=\"working on storing account info\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"working on storing account info\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\n          <option name=\"timeStamp\" value=\"2\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -30,6 +30,7 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="working on storing account info">
++      <change afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_121.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+@@ -38,27 +39,31 @@
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-14_11_53_a_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-14_11_53_a_m___Default_Changelist_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-14_9_31_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-14_9_31_p_m___Default_Changelist_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-15_10_25_a_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-15_10_25_a_m___Default_Changelist_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/addAsignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/addAsignment.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/calendarScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/removeAssignment.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/removeAssignment.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="CodeInsightWorkspaceSettings">
+-    <option name="optimizeImportsOnTheFly" value="true" />
+   </component>
+   <component name="ExternalProjectsData">
+     <projectState path="$PROJECT_DIR$">
+@@ -93,6 +98,11 @@
+                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                 <item name="cpt-projectfx" type="f1a62948:ProjectNode" />
+                 <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
++              </path>
++              <path>
++                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
++                <item name="cpt-projectfx" type="f1a62948:ProjectNode" />
++                <item name="Run Configurations" type="7b0102dc:RunConfigurationsNode" />
+               </path>
+             </expand>
+             <select />
+@@ -136,8 +146,8 @@
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+     <property name="full.screen.before.presentation.mode" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example" />
+-    <property name="project.structure.last.edited" value="Modules" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="project.structure.last.edited" value="Libraries" />
+     <property name="project.structure.proportion" value="0.116009295" />
+     <property name="project.structure.side.proportion" value="0.13140604" />
+     <property name="restartRequiresConfirmation" value="false" />
+@@ -153,6 +163,9 @@
+       <recent name="$PROJECT_DIR$/src/main/java/com/example" />
+       <recent name="$PROJECT_DIR$/src/main/java/com/example/calendar" />
+       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example" />
++    </key>
++    <key name="MoveMembersDialog.RECENTS_KEY">
++      <recent name="com.example.ControllerCalendar" />
+     </key>
+     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+       <recent name="com.example" />
+@@ -240,21 +253,7 @@
+       <option name="project" value="LOCAL" />
+       <updated>1620936254927</updated>
+     </task>
+-    <task id="LOCAL-00002" summary="Added method to upload assignments to Sheet.">
+-      <created>1621092667835</created>
+-      <option name="number" value="00002" />
+-      <option name="presentableId" value="LOCAL-00002" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1621092667835</updated>
+-    </task>
+-    <task id="LOCAL-00003" summary="Added method to upload assignments to Sheet.">
+-      <created>1621092757329</created>
+-      <option name="number" value="00003" />
+-      <option name="presentableId" value="LOCAL-00003" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1621092757329</updated>
+-    </task>
+-    <option name="localTasksCounter" value="4" />
++    <option name="localTasksCounter" value="2" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">

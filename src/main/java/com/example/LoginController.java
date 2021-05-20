@@ -36,7 +36,7 @@ public class LoginController extends SheetsAPI{
         } else {
             String Result = ConfirmUserCredentials(Username,Password);
             if (Result == "Account found, logging you in...") {
-                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulLogin.fxml")));
+                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
 
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
