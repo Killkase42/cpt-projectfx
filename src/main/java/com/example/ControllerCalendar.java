@@ -15,14 +15,16 @@ import java.util.Objects;
 public class ControllerCalendar {
 
 
+
     //Arrays that will be used to store the data of the assignments
     public static String[] assignmentName = new String[0];
     public static String[] assignmentMarks = new String[0];
     public static String[] assignmentDueDate = new String[0];
     public static String[] assignmentHours = new String[0];
-    public static String[] assignmentScore = new String[0];
+    public static int[] assignmentScore = new int[0];
 
-    public static String[] dates = new String[0];
+    public static int[] dateScore = new int[31];
+
 
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;
@@ -69,6 +71,15 @@ public class ControllerCalendar {
      */
     public void RemoveAssignmentPopUp(ActionEvent event) throws IOException {
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("removeAssignment.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = new Stage();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+    public void checkAssignmentDetailsPopUp(ActionEvent event) throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("showAssignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = new Stage();
@@ -233,5 +244,11 @@ public class ControllerCalendar {
         May_21.setText(newLine21.toString());  May_22.setText(newLine22.toString());  May_23.setText(newLine23.toString());  May_24.setText(newLine24.toString());
         May_25.setText(newLine25.toString());  May_26.setText(newLine26.toString());  May_27.setText(newLine27.toString());  May_28.setText(newLine28.toString());
         May_29.setText(newLine29.toString());  May_30.setText(newLine30.toString());  May_31.setText(newLine31.toString());
+    }
+
+
+    public static int isolateDays(String date) {
+        int index = date.lastIndexOf("-");
+        return Integer.parseInt(date.substring(index + 1));
     }
 }

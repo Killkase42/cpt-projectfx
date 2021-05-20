@@ -64,7 +64,7 @@ public class addAssignmentController {
         ControllerCalendar.assignmentMarks = Arrays.copyOf(ControllerCalendar.assignmentMarks, ControllerCalendar.assignmentMarks.length + 1);
         ControllerCalendar.assignmentDueDate = Arrays.copyOf(ControllerCalendar.assignmentDueDate, ControllerCalendar.assignmentDueDate.length + 1);
         ControllerCalendar.assignmentHours = Arrays.copyOf(ControllerCalendar.assignmentHours, ControllerCalendar.assignmentHours.length + 1);
-        ControllerCalendar.assignmentScore = Arrays.copyOf(ControllerCalendar.assignmentHours, ControllerCalendar.assignmentScore.length + 1);
+        ControllerCalendar.assignmentScore = Arrays.copyOf(ControllerCalendar.assignmentScore, ControllerCalendar.assignmentScore.length + 1);
 
         // adding the variables to the arrays
         ControllerCalendar.assignmentName[ControllerCalendar.assignmentName.length - 1] = nameOfAssignment.getText();
@@ -79,7 +79,12 @@ public class addAssignmentController {
         date = dueDateAssignment.getValue();
         hours = hoursOfAssignment.getText();
         score = WorkLoadCalculator();
-        ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = String.valueOf(score);
+        ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = (score);
+
+        for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
+        i <= ControllerCalendar.isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
+            ControllerCalendar.dateScore[i] += score;
+        }
 
 
         // Showing assignment details
@@ -87,7 +92,7 @@ public class addAssignmentController {
         showAssignmentMarks.setText(marks + "%");
         showAssignmentDate.setText(String.valueOf(date));
         showAssignmentHours.setText(hours + " Hours");
-        showAssignmentScore.setText("Score: " + score);
+        showAssignmentScore.setText("Score: " + ControllerCalendar.dateScore[ControllerCalendar.isolateDays(String.valueOf(dueDateAssignment.getValue()))]);
 
         // Adding stuff into one array so that it can upload online
         String[] assignmentInfo = new String[4];
