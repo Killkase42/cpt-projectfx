@@ -13,6 +13,7 @@ import java.util.Arrays;
 public class addAssignmentController {
 
 
+
     // Success or failure text
     public Text notFilledField;
     public Text creationSuccess;
@@ -95,6 +96,7 @@ public class addAssignmentController {
         showAssignmentScore.setText("Score: " + ControllerCalendar.dateScore[ControllerCalendar.isolateDays(String.valueOf(dueDateAssignment.getValue()))]);
 
         // Adding stuff into one array so that it can upload online
+
         String[] assignmentInfo = new String[4];
         assignmentInfo[0] = nameOfAssignment.getText();
         assignmentInfo[1] = marksAssignment.getText();

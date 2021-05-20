@@ -6,17 +6,17 @@ com/example/SuccessfulCreateAccountController.java
  com.example.SuccessfulCreateAccountController
 com/example/SuccessfulLoginController.java
  com.example.SuccessfulLoginController
-com/example/SheetsAPI.java
- com.example.SheetsAPI
 com/example/CreateNewAccountController.java
  com.example.CreateNewAccountController
 com/example/mainController2.java
  com.example.mainController2
-com/example/ShowAssignment.java
- com.example.ShowAssignment
+com/example/SheetsAPI.java
+ com.example.SheetsAPI
 com/example/ControllerCalendar.java
  com.example.ControllerCalendar
 com/example/removeAssignmentController.java
  com.example.removeAssignmentController
+com/example/ShowAssignment.java
+ com.example.ShowAssignment
 com/example/addAssignmentController.java
  com.example.addAssignmentController

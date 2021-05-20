@@ -10,10 +10,11 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.util.Objects;
 
-public class ControllerCalendar {
 
+public class ControllerCalendar {
 
 
     //Arrays that will be used to store the data of the assignments
@@ -34,6 +35,15 @@ public class ControllerCalendar {
     public Label May_21;public Label May_22;public Label May_23;public Label May_24;public Label May_25;
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
+
+
+//    public void accessAssignment() throws IOException, GeneralSecurityException {
+//       String[][] assignmentInfo = SheetsAPI.PullAssignments();
+//       for (int i = 1; i < assignmentInfo.length; i++){
+//           System.out.println(assignmentInfo[i][2]);
+//       }
+//    }
+
 
 
     /*
@@ -78,6 +88,11 @@ public class ControllerCalendar {
         window.setScene(addAssignmentScene);
         window.show();
     }
+
+    /*
+    Pre: None
+    Post: Opens check assignment pop-ip
+     */
     public void checkAssignmentDetailsPopUp(ActionEvent event) throws IOException {
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("showAssignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
@@ -93,7 +108,8 @@ public class ControllerCalendar {
      Pre: None:
      Post: Adds any assignments to the calendar
      */
-    public void addAssignmentToCalendar(ActionEvent event) throws IOException {
+    public void addAssignmentToCalendar(ActionEvent event) throws IOException, GeneralSecurityException {
+
         System.out.println(addAssignmentController.deleteYear(String.valueOf(java.time.LocalDate.now())));
         May_1.setText("");May_2.setText("");May_3.setText("");May_4.setText("");May_5.setText("");May_6.setText("");
         May_7.setText("");May_8.setText("");May_9.setText("");May_10.setText("");May_11.setText("");May_12.setText("");
@@ -111,128 +127,130 @@ public class ControllerCalendar {
         StringBuilder newLine24 = new StringBuilder();StringBuilder newLine25 = new StringBuilder();StringBuilder newLine26 = new StringBuilder();StringBuilder newLine27 = new StringBuilder();
         StringBuilder newLine28 = new StringBuilder();StringBuilder newLine29 = new StringBuilder();StringBuilder newLine30 = new StringBuilder();StringBuilder newLine31 = new StringBuilder();
 
-        for (int i = 0; i < assignmentDueDate.length; i++) {
 
-            if (Objects.equals(assignmentDueDate[i], "2021-05-01")) {
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        for (int i = 1; i < assignmentInfo.length; i++) {
+
+            if (Objects.equals(assignmentInfo[i][2], "2021-05-01")) {
                 newLine.append("\n");
-                newLine.append(assignmentName[i]);
-            } else if (Objects.equals(assignmentDueDate[i], "2021-05-02")) {
+                newLine.append(assignmentInfo[i][0]);
+            } else if (Objects.equals(assignmentInfo[i][2], "2021-05-02")) {
                 newLine2.append("\n");
-                newLine2.append(assignmentName[i]);
-            } else if (Objects.equals(assignmentDueDate[i], "2021-05-03")) {
+                newLine2.append(assignmentInfo[i][0]);
+            } else if (Objects.equals(assignmentInfo[i][2], "2021-05-03")) {
                 newLine3.append("\n");
-                newLine3.append(assignmentName[i]);
-            } else if (Objects.equals(assignmentDueDate[i], "2021-05-04")) {
+                newLine3.append(assignmentInfo[i][0]);
+            } else if (Objects.equals(assignmentInfo[i][2], "2021-05-04")) {
                 newLine4.append("\n");
-                newLine4.append(assignmentName[i]);
+                newLine4.append(assignmentInfo[i][0]);
             }
-             else if (Objects.equals(assignmentDueDate[i],("2021-05-05"))) {
+             else if (Objects.equals(assignmentInfo[i][2],("2021-05-05"))) {
                 newLine5.append("\n");
-                newLine5.append(assignmentName[i]);
+                newLine5.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-06"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-06"))) {
                 newLine6.append("\n");
-                newLine6.append(assignmentName[i]);
+                newLine6.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-07"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-07"))) {
                 newLine7.append("\n");
-                newLine7.append(assignmentName[i]);
+                newLine7.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-08"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-08"))) {
                 newLine8.append("\n");
-                newLine8.append(assignmentName[i]);
+                newLine8.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-09"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-09"))) {
                 newLine9.append("\n");
-                newLine9.append(assignmentName[i]);
+                newLine9.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-10"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-10"))) {
                 newLine10.append("\n");
-                newLine10.append(assignmentName[i]);
+                newLine10.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-11"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-11"))) {
                 newLine11.append("\n");
-                newLine11.append(assignmentName[i]);
+                newLine11.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-12"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-12"))) {
                 newLine12.append("\n");
-                newLine12.append(assignmentName[i]);
+                newLine12.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-13"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-13"))) {
                 newLine13.append("\n");
-                newLine13.append(assignmentName[i]);
+                newLine13.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-14"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-14"))) {
                 newLine14.append("\n");
-                newLine14.append(assignmentName[i]);
+                newLine14.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-15"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-15"))) {
                 newLine15.append("\n");
-                newLine15.append(assignmentName[i]);
+                newLine15.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-16"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-16"))) {
                 newLine16.append("\n");
-                newLine16.append(assignmentName[i]);
+                newLine16.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-17"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-17"))) {
                 newLine17.append("\n");
-                newLine17.append(assignmentName[i]);
+                newLine17.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-18"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-18"))) {
                 newLine18.append("\n");
-                newLine18.append(assignmentName[i]);
+                newLine18.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-19"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-19"))) {
                 newLine19.append("\n");
-                newLine19.append(assignmentName[i]);
+                newLine19.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-20"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-20"))) {
                 newLine20.append("\n");
-                newLine20.append(assignmentName[i]);
+                newLine20.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-21"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-21"))) {
                 newLine21.append("\n");
-                newLine21.append(assignmentName[i]);
+                newLine21.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-22"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-22"))) {
                 newLine22.append("\n");
-                newLine22.append(assignmentName[i]);
+                newLine22.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-23"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-23"))) {
                 newLine23.append("\n");
-                newLine23.append(assignmentName[i]);
+                newLine23.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-24"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-24"))) {
                 newLine24.append("\n");
-                newLine24.append(assignmentName[i]);
+                newLine24.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-25"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-25"))) {
                 newLine25.append("\n");
-                newLine25.append(assignmentName[i]);
+                newLine25.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-26"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-26"))) {
                 newLine26.append("\n");
-                newLine26.append(assignmentName[i]);
+                newLine26.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-27"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-27"))) {
                 newLine27.append("\n");
-                newLine27.append(assignmentName[i]);
+                newLine27.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-28"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-28"))) {
                 newLine28.append("\n");
-                newLine28.append(assignmentName[i]);
+                newLine28.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-29"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-29"))) {
                 newLine29.append("\n");
-                newLine29.append(assignmentName[i]);
+                newLine29.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-30"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-30"))) {
                 newLine30.append("\n");
-                newLine30.append(assignmentName[i]);
+                newLine30.append(assignmentInfo[i][0]);
             }
-            else if (Objects.equals(assignmentDueDate[i],("2021-05-31"))) {
+            else if (Objects.equals(assignmentInfo[i][2],("2021-05-31"))) {
                 newLine31.append("\n");
-                newLine31.append(assignmentName[i]);
+                newLine31.append(assignmentInfo[i][0]);
             }
         }
 
