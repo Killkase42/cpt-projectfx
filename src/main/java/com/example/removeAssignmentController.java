@@ -6,7 +6,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.util.Arrays;
 
 public class removeAssignmentController {
 
@@ -16,12 +15,22 @@ public class removeAssignmentController {
     public Text noAssignmentsIn;
     public Text removeSuccess;
 
+
     /*
     Pre: None
     Post: Simply sets a text to all the assignments
      */
-    public void setText() throws IOException {
-        assignmentNames.setText(Arrays.toString(ControllerCalendar.assignmentName));
+    public void setText() throws IOException, GeneralSecurityException {
+
+        StringBuilder text = new StringBuilder();
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
+        for (int i = 1; i < assignmentInfo.length; i++) {
+            text.append(", ");
+            text.append(assignmentInfo[i][0]);
+
+        }
+        assignmentNames.setText(text.toString());
     }
 
     /*
@@ -37,25 +46,32 @@ public class removeAssignmentController {
     Post: Selects a assignment, and removed it from all related arrays
      */
     public void removeAssignment() throws GeneralSecurityException, IOException {
+        removeSuccess.setVisible(false);
+        error.setVisible(false);
+        noAssignmentsIn.setVisible(false);
         String choice;
-        int id;
+        int id = 0;
         choice = selectAssignment.getText();
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
 
         //Getting the assignment array id
-        id = Arrays.asList(ControllerCalendar.assignmentName).indexOf(choice);
-
-        // Deleting assignment from Google Sheets
-
-        String[][] assignmentArray = SheetsAPI.PullAssignments();
-        for (int i = 0; i < ControllerCalendar.assignmentName.length; i++){
-          System.out.println(Arrays.toString(assignmentArray[i]));
+        for (int i = 1; i < assignmentInfo.length; i++) {
+            if (assignmentInfo[i][0].equals(choice)) {
+                id = i;
+                break;
+            }
         }
 
+        System.out.println(id);
+        // Deleting assignment from Google Sheets
+
+
         String[] delete = new String[4];
-        delete[0] = ControllerCalendar.assignmentName[id];
-        delete[1] = ControllerCalendar.assignmentMarks[id];
-        delete[2] = ControllerCalendar.assignmentDueDate[id];
-        delete[3] = String.valueOf(ControllerCalendar.assignmentScore[id]);
+        delete[0] = assignmentInfo[id][0];
+        delete[1] = assignmentInfo[id][1];
+        delete[2] = assignmentInfo[id][2];
+        delete[3] = assignmentInfo[id][3];
 
         removeSuccess.setVisible(true);
         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
@@ -89,16 +105,15 @@ public class removeAssignmentController {
         removeSuccess.setVisible(false);
         error.setVisible(false);
         noAssignmentsIn.setVisible(false);
-
-
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
         String choice = selectAssignment.getText();
 
-        if (ControllerCalendar.assignmentName.length == 0) {
+        if (assignmentInfo[1][0].isEmpty()) {
             noAssignmentsIn.setVisible(true);
         }
 
-        for (int i = 0; i < ControllerCalendar.assignmentName.length; i++)
-        if (!choice.equals(ControllerCalendar.assignmentName[i])) {
+        for (int i = 1; i < assignmentInfo.length; i++)
+        if (!choice.equals(assignmentInfo[i][0])) {
             error.setVisible(true);
         } else {
             removeAssignment();
