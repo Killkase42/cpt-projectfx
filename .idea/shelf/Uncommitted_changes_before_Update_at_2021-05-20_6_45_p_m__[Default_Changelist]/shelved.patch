@@ -1,0 +1,1102 @@
+Index: src/main/java/com/example/SheetsAPI.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example;\r\n\r\nimport com.google.api.client.auth.oauth2.Credential;\r\nimport com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;\r\nimport com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;\r\nimport com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;\r\nimport com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;\r\nimport com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;\r\nimport com.google.api.client.json.jackson2.JacksonFactory;\r\nimport com.google.api.client.util.store.FileDataStoreFactory;\r\nimport com.google.api.services.sheets.v4.Sheets;\r\nimport com.google.api.services.sheets.v4.SheetsScopes;\r\nimport com.google.api.services.sheets.v4.model.AppendValuesResponse;\r\nimport com.google.api.services.sheets.v4.model.UpdateValuesResponse;\r\nimport com.google.api.services.sheets.v4.model.ValueRange;\r\n\r\nimport java.io.IOException;\r\nimport java.io.InputStream;\r\nimport java.io.InputStreamReader;\r\nimport java.security.GeneralSecurityException;\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.Collections;\r\nimport java.util.List;\r\n\r\npublic class SheetsAPI {\r\n    private static Sheets sheetsService;\r\n    private static String APPLICATION_NAME = \"cpt-projectfx\";\r\n    private static String SPREADSHEET_ID = \"1HmUxAeaJO-PCz1HqXX6xWF91AjeV0B0MV1ELB5I0yUA\";\r\n\r\n    /**\r\n     * An authorization method that grants the application access to Google Sheets\r\n     *pre: The class is run.\r\n     *post: The application is granted access to Google Sheets via the credentials file.\r\n     */\r\n    public static Credential authorize() throws IOException, GeneralSecurityException {\r\n        InputStream in = SheetsAPI.class.getResourceAsStream(\"/credentials.json\");\r\n        GoogleClientSecrets clientSecrets = GoogleClientSecrets.load(\r\n                JacksonFactory.getDefaultInstance(), new InputStreamReader(in)\r\n        );\r\n\r\n        List<String> scopes = Arrays.asList(SheetsScopes.SPREADSHEETS);\r\n\r\n        GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(\r\n                GoogleNetHttpTransport.newTrustedTransport(), JacksonFactory.getDefaultInstance(),\r\n                clientSecrets, scopes)\r\n                .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(\"tokens\")))\r\n                .setAccessType(\"offline\")\r\n                .build();\r\n        Credential credential = new AuthorizationCodeInstalledApp(\r\n                flow, new LocalServerReceiver())\r\n                .authorize(\"user\");\r\n\r\n        return credential;\r\n    }\r\n\r\n    /**\r\n     * The actual Sheets service that the application makes use of.\r\n     *pre: The class is run.\r\n     *post: This application can directly interface with sheets via the new service.\r\n     */\r\n    public static Sheets getSheetsService() throws IOException, GeneralSecurityException {\r\n        Credential credential = authorize();\r\n        return new Sheets.Builder(GoogleNetHttpTransport.newTrustedTransport(),\r\n                JacksonFactory.getDefaultInstance(), credential)\r\n                .setApplicationName(APPLICATION_NAME)\r\n                .build();\r\n    }\r\n\r\n    /**\r\n     * Reads data from the specified rows spreadsheet.\r\n     *pre: Is called from another class.\r\n     *post: Data from the spreadsheet is printed.\r\n     */\r\n    public static void DataReading() throws IOException, GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        String range = \"data!A1:B4\";\r\n\r\n        ValueRange response = sheetsService.spreadsheets().values()\r\n                .get(SPREADSHEET_ID, range)\r\n                .execute();\r\n\r\n        List<List<Object>> values = response.getValues();\r\n\r\n        if (values == null || values.isEmpty()) {\r\n            System.out.println(\"No data found.\");\r\n        } else {\r\n            for (List row : values){\r\n                System.out.printf(\"%s %s\\n\", row.get(0), row.get(1));\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * Writes data to the next available row of the spreadsheet.\r\n     *pre: Is called from another class.\r\n     *post: Data is written to a new row of the spreadsheet.\r\n     */\r\n    public static void DataWriting(String username, String password) throws IOException, GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        ValueRange appendBody = new ValueRange()\r\n                .setValues(Arrays.asList(\r\n                        Arrays.asList(username, password) // More commas and strings can be added if desired.\r\n                ));\r\n\r\n        AppendValuesResponse appendResult = sheetsService.spreadsheets().values()\r\n                .append(SPREADSHEET_ID, \"data\", appendBody)\r\n                .setValueInputOption(\"USER_ENTERED\")\r\n                .setInsertDataOption(\"INSERT_ROWS\")\r\n                .setIncludeValuesInResponse(true)\r\n                .execute();\r\n    }\r\n\r\n    /**\r\n     * Writes a new account's username and password to a new row in the Sheet.\r\n     *pre: Is called from another class.\r\n     *post: New account is written to a new row of the spreadsheet.\r\n     * @return\r\n     */\r\n    public static String UploadAccount(String enteredUsername, String enteredPassword) throws IOException,\r\n            GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        String range = \"data!A:B\";\r\n        String authenticationResult = \"Account successfully created\";\r\n\r\n        ValueRange response = sheetsService.spreadsheets().values()\r\n                .get(SPREADSHEET_ID, range)\r\n                .execute();\r\n\r\n        List<List<Object>> values = response.getValues();\r\n\r\n        // Checks all rows to see if the entered username is taken.\r\n        for (List row : values) {\r\n            if (String.valueOf(row.get(0)).equals(enteredUsername)) {\r\n                authenticationResult = \"Account name taken\";\r\n                break;\r\n            }\r\n        }\r\n\r\n        // If the for loop did not find any accounts with the same name, the new account is then created.\r\n        if (authenticationResult.equals(\"Account successfully created\")){\r\n            ValueRange appendBody = new ValueRange()\r\n                    .setValues(Arrays.asList(\r\n                            Arrays.asList(enteredUsername, enteredPassword) // More commas and strings can be added if desired.\r\n                    ));\r\n\r\n            AppendValuesResponse appendResult = sheetsService.spreadsheets().values()\r\n                    .append(SPREADSHEET_ID, \"data!A:B\", appendBody)\r\n                    .setValueInputOption(\"USER_ENTERED\")\r\n                    .setInsertDataOption(\"OVERWRITE\")\r\n                    .setIncludeValuesInResponse(true)\r\n                    .execute();\r\n        }\r\n        return authenticationResult;\r\n    }\r\n\r\n    /**\r\n     * Writes a new assignment's name, total marks, due date, and difficulty to a new row in the Sheet.\r\n     *pre: Is called from another class.\r\n     *post: New assignment data is written to a new row of the spreadsheet.\r\n     */\r\n    public static void UploadAssignment(String[] assignmentData) throws IOException, GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        ValueRange appendBody = new ValueRange()\r\n                .setValues(Arrays.asList(\r\n                        Arrays.asList(assignmentData[0], assignmentData[1], assignmentData[2], assignmentData[3])\r\n                ));\r\n\r\n        AppendValuesResponse appendResult = sheetsService.spreadsheets().values()\r\n                .append(SPREADSHEET_ID, \"data!D:D\", appendBody)\r\n                .setValueInputOption(\"USER_ENTERED\")\r\n                .setInsertDataOption(\"OVERWRITE\")\r\n                .setIncludeValuesInResponse(true)\r\n                .execute();\r\n    }\r\n\r\n    /**\r\n     * Converts the data from each assignment on the Sheet into an array and puts them all into an ARRAY OF ARRAYS!!\r\n     *pre: Is called from another class.\r\n     *post: An array of arrays is returned that contains the data of each assignment on the Sheet.\r\n     */\r\n    public static String[][] PullAssignments() throws IOException, GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        String range = \"data!D:G\";\r\n\r\n        ValueRange response = sheetsService.spreadsheets().values()\r\n                .get(SPREADSHEET_ID, range)\r\n                .execute();\r\n\r\n        List<List<Object>> values = response.getValues();\r\n\r\n\r\n        String[][] assignmentArrayOfArrays = new String[values.size()][];\r\n\r\n        int i = 0;\r\n        for (List<Object> nestedList : values){\r\n            assignmentArrayOfArrays[i++] = nestedList.toArray(new String[nestedList.size()]);\r\n        }\r\n        return assignmentArrayOfArrays;\r\n    }\r\n\r\n    /**\r\n     * Deletes the specified assignment from the Sheet.\r\n     *pre: Is called from another class.\r\n     *post: The assignment is removed from the Sheet.\r\n     */\r\n    public static String DeleteAssignment(String[] assignmentToDelete) throws IOException, GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        String range = \"data!D:G\";\r\n        String deletionResult = \"Specified assignment not found\";\r\n        ArrayList<String> checkAssignment = new ArrayList<String>();\r\n        checkAssignment.add(assignmentToDelete[0]);\r\n        checkAssignment.add(assignmentToDelete[1]);\r\n        checkAssignment.add(assignmentToDelete[2]);\r\n        checkAssignment.add(assignmentToDelete[3]);\r\n        ArrayList<String> replacer = new ArrayList<String>();\r\n        replacer.add(\"\");\r\n        replacer.add(\"\");\r\n        replacer.add(\"\");\r\n        replacer.add(\"\");\r\n\r\n        ValueRange response = sheetsService.spreadsheets().values()\r\n                .get(SPREADSHEET_ID, range)\r\n                .execute();\r\n\r\n        List<List<Object>> values = response.getValues();\r\n\r\n        if (values == null || values.isEmpty()) {\r\n            System.out.println(\"No data found.\");\r\n        } else {\r\n            for (List row : values){\r\n                // If specified assignment is found in the list, remove it from the list.\r\n\r\n                if (row.equals(checkAssignment)){\r\n                    //Clearing the old space in the Sheet\r\n                    for (int i = 1; i <= values.size(); i++) {\r\n                        List<List<Object>> values1 = Arrays.asList(\r\n                                Arrays.asList(\"\", \"\", \"\", \"\")\r\n                        );\r\n                        ValueRange body1 = new ValueRange()\r\n                                .setValues(values1);\r\n                        UpdateValuesResponse result =\r\n                                sheetsService.spreadsheets().values().update(SPREADSHEET_ID, \"data!D\" + i, body1)\r\n                                        .setValueInputOption(\"USER_ENTERED\")\r\n                                        .execute();\r\n                    }\r\n\r\n                    // Remove the row that contains the assignment to delete.\r\n                    values.remove(row);\r\n\r\n                    values.add(Collections.singletonList(replacer));\r\n                    deletionResult = \"Assignment deleted\";\r\n\r\n                    break;\r\n                }\r\n            }\r\n            // Uploading the list (without the deleted assignment) to the Sheet.\r\n            int j = 1;\r\n            for (List row3 : values) {\r\n                ValueRange appendBody3 = new ValueRange()\r\n                        .setValues(Arrays.asList(\r\n                                Arrays.asList(row3.get(0), row3.get(1), row3.get(2), row3.get(3))\r\n                        ));\r\n\r\n                AppendValuesResponse appendResult = sheetsService.spreadsheets().values()\r\n                        .append(SPREADSHEET_ID, \"data!D\"+j, appendBody3)\r\n                        .setValueInputOption(\"USER_ENTERED\")\r\n                        .setInsertDataOption(\"OVERWRITE\")\r\n                        .setIncludeValuesInResponse(true)\r\n                        .execute();\r\n                j++;\r\n            }\r\n        }\r\n        return deletionResult;\r\n    }\r\n\r\n\r\n    /**\r\n     * Checks the Sheet for the entered username and, subsequently, password (returns errors if they are not found.)\r\n     *pre: Is called from another class.\r\n     *post: Confirmation or error is returned based on whether or not username and password are valid.\r\n     * @return\r\n     */\r\n    public static String ConfirmUserCredentials(String enteredUsername, String enteredPassword) throws IOException,\r\n            GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        String range = \"data!A:B\";\r\n        String authenticationResult = \"Account not found\";\r\n\r\n        ValueRange response = sheetsService.spreadsheets().values()\r\n                .get(SPREADSHEET_ID, range)\r\n                .execute();\r\n\r\n        List<List<Object>> values = response.getValues();\r\n\r\n        if (values == null || values.isEmpty()) {\r\n            System.out.println(\"No data found.\");\r\n        } else {\r\n            for (List row : values) {\r\n                //Below statements check to see if the entered credentials are found in the Sheet.\r\n                if (String.valueOf(row.get(0)).equals(enteredUsername)) {\r\n                    if (String.valueOf(row.get(1)).equals(enteredPassword)) {\r\n                        authenticationResult = \"Account found, logging you in...\";\r\n                    } else {\r\n                        authenticationResult = \"Password is incorrect\";\r\n                    }\r\n                    break;\r\n                }\r\n            }\r\n        }\r\n        return authenticationResult;\r\n    }\r\n\r\n    public static void main(String[] args) throws IOException, GeneralSecurityException {\r\n        sheetsService = getSheetsService();\r\n\r\n        //Example of what format the arrays for UploadAssignment method must be in.\r\n        String[] assignmentInfo = {\"Geography ISP\", \"120\", \"05-20-21\", \"Hard\"};\r\n\r\n        //Example of how you would use the ConfirmUserCredentials method.\r\n//        String result = ConfirmUserCredentials(\"Sleepy\", \"Sonic123\");\r\n//        System.out.println(result);\r\n//        System.out.println(\"EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE\");\r\n\r\n        //Example of how you would use the UploadAccount method.\r\n//        String accountVar = UploadAccount(\"Java   >\", \"Python\");\r\n//        System.out.println(accountVar);\r\n\r\n        //Example of how you would use the PullAssignments method/how it is formatted\r\n//        String[][] assignmentArray = PullAssignments();\r\n//        for (int i = 0; i < 150; i++){\r\n//            System.out.println(Arrays.toString(assignmentArray[i]));\r\n//        }\r\n\r\n        //Example of how you would use the DeleteAssignment method.\r\n        String[] assignmentToDelete = {\"ben\",\"10\",\"2021-05-20\",\"20\"};\r\n        String result = DeleteAssignment(assignmentToDelete);\r\n        System.out.println(result);\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/SheetsAPI.java b/src/main/java/com/example/SheetsAPI.java
+--- a/src/main/java/com/example/SheetsAPI.java	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ b/src/main/java/com/example/SheetsAPI.java	(date 1621551660644)
+@@ -334,15 +334,15 @@
+ //        System.out.println(accountVar);
+ 
+         //Example of how you would use the PullAssignments method/how it is formatted
+-//        String[][] assignmentArray = PullAssignments();
+-//        for (int i = 0; i < 150; i++){
+-//            System.out.println(Arrays.toString(assignmentArray[i]));
+-//        }
++        String[][] assignmentArray = PullAssignments();
++        for (int i = 0; i < 150; i++){
++            System.out.println(Arrays.toString(assignmentArray[i]));
++        }
+ 
+         //Example of how you would use the DeleteAssignment method.
+-        String[] assignmentToDelete = {"ben","10","2021-05-20","20"};
+-        String result = DeleteAssignment(assignmentToDelete);
+-        System.out.println(result);
++//        String[] assignmentToDelete = {"ben","10","2021-05-20","20"};
++//        String result = DeleteAssignment(assignmentToDelete);
++//        System.out.println(result);
+ 
+     }
+ }
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/StoredCredential
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/StoredCredential b/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/StoredCredential
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/StoredCredential	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,2 +0,0 @@
+-�� sr java.util.HashMap���`� F 
+-loadFactorI 	thresholdxp?@     w      t userur [B���T�  xp  ��� sr 2com.google.api.client.auth.oauth2.StoredCredential        L accessTokent Ljava/lang/String;L expirationTimeMillisecondst Ljava/lang/Long;L lockt !Ljava/util/concurrent/locks/Lock;L refreshTokenq ~ xpt �ya29.a0AfH6SMAh6PqHt1VwKu6wNjHLUXwGuylJOI-5N05lYhSMB4cOyqyiv_guSfotNOEdMuIuihyAMWepgkvj-ZUj2iIdZxuiRb0FfZecak2UohRo-SrVoap27tv_lyX-dWVMzbKtMbfeCsxI3SKgOHKGqED5Rvw2Iwsr java.lang.Long;��̏#� J valuexr java.lang.Number������  xp  yazˌsr (java.util.concurrent.locks.ReentrantLockfU�,,�j� L synct /Ljava/util/concurrent/locks/ReentrantLock$Sync;xpsr 4java.util.concurrent.locks.ReentrantLock$NonfairSynce�2�S{�  xr -java.util.concurrent.locks.ReentrantLock$Sync����DZ|  xr 5java.util.concurrent.locks.AbstractQueuedSynchronizerfU�Cu?R� I statexr 6java.util.concurrent.locks.AbstractOwnableSynchronizer3߯��mo�  xp    t f1//04nmvk6c8rICbCgYIARAAGAQSNgF-L9IrKBLf1L5barYbLjTYcB5bWZWMYG_4xjBzFLbyiky-RBFjbRl5z850x1fR9H6Vr5nklAx
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,79 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]" date="1620921411924" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 2021-05-13 11:56 a.m. [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="tokens/StoredCredential" />
+-    <option name="AFTER_PATH" value="tokens/StoredCredential" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/StoredCredential" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/javaCompile/classAnalysis.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/javaCompile/classAnalysis.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/classAnalysis.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/fileHashes/fileHashes.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/fileHashes/fileHashes.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/fileHashes.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/checksums/sha1-checksums.bin" />
+-    <option name="AFTER_PATH" value=".gradle/checksums/sha1-checksums.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/sha1-checksums.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+-    <option name="AFTER_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/buildOutputCleanup.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/checksums/md5-checksums.bin" />
+-    <option name="AFTER_PATH" value=".gradle/checksums/md5-checksums.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/md5-checksums.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="build/classes/java/main/com/example/SheetsQuickstart.class" />
+-    <option name="AFTER_PATH" value="build/classes/java/main/com/example/SheetsQuickstart.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/SheetsQuickstart.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/checksums/checksums.lock" />
+-    <option name="AFTER_PATH" value=".gradle/checksums/checksums.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/checksums.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/javaCompile/taskHistory.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/javaCompile/taskHistory.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/taskHistory.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/executionHistory/executionHistory.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/executionHistory/executionHistory.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/executionHistory.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="build/classes/java/main/com/example/Main.class" />
+-    <option name="AFTER_PATH" value="build/classes/java/main/com/example/Main.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/Main.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/executionHistory/executionHistory.lock" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/executionHistory/executionHistory.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/executionHistory.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/javaCompile/javaCompile.lock" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/javaCompile/javaCompile.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/javaCompile.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/fileHashes/fileHashes.lock" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/fileHashes/fileHashes.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/fileHashes.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/buildOutputCleanup/outputFiles.bin" />
+-    <option name="AFTER_PATH" value=".gradle/buildOutputCleanup/outputFiles.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/outputFiles.bin" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch b/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,85 +0,0 @@
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"a36da9c2-c65f-4aa9-abee-ba08442659ed\" name=\"Default Changelist\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/libraries/lib1.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/uiDesigner.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/java/com/example/mainController2.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/checksums/checksums.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/checksums/checksums.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build.gradle\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build.gradle\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/Main.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/Main.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/main.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/main.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/Main.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/Main.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/MainController.java\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/main.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/main.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/tokens/StoredCredential\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/tokens/StoredCredential\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"JavaFXApplication\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.116009295\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.13140604\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/calendar\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.Main\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MainCalendar\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.calendar.MainCalendar\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Application.MainCalendar\" />\r\n      <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n        <item itemvalue=\"Application.MainCalendar\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"a36da9c2-c65f-4aa9-abee-ba08442659ed\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620660623527</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620660623527</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/workspace.xml	(revision 59c89635fe11ac787819418e157b23bbd45717e8)
+-+++ .idea/workspace.xml	(date 1620921433468)
+-@@ -3,38 +3,33 @@
+-   <component name="AutoImportSettings">
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-+  <component name="BranchesTreeState">
+-+    <expand>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+    </expand>
+-+    <select>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="BRANCH:origin/development" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+    </select>
+-+  </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="a36da9c2-c65f-4aa9-abee-ba08442659ed" name="Default Changelist" comment="">
+--      <change afterPath="$PROJECT_DIR$/.idea/libraries/lib1.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/mainController2.java" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/addAsignment.fxml" afterDir="false" />
+--      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/calendarScreen.fxml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/main.fxml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MainController.java" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/main.fxml" afterDir="false" />
+--      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+--    </list>
+-+    <list default="true" id="a36da9c2-c65f-4aa9-abee-ba08442659ed" name="Default Changelist" comment="main fxml" />
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -179,9 +174,7 @@
+-         </option>
+-         <option name="vmOptions" />
+-       </ExternalSystemSettings>
+--      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+--      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+--      <DebugAllEnabled>false</DebugAllEnabled>
+-+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+-       <method v="2" />
+-     </configuration>
+-     <list>
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml b/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,79 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]1" date="1620921431749" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="tokens/StoredCredential" />
+-    <option name="AFTER_PATH" value="tokens/StoredCredential" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/StoredCredential" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/fileHashes/fileHashes.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/fileHashes/fileHashes.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/fileHashes.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/javaCompile/classAnalysis.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/javaCompile/classAnalysis.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/classAnalysis.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/checksums/sha1-checksums.bin" />
+-    <option name="AFTER_PATH" value=".gradle/checksums/sha1-checksums.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/sha1-checksums.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+-    <option name="AFTER_PATH" value=".gradle/buildOutputCleanup/buildOutputCleanup.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/buildOutputCleanup.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/checksums/md5-checksums.bin" />
+-    <option name="AFTER_PATH" value=".gradle/checksums/md5-checksums.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/md5-checksums.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="build/classes/java/main/com/example/SheetsQuickstart.class" />
+-    <option name="AFTER_PATH" value="build/classes/java/main/com/example/SheetsQuickstart.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/SheetsQuickstart.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/checksums/checksums.lock" />
+-    <option name="AFTER_PATH" value=".gradle/checksums/checksums.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/checksums.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/executionHistory/executionHistory.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/executionHistory/executionHistory.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/executionHistory.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/javaCompile/taskHistory.bin" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/javaCompile/taskHistory.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/taskHistory.bin" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value="build/classes/java/main/com/example/Main.class" />
+-    <option name="AFTER_PATH" value="build/classes/java/main/com/example/Main.class" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/Main.class" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/executionHistory/executionHistory.lock" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/executionHistory/executionHistory.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/executionHistory.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/javaCompile/javaCompile.lock" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/javaCompile/javaCompile.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/javaCompile.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/6.8/fileHashes/fileHashes.lock" />
+-    <option name="AFTER_PATH" value=".gradle/6.8/fileHashes/fileHashes.lock" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/fileHashes.lock" />
+-  </binary>
+-  <binary>
+-    <option name="BEFORE_PATH" value=".gradle/buildOutputCleanup/outputFiles.bin" />
+-    <option name="AFTER_PATH" value=".gradle/buildOutputCleanup/outputFiles.bin" />
+-    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/outputFiles.bin" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/shelved.patch	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,483 +0,0 @@
+-Index: build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>plugins {\r\n    id 'java'\r\n    id 'application'\r\n    id 'org.openjfx.javafxplugin' version '0.0.10'\r\n}\r\n\r\ngroup 'org.example'\r\nversion '1.0-SNAPSHOT'\r\n\r\nmainClassName = 'com.example.SheetsQuickstart'\r\n//mainClassName = 'com.example.Main'\r\nsourceCompatibility = 1.8\r\ntargetCompatibility = 1.8\r\nversion = '1.0'\r\n\r\ndependencies {\r\n    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'\r\n    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'\r\n}\r\n\r\ntest {\r\n    useJUnitPlatform()\r\n}\r\n\r\njavafx {\r\n    modules = [ 'javafx.controls', 'javafx.fxml' ]\r\n    version = '16'\r\n}\r\n\r\nrepositories {\r\n    mavenCentral()\r\n}\r\n\r\ndependencies {\r\n    compile 'com.google.api-client:google-api-client:1.30.4'\r\n    compile 'com.google.oauth-client:google-oauth-client-jetty:1.30.6'\r\n    compile 'com.google.apis:google-api-services-sheets:v4-rev581-1.25.0'\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build.gradle	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ build.gradle	(date 1620835065075)
+-@@ -7,8 +7,8 @@
+- group 'org.example'
+- version '1.0-SNAPSHOT'
+- 
+--mainClassName = 'com.example.SheetsQuickstart'
+--//mainClassName = 'com.example.Main'
+-+//mainClassName = 'com.example.SheetsQuickstart'
+-+mainClassName = 'com.example.Main'
+- sourceCompatibility = 1.8
+- targetCompatibility = 1.8
+- version = '1.0'
+-Index: src/main/java/com/example/MainController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.*;\r\n\r\npublic class MainController {\r\n    @FXML\r\n    Button button1;\r\n\r\n    @FXML\r\n    public void buttonpress(ActionEvent actionEvent) {\r\n        System.out.println(\"it worked\");\r\n    }\r\n}\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/main/java/com/example/MainController.java	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ src/main/java/com/example/MainController.java	(date 1620908783784)
+-@@ -11,11 +11,110 @@
+- import java.io.*;
+- 
+- public class MainController {
+-+
+-     @FXML
+-     Button button1;
+-+    @FXML
+-+    Button LoginButton;
+-+    @FXML
+-+    Button CreateAccountButton;
+-+    @FXML
+-+    TextField UsernameField;
+-+    @FXML
+-+    TextField PasswordField;
+-+    @FXML
+-+    Label Title;
+-+
+-+    /*
+-+    changeScene
+-+    Pre: requires the fxml.
+-+    Post:changes the scene
+-+    */
+-+    public void changeScene(String fxml) throws IOException {
+-+        Parent pane = FXMLLoader.load(
+-+                getClass().getResource(fxml));
+-+        LogIn.stage.getScene().setRoot(pane);
+-+    }
+-+
+-+
+- 
+-     @FXML
+-     public void buttonpress(ActionEvent actionEvent) {
+-         System.out.println("it worked");
+-     }
+-+
+-+
+-+    /*
+-+   validate
+-+   Pre: button press
+-+   Post: validates if the inputted user and password are valid.
+-+    */
+-+    @FXML
+-+    public void validate(ActionEvent actionEvent) {
+-+        //gets info from text field
+-+        String name = UsernameField.getText();
+-+        String passw = PasswordField.getText();
+-+        //if the fields are empty and tries to validate. Returns an error
+-+        if(name.isEmpty() || passw.isEmpty()){
+-+            Alert alert = new Alert(Alert.AlertType.ERROR);
+-+            alert.setHeaderText(null);
+-+            alert.setContentText("Fields left Empty");
+-+            alert.showAndWait();
+-+        }else{
+-+
+-+            //Finds file based off of username entered entered
+-+            try (BufferedReader br = new BufferedReader(new FileReader(name))) {
+-+                String AccountNumInFile = null;
+-+            }catch (FileNotFoundException e1) {
+-+                Alert alert = new Alert(Alert.AlertType.ERROR);
+-+                alert.setHeaderText(null);
+-+                alert.setContentText("Incorrect Credentials");
+-+                alert.showAndWait();
+-+                UsernameField.clear();
+-+                PasswordField.clear();
+-+            } catch (IOException e1) {
+-+            }
+-+
+-+            //Reads and assigns variables for the username and password in the file
+-+            FileInputStream fs= null;
+-+            try {
+-+                fs = new FileInputStream(name);
+-+            } catch (FileNotFoundException fileNotFoundException) {
+-+                fileNotFoundException.printStackTrace();
+-+            }
+-+            BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+-+            String NameInFile = null;
+-+            String PasswordInFile = null;
+-+            try{
+-+                NameInFile = br.readLine();
+-+                PasswordInFile = br.readLine();
+-+            } catch (IOException e) {
+-+                e.printStackTrace();
+-+            }
+-+
+-+            // if they equal what is said, changes scenes
+-+            if(name.equals(NameInFile) && passw.equals(PasswordInFile)){
+-+                try {
+-+                    changeScene("resources/CreateAccount.fxml");
+-+                } catch (IOException e) {
+-+                    e.printStackTrace();
+-+                }
+-+            }else{
+-+                //any other case, returns an alert error
+-+                Alert alert = new Alert(Alert.AlertType.ERROR);
+-+                alert.setHeaderText(null);
+-+                alert.setContentText("Incorrect Credentials");
+-+                alert.showAndWait();
+-+                UsernameField.clear();
+-+                PasswordField.clear();
+-+            }
+-+        }
+-+    }
+-+
+-+    @FXML
+-+    public void CreateAccount(ActionEvent actionEvent) throws IOException {
+-+        System.out.println("validate button works");
+-+        changeScene("CreateNewAccount.fxml");
+-+
+-+    }
+- }
+-Index: src/main/resources/com/example/main.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n<AnchorPane prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.MainController\">\r\n    <Label layoutX=\"77.0\" layoutY=\"53.0\" text=\"Hello again, comrade\">Hello again, comrade</Label>\r\n   <Button fx:id=\"button1\" layoutX=\"274.0\" layoutY=\"242.0\" mnemonicParsing=\"false\" onAction=\"#buttonpress\" text=\"Button\" />\r\n</AnchorPane>\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- src/main/resources/com/example/main.fxml	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ src/main/resources/com/example/main.fxml	(date 1620838534967)
+-@@ -2,8 +2,23 @@
+- 
+- <?import javafx.scene.control.*?>
+- <?import javafx.scene.layout.*?>
+-+<?import javafx.scene.text.*?>
+- 
+--<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainController">
+--    <Label layoutX="77.0" layoutY="53.0" text="Hello again, comrade">Hello again, comrade</Label>
+--   <Button fx:id="button1" layoutX="274.0" layoutY="242.0" mnemonicParsing="false" onAction="#buttonpress" text="Button" />
+-+<AnchorPane fx:id="validate" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainController">
+-+    <Label fx:id="Title" layoutX="270.0" layoutY="44.0" prefHeight="49.0" prefWidth="60.0" text="Title" textAlignment="CENTER">
+-+      <font>
+-+         <Font size="30.0" />
+-+      </font></Label>
+-+   <Button fx:id="LoginButton" layoutX="231.0" layoutY="225.0" mnemonicParsing="false" onAction="#validate" prefHeight="49.0" prefWidth="137.0" text="Login">
+-+      <font>
+-+         <Font size="21.0" />
+-+      </font></Button>
+-+   <Button fx:id="button1" layoutX="50.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonpress" text="test" />
+-+   <Button fx:id="CreateAccountButton" layoutX="231.0" layoutY="307.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="49.0" prefWidth="137.0" text="Create Account">
+-+      <font>
+-+         <Font size="16.0" />
+-+      </font>
+-+   </Button>
+-+   <TextField fx:id="UsernameField" layoutX="211.0" layoutY="121.0" prefHeight="33.0" prefWidth="178.0" promptText="Username" />
+-+   <TextField fx:id="PasswordField" layoutX="211.0" layoutY="176.0" prefHeight="33.0" prefWidth="178.0" promptText="Password" />
+- </AnchorPane>
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"a36da9c2-c65f-4aa9-abee-ba08442659ed\" name=\"Default Changelist\" comment=\"\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaFXApplication\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/resources\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.cpt-projectfx [run]\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"a36da9c2-c65f-4aa9-abee-ba08442659ed\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1620660623527</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620660623527</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/workspace.xml	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ .idea/workspace.xml	(date 1620921346397)
+-@@ -3,8 +3,57 @@
+-   <component name="AutoImportSettings">
+-     <option name="autoReloadType" value="SELECTIVE" />
+-   </component>
+-+  <component name="BranchesTreeState">
+-+    <expand>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+    </expand>
+-+    <select>
+-+      <path>
+-+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+-+        <item name="BRANCH:origin/development" type="e8cecc67:BranchNodeDescriptor" />
+-+      </path>
+-+    </select>
+-+  </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="a36da9c2-c65f-4aa9-abee-ba08442659ed" name="Default Changelist" comment="" />
+-+    <list default="true" id="a36da9c2-c65f-4aa9-abee-ba08442659ed" name="Default Changelist" comment="main fxml">
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/md5-checksums.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/sha1-checksums.bin" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsQuickstart.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsQuickstart.class" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/main.fxml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/MainController.java" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/main.fxml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+-+    </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-@@ -56,7 +105,14 @@
+-     </option>
+-   </component>
+-   <component name="Git.Settings">
+-+    <option name="PUSH_TAGS">
+-+      <GitPushTagMode>
+-+        <option name="argument" value="--tags" />
+-+        <option name="title" value="All" />
+-+      </GitPushTagMode>
+-+    </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-+    <option name="UPDATE_TYPE" value="REBASE" />
+-   </component>
+-   <component name="GitSEFilterConfiguration">
+-     <file-type-list>
+-@@ -73,10 +129,11 @@
+-     <option name="showLibraryContents" value="true" />
+-   </component>
+-   <component name="PropertiesComponent">
+-+    <property name="ChangesTree.GroupingKeys" value="module&#10;directory" />
+-     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+--    <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
+-+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+-   </component>
+-   <component name="RecentsManager">
+-     <key name="CopyFile.RECENT_KEYS">
+-@@ -116,9 +173,7 @@
+-         </option>
+-         <option name="vmOptions" />
+-       </ExternalSystemSettings>
+--      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+--      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+--      <DebugAllEnabled>false</DebugAllEnabled>
+-+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
+-       <method v="2" />
+-     </configuration>
+-     <recent_temporary>
+-@@ -137,6 +192,14 @@
+-       <option name="presentableId" value="Default" />
+-       <updated>1620660623527</updated>
+-     </task>
+-+    <task id="LOCAL-00001" summary="main fxml">
+-+      <created>1620836638760</created>
+-+      <option name="number" value="00001" />
+-+      <option name="presentableId" value="LOCAL-00001" />
+-+      <option name="project" value="LOCAL" />
+-+      <updated>1620836638760</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="2" />
+-     <servers />
+-   </component>
+-   <component name="Vcs.Log.Tabs.Properties">
+-@@ -144,10 +207,81 @@
+-       <map>
+-         <entry key="MAIN">
+-           <value>
+--            <State />
+-+            <State>
+-+              <option name="FILTERS">
+-+                <map>
+-+                  <entry key="branch">
+-+                    <value>
+-+                      <list>
+-+                        <option value="origin/development" />
+-+                      </list>
+-+                    </value>
+-+                  </entry>
+-+                </map>
+-+              </option>
+-+            </State>
+-           </value>
+-         </entry>
+-       </map>
+-     </option>
+-+    <option name="oldMeFiltersMigrated" value="true" />
+-+  </component>
+-+  <component name="VcsManagerConfiguration">
+-+    <MESSAGE value="main fxml" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="main fxml" />
+-+  </component>
+-+  <component name="WindowStateProjectService">
+-+    <state x="119" y="4" width="1024" height="572" maximized="true" key="DiffContextDialog" timestamp="1620848712575">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state x="119" y="4" width="1024" height="572" maximized="true" key="DiffContextDialog/0.0.1280.680@0.0.1280.680" timestamp="1620848712575" />
+-+    <state width="1237" height="231" key="GridCell.Tab.0.bottom" timestamp="1620908764372">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="1237" height="231" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1620908764372" />
+-+    <state width="1237" height="231" key="GridCell.Tab.0.center" timestamp="1620908764371">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="1237" height="231" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1620908764371" />
+-+    <state width="1237" height="231" key="GridCell.Tab.0.left" timestamp="1620908764371">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="1237" height="231" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1620908764371" />
+-+    <state width="1237" height="231" key="GridCell.Tab.0.right" timestamp="1620908764371">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="1237" height="231" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1620908764371" />
+-+    <state width="618" height="204" key="GridCell.Tab.1.bottom" timestamp="1620848362167">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="618" height="204" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1620848362167" />
+-+    <state width="618" height="204" key="GridCell.Tab.1.center" timestamp="1620848362167">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="618" height="204" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1620848362167" />
+-+    <state width="618" height="204" key="GridCell.Tab.1.left" timestamp="1620848362167">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="618" height="204" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1620848362167" />
+-+    <state width="618" height="204" key="GridCell.Tab.1.right" timestamp="1620848362167">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state width="618" height="204" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1620848362167" />
+-+    <state x="142" y="0" key="SettingsEditor" timestamp="1620749961821">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state x="142" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1620749961821" />
+-+    <state x="490" y="254" key="VCS.ChangelistChooser" timestamp="1620836878403">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state x="490" y="254" key="VCS.ChangelistChooser/0.0.1280.680@0.0.1280.680" timestamp="1620836878403" />
+-+    <state x="231" y="27" key="Vcs.Push.Dialog.v2" timestamp="1620837055757">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state x="231" y="27" key="Vcs.Push.Dialog.v2/0.0.1280.680@0.0.1280.680" timestamp="1620837055757" />
+-+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1620848308867">
+-+      <screen x="0" y="0" width="1280" height="680" />
+-+    </state>
+-+    <state x="458" y="255" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.680@0.0.1280.680" timestamp="1620848308867" />
+-   </component>
+- </project>
+-\ No newline at end of file
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ExternalStorageConfigurationManager\" enabled=\"true\" />\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_8\" project-jdk-name=\"15\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/out\" />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/misc.xml	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ .idea/misc.xml	(date 1620750033143)
+-@@ -1,7 +1,7 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-   <component name="ExternalStorageConfigurationManager" enabled="true" />
+--  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="15" project-jdk-type="JavaSDK">
+-+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="11" project-jdk-type="JavaSDK">
+-     <output url="file://$PROJECT_DIR$/out" />
+-   </component>
+- </project>
+-\ No newline at end of file
+-Index: build/tmp/compileJava/source-classes-mapping.txt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>com/example/SheetsQuickstart.java\r\n com.example.SheetsQuickstart\r\ncom/example/Main.java\r\n com.example.Main\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build/tmp/compileJava/source-classes-mapping.txt	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ build/tmp/compileJava/source-classes-mapping.txt	(date 1620908767120)
+-@@ -1,4 +1,14 @@
+-+com/example/LogInController.java
+-+ com.example.LogInController
+- com/example/SheetsQuickstart.java
+-  com.example.SheetsQuickstart
+-+com/example/CreateAccountController.java
+-+ com.example.CreateAccountController
+-+com/example/LogIn.java
+-+ com.example.LogIn
+- com/example/Main.java
+-  com.example.Main
+-+com/example/CreateNewAccountController.java
+-+ com.example.CreateNewAccountController
+-+com/example/MainController.java
+-+ com.example.MainController
+-Index: build/resources/main/com/example/main.fxml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.scene.control.*?>\r\n<?import javafx.scene.layout.*?>\r\n\r\n<AnchorPane prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/11.0.1\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.MainController\">\r\n    <Label layoutX=\"77.0\" layoutY=\"53.0\" text=\"Hello again, comrade\">Hello again, comrade</Label>\r\n   <Button fx:id=\"button1\" layoutX=\"274.0\" layoutY=\"242.0\" mnemonicParsing=\"false\" onAction=\"#buttonpress\" text=\"Button\" />\r\n</AnchorPane>\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build/resources/main/com/example/main.fxml	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ build/resources/main/com/example/main.fxml	(date 1620847848287)
+-@@ -2,8 +2,23 @@
+- 
+- <?import javafx.scene.control.*?>
+- <?import javafx.scene.layout.*?>
+-+<?import javafx.scene.text.*?>
+- 
+--<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainController">
+--    <Label layoutX="77.0" layoutY="53.0" text="Hello again, comrade">Hello again, comrade</Label>
+--   <Button fx:id="button1" layoutX="274.0" layoutY="242.0" mnemonicParsing="false" onAction="#buttonpress" text="Button" />
+-+<AnchorPane fx:id="validate" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.MainController">
+-+    <Label fx:id="Title" layoutX="270.0" layoutY="44.0" prefHeight="49.0" prefWidth="60.0" text="Title" textAlignment="CENTER">
+-+      <font>
+-+         <Font size="30.0" />
+-+      </font></Label>
+-+   <Button fx:id="LoginButton" layoutX="231.0" layoutY="225.0" mnemonicParsing="false" onAction="#validate" prefHeight="49.0" prefWidth="137.0" text="Login">
+-+      <font>
+-+         <Font size="21.0" />
+-+      </font></Button>
+-+   <Button fx:id="button1" layoutX="50.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonpress" text="test" />
+-+   <Button fx:id="CreateAccountButton" layoutX="231.0" layoutY="307.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="49.0" prefWidth="137.0" text="Create Account">
+-+      <font>
+-+         <Font size="16.0" />
+-+      </font>
+-+   </Button>
+-+   <TextField fx:id="UsernameField" layoutX="211.0" layoutY="121.0" prefHeight="33.0" prefWidth="178.0" promptText="Username" />
+-+   <TextField fx:id="PasswordField" layoutX="211.0" layoutY="176.0" prefHeight="33.0" prefWidth="178.0" promptText="Password" />
+- </AnchorPane>
+-Index: .idea/gradle.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"gradleHome\" value=\"$PROJECT_DIR$/../../../../Gradle/gradle-6.8.3\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n          </set>\r\n        </option>\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/gradle.xml	(revision 522fda5f012c6f4c0623d01f273ec07d3ff6ed4d)
+-+++ .idea/gradle.xml	(date 1620749962160)
+-@@ -4,9 +4,11 @@
+-   <component name="GradleSettings">
+-     <option name="linkedExternalProjectsSettings">
+-       <GradleProjectSettings>
+-+        <option name="delegatedBuild" value="true" />
+-+        <option name="testRunner" value="GRADLE" />
+-         <option name="distributionType" value="DEFAULT_WRAPPED" />
+-         <option name="externalProjectPath" value="$PROJECT_DIR$" />
+--        <option name="gradleHome" value="$PROJECT_DIR$/../../../../Gradle/gradle-6.8.3" />
+-+        <option name="gradleJvm" value="11" />
+-         <option name="modules">
+-           <set>
+-             <option value="$PROJECT_DIR$" />
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch b/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,138 +0,0 @@
+-Index: build.gradle
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>plugins {\r\n    id 'java'\r\n    id 'application'\r\n    id 'org.openjfx.javafxplugin' version '0.0.10'\r\n}\r\n\r\ngroup 'org.example'\r\nversion '1.0-SNAPSHOT'\r\n\r\nmainClassName = 'com.example.SheetsQuickstart'\r\n//mainClassName = 'com.example.Main'\r\nsourceCompatibility = 1.8\r\ntargetCompatibility = 1.8\r\nversion = '1.0'\r\n\r\ndependencies {\r\n    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'\r\n    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'\r\n}\r\n\r\ntest {\r\n    useJUnitPlatform()\r\n}\r\n\r\njavafx {\r\n    modules = [ 'javafx.controls', 'javafx.fxml' ]\r\n    version = '16'\r\n}\r\n\r\nrepositories {\r\n    mavenCentral()\r\n}\r\n\r\ndependencies {\r\n    compile 'com.google.api-client:google-api-client:1.30.4'\r\n    compile 'com.google.oauth-client:google-oauth-client-jetty:1.30.6'\r\n    compile 'com.google.apis:google-api-services-sheets:v4-rev581-1.25.0'\r\n}
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- build.gradle	(revision 64590813decaff9869aa35d1f92e9493e8d6a9c7)
+-+++ build.gradle	(date 1620921411675)
+-@@ -7,8 +7,8 @@
+- group 'org.example'
+- version '1.0-SNAPSHOT'
+- 
+--mainClassName = 'com.example.SheetsQuickstart'
+--//mainClassName = 'com.example.Main'
+-+//mainClassName = 'com.example.SheetsQuickstart'
+-+mainClassName = 'com.example.Main'
+- sourceCompatibility = 1.8
+- targetCompatibility = 1.8
+- version = '1.0'
+-Index: src/main/java/com/example/MainController.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>package com.example;\r\n\r\nimport javafx.event.ActionEvent;\r\nimport javafx.fxml.FXML;\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.scene.control.*;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.*;\r\n\r\npublic class MainController {\r\n    @FXML\r\n    Button button1;\r\n\r\n    @FXML\r\n    public void buttonpress(ActionEvent actionEvent) {\r\n        System.out.println(\"it worked\");\r\n    }\r\n}\r\n
+-===================================================================
+---- src/main/java/com/example/MainController.java	(revision 64590813decaff9869aa35d1f92e9493e8d6a9c7)
+-+++ src/main/java/com/example/MainController.java	(date 1620921411693)
+-@@ -11,11 +11,110 @@
+- import java.io.*;
+- 
+- public class MainController {
+-+
+-     @FXML
+-     Button button1;
+-+    @FXML
+-+    Button LoginButton;
+-+    @FXML
+-+    Button CreateAccountButton;
+-+    @FXML
+-+    TextField UsernameField;
+-+    @FXML
+-+    TextField PasswordField;
+-+    @FXML
+-+    Label Title;
+-+
+-+    /*
+-+    changeScene
+-+    Pre: requires the fxml.
+-+    Post:changes the scene
+-+    */
+-+    public void changeScene(String fxml) throws IOException {
+-+        Parent pane = FXMLLoader.load(
+-+                getClass().getResource(fxml));
+-+        LogIn.stage.getScene().setRoot(pane);
+-+    }
+-+
+-+
+- 
+-     @FXML
+-     public void buttonpress(ActionEvent actionEvent) {
+-         System.out.println("it worked");
+-     }
+-+
+-+
+-+    /*
+-+   validate
+-+   Pre: button press
+-+   Post: validates if the inputted user and password are valid.
+-+    */
+-+    @FXML
+-+    public void validate(ActionEvent actionEvent) {
+-+        //gets info from text field
+-+        String name = UsernameField.getText();
+-+        String passw = PasswordField.getText();
+-+        //if the fields are empty and tries to validate. Returns an error
+-+        if(name.isEmpty() || passw.isEmpty()){
+-+            Alert alert = new Alert(Alert.AlertType.ERROR);
+-+            alert.setHeaderText(null);
+-+            alert.setContentText("Fields left Empty");
+-+            alert.showAndWait();
+-+        }else{
+-+
+-+            //Finds file based off of username entered entered
+-+            try (BufferedReader br = new BufferedReader(new FileReader(name))) {
+-+                String AccountNumInFile = null;
+-+            }catch (FileNotFoundException e1) {
+-+                Alert alert = new Alert(Alert.AlertType.ERROR);
+-+                alert.setHeaderText(null);
+-+                alert.setContentText("Incorrect Credentials");
+-+                alert.showAndWait();
+-+                UsernameField.clear();
+-+                PasswordField.clear();
+-+            } catch (IOException e1) {
+-+            }
+-+
+-+            //Reads and assigns variables for the username and password in the file
+-+            FileInputStream fs= null;
+-+            try {
+-+                fs = new FileInputStream(name);
+-+            } catch (FileNotFoundException fileNotFoundException) {
+-+                fileNotFoundException.printStackTrace();
+-+            }
+-+            BufferedReader br = new BufferedReader(new InputStreamReader(fs));
+-+            String NameInFile = null;
+-+            String PasswordInFile = null;
+-+            try{
+-+                NameInFile = br.readLine();
+-+                PasswordInFile = br.readLine();
+-+            } catch (IOException e) {
+-+                e.printStackTrace();
+-+            }
+-+
+-+            // if they equal what is said, changes scenes
+-+            if(name.equals(NameInFile) && passw.equals(PasswordInFile)){
+-+                try {
+-+                    changeScene("resources/CreateAccount.fxml");
+-+                } catch (IOException e) {
+-+                    e.printStackTrace();
+-+                }
+-+            }else{
+-+                //any other case, returns an alert error
+-+                Alert alert = new Alert(Alert.AlertType.ERROR);
+-+                alert.setHeaderText(null);
+-+                alert.setContentText("Incorrect Credentials");
+-+                alert.showAndWait();
+-+                UsernameField.clear();
+-+                PasswordField.clear();
+-+            }
+-+        }
+-+    }
+-+
+-+    @FXML
+-+    public void CreateAccount(ActionEvent actionEvent) throws IOException {
+-+        System.out.println("validate button works");
+-+        changeScene("CreateNewAccount.fxml");
+-+
+-+    }
+- }
+Index: .idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml b/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,4 +0,0 @@
+-<changelist name="Uncommitted_changes_before_rebase_[Default_Changelist]2" date="1620921465961" recycled="true" deleted="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before rebase [Default Changelist]" />
+-</changelist>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/StoredCredential
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/StoredCredential b/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/StoredCredential
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/StoredCredential	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ /dev/null	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
+@@ -1,2 +0,0 @@
+-�� sr java.util.HashMap���`� F 
+-loadFactorI 	thresholdxp?@     w      t userur [B���T�  xp  ��� sr 2com.google.api.client.auth.oauth2.StoredCredential        L accessTokent Ljava/lang/String;L expirationTimeMillisecondst Ljava/lang/Long;L lockt !Ljava/util/concurrent/locks/Lock;L refreshTokenq ~ xpt �ya29.a0AfH6SMAh6PqHt1VwKu6wNjHLUXwGuylJOI-5N05lYhSMB4cOyqyiv_guSfotNOEdMuIuihyAMWepgkvj-ZUj2iIdZxuiRb0FfZecak2UohRo-SrVoap27tv_lyX-dWVMzbKtMbfeCsxI3SKgOHKGqED5Rvw2Iwsr java.lang.Long;��̏#� J valuexr java.lang.Number������  xp  yazˌsr (java.util.concurrent.locks.ReentrantLockfU�,,�j� L synct /Ljava/util/concurrent/locks/ReentrantLock$Sync;xpsr 4java.util.concurrent.locks.ReentrantLock$NonfairSynce�2�S{�  xr -java.util.concurrent.locks.ReentrantLock$Sync����DZ|  xr 5java.util.concurrent.locks.AbstractQueuedSynchronizerfU�Cu?R� I statexr 6java.util.concurrent.locks.AbstractOwnableSynchronizer3߯��mo�  xp    t f1//04nmvk6c8rICbCgYIARAAGAQSNgF-L9IrKBLf1L5barYbLjTYcB5bWZWMYG_4xjBzFLbyiky-RBFjbRl5z850x1fR9H6Vr5nklAx
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:origin/development\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"Fixed accidental account creation on mainController2.\" />\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Dependencies\" type=\"6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaFXApplication\" />\r\n        <option value=\"FxmlFile\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Pull.Settings\">\r\n    <option name=\"BRANCH\" value=\"development\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"full.screen.before.presentation.mode\" value=\"false\" />\r\n    <property name=\"last_directory_selection\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.116009295\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.13140604\" />\r\n    <property name=\"restartRequiresConfirmation\" value=\"false\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/calendar\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.cpt-projectfx [run]\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MainCalendar\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.calendar.MainCalendar\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"--info\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Application.MainCalendar\" />\r\n      <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n        <item itemvalue=\"Application.MainCalendar\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"working on storing account info\" />\r\n      <created>1620660623527</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620660623527</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Improved Sheets API functionality.\">\r\n      <created>1620936254927</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620936254927</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Added method to upload assignments to Sheet.\">\r\n      <created>1621092667835</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621092667835</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added method to upload assignments to Sheet.\">\r\n      <created>1621092757329</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621092757329</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Fixed problem with build.gradle.\">\r\n      <created>1621103078139</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621103078139</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\r\n      <created>1621210448900</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621210448900</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\r\n      <created>1621267920813</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621267920813</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"7\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/development\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"master\" />\r\n                </option>\r\n              </RecentGroup>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/development\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Improved Sheets API functionality.\" />\r\n    <MESSAGE value=\"working on storing account info\" />\r\n    <MESSAGE value=\"Fixed problem with build.gradle.\" />\r\n    <MESSAGE value=\"Added method to pull assignments in Sheet as array of arrays.\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added method to pull assignments in Sheet as array of arrays.\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ b/.idea/workspace.xml	(date 1621553169743)
+@@ -29,7 +29,52 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Fixed accidental account creation on mainController2." />
++    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Created method for deleting assignments.">
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/checksums.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/md5-checksums.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/outputFiles.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/sha1-checksums.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m__[Default_Changelist]/taskHistory.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-13_11_56_a_m___Default_Changelist_.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/StoredCredential" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/buildOutputCleanup.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/checksums.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/classAnalysis.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/executionHistory.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/executionHistory.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/fileHashes.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/fileHashes.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/javaCompile.lock" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/md5-checksums.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/outputFiles.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/sha1-checksums.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]1/taskHistory.bin" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Default_Changelist]2/shelved.patch" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_1.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Default_Changelist_2.xml" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
++    </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+@@ -257,7 +302,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1621267920813</updated>
+     </task>
+-    <option name="localTasksCounter" value="7" />
++    <task id="LOCAL-00007" summary="Created method for deleting assignments.">
++      <created>1621526465018</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1621526465018</updated>
++    </task>
++    <option name="localTasksCounter" value="8" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -310,7 +362,8 @@
+     <MESSAGE value="working on storing account info" />
+     <MESSAGE value="Fixed problem with build.gradle." />
+     <MESSAGE value="Added method to pull assignments in Sheet as array of arrays." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added method to pull assignments in Sheet as array of arrays." />
++    <MESSAGE value="Created method for deleting assignments." />
++    <option name="LAST_COMMIT_MESSAGE" value="Created method for deleting assignments." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: build/tmp/compileJava/source-classes-mapping.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>com/example/LoginController.java\r\n com.example.LoginController\r\ncom/example/Main.java\r\n com.example.Main\r\ncom/example/SuccessfulCreateAccountController.java\r\n com.example.SuccessfulCreateAccountController\r\ncom/example/SuccessfulLoginController.java\r\n com.example.SuccessfulLoginController\r\ncom/example/SheetsAPI.java\r\n com.example.SheetsAPI\r\ncom/example/CreateNewAccountController.java\r\n com.example.CreateNewAccountController\r\ncom/example/mainController2.java\r\n com.example.mainController2\r\ncom/example/ShowAssignment.java\r\n com.example.ShowAssignment\r\ncom/example/ControllerCalendar.java\r\n com.example.ControllerCalendar\r\ncom/example/removeAssignmentController.java\r\n com.example.removeAssignmentController\r\ncom/example/addAssignmentController.java\r\n com.example.addAssignmentController\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/compileJava/source-classes-mapping.txt b/build/tmp/compileJava/source-classes-mapping.txt
+--- a/build/tmp/compileJava/source-classes-mapping.txt	(revision 431761b24fcc6fcbc5ed9e200822126582f01973)
++++ b/build/tmp/compileJava/source-classes-mapping.txt	(date 1621552906953)
+@@ -1,22 +1,22 @@
++com/example/ControllerCalendar.java
++ com.example.ControllerCalendar
++com/example/removeAssignmentController.java
++ com.example.removeAssignmentController
+ com/example/LoginController.java
+  com.example.LoginController
+-com/example/Main.java
+- com.example.Main
+-com/example/SuccessfulCreateAccountController.java
+- com.example.SuccessfulCreateAccountController
+ com/example/SuccessfulLoginController.java
+  com.example.SuccessfulLoginController
++com/example/addAssignmentController.java
++ com.example.addAssignmentController
+ com/example/SheetsAPI.java
+  com.example.SheetsAPI
++com/example/ShowAssignment.java
++ com.example.ShowAssignment
++com/example/Main.java
++ com.example.Main
+ com/example/CreateNewAccountController.java
+  com.example.CreateNewAccountController
+ com/example/mainController2.java
+  com.example.mainController2
+-com/example/ShowAssignment.java
+- com.example.ShowAssignment
+-com/example/ControllerCalendar.java
+- com.example.ControllerCalendar
+-com/example/removeAssignmentController.java
+- com.example.removeAssignmentController
+-com/example/addAssignmentController.java
+- com.example.addAssignmentController
++com/example/SuccessfulCreateAccountController.java
++ com.example.SuccessfulCreateAccountController

@@ -340,9 +340,9 @@ public class SheetsAPI {
 //        }
 
         //Example of how you would use the DeleteAssignment method.
-        String[] assignmentToDelete = {"ben","10","2021-05-20","20"};
-        String result = DeleteAssignment(assignmentToDelete);
-        System.out.println(result);
+//        String[] assignmentToDelete = {"ben","10","2021-05-20","20"};
+//        String result = DeleteAssignment(assignmentToDelete);
+//        System.out.println(result);
 
     }
 }
