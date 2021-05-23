@@ -1,7 +1,5 @@
 package com.example;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
@@ -11,7 +9,9 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 public class addAssignmentController {
@@ -37,41 +37,60 @@ public class addAssignmentController {
     public Text showAssignmentHours;
 
 
+    List<String> errors = new ArrayList<>();
     /*
     Pre: Text fields for Marks and Hours
     Post: Allows class to change textfield to be only number
      */
     public void numberTextField(TextField textField) {
         // force the field to be numeric only
-        textField.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue,
-                                String newValue) {
-                if (!newValue.matches("\\d*")) {
-                    textField.setText(newValue.replaceAll("[^\\d]", "")); }
-            }
+        textField.textProperty().addListener((observable, oldValue, newValue) -> {
+            if (!newValue.matches("\\d*")) {
+                textField.setText(newValue.replaceAll("[^\\d]", "")); }
         });
 
     }
 
 
-   public void changeTextField() throws IOException {
-       numberTextField(marksAssignment);
+   public void changeTextField() {
        numberTextField(hoursOfAssignment);
+       numberTextField(marksAssignment);
 
    }
 
+    /*
+     Pre: String (Preferably a scanner string)
+     Current: Checks if string has space, or contains numbers
+     Post: True if string is a letters, and false is string is not letters
+      */
+    public static boolean isString (TextField str){
+        boolean string;
+        try {
+            Double.parseDouble(str.getText());
+            string = false;
+        } catch (NumberFormatException e) {
+            string = true;
+        }
+        return string;
+    }
 
 
    /*
     Pre: None
     Post: Gives out error message if a field is not filled correctly
      */
-    public void fieldNotFilled() throws IOException {
+    public void error() throws IOException {
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText(null);
-        alert.setContentText("There are some fields that have not been filled out!");
+        alert.setHeaderText("The following errors have been found:");
+        StringBuilder newLine = new StringBuilder();
+
+        for (int i = 0; i < errors.size();i++) {
+            newLine.append("\n");
+            newLine.append(errors.get(i));
+        }
+        alert.setContentText(newLine.toString());
         alert.showAndWait();
+        errors.clear();
     }
 
     /*
@@ -84,6 +103,7 @@ public class addAssignmentController {
         alert.setContentText("Assignment created successfully!");
         alert.showAndWait();
     }
+
 
     /*
      Pre: None
@@ -154,21 +174,31 @@ public class addAssignmentController {
         creationSuccess.setVisible(false);
         incorrectField.setVisible(false);
 
+
         // Error Checking
         // Checks for a field not filled out
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
-            fieldNotFilled();
+            errors.add("The \"Name of assignment\" field has been left blank!");
 
-        } else if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
-            fieldNotFilled();
+        } else if (!isString(nameOfAssignment)) {
+            errors.add("The name of the assignment cannot be only a number!");
 
-        } else if (dueDateAssignment.getValue() == null) {
-            fieldNotFilled();
+        }if (dueDateAssignment.getValue() == null) {
+            errors.add("The \"Assignment Due-Date\" field has been left blank!");
 
-        } else if (hoursOfAssignment.getText() == null) {
-            fieldNotFilled();
+        } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
+            errors.add("The \"Hours of Assignment\" field has been left blank!");
+
+        }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
+            errors.add("The \"Weighting of assignment\" field has been left blank!");
+
+            //Checks if field is filled out incorrectly
+        } else if (Integer.parseInt(marksAssignment.getText()) > 10) {
+            errors.add("The weighting of the assignment cannot be more than 10!");
 
 
+        } if (errors.size() > 0) {
+            error();
 
         } else {
             success();

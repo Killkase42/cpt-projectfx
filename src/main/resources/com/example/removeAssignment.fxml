@@ -30,6 +30,6 @@
       <Text fx:id="error" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You have entered something incorrectly. Please make sure you have typed the exact assignment name" visible="false" />
       <Text fx:id="noAssignmentsIn" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
       <Text fx:id="removeSuccess" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
-      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" prefWidth="150.0" promptText="Select Assignment to remove" GridPane.rowIndex="1" />
+      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" GridPane.rowIndex="1" />
    </children>
 </GridPane>

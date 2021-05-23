@@ -18,8 +18,5 @@ com/example/ShowAssignment.java
  com.example.ShowAssignment
 com/example/ControllerCalendar.java
  com.example.ControllerCalendar
-com/example/NumberTextField.java
- com.example.NumberTextField
 com/example/addAssignmentController.java
  com.example.addAssignmentController
- com.example.addAssignmentController$1
