@@ -1,6 +1,9 @@
 package com.example;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -9,6 +12,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.LocalDate;
 import java.util.Arrays;
+
 
 public class addAssignmentController {
 
@@ -34,19 +38,51 @@ public class addAssignmentController {
 
 
     /*
-    Pre: Error text message that is invisible
+    Pre: Text fields for Marks and Hours
+    Post: Allows class to change textfield to be only number
+     */
+    public void numberTextField(TextField textField) {
+        // force the field to be numeric only
+        textField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue,
+                                String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    textField.setText(newValue.replaceAll("[^\\d]", "")); }
+            }
+        });
+
+    }
+
+
+   public void changeTextField() throws IOException {
+       numberTextField(marksAssignment);
+       numberTextField(hoursOfAssignment);
+
+   }
+
+
+
+   /*
+    Pre: None
     Post: Gives out error message if a field is not filled correctly
      */
     public void fieldNotFilled() throws IOException {
-        notFilledField.setVisible(true);
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("There are some fields that have not been filled out!");
+        alert.showAndWait();
     }
 
     /*
-     Pre: Error text message that is invisible
-     Post: Gives error if a field is filled incorrectly
+    Pre: None
+    Post: Gives success message if assignment has been filled out correctly
      */
-    public void fieldFilledIncorrect() throws IOException {
-        incorrectField.setVisible(true);
+    public void success() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("Assignment created successfully!");
+        alert.showAndWait();
     }
 
     /*
@@ -82,6 +118,7 @@ public class addAssignmentController {
         score = WorkLoadCalculator();
         ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = (score);
 
+
         for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
         i <= ControllerCalendar.isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
             ControllerCalendar.dateScore[i] += score;
@@ -97,14 +134,14 @@ public class addAssignmentController {
 
         // Adding stuff into one array so that it can upload online
 
-        String[] assignmentInfo = new String[4];
-        assignmentInfo[0] = nameOfAssignment.getText();
-        assignmentInfo[1] = marksAssignment.getText();
-        assignmentInfo[2] = String.valueOf(dueDateAssignment.getValue());
-        assignmentInfo[3] = String.valueOf(score);
+        String[] assignmentInfoUpload = new String[4];
+        assignmentInfoUpload[0] = nameOfAssignment.getText();
+        assignmentInfoUpload[1] = marksAssignment.getText();
+        assignmentInfoUpload[2] = String.valueOf(dueDateAssignment.getValue());
+        assignmentInfoUpload[3] = String.valueOf(score);
 
         // Storing assignment to online stuff
-        SheetsAPI.UploadAssignment(assignmentInfo);
+        SheetsAPI.UploadAssignment(assignmentInfoUpload);
 
     }
 
@@ -118,6 +155,7 @@ public class addAssignmentController {
         incorrectField.setVisible(false);
 
         // Error Checking
+        // Checks for a field not filled out
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
             fieldNotFilled();
 
@@ -130,11 +168,18 @@ public class addAssignmentController {
         } else if (hoursOfAssignment.getText() == null) {
             fieldNotFilled();
 
+
+
         } else {
-            creationSuccess.setVisible(true);
+            success();
             storeAssignment();
         }
     }
+
+
+
+
+
 
     /*
     Pre: The weight, or marks, hours and due date of a assignment

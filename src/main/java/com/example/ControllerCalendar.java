@@ -7,6 +7,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,6 +16,8 @@ import java.util.Objects;
 
 
 public class ControllerCalendar {
+
+    public static Text welcomeText;
 
 
     //Arrays that will be used to store the data of the assignments
@@ -37,6 +40,7 @@ public class ControllerCalendar {
     public Label May_31;
 
 
+
 //    public void accessAssignment() throws IOException, GeneralSecurityException {
 //       String[][] assignmentInfo = SheetsAPI.PullAssignments();
 //       for (int i = 1; i < assignmentInfo.length; i++){
@@ -45,6 +49,15 @@ public class ControllerCalendar {
 //    }
 
 
+
+    /*
+    Pre: None
+    Post: Sets a welcome message to the main calendar screen
+    NOT DONE YET
+     */
+    public void setText(String username) throws IOException {
+        welcomeText.setText(username);
+    }
 
     /*
     Pre:None
@@ -109,6 +122,7 @@ public class ControllerCalendar {
      Post: Adds any assignments to the calendar
      */
     public void addAssignmentToCalendar(ActionEvent event) throws IOException, GeneralSecurityException {
+       // welcomeText.setText(LoginController.welcome);
 
         System.out.println(addAssignmentController.deleteYear(String.valueOf(java.time.LocalDate.now())));
         May_1.setText("");May_2.setText("");May_3.setText("");May_4.setText("");May_5.setText("");May_6.setText("");

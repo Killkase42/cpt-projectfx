@@ -1,7 +1,10 @@
 package com.example;
 
 
-import javafx.scene.control.TextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -9,36 +12,35 @@ import java.security.GeneralSecurityException;
 
 public class removeAssignmentController {
 
-    public Text assignmentNames;
-    public TextField selectAssignment;
     public Text error;
     public Text noAssignmentsIn;
     public Text removeSuccess;
+    public ComboBox<String> selectedAssignment;
+
+
 
 
     /*
-    Pre: None
-    Post: Simply sets a text to all the assignments
-     */
-    public void setText() throws IOException, GeneralSecurityException {
+  Pre: None
+  Post: Gives success error message if user has not filled out the box.
+   */
+    public void notFilledIn() {
 
-        StringBuilder text = new StringBuilder();
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
-
-        for (int i = 1; i < assignmentInfo.length; i++) {
-            text.append(", ");
-            text.append(assignmentInfo[i][0]);
-
-        }
-        assignmentNames.setText(text.toString());
     }
 
     /*
-    Pre: None
-    Post:Removes the text from a text Field
-     */
-    public void removeText() throws IOException {
-        selectAssignment.setText("");
+     Pre: None
+     Post: Assigns the values of all assignment names to a comboBox (drop-down menu)
+      */
+    public void comboBoxAssign() throws GeneralSecurityException, IOException {
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
+        ObservableList<String> data = FXCollections.observableArrayList();
+
+        for (int i = 1; i < assignmentInfo.length; i++) {
+            data.add(assignmentInfo[i][0]);
+        }
+        selectedAssignment.setItems(data);
     }
 
     /*
@@ -51,7 +53,7 @@ public class removeAssignmentController {
         noAssignmentsIn.setVisible(false);
         String choice;
         int id = 0;
-        choice = selectAssignment.getText();
+        choice = selectedAssignment.getValue();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
 
@@ -62,30 +64,22 @@ public class removeAssignmentController {
                 break;
             }
         }
-
-        System.out.println(id);
         // Deleting assignment from Google Sheets
-
-
         String[] delete = new String[4];
         delete[0] = assignmentInfo[id][0];
         delete[1] = assignmentInfo[id][1];
         delete[2] = assignmentInfo[id][2];
         delete[3] = assignmentInfo[id][3];
 
-        removeSuccess.setVisible(true);
+        // Confirmation that user has removed the selected assignment
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("Assignment " + "\"" + assignmentInfo[id][0] + ",\"" + "removed successfully.");
+        alert.showAndWait();
+
+
         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
         System.out.println(assignmentToDelete);
-
-       // ControllerCalendar.assignmentName = ArrayUtils.remove(ControllerCalendar.assignmentName,id);
-       // ControllerCalendar.assignmentMarks = ArrayUtils.remove(ControllerCalendar.assignmentMarks,id);
-      //  ControllerCalendar.assignmentDueDate = ArrayUtils.remove(ControllerCalendar.assignmentDueDate,id);
-       // ControllerCalendar.assignmentHours = ArrayUtils.remove(ControllerCalendar.assignmentHours,id);
-        // ControllerCalendar.assignmentScore = ArrayUtils.remove(ControllerCalendar.assignmentScore,id);
-
-
-
-
 
 
        // for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
@@ -94,8 +88,6 @@ public class removeAssignmentController {
        // }
 
     }
-
-
 
     /*
     Pre: None
@@ -106,18 +98,24 @@ public class removeAssignmentController {
         error.setVisible(false);
         noAssignmentsIn.setVisible(false);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
-        String choice = selectAssignment.getText();
+        String choice = selectedAssignment.getValue();
 
-        if (assignmentInfo[1][0].isEmpty()) {
-            noAssignmentsIn.setVisible(true);
-        }
+       //WILL BE USED FOR BUTTON SLECTION IN CALENDAR SCREEN
+        // Checking if no assignmnets in system
+      //  if (assignmentInfo[1][0].isEmpty()) {
+      //      noAssignmentsIn.setVisible(true);
+      //  }
 
-        for (int i = 1; i < assignmentInfo.length; i++)
-        if (!choice.equals(assignmentInfo[i][0])) {
-            error.setVisible(true);
+       // Checking if assignment was entered correctly
+        if (choice == null) {
+            // error alert.
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText("You have not selected a assignment to remove! \n" +
+                    "Select a assignment from the drop-down menu.");
+            alert.showAndWait();
         } else {
             removeAssignment();
         }
-
     }
     }
