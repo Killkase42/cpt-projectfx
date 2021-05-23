@@ -23,6 +23,8 @@ public class LoginController extends SheetsAPI{
     // static String welcome;
 
 
+    static String welcome = "";
+
     //validates login information
     public void Validate(ActionEvent event) throws IOException, GeneralSecurityException {
         //gets info from text field
