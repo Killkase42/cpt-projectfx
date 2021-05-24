@@ -139,10 +139,15 @@ public class addAssignmentController {
         ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = (score);
 
 
-        for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
-        i <= ControllerCalendar.isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
-            ControllerCalendar.dateScore[i] += score;
-        }
+
+        //  for (int i = 0; i < assignmentInfo.length; i++) {
+
+        // Add new row when the assignment was created for assignment with nick
+        // Date assignment was created   for (int j = isolateDays(assignmentInfo[i][2]);
+        //Due date of the assignment       j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
+        //    dateScore[i] += score;
+        //  }
+        // }
 
 
         // Showing assignment details

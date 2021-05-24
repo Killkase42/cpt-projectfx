@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.time.LocalDate;
 import java.util.Objects;
 
 
@@ -122,9 +123,23 @@ public class ControllerCalendar {
      Post: Adds any assignments to the calendar
      */
     public void addAssignmentToCalendar(ActionEvent event) throws IOException, GeneralSecurityException {
-       // welcomeText.setText(LoginController.welcome);
 
-        System.out.println(addAssignmentController.deleteYear(String.valueOf(java.time.LocalDate.now())));
+    //    Arrays.fill(dateScore, 0);
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+      //  for (int i = 0; i < assignmentInfo.length; i++) {
+
+           // Add new row when the assignment was created for assignment with nick
+         // Date assignment was created   for (int j = isolateDays(assignmentInfo[i][2]);
+          //Due date of the assignment       j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
+            //    dateScore[i] += score;
+          //  }
+       // }
+
+
+
+        // welcomeText.setText(LoginController.welcome);
+
+        System.out.println(addAssignmentController.deleteYear(String.valueOf(LocalDate.now())));
         May_1.setText("");May_2.setText("");May_3.setText("");May_4.setText("");May_5.setText("");May_6.setText("");
         May_7.setText("");May_8.setText("");May_9.setText("");May_10.setText("");May_11.setText("");May_12.setText("");
         May_13.setText("");May_14.setText("");May_15.setText("");May_16.setText("");May_17.setText("");May_18.setText("");May_19.setText("");
@@ -142,7 +157,7 @@ public class ControllerCalendar {
         StringBuilder newLine28 = new StringBuilder();StringBuilder newLine29 = new StringBuilder();StringBuilder newLine30 = new StringBuilder();StringBuilder newLine31 = new StringBuilder();
 
 
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
         for (int i = 1; i < assignmentInfo.length; i++) {
 
             if (Objects.equals(assignmentInfo[i][2], "2021-05-01")) {
