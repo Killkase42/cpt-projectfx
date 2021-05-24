@@ -6,7 +6,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -18,10 +17,6 @@ public class LoginController extends SheetsAPI{
 
     public TextField UsernameTextField;
     public TextField PasswordTextField;
-    public Button LoginButton;
-
-    // static String welcome;
-
 
     static String welcome = "";
 
@@ -30,6 +25,9 @@ public class LoginController extends SheetsAPI{
         //gets info from text field
         String Username = UsernameTextField.getText();
         String Password = PasswordTextField.getText();
+
+
+
 
         //if the fields are empty and tries to validate. Returns an error
         if (Username.isEmpty() || Password.isEmpty()) {
@@ -40,13 +38,13 @@ public class LoginController extends SheetsAPI{
         } else {
             String Result = ConfirmUserCredentials(Username,Password);
             if (Result == "Account found, logging you in...") {
-
-                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calendarScreen.fxml")));
+                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
+
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
                 window.setScene(MainScene);
                 window.show();
-
             } else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setHeaderText(null);
@@ -60,7 +58,7 @@ public class LoginController extends SheetsAPI{
     //button to go back to main menu
     public void BackToMainMenu(ActionEvent event) throws IOException {
 
-        Parent MainMenuParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        Parent MainMenuParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/main.fxml")));
         Scene MainMenuScene = new Scene(MainMenuParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

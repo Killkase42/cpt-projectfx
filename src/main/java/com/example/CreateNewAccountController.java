@@ -48,7 +48,7 @@ public class CreateNewAccountController extends SheetsAPI{
                 alert.setContentText("Account Name Taken");
                 alert.showAndWait();
             } else if (Result == "Account successfully created") {
-                Parent SuccessAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("SuccessfulCreateAccount.fxml")));
+                Parent SuccessAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/SuccessfulCreateAccount.fxml")));
                 Scene SuccessAccountScene = new Scene(SuccessAccountParent);
 
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -64,7 +64,7 @@ public class CreateNewAccountController extends SheetsAPI{
 
 
     public void GoToMainMenu(ActionEvent event) throws IOException {
-        Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/main.fxml")));
         Scene MainScene = new Scene(MainParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

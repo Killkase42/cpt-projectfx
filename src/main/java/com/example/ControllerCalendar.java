@@ -66,7 +66,7 @@ public class ControllerCalendar {
      */
     public void addAssignmentPopUp(ActionEvent event) throws IOException {
 
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("addAsignment.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = new Stage();
@@ -80,7 +80,7 @@ public class ControllerCalendar {
     Post: Goes back to the account screen menu
      */
     public void BackToAccountScreen(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/main.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -94,7 +94,7 @@ public class ControllerCalendar {
     Post: Posts the remove-assignment pop up enu
      */
     public void RemoveAssignmentPopUp(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("removeAssignment.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/removeAssignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = new Stage();
@@ -108,7 +108,7 @@ public class ControllerCalendar {
     Post: Opens check assignment pop-ip
      */
     public void checkAssignmentDetailsPopUp(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("showAssignment.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/showAssignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = new Stage();
