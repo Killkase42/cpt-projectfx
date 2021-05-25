@@ -221,6 +221,7 @@ public class SheetsAPI {
         checkAssignment.add(assignmentToDelete[2]);
         checkAssignment.add(assignmentToDelete[3]);
         checkAssignment.add(assignmentToDelete[4]);
+
         ArrayList<String> replacer = new ArrayList<String>();
         replacer.add("");
         replacer.add("");

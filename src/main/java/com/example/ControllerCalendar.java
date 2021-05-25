@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -41,17 +42,6 @@ public class ControllerCalendar {
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
 
-
-
-//    public void accessAssignment() throws IOException, GeneralSecurityException {
-//       String[][] assignmentInfo = SheetsAPI.PullAssignments();
-//       for (int i = 1; i < assignmentInfo.length; i++){
-//           System.out.println(assignmentInfo[i][2]);
-//       }
-//    }
-
-
-
     /*
     Pre: None
     Post: Sets a welcome message to the main calendar screen
@@ -62,10 +52,22 @@ public class ControllerCalendar {
     }
 
     /*
+    Pre: None
+    Post: Sets error message if no assignment has been added
+     */
+    public void errorNoAssignment() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setHeaderText(null);
+        alert.setContentText("There are no assignment currently added." + "\n" +
+                "Please add a assignment by clicking the \"Add Assignment\" button. ");
+        alert.showAndWait();
+    }
+
+    /*
     Pre:None
     Post: Opens the add-assignment pop-up menu
      */
-    public void addAssignmentPopUp(ActionEvent event) throws IOException {
+    public void addAssignmentPopUp() throws IOException {
 
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
@@ -78,8 +80,57 @@ public class ControllerCalendar {
 
     /*
     Pre: None
-    Post: Goes back to the account screen menu
+    Post: Posts the remove-assignment pop up enu
      */
+    public void RemoveAssignmentPopUp() throws IOException, GeneralSecurityException {
+        // checking if there is no assignment
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        try {
+            if (assignmentInfo[1][0].isEmpty()) {}
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            errorNoAssignment();
+        return;
+        }
+
+            Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/removeAssignment.fxml")));
+            Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+            Stage window = new Stage();
+
+            window.setScene(addAssignmentScene);
+            window.show();
+        }
+
+
+    /*
+    Pre: None
+    Post: Opens check assignment pop-ip
+     */
+    public void checkAssignmentDetailsPopUp() throws IOException, GeneralSecurityException {
+        // checking if no assignment
+        // checking if there is no assignment
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        try {
+            if (assignmentInfo[1][0].isEmpty()) {}
+
+        } catch (ArrayIndexOutOfBoundsException e) {
+            errorNoAssignment();
+            return;
+        }
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/showAssignment.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = new Stage();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+
+    /*
+        Pre: None
+        Post: Goes back to the account screen menu
+        */
     public void BackToAccountScreen(ActionEvent event) throws IOException {
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Login.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
@@ -91,39 +142,11 @@ public class ControllerCalendar {
     }
 
     /*
-    Pre: None
-    Post: Posts the remove-assignment pop up enu
-     */
-    public void RemoveAssignmentPopUp(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/removeAssignment.fxml")));
-        Scene addAssignmentScene = new Scene(addAssignmentParent);
-
-        Stage window = new Stage();
-
-        window.setScene(addAssignmentScene);
-        window.show();
-    }
-
-    /*
-    Pre: None
-    Post: Opens check assignment pop-ip
-     */
-    public void checkAssignmentDetailsPopUp(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/showAssignment.fxml")));
-        Scene addAssignmentScene = new Scene(addAssignmentParent);
-
-        Stage window = new Stage();
-
-        window.setScene(addAssignmentScene);
-        window.show();
-    }
-
-    /*
      NOTICE: LOTS OF VARIABLES AHEAD
      Pre: None:
      Post: Adds any assignments to the calendar
      */
-    public void addAssignmentToCalendar(ActionEvent event) throws IOException, GeneralSecurityException {
+    public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
 
 
         Arrays.fill(dateScore, 0);

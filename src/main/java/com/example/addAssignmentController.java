@@ -1,6 +1,5 @@
 package com.example;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -95,6 +94,22 @@ public class addAssignmentController {
         alert.setContentText(newLine.toString());
         alert.showAndWait();
         errors.clear();
+
+        // Clearing Fields
+        nameOfAssignment.setText(null);
+        marksAssignment.setText(null);
+        dueDateAssignment.setValue(null);
+        hoursOfAssignment.setText(null);
+
+        // Clearing assignment details showing
+        showAssignmentName.setText(null);
+        showAssignmentDate.setText(null);
+        showAssignmentHours.setText(null);
+        showAssignmentMarks.setText(null);
+        showAssignmentScore.setText(null);
+
+
+
     }
 
     /*
@@ -142,6 +157,7 @@ public class addAssignmentController {
         score = WorkLoadCalculator();
         ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = (score);
 
+// Updating the date score
         Arrays.fill(dateScore, 0);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
         for (int i = 1; i < assignmentInfo.length; i++) {
@@ -185,10 +201,11 @@ public class addAssignmentController {
      Pre: None
      Post: Deciding what the "Submit Assignment" button should do
      */
-    public void checkFieldStatus(ActionEvent event) throws IOException, GeneralSecurityException {
+    public void checkFieldStatus() throws IOException, GeneralSecurityException {
         notFilledField.setVisible(false);
         creationSuccess.setVisible(false);
         incorrectField.setVisible(false);
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
 
         // Error Checking
@@ -198,6 +215,12 @@ public class addAssignmentController {
 
         } else if (!isString(nameOfAssignment)) {
             errors.add("The name of the assignment cannot be only a number!");
+
+        } else {
+            for (int i = 1; i < assignmentInfo.length; i++) {
+             if (nameOfAssignment.getText().equals(assignmentInfo[i][0])) {
+                 errors.add("There is already a assignment with the name \"" + (nameOfAssignment.getText()) + "\"."); }
+            }
 
         }if (dueDateAssignment.getValue() == null) {
             errors.add("The \"Assignment Due-Date\" field has been left blank!");
@@ -213,6 +236,7 @@ public class addAssignmentController {
             errors.add("The weighting of the assignment cannot be more than 10!");
 
 
+        // checking if any errors happened
         } if (errors.size() > 0) {
             error();
 

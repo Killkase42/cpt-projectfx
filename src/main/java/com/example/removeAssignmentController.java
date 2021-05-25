@@ -9,6 +9,9 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.util.Arrays;
+
+import static com.example.ControllerCalendar.dateScore;
 
 public class removeAssignmentController {
 
@@ -20,13 +23,6 @@ public class removeAssignmentController {
 
 
 
-    /*
-  Pre: None
-  Post: Gives success error message if user has not filled out the box.
-   */
-    public void notFilledIn() {
-
-    }
 
     /*
      Pre: None
@@ -65,11 +61,12 @@ public class removeAssignmentController {
             }
         }
         // Deleting assignment from Google Sheets
-        String[] delete = new String[4];
+        String[] delete = new String[5];
         delete[0] = assignmentInfo[id][0];
         delete[1] = assignmentInfo[id][1];
         delete[2] = assignmentInfo[id][2];
         delete[3] = assignmentInfo[id][3];
+        delete[4] = assignmentInfo[id][4];
 
         // Confirmation that user has removed the selected assignment
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -77,17 +74,15 @@ public class removeAssignmentController {
         alert.setContentText("Assignment " + "\"" + assignmentInfo[id][0] + ",\"" + "removed successfully.");
         alert.showAndWait();
 
+        for (int i = ControllerCalendar.isolateDays(assignmentInfo[id][4]);
+                      i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
+         dateScore[i-1] -= Integer.parseInt(assignmentInfo[id][3]);
+         }
+        System.out.println(Arrays.toString(dateScore));
 
-//         for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
-//              i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
-//          ControllerCalendar.dateScore[i] -= ControllerCalendar.assignmentScore[id];
-//         }
 
-
+        selectedAssignment.setValue(null);
         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
-        System.out.println(assignmentToDelete);
-
-
 
     }
 
