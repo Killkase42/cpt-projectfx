@@ -18,6 +18,8 @@ public class LoginController extends SheetsAPI{
     public TextField UsernameTextField;
     public TextField PasswordTextField;
 
+    static String welcome = "";
+
     //validates login information
     public void Validate(ActionEvent event) throws IOException, GeneralSecurityException {
         //gets info from text field
@@ -36,8 +38,10 @@ public class LoginController extends SheetsAPI{
         } else {
             String Result = ConfirmUserCredentials(Username,Password);
             if (Result == "Account found, logging you in...") {
-                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calendarScreen.fxml")));
+                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
+
+
 
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
@@ -54,9 +58,9 @@ public class LoginController extends SheetsAPI{
     }
 
     //button to go back to main menu
-    public void BackToMainMenu(ActionEvent event) throws IOException {
+    public void ToCreateAccount(ActionEvent event) throws IOException {
 
-        Parent MainMenuParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("main.fxml")));
+        Parent MainMenuParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/CreateNewAccount.fxml")));
         Scene MainMenuScene = new Scene(MainMenuParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

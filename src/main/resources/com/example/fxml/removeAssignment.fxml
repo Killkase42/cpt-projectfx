@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Text?>
+
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="300.0" />
+    <ColumnConstraints hgrow="SOMETIMES" prefWidth="300.0" />
+  </columnConstraints>
+  <rowConstraints>
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+    <RowConstraints vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#textCheck" text="Remove Assignment" GridPane.columnIndex="1" GridPane.rowIndex="2">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <GridPane.margin>
+            <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
+         </GridPane.margin>
+      </Button>
+      <Text fx:id="error" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You have entered something incorrectly. Please make sure you have typed the exact assignment name" visible="false" />
+      <Text fx:id="noAssignmentsIn" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
+      <Text fx:id="removeSuccess" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
+      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

@@ -14,7 +14,7 @@ public class mainController2 {
 
     public void changeScreenButton(ActionEvent event) throws IOException, GeneralSecurityException {
 
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("calendarScreen.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -24,9 +24,9 @@ public class mainController2 {
 
     }
 
-    public void CreateAccount(ActionEvent event) throws IOException, GeneralSecurityException {
+    public void CreateAccount(ActionEvent event) throws IOException {
 
-        Parent CreateAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("CreateNewAccount.fxml")));
+        Parent CreateAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/CreateNewAccount.fxml")));
         Scene CreateAccountScene = new Scene(CreateAccountParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -36,7 +36,7 @@ public class mainController2 {
     }
 
     public void GoToLoginScreen(ActionEvent event) throws IOException {
-        Parent LoginParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Login.fxml")));
+        Parent LoginParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Login.fxml")));
         Scene LoginScene = new Scene(LoginParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

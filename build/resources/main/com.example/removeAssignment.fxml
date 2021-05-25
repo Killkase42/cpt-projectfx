@@ -2,7 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
@@ -15,12 +15,11 @@
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-    <RowConstraints vgrow="SOMETIMES" />
       <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
     <RowConstraints vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#textCheck" text="Remove Assignment" GridPane.columnIndex="1" GridPane.rowIndex="3">
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#textCheck" text="Remove Assignment" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
@@ -28,23 +27,9 @@
             <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
-      <Text fx:id="assignmentNames" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="180.0" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Text>
-      <Button mnemonicParsing="false" onAction="#setText" text="Show assignments" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </Button>
-      <TextField fx:id="selectAssignment" onMouseClicked="#removeText" promptText="Select Assignment" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </GridPane.margin>
-      </TextField>
       <Text fx:id="error" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You have entered something incorrectly. Please make sure you have typed the exact assignment name" visible="false" />
       <Text fx:id="noAssignmentsIn" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
       <Text fx:id="removeSuccess" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
+      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" GridPane.rowIndex="1" />
    </children>
 </GridPane>
