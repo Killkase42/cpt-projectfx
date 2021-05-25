@@ -9,7 +9,6 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.time.LocalDate;
 
 public class removeAssignmentController {
 
@@ -79,10 +78,10 @@ public class removeAssignmentController {
         alert.showAndWait();
 
 
-         for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
-              i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
-          ControllerCalendar.dateScore[i] -= ControllerCalendar.assignmentScore[id];
-         }
+//         for (int i = ControllerCalendar.isolateDays(String.valueOf(LocalDate.now()));
+//              i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
+//          ControllerCalendar.dateScore[i] -= ControllerCalendar.assignmentScore[id];
+//         }
 
 
         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
