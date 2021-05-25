@@ -19,7 +19,7 @@
             </Label>
             <TextField fx:id="UsernameTextField" layoutX="45.0" layoutY="66.0" promptText="Enter New Username" styleClass="username-text-field-create" stylesheets="@/com/example/css/styles.css" />
             <PasswordField fx:id="PasswordTextField" layoutX="45.0" layoutY="102.0" promptText="Enter New Password" styleClass="password-text-field-create" stylesheets="@/com/example/css/styles.css" />
-            <TextField fx:id="ShowPasswordTextField" layoutX="45.0" layoutY="102.0" promptText="Enter Your Password" styleClass="password-show-text-field-create" stylesheets="@/com/example/css/styles.css" visible="false" />
+            <TextField fx:id="ShowPasswordTextField" layoutX="45.0" layoutY="102.0" promptText="Enter New Password" styleClass="password-show-text-field-create" stylesheets="@/com/example/css/styles.css" visible="false" />
             <Button fx:id="CreateAccountButton" layoutX="68.0" layoutY="137.0" mnemonicParsing="false" onAction="#CreateAccount" prefHeight="29.0" prefWidth="102.0" styleClass="button-create-account" stylesheets="@/com/example/css/styles.css" text="Create Account" />
             <Button fx:id="HaveAccountButton" layoutX="28.0" layoutY="166.0" mnemonicParsing="false" onAction="#GoToLogin" prefHeight="25.0" prefWidth="186.0" styleClass="button-to-login" stylesheets="@/com/example/css/styles.css" text="Already have an account? Login" underline="true" />
             <Button fx:id="ShowPasswordButton" layoutX="194.0" layoutY="102.0" mnemonicParsing="false" onAction="#ShowPassword" styleClass="button-to-show-password-create" stylesheets="@/com/example/css/styles.css" text="Show" />

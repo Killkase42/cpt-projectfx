@@ -71,7 +71,7 @@
 
 /* The text fields*/
 .username-text-field, .password-text-field, .password-show-text-field-login, .username-text-field-create,
-    .password-text-field-create, .password-show-text-field-login {
+    .password-text-field-create, .password-show-text-field-create {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -82,7 +82,7 @@
 }
 
 .username-text-field:focused, .password-text-field:focused, .password-show-text-field-login:focused,
-    .username-text-field-create:focused, .password-text-field-create:focused, .password-show-text-field-login:focused {
+    .username-text-field-create:focused, .password-text-field-create:focused, .password-show-text-field-create:focused {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
