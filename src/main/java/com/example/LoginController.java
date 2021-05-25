@@ -6,6 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -17,8 +18,28 @@ public class LoginController extends SheetsAPI{
 
     public TextField UsernameTextField;
     public TextField PasswordTextField;
+    public TextField ShowPasswordTextField;
+    public Button ShowPasswordButton;
 
     static String welcome = "";
+    static boolean showingPass = false;
+
+
+    public void ShowPassword(ActionEvent event) {
+        if (!showingPass){
+            ShowPasswordTextField.setText(PasswordTextField.getText());
+            PasswordTextField.setVisible(false);
+            ShowPasswordTextField.setVisible(true);
+            showingPass = true;
+            ShowPasswordButton.setText("Hide");
+        } else {
+            PasswordTextField.setText(ShowPasswordTextField.getText());
+            PasswordTextField.setVisible(true);
+            ShowPasswordTextField.setVisible(false);
+            showingPass = false;
+            ShowPasswordButton.setText("Show");
+        }
+    }
 
     //validates login information
     public void Validate(ActionEvent event) throws IOException, GeneralSecurityException {

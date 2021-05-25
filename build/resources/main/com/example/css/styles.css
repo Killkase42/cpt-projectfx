@@ -1,9 +1,9 @@
-/* The pane colours of the login screen. */
-.background-login {
+/* The pane colours of the screens. */
+.background-login, .background-create-account {
     -fx-background-color : #314254;
 }
 
-.foreground-login {
+.foreground-login, .foreground-create-account {
     -fx-background-color : #253648;
     -fx-border-style: solid;
     -fx-border-radius: 3 3 3 3;
@@ -19,7 +19,7 @@
 }
 
 /* The "Login" and "Create Account" buttons on the login screen. */
-.button-login {
+.button-login, .button-create-account {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -29,7 +29,7 @@
     -fx-text-fill: #445768;
 }
 
-.button-login:hover {
+.button-login:hover, .button-create-account:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -39,7 +39,7 @@
     -fx-text-fill: #8192A4;
 }
 
-.button-login:pressed {
+.button-login:pressed, .button-create-account:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -49,26 +49,29 @@
     -fx-text-fill: #3A7E7F;
 }
 
-.button-to-create-account {
+.button-to-create-account, .button-to-login, .button-to-show-password-login, .button-to-show-password-create {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #445768;
 }
 
-.button-to-create-account:hover {
+.button-to-create-account:hover, .button-to-login:hover, .button-to-show-password-login:hover,
+    .button-to-show-password-create:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #8192A4;
 }
 
-.button-to-create-account:pressed {
+.button-to-create-account:pressed, .button-to-login:pressed, .button-to-show-password-login:pressed,
+    .button-to-show-password-create:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #3A7E7F;
 }
 
-/* The text fields on the login screen. */
-.username-text-field, .password-text-field {
+/* The text fields*/
+.username-text-field, .password-text-field, .password-show-text-field-login, .username-text-field-create,
+    .password-text-field-create, .password-show-text-field-login {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -78,7 +81,8 @@
     -fx-text-fill: #445768;
 }
 
-.username-text-field:focused, .password-text-field:focused{
+.username-text-field:focused, .password-text-field:focused, .password-show-text-field-login:focused,
+    .username-text-field-create:focused, .password-text-field-create:focused, .password-show-text-field-login:focused {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -87,6 +91,8 @@
     -fx-border-color: #3A7E7F;
     -fx-text-fill: #3A7E7F;
 }
+
+
 
 
 
