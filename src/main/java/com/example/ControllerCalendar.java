@@ -80,7 +80,7 @@ public class ControllerCalendar {
     Post: Goes back to the account screen menu
      */
     public void BackToAccountScreen(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/main.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Login.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

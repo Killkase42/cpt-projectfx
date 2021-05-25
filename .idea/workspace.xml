@@ -29,7 +29,8 @@
     </select>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Added method to pull assignments in Sheet as array of arrays.">
+    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Fixed .fxml issue.">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
@@ -37,81 +38,26 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_15_a_m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m__[Default_Changelist]2/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m___Default_Changelist_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_16_a_m___Default_Changelist_2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Merge_at_2021-05-17_11_17_a_m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_10_48_a_m___Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m__[Default_Changelist]/taskHistory.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-17_11_12_a_m___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_6_45_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_6_45_p_m___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_7_31_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_7_31_p_m___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SuccessfulCreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SuccessfulCreateAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SuccessfulLoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SuccessfulLoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/mainController2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/mainController2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/mainController2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/mainController2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -167,8 +113,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -203,7 +149,7 @@
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/example" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.116009295" />
     <property name="project.structure.side.proportion" value="0.13140604" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -215,6 +161,7 @@
       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example\fxml" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example" />
       <recent name="$PROJECT_DIR$/src/main/java/com/example/calendar" />
@@ -341,35 +288,28 @@
       <option name="project" value="LOCAL" />
       <updated>1621267920813</updated>
     </task>
-    <task id="LOCAL-00007" summary="Added method to pull assignments in Sheet as array of arrays.">
-      <created>1621554276171</created>
+    <task id="LOCAL-00007" summary="Created method for deleting assignments.">
+      <created>1621557231218</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1621554276171</updated>
+      <updated>1621557231218</updated>
     </task>
-    <task id="LOCAL-00008" summary="Added method to pull assignments in Sheet as array of arrays.">
-      <created>1621556945308</created>
+    <task id="LOCAL-00008" summary="Created method for deleting assignments.">
+      <created>1621557237672</created>
       <option name="number" value="00008" />
       <option name="presentableId" value="LOCAL-00008" />
       <option name="project" value="LOCAL" />
-      <updated>1621556945308</updated>
+      <updated>1621557237672</updated>
     </task>
-    <task id="LOCAL-00009" summary="Added method to pull assignments in Sheet as array of arrays.">
-      <created>1621735895011</created>
+    <task id="LOCAL-00009" summary="Fixed .fxml issue.">
+      <created>1621898183691</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1621735895011</updated>
+      <updated>1621898183691</updated>
     </task>
-    <task id="LOCAL-00010" summary="Added method to pull assignments in Sheet as array of arrays.">
-      <created>1621807274601</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1621807274601</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -422,7 +362,9 @@
     <MESSAGE value="working on storing account info" />
     <MESSAGE value="Fixed problem with build.gradle." />
     <MESSAGE value="Added method to pull assignments in Sheet as array of arrays." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added method to pull assignments in Sheet as array of arrays." />
+    <MESSAGE value="Created method for deleting assignments." />
+    <MESSAGE value="Fixed .fxml issue." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed .fxml issue." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

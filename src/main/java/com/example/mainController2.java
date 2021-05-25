@@ -24,7 +24,7 @@ public class mainController2 {
 
     }
 
-    public void CreateAccount(ActionEvent event) throws IOException, GeneralSecurityException {
+    public void CreateAccount(ActionEvent event) throws IOException {
 
         Parent CreateAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/CreateNewAccount.fxml")));
         Scene CreateAccountScene = new Scene(CreateAccountParent);

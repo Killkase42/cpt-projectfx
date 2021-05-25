@@ -41,6 +41,8 @@ public class LoginController extends SheetsAPI{
                 Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
 
+
+
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                 window.setScene(MainScene);
@@ -56,9 +58,9 @@ public class LoginController extends SheetsAPI{
     }
 
     //button to go back to main menu
-    public void BackToMainMenu(ActionEvent event) throws IOException {
+    public void ToCreateAccount(ActionEvent event) throws IOException {
 
-        Parent MainMenuParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/main.fxml")));
+        Parent MainMenuParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/CreateNewAccount.fxml")));
         Scene MainMenuScene = new Scene(MainMenuParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

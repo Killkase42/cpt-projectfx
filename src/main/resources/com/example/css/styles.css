@@ -1,0 +1,95 @@
+/* The pane colours of the login screen. */
+.background-login {
+    -fx-background-color : #314254;
+}
+
+.foreground-login {
+    -fx-background-color : #253648;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 5px;
+    -fx-border-color: #253648;
+    -fx-border-insets: -2;
+}
+
+/* The "User Login" text on the login screen. */
+.text-login {
+    -fx-background-color :transparent;
+    -fx-text-fill: #92A2B9;
+}
+
+/* The "Login" and "Create Account" buttons on the login screen. */
+.button-login {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #445768;
+    -fx-text-fill: #445768;
+}
+
+.button-login:hover {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
+}
+
+.button-login:pressed {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #3A7E7F;
+    -fx-text-fill: #3A7E7F;
+}
+
+.button-to-create-account {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-text-fill: #445768;
+}
+
+.button-to-create-account:hover {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-text-fill: #8192A4;
+}
+
+.button-to-create-account:pressed {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-text-fill: #3A7E7F;
+}
+
+/* The text fields on the login screen. */
+.username-text-field, .password-text-field {
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #445768;
+    -fx-text-fill: #445768;
+}
+
+.username-text-field:focused, .password-text-field:focused{
+    -fx-background-color :transparent;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #3A7E7F;
+    -fx-text-fill: #3A7E7F;
+}
+
+
+
+
+
+
