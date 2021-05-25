@@ -268,7 +268,7 @@ public class SheetsAPI {
             for (List row3 : values) {
                 ValueRange appendBody3 = new ValueRange()
                         .setValues(Arrays.asList(
-                                Arrays.asList(row3.get(0), row3.get(1), row3.get(2), row3.get(3), row3.get(3))
+                                Arrays.asList(row3.get(0), row3.get(1), row3.get(2), row3.get(3), row3.get(4))
                         ));
 
                 AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
