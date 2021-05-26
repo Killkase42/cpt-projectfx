@@ -1,6 +1,5 @@
 package com.example;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
@@ -12,6 +11,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+
+import static com.example.ControllerCalendar.dateScore;
+import static com.example.ControllerCalendar.isolateDays;
 
 
 public class addAssignmentController {
@@ -75,6 +77,7 @@ public class addAssignmentController {
     }
 
 
+
    /*
     Pre: None
     Post: Gives out error message if a field is not filled correctly
@@ -91,6 +94,22 @@ public class addAssignmentController {
         alert.setContentText(newLine.toString());
         alert.showAndWait();
         errors.clear();
+
+        // Clearing Fields
+        nameOfAssignment.setText(null);
+        marksAssignment.setText(null);
+        dueDateAssignment.setValue(null);
+        hoursOfAssignment.setText(null);
+
+        // Clearing assignment details showing
+        showAssignmentName.setText(null);
+        showAssignmentDate.setText(null);
+        showAssignmentHours.setText(null);
+        showAssignmentMarks.setText(null);
+        showAssignmentScore.setText(null);
+
+
+
     }
 
     /*
@@ -138,16 +157,23 @@ public class addAssignmentController {
         score = WorkLoadCalculator();
         ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = (score);
 
+// Updating the date score
+        Arrays.fill(dateScore, 0);
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        for (int i = 1; i < assignmentInfo.length; i++) {
+            for (int j = isolateDays(assignmentInfo[i][4]);
+                 j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
+                dateScore[j-1] += Integer.parseInt(assignmentInfo[i][3]);
+            }
+        }
 
+        for (int i = isolateDays(String.valueOf(LocalDate.now()));
+             i <= isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
+         dateScore[i-1] += score;
+         }
+        int printScore = isolateDays(String.valueOf(dueDateAssignment.getValue()));
+        System.out.println(Arrays.toString(dateScore));
 
-        //  for (int i = 0; i < assignmentInfo.length; i++) {
-
-        // Add new row when the assignment was created for assignment with nick
-        // Date assignment was created   for (int j = isolateDays(assignmentInfo[i][2]);
-        //Due date of the assignment       j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
-        //    dateScore[i] += score;
-        //  }
-        // }
 
 
         // Showing assignment details
@@ -155,15 +181,16 @@ public class addAssignmentController {
         showAssignmentMarks.setText(marks + "%");
         showAssignmentDate.setText(String.valueOf(date));
         showAssignmentHours.setText(hours + " Hours");
-        showAssignmentScore.setText("Score: " + ControllerCalendar.dateScore[ControllerCalendar.isolateDays(String.valueOf(dueDateAssignment.getValue()))]);
+        showAssignmentScore.setText("Score: " + dateScore[printScore-1]);
 
         // Adding stuff into one array so that it can upload online
 
-        String[] assignmentInfoUpload = new String[4];
+        String[] assignmentInfoUpload = new String[5];
         assignmentInfoUpload[0] = nameOfAssignment.getText();
         assignmentInfoUpload[1] = marksAssignment.getText();
         assignmentInfoUpload[2] = String.valueOf(dueDateAssignment.getValue());
         assignmentInfoUpload[3] = String.valueOf(score);
+        assignmentInfoUpload[4] = String.valueOf(LocalDate.now());
 
         // Storing assignment to online stuff
         SheetsAPI.UploadAssignment(assignmentInfoUpload);
@@ -174,10 +201,11 @@ public class addAssignmentController {
      Pre: None
      Post: Deciding what the "Submit Assignment" button should do
      */
-    public void checkFieldStatus(ActionEvent event) throws IOException, GeneralSecurityException {
+    public void checkFieldStatus() throws IOException, GeneralSecurityException {
         notFilledField.setVisible(false);
         creationSuccess.setVisible(false);
         incorrectField.setVisible(false);
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
 
         // Error Checking
@@ -187,6 +215,12 @@ public class addAssignmentController {
 
         } else if (!isString(nameOfAssignment)) {
             errors.add("The name of the assignment cannot be only a number!");
+
+        } else {
+            for (int i = 1; i < assignmentInfo.length; i++) {
+             if (nameOfAssignment.getText().equals(assignmentInfo[i][0])) {
+                 errors.add("There is already a assignment with the name \"" + (nameOfAssignment.getText()) + "\"."); }
+            }
 
         }if (dueDateAssignment.getValue() == null) {
             errors.add("The \"Assignment Due-Date\" field has been left blank!");
@@ -202,6 +236,7 @@ public class addAssignmentController {
             errors.add("The weighting of the assignment cannot be more than 10!");
 
 
+        // checking if any errors happened
         } if (errors.size() > 0) {
             error();
 
@@ -210,10 +245,6 @@ public class addAssignmentController {
             storeAssignment();
         }
     }
-
-
-
-
 
 
     /*

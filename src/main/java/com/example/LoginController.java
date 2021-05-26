@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -20,8 +20,8 @@ public class LoginController extends SheetsAPI{
     public TextField PasswordTextField;
     public TextField ShowPasswordTextField;
     public Button ShowPasswordButton;
-
-    static String Username1;
+    public Label ErrorMessage;
+    public Label ErrorMessage1;
 
     static String welcome = "";
     static boolean showingPass = false;
@@ -43,44 +43,34 @@ public class LoginController extends SheetsAPI{
         }
     }
 
-
-
     //validates login information
     public void Validate(ActionEvent event) throws IOException, GeneralSecurityException {
+        PasswordTextField.setText(ShowPasswordTextField.getText());
+
         //gets info from text field
         String Username = UsernameTextField.getText();
         String Password = PasswordTextField.getText();
 
+        ErrorMessage.setVisible(false); // Reset the visibility of the error message.
+        ErrorMessage1.setVisible(false);
 
         //if the fields are empty and tries to validate. Returns an error
         if (Username.isEmpty() || Password.isEmpty()) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("Fields left Empty");
-            alert.showAndWait();
+            ErrorMessage1.setVisible(false);
+            ErrorMessage.setVisible(true);
         } else {
             String Result = ConfirmUserCredentials(Username,Password);
-            if (Result == "Account found, logging you in...") {
-                Username1 = Username;
-
+            if (Result.equals("Account found, logging you in...")) {
                 Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
-
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
 
                 window.setScene(MainScene);
                 window.show();
-
-
-
-
             } else {
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setHeaderText(null);
-                alert.setContentText("Credentials are Incorrect");
-                alert.showAndWait();
+                ErrorMessage.setVisible(false);
+                ErrorMessage1.setVisible(true);
             }
-
         }
     }
 
@@ -95,6 +85,4 @@ public class LoginController extends SheetsAPI{
         window.setScene(MainMenuScene);
         window.show();
     }
-
-
 }
