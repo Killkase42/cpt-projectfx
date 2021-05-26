@@ -12,10 +12,15 @@
     -fx-border-insets: -2;
 }
 
-/* The "User Login" text on the login screen. */
+/* Any text labels. */
 .text-login {
     -fx-background-color :transparent;
     -fx-text-fill: #92A2B9;
+}
+
+.error-message-login, .error-message-login-1, .error-message-create, .error-message-create-1 {
+    -fx-background-color :transparent;
+    -fx-text-fill: #DC143C;
 }
 
 /* The "Login" and "Create Account" buttons on the login screen. */

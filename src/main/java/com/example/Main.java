@@ -22,7 +22,7 @@ public class Main extends Application {
 
 
 
-        primaryStage.setTitle("Hello World");
+        primaryStage.setTitle("CalendarFX");
         primaryStage.setScene(new Scene(root, 800, 600));
         primaryStage.show();
     }
