@@ -168,7 +168,7 @@ public class SheetsAPI {
         ValueRange appendBody = new ValueRange()
                 .setValues(Arrays.asList(
                         Arrays.asList(assignmentData[0], assignmentData[1], assignmentData[2], assignmentData[3],
-                                assignmentData[4])
+                                assignmentData[4], assignmentData[5])
                 ));
 
         AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
@@ -187,7 +187,7 @@ public class SheetsAPI {
     public static String[][] PullAssignments() throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
 
-        String range = "data!D:H";
+        String range = "data!D:I";
 
         ValueRange response = sheetsService.spreadsheets().values()
                 .get(SPREADSHEET_ID, range)
@@ -213,7 +213,7 @@ public class SheetsAPI {
     public static String DeleteAssignment(String[] assignmentToDelete) throws IOException, GeneralSecurityException {
         sheetsService = getSheetsService();
 
-        String range = "data!D:H";
+        String range = "data!D:I";
         String deletionResult = "Specified assignment not found";
         ArrayList<String> checkAssignment = new ArrayList<String>();
         checkAssignment.add(assignmentToDelete[0]);
@@ -221,8 +221,10 @@ public class SheetsAPI {
         checkAssignment.add(assignmentToDelete[2]);
         checkAssignment.add(assignmentToDelete[3]);
         checkAssignment.add(assignmentToDelete[4]);
+        checkAssignment.add(assignmentToDelete[5]);
 
         ArrayList<String> replacer = new ArrayList<String>();
+        replacer.add("");
         replacer.add("");
         replacer.add("");
         replacer.add("");
@@ -245,7 +247,7 @@ public class SheetsAPI {
                     //Clearing the old space in the Sheet
                     for (int i = 1; i <= values.size(); i++) {
                         List<List<Object>> values1 = Arrays.asList(
-                                Arrays.asList("", "", "", "", "")
+                                Arrays.asList("", "", "", "", "", "")
                         );
                         ValueRange body1 = new ValueRange()
                                 .setValues(values1);
@@ -269,7 +271,8 @@ public class SheetsAPI {
             for (List row3 : values) {
                 ValueRange appendBody3 = new ValueRange()
                         .setValues(Arrays.asList(
-                                Arrays.asList(row3.get(0), row3.get(1), row3.get(2), row3.get(3), row3.get(4))
+                                Arrays.asList(row3.get(0), row3.get(1), row3.get(2), row3.get(3), row3.get(4),
+                                        row3.get(5))
                         ));
 
                 AppendValuesResponse appendResult = sheetsService.spreadsheets().values()
@@ -326,7 +329,7 @@ public class SheetsAPI {
         sheetsService = getSheetsService();
 
         //Example of what format the arrays for UploadAssignment method must be in.
-        String[] assignmentInfo = {"Arjuuuuun", "120", "05-20-21", "Hard", "04-20-21"};
+        String[] assignmentInfo = {"Arjuuuuun", "120", "05-20-21", "Hard", "04-20-21", "10"};
 
 //        UploadAssignment(assignmentInfo);
 
