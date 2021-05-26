@@ -36,13 +36,27 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_6_45_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_6_45_p_m___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_7_31_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20_7_31_p_m___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-23_5_02_p_m___Default_Changelist_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-24_6_07_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-24_6_07_p_m___Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/css/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/SheetsAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -100,6 +114,7 @@
         <option value="JavaFXApplication" />
         <option value="Class" />
         <option value="FxmlFile" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -133,7 +148,7 @@
     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
     <property name="full.screen.before.presentation.mode" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/example" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.116009295" />
     <property name="project.structure.side.proportion" value="0.13140604" />
@@ -141,10 +156,6 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/example" />
-      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example\fxml" />
       <recent name="$PROJECT_DIR$/src/main/resources/com/example" />
@@ -155,8 +166,15 @@
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example" />
     </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.example" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example" />
+      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.cpt-projectfx [run]">
@@ -204,9 +222,7 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <list>
@@ -358,6 +374,40 @@
     <MESSAGE value="Fixed .fxml issue." />
     <MESSAGE value="Integrated css and improved login screen UX/UI." />
     <option name="LAST_COMMIT_MESSAGE" value="Integrated css and improved login screen UX/UI." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1622064850618">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1622064850618" />
+    <state x="371" y="88" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1622046215697">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1280.680@0.0.1280.680" timestamp="1622046215697" />
+    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1622046310688">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1622046310688" />
+    <state width="618" height="173" key="GridCell.Tab.0.bottom" timestamp="1622065975556">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="618" height="173" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622065975556" />
+    <state width="618" height="173" key="GridCell.Tab.0.center" timestamp="1622065975556">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="618" height="173" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1622065975556" />
+    <state width="618" height="173" key="GridCell.Tab.0.left" timestamp="1622065975556">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="618" height="173" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1622065975556" />
+    <state width="618" height="173" key="GridCell.Tab.0.right" timestamp="1622065975556">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="618" height="173" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1622065975556" />
+    <state x="342" y="88" key="refactoring.ChangeSignatureDialog" timestamp="1622045772880">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="342" y="88" key="refactoring.ChangeSignatureDialog/0.0.1280.680@0.0.1280.680" timestamp="1622045772880" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -2,12 +2,12 @@ package com.example;
 
 
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,7 +18,12 @@ import java.util.Objects;
 
 public class ControllerCalendar {
 
-    public static Text welcomeText;
+
+
+    @FXML
+    static Label WelcomeUsername;
+
+
 
 
     //Arrays that will be used to store the data of the assignments
@@ -42,6 +47,7 @@ public class ControllerCalendar {
 
 
 
+
 //    public void accessAssignment() throws IOException, GeneralSecurityException {
 //       String[][] assignmentInfo = SheetsAPI.PullAssignments();
 //       for (int i = 1; i < assignmentInfo.length; i++){
@@ -57,14 +63,34 @@ public class ControllerCalendar {
     NOT DONE YET
      */
     public void setText(String username) throws IOException {
-        welcomeText.setText(username);
+        WelcomeUsername.setText(username);
+
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /*
     Pre:None
     Post: Opens the add-assignment pop-up menu
      */
     public void addAssignmentPopUp(ActionEvent event) throws IOException {
+
+
+
+
+
+
 
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
@@ -73,6 +99,7 @@ public class ControllerCalendar {
 
         window.setScene(addAssignmentScene);
         window.show();
+
     }
 
     /*

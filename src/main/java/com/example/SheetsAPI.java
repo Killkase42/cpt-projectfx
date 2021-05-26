@@ -311,6 +311,7 @@ public class SheetsAPI {
                 if (String.valueOf(row.get(0)).equals(enteredUsername)) {
                     if (String.valueOf(row.get(1)).equals(enteredPassword)) {
                         authenticationResult = "Account found, logging you in...";
+
                     } else {
                         authenticationResult = "Password is incorrect";
                     }
