@@ -1,0 +1,223 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"BranchesTreeState\">\n    <expand>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </expand>\n    <select>\n      <path>\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\n        <item name=\"BRANCH:origin/development\" type=\"e8cecc67:BranchNodeDescriptor\" />\n      </path>\n    </select>\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"Fixed SheetsAPI issue.\">\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/css/styles.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/css/styles.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/Login.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/Login.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/LoginController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/LoginController.java\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/css/styles.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/css/styles.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/Login.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/Login.fxml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/tokens/StoredCredential\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/tokens/StoredCredential\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"CodeInsightWorkspaceSettings\">\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\n  </component>\n  <component name=\"ExternalProjectsData\">\n    <projectState path=\"$PROJECT_DIR$\">\n      <ProjectState />\n    </projectState>\n  </component>\n  <component name=\"ExternalProjectsManager\">\n    <system id=\"GRADLE\">\n      <state>\n        <task path=\"$PROJECT_DIR$\">\n          <activation />\n        </task>\n        <projects_view>\n          <tree_state>\n            <expand>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\n              </path>\n              <path>\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\n                <item name=\"Dependencies\" type=\"6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode\" />\n              </path>\n            </expand>\n            <select />\n          </tree_state>\n        </projects_view>\n      </state>\n    </system>\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"JavaFXApplication\" />\n        <option value=\"Class\" />\n        <option value=\"FxmlFile\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Pull.Settings\">\n    <option name=\"BRANCH\" value=\"development\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\n    <property name=\"full.screen.before.presentation.mode\" value=\"false\" />\n    <property name=\"last_directory_selection\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\n    <property name=\"project.structure.proportion\" value=\"0.116009295\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.13140604\" />\n    <property name=\"restartRequiresConfirmation\" value=\"false\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\\fxml\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/calendar\" />\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\n    </key>\n    <key name=\"ExtractSuperBase.RECENT_KEYS\">\n      <recent name=\"com.example\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"com.example\" />\n    </key>\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\n      <recent name=\"com.example\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Gradle.cpt-projectfx [run]\">\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\n      <module name=\"cpt-projectfx.main\" />\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.example.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"MainCalendar\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.calendar.MainCalendar\" />\n      <module name=\"cpt-projectfx.main\" />\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"com.example.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\n      <ExternalSystemSettings>\n        <option name=\"executionName\" />\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\n        <option name=\"scriptParameters\" value=\"--info\" />\n        <option name=\"taskDescriptions\">\n          <list />\n        </option>\n        <option name=\"taskNames\">\n          <list>\n            <option value=\"run\" />\n          </list>\n        </option>\n        <option name=\"vmOptions\" />\n      </ExternalSystemSettings>\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\n      <DebugAllEnabled>false</DebugAllEnabled>\n      <method v=\"2\" />\n    </configuration>\n    <list>\n      <item itemvalue=\"Application.Main\" />\n      <item itemvalue=\"Application.MainCalendar\" />\n      <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\n        <item itemvalue=\"Application.MainCalendar\" />\n        <item itemvalue=\"Application.Main\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"working on storing account info\" />\n      <created>1620660623527</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1620660623527</updated>\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"Improved Sheets API functionality.\">\n      <created>1620936254927</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1620936254927</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"Added method to upload assignments to Sheet.\">\n      <created>1621092667835</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621092667835</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"Added method to upload assignments to Sheet.\">\n      <created>1621092757329</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621092757329</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"Fixed problem with build.gradle.\">\n      <created>1621103078139</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621103078139</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\n      <created>1621210448900</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621210448900</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\n      <created>1621267920813</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621267920813</updated>\n    </task>\n    <task id=\"LOCAL-00007\" summary=\"Created method for deleting assignments.\">\n      <created>1621557231218</created>\n      <option name=\"number\" value=\"00007\" />\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621557231218</updated>\n    </task>\n    <task id=\"LOCAL-00008\" summary=\"Created method for deleting assignments.\">\n      <created>1621557237672</created>\n      <option name=\"number\" value=\"00008\" />\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621557237672</updated>\n    </task>\n    <task id=\"LOCAL-00009\" summary=\"Fixed .fxml issue.\">\n      <created>1621898183691</created>\n      <option name=\"number\" value=\"00009\" />\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621898183691</updated>\n    </task>\n    <task id=\"LOCAL-00010\" summary=\"Integrated css and improved login screen UX/UI.\">\n      <created>1621901192606</created>\n      <option name=\"number\" value=\"00010\" />\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621901192606</updated>\n    </task>\n    <task id=\"LOCAL-00011\" summary=\"Improved account creation screen UX/UI.\">\n      <created>1621957377716</created>\n      <option name=\"number\" value=\"00011\" />\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621957377716</updated>\n    </task>\n    <task id=\"LOCAL-00012\" summary=\"Fixed SheetsAPI issue.\">\n      <created>1621959548191</created>\n      <option name=\"number\" value=\"00012\" />\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1621959548191</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"13\" />\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/development\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"RECENT_FILTERS\">\n      <map>\n        <entry key=\"Branch\">\n          <value>\n            <list>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"master\" />\n                </option>\n              </RecentGroup>\n              <RecentGroup>\n                <option name=\"FILTER_VALUES\">\n                  <option value=\"origin/development\" />\n                </option>\n              </RecentGroup>\n            </list>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\n    <MESSAGE value=\"Improved Sheets API functionality.\" />\n    <MESSAGE value=\"working on storing account info\" />\n    <MESSAGE value=\"Fixed problem with build.gradle.\" />\n    <MESSAGE value=\"Added method to pull assignments in Sheet as array of arrays.\" />\n    <MESSAGE value=\"Created method for deleting assignments.\" />\n    <MESSAGE value=\"Fixed .fxml issue.\" />\n    <MESSAGE value=\"Integrated css and improved login screen UX/UI.\" />\n    <MESSAGE value=\"Improved account creation screen UX/UI.\" />\n    <MESSAGE value=\"Fixed SheetsAPI issue.\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Fixed SheetsAPI issue.\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <breakpoint enabled=\"true\" type=\"java-exception\">\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\n          <option name=\"timeStamp\" value=\"2\" />\n        </breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -29,7 +29,7 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Fixed SheetsAPI issue.">
++    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Error checking for no assignments in systme, and fixed bug for removing a assignment and clicking the button again causing a crash">
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+@@ -38,18 +38,23 @@
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/css/styles.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/Login.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ShowAssignment.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ShowAssignment.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SuccessfulCreateAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SuccessfulCreateAccountController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/showAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/showAssignment.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/Login.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ShowAssignment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ShowAssignment.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/SuccessfulCreateAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/SuccessfulCreateAccountController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/removeAssignment.fxml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/showAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/showAssignment.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+@@ -105,8 +110,8 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="JavaFXApplication" />
+-        <option value="Class" />
+         <option value="FxmlFile" />
++        <option value="Class" />
+       </list>
+     </option>
+   </component>
+@@ -141,7 +146,7 @@
+     <property name="full.screen.before.presentation.mode" value="false" />
+     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/example" />
+     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example" />
+-    <property name="project.structure.last.edited" value="Modules" />
++    <property name="project.structure.last.edited" value="Artifacts" />
+     <property name="project.structure.proportion" value="0.116009295" />
+     <property name="project.structure.side.proportion" value="0.13140604" />
+     <property name="restartRequiresConfirmation" value="false" />
+@@ -153,14 +158,10 @@
+       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
+     </key>
+     <key name="MoveFile.RECENT_KEYS">
+-      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example\fxml" />
+       <recent name="$PROJECT_DIR$/src/main/resources/com/example" />
+       <recent name="$PROJECT_DIR$/src/main/java/com/example" />
+       <recent name="$PROJECT_DIR$/src/main/java/com/example/calendar" />
+       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example" />
+-    </key>
+-    <key name="ExtractSuperBase.RECENT_KEYS">
+-      <recent name="com.example" />
+     </key>
+     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+       <recent name="com.example" />
+@@ -283,49 +284,56 @@
+       <option name="project" value="LOCAL" />
+       <updated>1621267920813</updated>
+     </task>
+-    <task id="LOCAL-00007" summary="Created method for deleting assignments.">
+-      <created>1621557231218</created>
++    <task id="LOCAL-00007" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621554276171</created>
+       <option name="number" value="00007" />
+       <option name="presentableId" value="LOCAL-00007" />
+       <option name="project" value="LOCAL" />
+-      <updated>1621557231218</updated>
++      <updated>1621554276171</updated>
+     </task>
+-    <task id="LOCAL-00008" summary="Created method for deleting assignments.">
+-      <created>1621557237672</created>
++    <task id="LOCAL-00008" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621556945308</created>
+       <option name="number" value="00008" />
+       <option name="presentableId" value="LOCAL-00008" />
+       <option name="project" value="LOCAL" />
+-      <updated>1621557237672</updated>
++      <updated>1621556945308</updated>
+     </task>
+-    <task id="LOCAL-00009" summary="Fixed .fxml issue.">
+-      <created>1621898183691</created>
++    <task id="LOCAL-00009" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621735895011</created>
+       <option name="number" value="00009" />
+       <option name="presentableId" value="LOCAL-00009" />
+       <option name="project" value="LOCAL" />
+-      <updated>1621898183691</updated>
++      <updated>1621735895011</updated>
+     </task>
+-    <task id="LOCAL-00010" summary="Integrated css and improved login screen UX/UI.">
+-      <created>1621901192606</created>
++    <task id="LOCAL-00010" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621807274601</created>
+       <option name="number" value="00010" />
+       <option name="presentableId" value="LOCAL-00010" />
+       <option name="project" value="LOCAL" />
+-      <updated>1621901192606</updated>
++      <updated>1621807274601</updated>
+     </task>
+-    <task id="LOCAL-00011" summary="Improved account creation screen UX/UI.">
+-      <created>1621957377716</created>
++    <task id="LOCAL-00011" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621896474566</created>
+       <option name="number" value="00011" />
+       <option name="presentableId" value="LOCAL-00011" />
+       <option name="project" value="LOCAL" />
+-      <updated>1621957377716</updated>
++      <updated>1621896474566</updated>
+     </task>
+-    <task id="LOCAL-00012" summary="Fixed SheetsAPI issue.">
+-      <created>1621959548191</created>
++    <task id="LOCAL-00012" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621897876589</created>
+       <option name="number" value="00012" />
+       <option name="presentableId" value="LOCAL-00012" />
+       <option name="project" value="LOCAL" />
+-      <updated>1621959548191</updated>
++      <updated>1621897876589</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="Added method to pull assignments in Sheet as array of arrays.">
++      <created>1621958597339</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1621958597339</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
+@@ -378,12 +386,7 @@
+     <MESSAGE value="working on storing account info" />
+     <MESSAGE value="Fixed problem with build.gradle." />
+     <MESSAGE value="Added method to pull assignments in Sheet as array of arrays." />
+-    <MESSAGE value="Created method for deleting assignments." />
+-    <MESSAGE value="Fixed .fxml issue." />
+-    <MESSAGE value="Integrated css and improved login screen UX/UI." />
+-    <MESSAGE value="Improved account creation screen UX/UI." />
+-    <MESSAGE value="Fixed SheetsAPI issue." />
+-    <option name="LAST_COMMIT_MESSAGE" value="Fixed SheetsAPI issue." />
++    <option name="LAST_COMMIT_MESSAGE" value="Added method to pull assignments in Sheet as array of arrays." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: build/resources/main/com/example/fxml/showAssignment.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<?import javafx.geometry.Insets?>\n<?import javafx.scene.control.Button?>\n<?import javafx.scene.control.ComboBox?>\n<?import javafx.scene.layout.ColumnConstraints?>\n<?import javafx.scene.layout.GridPane?>\n<?import javafx.scene.layout.RowConstraints?>\n<?import javafx.scene.text.Text?>\n\n<GridPane maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"400.0\" prefWidth=\"600.0\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.ShowAssignment\">\n  <columnConstraints>\n    <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\n    <ColumnConstraints hgrow=\"SOMETIMES\" minWidth=\"10.0\" prefWidth=\"100.0\" />\n  </columnConstraints>\n  <rowConstraints>\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n    <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n      <RowConstraints minHeight=\"10.0\" prefHeight=\"30.0\" vgrow=\"SOMETIMES\" />\n  </rowConstraints>\n   <children>\n      <Text fx:id=\"assignmentName\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" wrappingWidth=\"193.22900390625\" GridPane.columnIndex=\"1\" />\n      <Text fx:id=\"assignmentMarks\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" wrappingWidth=\"194.22900390625\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"1\" />\n      <Text fx:id=\"assignmentDate\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" wrappingWidth=\"187.22900390625\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"2\" />\n      <Text fx:id=\"assignmentScore\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" wrappingWidth=\"189.22900390625\" GridPane.columnIndex=\"1\" GridPane.rowIndex=\"3\" />\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Assignment details screen\" underline=\"true\">\n         <GridPane.margin>\n            <Insets bottom=\"50.0\" />\n         </GridPane.margin></Text>\n      <Text strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Please select the name of the assignment you would like to view the details of below:\" wrappingWidth=\"291.09716796875\">\n         <GridPane.margin>\n            <Insets top=\"50.0\" />\n         </GridPane.margin>\n      </Text>\n      <Button mnemonicParsing=\"false\" onAction=\"#setTextDetails\" text=\"Check details of assignment\" GridPane.rowIndex=\"2\" />\n      <ComboBox fx:id=\"selectedAssignment\" onMouseClicked=\"#comboBoxAssign\" prefHeight=\"26.0\" prefWidth=\"254.0\" promptText=\"Select assignment to show details\" GridPane.rowIndex=\"1\" />\n   </children>\n</GridPane>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/resources/main/com/example/fxml/showAssignment.fxml b/build/resources/main/com/example/fxml/showAssignment.fxml
+--- a/build/resources/main/com/example/fxml/showAssignment.fxml	
++++ b/build/resources/main/com/example/fxml/showAssignment.fxml	
+@@ -1,7 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ 
+ <?import javafx.geometry.Insets?>
+-<?import javafx.scene.control.Button?>
+ <?import javafx.scene.control.ComboBox?>
+ <?import javafx.scene.layout.ColumnConstraints?>
+ <?import javafx.scene.layout.GridPane?>
+@@ -18,12 +17,13 @@
+     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
++      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+   </rowConstraints>
+    <children>
+-      <Text fx:id="assignmentName" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="193.22900390625" GridPane.columnIndex="1" />
+-      <Text fx:id="assignmentMarks" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="194.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+-      <Text fx:id="assignmentDate" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+-      <Text fx:id="assignmentScore" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="189.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="3" />
++      <Text fx:id="assignmentName" strokeType="OUTSIDE" strokeWidth="0.0" text="Name: " wrappingWidth="193.22900390625" GridPane.columnIndex="1" />
++      <Text fx:id="assignmentMarks" strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting: " wrappingWidth="194.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="1" />
++      <Text fx:id="assignmentDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date: " wrappingWidth="187.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
++      <Text fx:id="assignmentScore" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: " wrappingWidth="189.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Assignment details screen" underline="true">
+          <GridPane.margin>
+             <Insets bottom="50.0" />
+@@ -33,7 +33,7 @@
+             <Insets top="50.0" />
+          </GridPane.margin>
+       </Text>
+-      <Button mnemonicParsing="false" onAction="#setTextDetails" text="Check details of assignment" GridPane.rowIndex="2" />
+-      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" prefHeight="26.0" prefWidth="254.0" promptText="Select assignment to show details" GridPane.rowIndex="1" />
++      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="26.0" prefWidth="254.0" promptText="Select assignment to show details" GridPane.rowIndex="1" />
++      <Text fx:id="assigned" strokeType="OUTSIDE" strokeWidth="0.0" text="Assigned on: " wrappingWidth="268.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    </children>
+ </GridPane>

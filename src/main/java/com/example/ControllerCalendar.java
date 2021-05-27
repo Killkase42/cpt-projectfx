@@ -18,6 +18,9 @@ import java.security.GeneralSecurityException;
 import java.util.Arrays;
 import java.util.Objects;
 
+import static com.example.addAssignmentController.Date_To_Days;
+import static com.example.addAssignmentController.deleteYear;
+
 
 public class ControllerCalendar {
 
@@ -36,6 +39,7 @@ public class ControllerCalendar {
     public DatePicker datePicker;
     public Text assignmentOnDate;
     public Text DateScoreOnDate;
+    public Text hoursOnDay;
 
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;
@@ -45,6 +49,7 @@ public class ControllerCalendar {
     public Label May_21;public Label May_22;public Label May_23;public Label May_24;public Label May_25;
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
+
 
 
     /*
@@ -308,7 +313,6 @@ public class ControllerCalendar {
         May_29.setText(newLine29.toString());  May_30.setText(newLine30.toString());  May_31.setText(newLine31.toString());
     }
 
-
     /*
     Pre: None
     Post: Show the date score and the assignments on a specific date
@@ -317,12 +321,18 @@ public class ControllerCalendar {
         // Whenever user selects date
 
         StringBuilder assignmentNames = new StringBuilder();
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
 
         // Does action when user picks a date
         datePicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                String[][] assignmentInfo = new String[0][];
+                try {
+                    assignmentInfo = SheetsAPI.PullAssignments();
+                } catch (IOException | GeneralSecurityException e) {
+                    e.printStackTrace();
+                }
 
                 String date_selected = String.valueOf(datePicker.getValue());
 
@@ -336,7 +346,8 @@ public class ControllerCalendar {
                 int date_selected_number = addAssignmentController
                         .Date_To_Days(addAssignmentController.deleteYear(date_selected)) - 120;
                 // printing datescore out
-                DateScoreOnDate.setText("Date score on " + date_selected + ": " + dateScore[date_selected_number-1]);
+                DateScoreOnDate.setText("Date score: " + dateScore[date_selected_number-1]);
+
 
 
                 // Finding out what assignments on specefic date
@@ -345,18 +356,24 @@ public class ControllerCalendar {
                         // adding it to the text
                         assignmentNames.append(assignmentInfo[i][0]);
                         assignmentNames.append(", ");
+
+                        // calculating the daily hours
+                        int hours = 0;
+                        int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
+                        int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
+                        int daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
+                        hours += daily_Hours;
+                        hoursOnDay.setText("Daily hours: " + hours);
+
                     }
                 }
-                assignmentOnDate.setText("Assignments on " + date_selected + ": " + assignmentNames); }});
-
-
+                assignmentOnDate.setText("Assignments: " + assignmentNames); }});
     }
 
- public static int isolateDays(String date) {
+    public static int isolateDays(String date) {
         int index = date.lastIndexOf("-");
         return Integer.parseInt(date.substring(index + 1));
     }
-
 
     /*
     Pre: None
