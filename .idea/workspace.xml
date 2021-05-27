@@ -37,20 +37,16 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-24__7_10_p_m___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20__12_02_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-20__12_02_p_m___Default_Changelist_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/CreateNewAccountController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/Login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/SheetsAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/CreateNewAccount.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/CreateNewAccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/css/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/CreateNewAccount.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/Login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/Login.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -149,9 +145,8 @@
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/java/com/example" />
-      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example\fxml" />
@@ -160,14 +155,15 @@
       <recent name="$PROJECT_DIR$/src/main/java/com/example/calendar" />
       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example" />
     </key>
-    <key name="ExtractSuperBase.RECENT_KEYS">
-      <recent name="com.example" />
-    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.example" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
+    <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="com.example" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/java/com/example" />
+      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.cpt-projectfx [run]">
@@ -215,9 +211,7 @@
         </option>
         <option name="vmOptions" />
       </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
+      <GradleScriptDebugEnabled>true</GradleScriptDebugEnabled>
       <method v="2" />
     </configuration>
     <list>
@@ -401,6 +395,40 @@
     <MESSAGE value="Added option to show/hide password on account screens." />
     <MESSAGE value="Fixed small issue with show/hide password." />
     <option name="LAST_COMMIT_MESSAGE" value="Fixed small issue with show/hide password." />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1237" height="112" key="GridCell.Tab.0.bottom" timestamp="1622131103607">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622131103607" />
+    <state width="1237" height="112" key="GridCell.Tab.0.center" timestamp="1622131103606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1622131103606" />
+    <state width="1237" height="112" key="GridCell.Tab.0.left" timestamp="1622131103606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1622131103606" />
+    <state width="1237" height="112" key="GridCell.Tab.0.right" timestamp="1622131103606">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1622131103606" />
+    <state width="1237" height="112" key="GridCell.Tab.1.bottom" timestamp="1622131103607">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.1.bottom/0.0.1280.680@0.0.1280.680" timestamp="1622131103607" />
+    <state width="1237" height="112" key="GridCell.Tab.1.center" timestamp="1622131103607">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.1.center/0.0.1280.680@0.0.1280.680" timestamp="1622131103607" />
+    <state width="1237" height="112" key="GridCell.Tab.1.left" timestamp="1622131103607">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.1.left/0.0.1280.680@0.0.1280.680" timestamp="1622131103607" />
+    <state width="1237" height="112" key="GridCell.Tab.1.right" timestamp="1622131103607">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="1237" height="112" key="GridCell.Tab.1.right/0.0.1280.680@0.0.1280.680" timestamp="1622131103607" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

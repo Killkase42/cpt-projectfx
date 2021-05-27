@@ -17,10 +17,15 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
 
+import static com.example.LoginController.Username1;
+
 
 public class ControllerCalendar {
 
     public static Text welcomeText;
+
+    public static Label WelcomeUsername;
+
 
 
     //Arrays that will be used to store the data of the assignments
@@ -48,7 +53,7 @@ public class ControllerCalendar {
     NOT DONE YET
      */
     public void setText(String username) throws IOException {
-        welcomeText.setText(username);
+        WelcomeUsername.setText(username);
     }
 
     /*
@@ -68,6 +73,8 @@ public class ControllerCalendar {
     Post: Opens the add-assignment pop-up menu
      */
     public void addAssignmentPopUp() throws IOException {
+
+        WelcomeUsername.setText(Username1);
 
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);

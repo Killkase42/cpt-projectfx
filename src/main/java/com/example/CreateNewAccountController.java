@@ -19,6 +19,8 @@ import java.util.Objects;
 
 
 public class CreateNewAccountController extends SheetsAPI{
+
+    //variables
     public TextField UsernameTextField;
     public TextField PasswordTextField;
     public TextField ShowPasswordTextField;
@@ -29,6 +31,10 @@ public class CreateNewAccountController extends SheetsAPI{
     static boolean showingPass = false;
 
 
+    /*
+   Pre: None
+   Post: reveals
+    */
     public void ShowPassword(ActionEvent event) {
         if (!showingPass){
             ShowPasswordTextField.setText(PasswordTextField.getText());

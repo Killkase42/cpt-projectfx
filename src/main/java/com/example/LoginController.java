@@ -26,6 +26,8 @@ public class LoginController extends SheetsAPI{
     static String welcome = "";
     static boolean showingPass = false;
 
+    static String Username1;
+
 
     public void ShowPassword(ActionEvent event) {
         if (!showingPass){
@@ -61,6 +63,8 @@ public class LoginController extends SheetsAPI{
         } else {
             String Result = ConfirmUserCredentials(Username,Password);
             if (Result.equals("Account found, logging you in...")) {
+
+                Username1 = Username;
                 Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
