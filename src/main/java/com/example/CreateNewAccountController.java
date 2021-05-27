@@ -33,7 +33,7 @@ public class CreateNewAccountController extends SheetsAPI{
 
     /*
    Pre: None
-   Post: reveals
+   Post: reveals the letters of the password that user entered
     */
     public void ShowPassword(ActionEvent event) {
         if (!showingPass){
@@ -52,6 +52,10 @@ public class CreateNewAccountController extends SheetsAPI{
     }
 
 
+    /*
+   Pre: None
+   Post: creates account
+    */
     public void CreateAccount(ActionEvent event)  throws IOException, GeneralSecurityException {
         if (showingPass && !ShowPasswordTextField.getText().equals("")){
             PasswordTextField.setText(ShowPasswordTextField.getText());
@@ -70,9 +74,11 @@ public class CreateNewAccountController extends SheetsAPI{
             ErrorMessage.setVisible(true);
         } else {
             String Result = UploadAccount(name, passw);
+            //error if the username chosen is already taken
             if (Result == "Account name taken"){
                 ErrorMessage.setVisible(false);
                 ErrorMessage1.setVisible(true);
+                // if everything is valid it makes account and brings user to calender screen
             } else if (Result == "Account successfully created") {
                 Parent SuccessAccountParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene SuccessAccountScene = new Scene(SuccessAccountParent);
@@ -88,7 +94,10 @@ public class CreateNewAccountController extends SheetsAPI{
 
     }
 
-
+    /*
+       Pre: None
+       Post: brings user to login screen
+        */
     public void GoToLogin(ActionEvent event) throws IOException {
         Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Login.fxml")));
         Scene MainScene = new Scene(MainParent);
