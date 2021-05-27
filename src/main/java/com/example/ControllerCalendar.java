@@ -327,6 +327,7 @@ public class ControllerCalendar {
         datePicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //pulls assignment
                 String[][] assignmentInfo = new String[0][];
                 try {
                     assignmentInfo = SheetsAPI.PullAssignments();
@@ -349,6 +350,7 @@ public class ControllerCalendar {
                 DateScoreOnDate.setText("Date score: " + dateScore[date_selected_number-1]);
 
 
+                int hours = 0;
 
                 // Finding out what assignments on specefic date
                 for (int i = 1; i < assignmentInfo.length; i++) {
@@ -358,11 +360,12 @@ public class ControllerCalendar {
                         assignmentNames.append(", ");
 
                         // calculating the daily hours
-                        int hours = 0;
+
                         int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
                         int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
                         int daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
                         hours += daily_Hours;
+                        System.out.println(hours);
                         hoursOnDay.setText("Daily hours: " + hours);
 
                     }

@@ -5,13 +5,19 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
+import java.util.Objects;
 
 import static com.example.ControllerCalendar.dateScore;
 
@@ -156,4 +162,21 @@ public class removeAssignmentController {
 
 
     }
-}
+
+    /*
+    Pre: None
+    Post: Changes screen to the "Assignment Details" Screen
+     */
+    public void goToShowAssignment(ActionEvent event) throws IOException {
+                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/showAssignment.fxml")));
+                Scene MainScene = new Scene(MainParent);
+
+                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+                window.setScene(MainScene);
+                window.show();
+            }
+        }
+
+
+
