@@ -3,6 +3,8 @@ package com.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.text.Text;
@@ -15,13 +17,17 @@ import static com.example.ControllerCalendar.dateScore;
 
 public class removeAssignmentController {
 
+    // success or error
     public Text error;
     public Text noAssignmentsIn;
     public Text removeSuccess;
     public ComboBox<String> selectedAssignment;
 
-
-
+    // Text fields for information
+    public Text score;
+    public Text name;
+    public Text weighting;
+    public Text dueDate;
 
 
     /*
@@ -60,13 +66,14 @@ public class removeAssignmentController {
                 break;
             }
         }
-        // Deleting assignment from Google Sheets
-        String[] delete = new String[5];
+        // Creating info of array to delete
+        String[] delete = new String[6];
         delete[0] = assignmentInfo[id][0];
         delete[1] = assignmentInfo[id][1];
         delete[2] = assignmentInfo[id][2];
         delete[3] = assignmentInfo[id][3];
         delete[4] = assignmentInfo[id][4];
+        delete[5] = assignmentInfo[id][5];
 
         // Confirmation that user has removed the selected assignment
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -74,6 +81,7 @@ public class removeAssignmentController {
         alert.setContentText("Assignment " + "\"" + assignmentInfo[id][0] + ",\"" + "removed successfully.");
         alert.showAndWait();
 
+        // Updating date score
         for (int i = ControllerCalendar.isolateDays(assignmentInfo[id][4]);
                       i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
          dateScore[i-1] -= Integer.parseInt(assignmentInfo[id][3]);
@@ -81,7 +89,13 @@ public class removeAssignmentController {
         System.out.println(Arrays.toString(dateScore));
 
 
+       // Reseting assignments
         selectedAssignment.setValue(null);
+        name.setText("Name: ");
+        weighting.setText("Weighting: ");
+        dueDate.setText("Due Date: ");
+        score.setText("Score: ");
+
         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
 
     }
@@ -97,11 +111,6 @@ public class removeAssignmentController {
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
         String choice = selectedAssignment.getValue();
 
-       //WILL BE USED FOR BUTTON SLECTION IN CALENDAR SCREEN
-        // Checking if no assignmnets in system
-      //  if (assignmentInfo[1][0].isEmpty()) {
-      //      noAssignmentsIn.setVisible(true);
-      //  }
 
        // Checking if assignment was entered correctly
         if (choice == null) {
@@ -115,4 +124,36 @@ public class removeAssignmentController {
             removeAssignment();
         }
     }
+
+    public void textInfoSet()throws GeneralSecurityException, IOException {
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
+
+        // Run code below when selecting a assignment
+        selectedAssignment.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                int id = 0;
+                String choice = selectedAssignment.getValue();
+
+                //Getting the assignment array id
+                for (int i = 1; i < assignmentInfo.length; i++) {
+                    if (assignmentInfo[i][0].equals(choice)) {
+                        id = i;
+                        break;
+                    } }
+
+                name.setText("Name: " + assignmentInfo[id][0]);
+                weighting.setText("Weighting: " + assignmentInfo[id][1] + "%");
+                dueDate.setText("Due-Date: " + assignmentInfo[id][2]);
+                score.setText("Score: " +assignmentInfo[id][3]);
+
+            }
+        });
+
+
+
+
     }
+}
