@@ -24,6 +24,7 @@ public class LoginController extends SheetsAPI{
     public Label ErrorMessage1;
 
     static String welcome = "";
+    static String nameAccount = "";
     static boolean showingPass = false;
 
 
@@ -49,6 +50,8 @@ public class LoginController extends SheetsAPI{
             PasswordTextField.setText(ShowPasswordTextField.getText());
         }
 
+        nameAccount = UsernameTextField.getText();
+
         //gets info from text field
         String Username = UsernameTextField.getText();
         String Password = PasswordTextField.getText();
@@ -66,6 +69,8 @@ public class LoginController extends SheetsAPI{
                 Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/calendarScreen.fxml")));
                 Scene MainScene = new Scene(MainParent);
                 Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+
 
                 window.setScene(MainScene);
                 window.show();

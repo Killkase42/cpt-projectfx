@@ -54,7 +54,7 @@
             <Insets bottom="40.0" left="180.0" />
          </GridPane.margin>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Click the button to the right if you want to see additional details about a assignment" wrappingWidth="396.48681640625" GridPane.rowIndex="3" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Click the button below if you want to see additional details about a assignment" wrappingWidth="396.48681640625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Button mnemonicParsing="false" onAction="#goToShowAssignment" text="Check Assignment Details" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    </children>
 </GridPane>
