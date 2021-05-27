@@ -45,7 +45,9 @@ public class LoginController extends SheetsAPI{
 
     //validates login information
     public void Validate(ActionEvent event) throws IOException, GeneralSecurityException {
-        PasswordTextField.setText(ShowPasswordTextField.getText());
+        if (showingPass && !ShowPasswordTextField.getText().equals("")){
+            PasswordTextField.setText(ShowPasswordTextField.getText());
+        }
 
         //gets info from text field
         String Username = UsernameTextField.getText();
