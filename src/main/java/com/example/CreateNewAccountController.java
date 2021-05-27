@@ -53,7 +53,9 @@ public class CreateNewAccountController extends SheetsAPI{
 
 
     public void CreateAccount(ActionEvent event)  throws IOException, GeneralSecurityException {
-        PasswordTextField.setText(ShowPasswordTextField.getText());
+        if (showingPass && !ShowPasswordTextField.getText().equals("")){
+            PasswordTextField.setText(ShowPasswordTextField.getText());
+        }
 
         //gets info from text field
         String name = UsernameTextField.getText();

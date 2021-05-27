@@ -37,9 +37,13 @@ public class addAssignmentController {
     public Text showAssignmentMarks;
     public Text showAssignmentScore;
     public Text showAssignmentHours;
+    public Text showHoursPerDay;
+    public Text assignmentScore;
 
 
     List<String> errors = new ArrayList<>();
+
+    double daily_Hours;
     /*
     Pre: Text fields for Marks and Hours
     Post: Allows class to change textfield to be only number
@@ -53,7 +57,10 @@ public class addAssignmentController {
 
     }
 
-
+/*
+Pre: NumberTextField
+Post: changes text fields so they are only number
+ */
    public void changeTextField() {
        numberTextField(hoursOfAssignment);
        numberTextField(marksAssignment);
@@ -175,22 +182,26 @@ public class addAssignmentController {
         System.out.println(Arrays.toString(dateScore));
 
 
-
         // Showing assignment details
         showAssignmentName.setText(name);
         showAssignmentMarks.setText(marks + "%");
-        showAssignmentDate.setText(String.valueOf(date));
-        showAssignmentHours.setText(hours + " Hours");
-        showAssignmentScore.setText("Score: " + dateScore[printScore-1]);
+        showAssignmentDate.setText(date + "| " +
+                Math.abs(LocalDate.now().getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
+        showAssignmentHours.setText(hours + " Total Hours");
+        showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printScore-1]);
+        showHoursPerDay.setText(Math.round(daily_Hours) + " Hours per day");
+        assignmentScore.setText(score + " Score");
+
 
         // Adding stuff into one array so that it can upload online
 
-        String[] assignmentInfoUpload = new String[5];
+        String[] assignmentInfoUpload = new String[6];
         assignmentInfoUpload[0] = nameOfAssignment.getText();
         assignmentInfoUpload[1] = marksAssignment.getText();
         assignmentInfoUpload[2] = String.valueOf(dueDateAssignment.getValue());
         assignmentInfoUpload[3] = String.valueOf(score);
         assignmentInfoUpload[4] = String.valueOf(LocalDate.now());
+        assignmentInfoUpload[5] = hours;
 
         // Storing assignment to online stuff
         SheetsAPI.UploadAssignment(assignmentInfoUpload);
@@ -224,6 +235,10 @@ public class addAssignmentController {
 
         }if (dueDateAssignment.getValue() == null) {
             errors.add("The \"Assignment Due-Date\" field has been left blank!");
+
+        } else if (dueDateAssignment.getValue().isBefore(LocalDate.now()) || dueDateAssignment.getValue().equals(LocalDate.now())){
+            errors.add("You cannot have a assignment be due today, or a day in the past.");
+
 
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
             errors.add("The \"Hours of Assignment\" field has been left blank!");
@@ -265,7 +280,7 @@ public class addAssignmentController {
         // Adding daily hours to score
         // Calculation of Daily Hours
         double totalHours = Double.parseDouble(hoursOfAssignment.getText());
-        double daily_Hours = totalHours / (assignmentDueDate - currentDate);
+        daily_Hours = totalHours / (assignmentDueDate - currentDate);
 
         // Adding hours to score
         if (daily_Hours <= 1) {

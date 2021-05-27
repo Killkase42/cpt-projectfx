@@ -2,31 +2,26 @@ package com.example;
 
 
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
-import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.Objects;
-
-import static com.example.LoginController.Username1;
 
 
 public class ControllerCalendar {
 
     public static Text welcomeText;
-
-    public static Label WelcomeUsername;
-
-
 
     //Arrays that will be used to store the data of the assignments
     public static String[] assignmentName = new String[0];
@@ -37,6 +32,10 @@ public class ControllerCalendar {
 
     public static int[] dateScore = new int[31];
 
+    // For showing details on specific day
+    public DatePicker datePicker;
+    public Text assignmentOnDate;
+    public Text DateScoreOnDate;
 
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;
@@ -47,13 +46,14 @@ public class ControllerCalendar {
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
 
+
     /*
     Pre: None
     Post: Sets a welcome message to the main calendar screen
     NOT DONE YET
      */
     public void setText(String username) throws IOException {
-        WelcomeUsername.setText(username);
+        welcomeText.setText(username);
     }
 
     /*
@@ -73,8 +73,6 @@ public class ControllerCalendar {
     Post: Opens the add-assignment pop-up menu
      */
     public void addAssignmentPopUp() throws IOException {
-
-        WelcomeUsername.setText(Username1);
 
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
@@ -108,7 +106,6 @@ public class ControllerCalendar {
             window.setScene(addAssignmentScene);
             window.show();
         }
-
 
     /*
     Pre: None
@@ -154,23 +151,10 @@ public class ControllerCalendar {
      Post: Adds any assignments to the calendar
      */
     public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
-
-
-        Arrays.fill(dateScore, 0);
+        updateDateScore();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
-       for (int i = 1; i < assignmentInfo.length; i++) {
-     for (int j = isolateDays(assignmentInfo[i][4]);
-              j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
-                dateScore[j-1] += Integer.parseInt(assignmentInfo[i][3]);
-           }
-        }
-
-        System.out.println(Arrays.toString(dateScore));
-
 
         // welcomeText.setText(LoginController.welcome);
-
-        System.out.println(addAssignmentController.deleteYear(String.valueOf(LocalDate.now())));
         May_1.setText("");May_2.setText("");May_3.setText("");May_4.setText("");May_5.setText("");May_6.setText("");
         May_7.setText("");May_8.setText("");May_9.setText("");May_10.setText("");May_11.setText("");May_12.setText("");
         May_13.setText("");May_14.setText("");May_15.setText("");May_16.setText("");May_17.setText("");May_18.setText("");May_19.setText("");
@@ -325,8 +309,70 @@ public class ControllerCalendar {
     }
 
 
-    public static int isolateDays(String date) {
+    /*
+    Pre: None
+    Post: Show the date score and the assignments on a specific date
+     */
+    public void showAssignmentName_dateScore() throws GeneralSecurityException, IOException {
+        // Whenever user selects date
+
+        StringBuilder assignmentNames = new StringBuilder();
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
+        // Does action when user picks a date
+        datePicker.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                String date_selected = String.valueOf(datePicker.getValue());
+
+               //updates dateScore
+                try {
+                    updateDateScore();
+                } catch (GeneralSecurityException | IOException e) {
+                    e.printStackTrace();
+                }
+                // Turning date selected into a number that can be identified to datescore
+                int date_selected_number = addAssignmentController
+                        .Date_To_Days(addAssignmentController.deleteYear(date_selected)) - 120;
+                // printing datescore out
+                DateScoreOnDate.setText("Date score on " + date_selected + ": " + dateScore[date_selected_number-1]);
+
+
+                // Finding out what assignments on specefic date
+                for (int i = 1; i < assignmentInfo.length; i++) {
+                    if (date_selected.equals(assignmentInfo[i][2])) {
+                        // adding it to the text
+                        assignmentNames.append(assignmentInfo[i][0]);
+                        assignmentNames.append(", ");
+                    }
+                }
+                assignmentOnDate.setText("Assignments on " + date_selected + ": " + assignmentNames); }});
+
+
+    }
+
+ public static int isolateDays(String date) {
         int index = date.lastIndexOf("-");
         return Integer.parseInt(date.substring(index + 1));
     }
+
+
+    /*
+    Pre: None
+    Post: Updates the date score
+     */
+    public static void updateDateScore() throws GeneralSecurityException, IOException {
+        Arrays.fill(dateScore, 0);
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        for (int i = 1; i < assignmentInfo.length; i++) {
+            for (int j = isolateDays(assignmentInfo[i][4]);
+                 j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
+                dateScore[j-1] += Integer.parseInt(assignmentInfo[i][3]);
+            }
+        }
+    }
 }
+
+
+

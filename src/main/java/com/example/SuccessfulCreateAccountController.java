@@ -12,7 +12,7 @@ import java.util.Objects;
 
 public class SuccessfulCreateAccountController {
     public void BackToMainMenu(ActionEvent event) throws IOException {
-        Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/main.fxml")));
+        Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Login.fxml")));
         Scene MainScene = new Scene(MainParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();

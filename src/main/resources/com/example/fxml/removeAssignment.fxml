@@ -8,28 +8,50 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Text?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="157.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" prefWidth="300.0" />
     <ColumnConstraints hgrow="SOMETIMES" prefWidth="300.0" />
   </columnConstraints>
   <rowConstraints>
       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
-    <RowConstraints vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="70.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
+    <RowConstraints maxHeight="42.0" minHeight="26.0" prefHeight="26.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button alignment="CENTER" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" text="Remove Assignment" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button alignment="CENTER" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" text="Remove Assignment" GridPane.rowIndex="2">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
          <GridPane.margin>
-            <Insets bottom="10.0" left="90.0" right="10.0" top="10.0" />
+            <Insets bottom="10.0" right="10.0" top="10.0" />
          </GridPane.margin>
       </Button>
       <Text fx:id="error" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="You have entered something incorrectly. Please make sure you have typed the exact assignment name" visible="false" />
       <Text fx:id="noAssignmentsIn" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
       <Text fx:id="removeSuccess" fill="GREEN" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
-      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" GridPane.rowIndex="1" />
+      <ComboBox fx:id="selectedAssignment" onMouseClicked="#comboBoxAssign" onMouseEntered="#textInfoSet" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" GridPane.rowIndex="1" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Removal of Assignment" underline="true" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Details of assignment that will be removed:" underline="true" GridPane.columnIndex="1" />
+      <Text fx:id="score" strokeType="OUTSIDE" strokeWidth="0.0" text="Score:" wrappingWidth="168.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="-40.0" left="180.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="name" strokeType="OUTSIDE" strokeWidth="0.0" text="Name:" wrappingWidth="177.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="40.0" left="1.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="weighting" strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting:" wrappingWidth="172.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="40.0" />
+         </GridPane.margin>
+      </Text>
+      <Text fx:id="dueDate" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date:" wrappingWidth="168.22900390625" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="40.0" left="180.0" />
+         </GridPane.margin>
+      </Text>
    </children>
 </GridPane>
