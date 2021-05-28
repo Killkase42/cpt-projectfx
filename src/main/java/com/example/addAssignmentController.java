@@ -109,13 +109,13 @@ Post: changes text fields so they are only number
         hoursOfAssignment.setText(null);
 
         // Clearing assignment details showing
-        showAssignmentName.setText(null);
-        showAssignmentDate.setText(null);
-        showAssignmentHours.setText(null);
-        showAssignmentMarks.setText(null);
-        showAssignmentScore.setText(null);
-
-
+        showAssignmentName.setText("Name: ");
+        showAssignmentDate.setText("Due Date");
+        showAssignmentHours.setText("Total hours: ");
+        showAssignmentMarks.setText("Weighting: ");
+        showAssignmentScore.setText("Date Score: ");
+        showHoursPerDay.setText("Hours per day: ");
+        assignmentScore.setText("Score: ");
 
     }
 
@@ -142,18 +142,6 @@ Post: changes text fields so they are only number
         String hours;
         int score;
 
-        //Expand the array to make more room
-        ControllerCalendar.assignmentName = Arrays.copyOf(ControllerCalendar.assignmentName, ControllerCalendar.assignmentName.length + 1);
-        ControllerCalendar.assignmentMarks = Arrays.copyOf(ControllerCalendar.assignmentMarks, ControllerCalendar.assignmentMarks.length + 1);
-        ControllerCalendar.assignmentDueDate = Arrays.copyOf(ControllerCalendar.assignmentDueDate, ControllerCalendar.assignmentDueDate.length + 1);
-        ControllerCalendar.assignmentHours = Arrays.copyOf(ControllerCalendar.assignmentHours, ControllerCalendar.assignmentHours.length + 1);
-        ControllerCalendar.assignmentScore = Arrays.copyOf(ControllerCalendar.assignmentScore, ControllerCalendar.assignmentScore.length + 1);
-
-        // adding the variables to the arrays
-        ControllerCalendar.assignmentName[ControllerCalendar.assignmentName.length - 1] = nameOfAssignment.getText();
-        ControllerCalendar.assignmentMarks[ControllerCalendar.assignmentMarks.length - 1] = marksAssignment.getText();
-        ControllerCalendar.assignmentDueDate[ControllerCalendar.assignmentDueDate.length - 1] = String.valueOf(dueDateAssignment.getValue());
-        ControllerCalendar.assignmentHours[ControllerCalendar.assignmentHours.length - 1] = hoursOfAssignment.getText();
 
 
         //Getting the assignment details in memory
@@ -162,7 +150,6 @@ Post: changes text fields so they are only number
         date = dueDateAssignment.getValue();
         hours = hoursOfAssignment.getText();
         score = WorkLoadCalculator();
-        ControllerCalendar.assignmentScore[ControllerCalendar.assignmentScore.length-1] = (score);
 
 // Updating the date score
         Arrays.fill(dateScore, 0);
@@ -178,19 +165,19 @@ Post: changes text fields so they are only number
              i <= isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
          dateScore[i-1] += score;
          }
+
         int printScore = isolateDays(String.valueOf(dueDateAssignment.getValue()));
-        System.out.println(Arrays.toString(dateScore));
 
 
         // Showing assignment details
-        showAssignmentName.setText(name);
-        showAssignmentMarks.setText(marks + "%");
-        showAssignmentDate.setText(date + "| " +
+        showAssignmentName.setText("Name: "+name);
+        showAssignmentMarks.setText("Weighting: " + marks + "%");
+        showAssignmentDate.setText("Due Date: " + date + " | " +
                 Math.abs(LocalDate.now().getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
-        showAssignmentHours.setText(hours + " Total Hours");
+        showAssignmentHours.setText("Total Hours: "+hours);
         showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printScore-1]);
-        showHoursPerDay.setText(Math.round(daily_Hours) + " Hours per day");
-        assignmentScore.setText(score + " Score");
+        showHoursPerDay.setText("Hours per day: "+ Math.round(daily_Hours));
+        assignmentScore.setText("Score:" + score);
 
 
         // Adding stuff into one array so that it can upload online
@@ -213,12 +200,20 @@ Post: changes text fields so they are only number
      Post: Deciding what the "Submit Assignment" button should do
      */
     public void checkFieldStatus() throws IOException, GeneralSecurityException {
+        int numberOfAssignments = 0;
+
+
         notFilledField.setVisible(false);
         creationSuccess.setVisible(false);
         incorrectField.setVisible(false);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
-
+// Checking for multiple assignments on selected date
+        for (int i = 1; i < assignmentInfo.length; i++) {
+            if (dueDateAssignment.getValue().equals(LocalDate.parse(assignmentInfo[i][2]))) {
+                numberOfAssignments += 1;
+            }
+        }
         // Error Checking
         // Checks for a field not filled out
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
@@ -243,16 +238,24 @@ Post: changes text fields so they are only number
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
             errors.add("The \"Hours of Assignment\" field has been left blank!");
 
+        } else if (hoursOfAssignment.getText().equals("0")) {
+            errors.add("The hours to complete the assignment cannot be 0!");
+
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
             errors.add("The \"Weighting of assignment\" field has been left blank!");
+        } else if (marksAssignment.getText().equals("0")) {
+            errors.add("The weighting of the assignment cannot be 0!");
 
             //Checks if field is filled out incorrectly
         } else if (Integer.parseInt(marksAssignment.getText()) > 10) {
             errors.add("The weighting of the assignment cannot be more than 10!");
 
+            System.out.println(numberOfAssignments);
+        }  if (numberOfAssignments > 3) {
+            errors.add("The date you have selected already has 3 assignments. Please pick another day");
 
-        // checking if any errors happened
-        } if (errors.size() > 0) {
+            // checking if any errors happened
+        }  if (errors.size() > 0) {
             error();
 
         } else {

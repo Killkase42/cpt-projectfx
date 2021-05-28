@@ -25,13 +25,7 @@ import static com.example.addAssignmentController.deleteYear;
 public class ControllerCalendar {
 
     public static Text welcomeText;
-
-    //Arrays that will be used to store the data of the assignments
-    public static String[] assignmentName = new String[0];
-    public static String[] assignmentMarks = new String[0];
-    public static String[] assignmentDueDate = new String[0];
-    public static String[] assignmentHours = new String[0];
-    public static int[] assignmentScore = new int[0];
+    public Text ChangeableNameDisplay;
 
     public static int[] dateScore = new int[31];
 
@@ -40,6 +34,7 @@ public class ControllerCalendar {
     public Text assignmentOnDate;
     public Text DateScoreOnDate;
     public Text hoursOnDay;
+    public Text rating;
 
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;
@@ -49,8 +44,6 @@ public class ControllerCalendar {
     public Label May_21;public Label May_22;public Label May_23;public Label May_24;public Label May_25;
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
-
-
 
     /*
     Pre: None
@@ -156,6 +149,9 @@ public class ControllerCalendar {
      Post: Adds any assignments to the calendar
      */
     public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
+        // THIS IS WHAT CHANGES THE NAME FOR THE PERSON THAT LOGGED IN
+        ChangeableNameDisplay.setText(LoginController.nameAccount);
+
         updateDateScore();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
@@ -327,6 +323,7 @@ public class ControllerCalendar {
         datePicker.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //pulls assignment
                 String[][] assignmentInfo = new String[0][];
                 try {
                     assignmentInfo = SheetsAPI.PullAssignments();
@@ -349,6 +346,7 @@ public class ControllerCalendar {
                 DateScoreOnDate.setText("Date score: " + dateScore[date_selected_number-1]);
 
 
+                int hours = 0;
 
                 // Finding out what assignments on specefic date
                 for (int i = 1; i < assignmentInfo.length; i++) {
@@ -358,16 +356,37 @@ public class ControllerCalendar {
                         assignmentNames.append(", ");
 
                         // calculating the daily hours
-                        int hours = 0;
+
                         int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
                         int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
                         int daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
                         hours += daily_Hours;
+                        System.out.println(hours);
                         hoursOnDay.setText("Daily hours: " + hours);
 
                     }
                 }
+                // selecting rating
+                if (dateScore[date_selected_number-1] <= 20) {
+                    rating.setText("Rating: Very easy");
+                } else if (dateScore[date_selected_number-1] > 20 & dateScore[date_selected_number-1] <= 30) {
+                    rating.setText("Rating: Easy");
+                } else if (dateScore[date_selected_number-1] > 30 & dateScore[date_selected_number-1] <= 40) {
+                    rating.setText("Rating: Medium");
+                } else if (dateScore[date_selected_number-1] > 40 & dateScore[date_selected_number-1] <= 50) {
+                    rating.setText("Rating: Hard");
+                } else if (dateScore[date_selected_number-1] > 50 & dateScore[date_selected_number-1] <= 60) {
+                    rating.setText("Rating: Very Hard");
+                } else if (dateScore[date_selected_number-1] > 60) {
+                    rating.setText("Rating: Extreme (recommend removing/reassigning a assignment)");
+                }
+
+
                 assignmentOnDate.setText("Assignments: " + assignmentNames); }});
+
+
+
+
     }
 
     public static int isolateDays(String date) {
