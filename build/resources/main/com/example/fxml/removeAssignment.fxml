@@ -6,6 +6,7 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
 <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="194.0" prefWidth="785.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
@@ -56,5 +57,10 @@
       </Text>
       <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Click the button below if you want to see additional details about a assignment" wrappingWidth="396.48681640625" GridPane.columnIndex="1" GridPane.rowIndex="2" />
       <Button mnemonicParsing="false" onAction="#goToShowAssignment" text="Check Assignment Details" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+      <Line endX="291.29290771484375" endY="61.79289245605469" startX="-100.0" startY="60.772064208984375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets top="72.0" />
+         </GridPane.margin>
+      </Line>
    </children>
 </GridPane>

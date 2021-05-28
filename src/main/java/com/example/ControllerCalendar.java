@@ -28,13 +28,6 @@ public class ControllerCalendar {
     public Text ChangeableNameDisplay;
 
 
-    //Arrays that will be used to store the data of the assignments
-    public static String[] assignmentName = new String[0];
-    public static String[] assignmentMarks = new String[0];
-    public static String[] assignmentDueDate = new String[0];
-    public static String[] assignmentHours = new String[0];
-    public static int[] assignmentScore = new int[0];
-
     public static int[] dateScore = new int[31];
 
     // For showing details on specific day
@@ -42,6 +35,7 @@ public class ControllerCalendar {
     public Text assignmentOnDate;
     public Text DateScoreOnDate;
     public Text hoursOnDay;
+    public Text rating;
 
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;
@@ -51,8 +45,6 @@ public class ControllerCalendar {
     public Label May_21;public Label May_22;public Label May_23;public Label May_24;public Label May_25;
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
-
-
 
     /*
     Pre: None
@@ -378,7 +370,27 @@ public class ControllerCalendar {
 
                     }
                 }
+                // selecting rating
+                if (dateScore[date_selected_number-1] <= 20) {
+                    rating.setText("Rating: Very easy");
+                } else if (dateScore[date_selected_number-1] > 20 & dateScore[date_selected_number-1] <= 30) {
+                    rating.setText("Rating: Easy");
+                } else if (dateScore[date_selected_number-1] > 30 & dateScore[date_selected_number-1] <= 40) {
+                    rating.setText("Rating: Medium");
+                } else if (dateScore[date_selected_number-1] > 40 & dateScore[date_selected_number-1] <= 50) {
+                    rating.setText("Rating: Hard");
+                } else if (dateScore[date_selected_number-1] > 50 & dateScore[date_selected_number-1] <= 60) {
+                    rating.setText("Rating: Very Hard");
+                } else if (dateScore[date_selected_number-1] > 60) {
+                    rating.setText("Rating: Extreme (recommend removing/reassigning a assignment)");
+                }
+
+
                 assignmentOnDate.setText("Assignments: " + assignmentNames); }});
+
+
+
+
     }
 
     public static int isolateDays(String date) {
