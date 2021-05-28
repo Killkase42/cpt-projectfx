@@ -25,7 +25,7 @@
    <children>
       <Button mnemonicParsing="false" onAction="#addAssignmentPopUp" text="Add Assignment" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets bottom="200.0" />
+            <Insets bottom="150.0" />
          </GridPane.margin></Button>
       <Button mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" text="Remove Assignment" GridPane.rowIndex="1">
          <GridPane.margin>
@@ -584,10 +584,16 @@
             <Insets left="235.0" top="30.0" />
          </GridPane.margin>
       </Text>
-      <Button mnemonicParsing="false" text="Help" />
+      <Text fx:id="ChangeableNameDisplay" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="72.0" GridPane.columnIndex="1" />
+      <Label fx:id="nameWelcoming" prefHeight="17.0" prefWidth="134.0" text="       Welcome, comrade" />
+
+      <Button mnemonicParsing="false" text="Help" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="450.0" />
+         </GridPane.margin></Button>
       <Button mnemonicParsing="false" text="Score vs Date Score" GridPane.rowIndex="1">
          <GridPane.margin>
-            <Insets bottom="400.0" />
+            <Insets bottom="330.0" />
          </GridPane.margin>
       </Button>
    </children>

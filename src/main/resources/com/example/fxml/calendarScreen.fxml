@@ -584,6 +584,9 @@
             <Insets left="235.0" top="30.0" />
          </GridPane.margin>
       </Text>
+      <Text fx:id="ChangeableNameDisplay" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="72.0" GridPane.columnIndex="1" />
+      <Label fx:id="nameWelcoming" prefHeight="17.0" prefWidth="134.0" text="       Welcome, comrade" />
+
       <Button mnemonicParsing="false" text="Help" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="450.0" />
