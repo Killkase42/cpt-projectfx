@@ -1,25 +1,23 @@
+com/example/mainController2.java
+ com.example.mainController2
+com/example/CreateNewAccountController.java
+ com.example.CreateNewAccountController
+com/example/Main.java
+ com.example.Main
+com/example/LoginController.java
+ com.example.LoginController
+com/example/SheetsAPI.java
+ com.example.SheetsAPI
 com/example/ControllerCalendar.java
  com.example.ControllerCalendar
  com.example.ControllerCalendar$1
 com/example/removeAssignmentController.java
  com.example.removeAssignmentController
  com.example.removeAssignmentController$1
-com/example/LoginController.java
- com.example.LoginController
-com/example/SuccessfulLoginController.java
- com.example.SuccessfulLoginController
-com/example/SheetsAPI.java
- com.example.SheetsAPI
+com/example/HelpController.java
+ com.example.HelpController
 com/example/addAssignmentController.java
  com.example.addAssignmentController
 com/example/ShowAssignment.java
  com.example.ShowAssignment
  com.example.ShowAssignment$1
-com/example/Main.java
- com.example.Main
-com/example/CreateNewAccountController.java
- com.example.CreateNewAccountController
-com/example/mainController2.java
- com.example.mainController2
-com/example/SuccessfulCreateAccountController.java
- com.example.SuccessfulCreateAccountController
