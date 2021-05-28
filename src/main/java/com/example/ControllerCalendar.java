@@ -25,8 +25,6 @@ import static com.example.addAssignmentController.deleteYear;
 public class ControllerCalendar {
 
     public static Text welcomeText;
-    public Text ChangeableNameDisplay;
-
 
     public static int[] dateScore = new int[31];
 
@@ -53,7 +51,6 @@ public class ControllerCalendar {
      */
     public void setText(String username) throws IOException {
         welcomeText.setText(username);
-
     }
 
     /*
@@ -151,11 +148,6 @@ public class ControllerCalendar {
      Post: Adds any assignments to the calendar
      */
     public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
-
-        // THIS IS WHAT CHANGES THE NAME FOR THE PERSON THAT LOGGED IN
-        ChangeableNameDisplay.setText(LoginController.nameAccount);
-
-
         updateDateScore();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
