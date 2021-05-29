@@ -3,7 +3,7 @@
     -fx-background-color : #314254;
 }
 
-.foreground-login, .foreground-create-account {
+.foreground-login, .foreground-create-account, .background-remove {
     -fx-background-color : #253648;
     -fx-border-style: solid;
     -fx-border-radius: 3 3 3 3;
@@ -12,8 +12,15 @@
     -fx-border-insets: -2;
 }
 
+/* Any lines */
+.massiveLineThing {
+    -fx-background-color :transparent;
+    -fx-fill: #92A2B9;
+}
+
 /* Any text labels. */
-.text-login {
+.text-login, .text-remove-name, .text-remove-weighting, .text-remove-due, .text-remove-assigned,
+    .text-remove-assignment, .text-remove-score, .text-remove-total, .text-remove-daily {
     -fx-background-color :transparent;
     -fx-text-fill: #92A2B9;
 }
@@ -23,8 +30,123 @@
     -fx-text-fill: #DC143C;
 }
 
-/* The "Login" and "Create Account" buttons on the login screen. */
-.button-login, .button-create-account {
+/* Any dropdown menus. */
+.dropdown-assignment-removal{
+    -fx-background-color :#314254;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #445768;
+    -fx-text-fill: #445768;
+
+}
+
+.dropdown-assignment-removal .list-cell {
+    -fx-background-color: #253648;
+    -fx-text-fill: #445768;
+}
+
+.combo-box-popup .list-cell:filled:hover
+{
+    -fx-border-style: solid;
+    -fx-border-width: 2 1 1 1 px;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
+}
+
+.combo-box-popup .list-cell:filled:pressed
+{
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-color: #3A7E7F;
+    -fx-text-fill: #3A7E7F;
+}
+
+.dropdown-assignment-removal .list-view {
+    -fx-background-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .track
+{
+    -fx-background-color: #314254;
+    -fx-border-style: solid;
+    -fx-border-width: 1 px;
+    -fx-border-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .thumb
+{
+    -fx-background-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .thumb:hover
+{
+    -fx-background-color: #8192A4;
+}
+
+.dropdown-assignment-removal .list-view .thumb:pressed
+{
+    -fx-background-color: #3A7E7F;
+}
+
+.dropdown-assignment-removal .list-view .increment-button
+{
+    -fx-background-color: #314254;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 0 1 0;
+    -fx-border-width: 1 2 2 2 px;
+    -fx-border-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .increment-button:hover
+{
+    -fx-background-color: #8192A4;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 0 1 0;
+    -fx-border-width: 1 2 2 2 px;
+    -fx-border-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .increment-button:pressed
+{
+    -fx-background-color: #3A7E7F;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 0 1 0;
+    -fx-border-width: 1 2 2 2 px;
+    -fx-border-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .decrement-button
+{
+    -fx-background-color: #314254;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 1 0 0;
+    -fx-border-width: 2 2 1 2 px;
+    -fx-border-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .decrement-button:hover
+{
+    -fx-background-color: #8192A4;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 1 0 0;
+    -fx-border-width: 2 2 1 2 px;
+    -fx-border-color: #445768;
+}
+
+.dropdown-assignment-removal .list-view .decrement-button:pressed
+{
+    -fx-background-color: #3A7E7F;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 1 0 0;
+    -fx-border-width: 2 2 1 2 px;
+    -fx-border-color: #445768;
+}
+
+
+/* Button style 1 (button). */
+.button-login, .button-create-account, .button-remove-information, .button-remove-assignment {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -34,7 +156,7 @@
     -fx-text-fill: #445768;
 }
 
-.button-login:hover, .button-create-account:hover {
+.button-login:hover, .button-create-account:hover, .button-remove-information:hover, .button-remove-assignment:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -44,7 +166,8 @@
     -fx-text-fill: #8192A4;
 }
 
-.button-login:pressed, .button-create-account:pressed {
+.button-login:pressed, .button-create-account:pressed, .button-remove-information:pressed,
+    .button-remove-assignment:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -54,6 +177,9 @@
     -fx-text-fill: #3A7E7F;
 }
 
+
+
+/* Button style 2 (text with underline). */
 .button-to-create-account, .button-to-login, .button-to-show-password-login, .button-to-show-password-create {
     -fx-background-color :transparent;
     -fx-background-radius :  12;

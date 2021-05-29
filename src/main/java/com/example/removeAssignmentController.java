@@ -5,21 +5,21 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
+import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Objects;
 
 import static com.example.ControllerCalendar.dateScore;
+import static com.example.addAssignmentController.Date_To_Days;
+import static com.example.addAssignmentController.deleteYear;
 
 public class removeAssignmentController {
 
@@ -30,11 +30,21 @@ public class removeAssignmentController {
     public ComboBox<String> selectedAssignment;
 
     // Text fields for information
-    public Text score;
-    public Text name;
-    public Text weighting;
-    public Text dueDate;
+    public Label nameImport;
+    public Label weightingImport;
+    public Label dueDateImport;
+    public Label assignmentScoreImport;
+    public Label assignedImport;
+    public Label dateScoreImport;
+    public Label totalHoursImport;
+    public Label dailyHoursImport;
 
+
+    //The more info button.
+    public Button informationButton;
+
+    // PRESENTING THE ONE. THE ONLY. THE LIIIIIIIIIIIIIINE!!!!!!!!!!
+    public Line massiveLineThing;
 
     /*
      Pre: None
@@ -89,18 +99,26 @@ public class removeAssignmentController {
 
         // Updating date score
         for (int i = ControllerCalendar.isolateDays(assignmentInfo[id][4]);
-                      i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
-         dateScore[i-1] -= Integer.parseInt(assignmentInfo[id][3]);
-         }
+             i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {
+            dateScore[i - 1] -= Integer.parseInt(assignmentInfo[id][3]);
+        }
         System.out.println(Arrays.toString(dateScore));
 
 
-       // Reseting assignments
+        // Resetting assignments.
         selectedAssignment.setValue(null);
-        name.setText("Name: ");
-        weighting.setText("Weighting: ");
-        dueDate.setText("Due Date: ");
-        score.setText("Score: ");
+        nameImport.setVisible(false);
+        weightingImport.setVisible(false);
+        dueDateImport.setVisible(false);
+        assignmentScoreImport.setVisible(false);
+        assignedImport.setVisible(false);
+        dateScoreImport.setVisible(false);
+        totalHoursImport.setVisible(false);
+        dailyHoursImport.setVisible(false);
+
+        massiveLineThing.setVisible(false);
+
+        informationButton.setDisable(true); // Disabling the more info button.
 
         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
 
@@ -118,7 +136,7 @@ public class removeAssignmentController {
         String choice = selectedAssignment.getValue();
 
 
-       // Checking if assignment was entered correctly
+        // Checking if assignment was entered correctly
         if (choice == null) {
             // error alert.
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -131,52 +149,102 @@ public class removeAssignmentController {
         }
     }
 
-    public void textInfoSet()throws GeneralSecurityException, IOException {
+
+
+
+
+
+
+
+
+    /*
+       Pre: None
+       Post: Finds what assignment user selected, sets the text
+        */
+    public void setTextDetails() throws IOException, GeneralSecurityException {
+
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        ControllerCalendar.updateDateScore();
 
-
-        // Run code below when selecting a assignment
+        //once user selects assignment
         selectedAssignment.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
                 int id = 0;
-                String choice = selectedAssignment.getValue();
 
-                //Getting the assignment array id
+
+
+                String choice = selectedAssignment.getValue();
+                System.out.println(selectedAssignment.getValue());
+
+                // Determines the id of the assignment selected
                 for (int i = 1; i < assignmentInfo.length; i++) {
                     if (assignmentInfo[i][0].equals(choice)) {
                         id = i;
                         break;
                     } }
 
-                name.setText("Name: " + assignmentInfo[id][0]);
-                weighting.setText("Weighting: " + assignmentInfo[id][1] + "%");
-                dueDate.setText("Due-Date: " + assignmentInfo[id][2]);
-                score.setText("Score: " +assignmentInfo[id][3]);
+                // Turning date selected into a number that can be identified to datescore
+                int dateScoreIndex = Date_To_Days(deleteYear(assignmentInfo[id][2])) - 120;
+
+                // variables
+                String nameRetrieved = assignmentInfo[id][0];
+                String weightingRetrieved = assignmentInfo[id][1];
+                LocalDate dueDateRetrieved = LocalDate.parse(assignmentInfo[id][2]);
+                String scoreRetrieved = assignmentInfo[id][3];
+                String dateAssignedRetrieved = assignmentInfo[id][4];
+                int totalHoursRetrieved = Integer.parseInt(assignmentInfo[id][5]);
+
+                // Finding out daily hours
+                int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
+                int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateRetrieved)));
+                int daily_Hours = totalHoursRetrieved / (assignmentDueDate - currentDate);
+
+                // Assigning an assignment's information to the labels.
+                nameImport.setText("Name: " + nameRetrieved);
+                weightingImport.setText("Weighting: " + weightingRetrieved);
+                dueDateImport.setText("Due Date: " + dueDateRetrieved + " (Due in " + Math.abs(LocalDate.now()
+                        .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + " day(s))" );
+                assignmentScoreImport.setText("Score: " + scoreRetrieved);
+                assignedImport.setText("Assigned: " + dateAssignedRetrieved);
+                dateScoreImport.setText("Date Score on due date: " + ControllerCalendar.dateScore[dateScoreIndex-1]);
+                totalHoursImport.setText("Total hours to complete: " + totalHoursRetrieved);
+                dailyHoursImport.setText("Daily hours per day: " + daily_Hours);
+
+                informationButton.setDisable(false); // Enabling the more info button.
+
+                // Setting the information labels to be invisible (they become visible when "more info" is clicked).
+                nameImport.setVisible(false);
+                weightingImport.setVisible(false);
+                dueDateImport.setVisible(false);
+                assignmentScoreImport.setVisible(false);
+                assignedImport.setVisible(false);
+                dateScoreImport.setVisible(false);
+                totalHoursImport.setVisible(false);
+                dailyHoursImport.setVisible(false);
+
+                massiveLineThing.setVisible(false);
+
 
             }
         });
-
-
-
-
     }
 
     /*
     Pre: None
-    Post: Changes screen to the "Assignment Details" Screen
+    Post: Displays more info of the assignment
      */
     public void goToShowAssignment(ActionEvent event) throws IOException {
-                Parent MainParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/showAssignment.fxml")));
-                Scene MainScene = new Scene(MainParent);
 
-                Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        nameImport.setVisible(true);
+        weightingImport.setVisible(true);
+        dueDateImport.setVisible(true);
+        assignmentScoreImport.setVisible(true);
+        assignedImport.setVisible(true);
+        dateScoreImport.setVisible(true);
+        totalHoursImport.setVisible(true);
+        dailyHoursImport.setVisible(true);
 
-                window.setScene(MainScene);
-                window.show();
-            }
-        }
-
-
-
+        massiveLineThing.setVisible(true);
+    }
+}

@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -24,13 +25,13 @@ public class ShowAssignment {
     
 
     // Displaying assignment Details
-    public Text assignmentName;
-    public Text assignmentMarks;
-    public Text assignmentDate;
-    public Text assignmentScore;
-    public Text dateScore;
-    public Text totalHours;
-    public Text dailyHours;
+    public Label assignmentName;
+    public Label assignmentMarks;
+    public Label assignmentDate;
+    public Label assignmentScore;
+    public Label dateScore;
+    public Label totalHours;
+    public Label dailyHours;
 
     public Text assigned;
 
