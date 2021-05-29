@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static com.example.ControllerCalendar.dateScore;
@@ -40,8 +39,12 @@ public class addAssignmentController {
     public Text showHoursPerDay;
     public Text assignmentScore;
 
-
+// Errors list
     List<String> errors = new ArrayList<>();
+
+    //--------------------------------------------------------------------------------------------------------------
+    //TEXT FIELD CONVERSIONS TO NUMBER ONLY
+
 
     double daily_Hours;
     /*
@@ -57,10 +60,10 @@ public class addAssignmentController {
 
     }
 
-/*
-Pre: NumberTextField
-Post: changes text fields so they are only number
- */
+    /*
+    Pre: NumberTextField
+    Post: changes text fields so they are only number
+     */
    public void changeTextField() {
        numberTextField(hoursOfAssignment);
        numberTextField(marksAssignment);
@@ -68,7 +71,7 @@ Post: changes text fields so they are only number
    }
 
     /*
-     Pre: String (Preferably a scanner string)
+     Pre: String
      Current: Checks if string has space, or contains numbers
      Post: True if string is a letters, and false is string is not letters
       */
@@ -84,8 +87,11 @@ Post: changes text fields so they are only number
     }
 
 
+    //--------------------------------------------------------------------------------------------------------------
+    // ERROR/SUCCESS SCREENS
 
-   /*
+
+    /*
     Pre: None
     Post: Gives out error message if a field is not filled correctly
      */
@@ -131,6 +137,10 @@ Post: changes text fields so they are only number
     }
 
 
+    //--------------------------------------------------------------------------------------------------------------
+    // STORING/CHECKING ASSIGNMENT DETAILS
+
+
     /*
      Pre: None
      Post:Stores the assignment info into arrays and in online sheets
@@ -142,8 +152,6 @@ Post: changes text fields so they are only number
         String hours;
         int score;
 
-
-
         //Getting the assignment details in memory
         name = nameOfAssignment.getText();
         marks = marksAssignment.getText();
@@ -151,15 +159,10 @@ Post: changes text fields so they are only number
         hours = hoursOfAssignment.getText();
         score = WorkLoadCalculator();
 
-// Updating the date score
-        Arrays.fill(dateScore, 0);
+        // Updating the date score
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
-        for (int i = 1; i < assignmentInfo.length; i++) {
-            for (int j = isolateDays(assignmentInfo[i][4]);
-                 j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
-                dateScore[j-1] += Integer.parseInt(assignmentInfo[i][3]);
-            }
-        }
+        ControllerCalendar.updateDateScore();
+
 
         for (int i = isolateDays(String.valueOf(LocalDate.now()));
              i <= isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
@@ -174,7 +177,7 @@ Post: changes text fields so they are only number
         showAssignmentMarks.setText("Weighting: " + marks + "%");
         showAssignmentDate.setText("Due Date: " + date + " | " +
                 Math.abs(LocalDate.now().getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
-        showAssignmentHours.setText("Total Hours: "+hours);
+        showAssignmentHours.setText("Total Hours: " + hours);
         showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printScore-1]);
         showHoursPerDay.setText("Hours per day: "+ Math.round(daily_Hours));
         assignmentScore.setText("Score:" + score);
@@ -265,6 +268,8 @@ Post: changes text fields so they are only number
     }
 
 
+    //--------------------------------------------------------------------------------------------------------------
+    // WORKLOAD CALCULATOR
     /*
     Pre: The weight, or marks, hours and due date of a assignment
     Post: Gives score to assignment based on multiple factors

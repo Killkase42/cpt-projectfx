@@ -66,6 +66,12 @@ public class ControllerCalendar {
         alert.showAndWait();
     }
 
+
+
+    //--------------------------------------------------------------------------------------------------------------
+    //POPUP ASPECTS
+
+
     /*
     Pre:None
     Post: Opens the add-assignment pop-up menu
@@ -130,9 +136,39 @@ public class ControllerCalendar {
     }
 
     /*
-        Pre: None
-        Post: Goes back to the account screen menu
-        */
+    Pre: None
+    Post: Shows a help screen popup
+     */
+    public void helpPopUp() throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = new Stage();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+
+
+    /*
+    Pre: None
+    Post: Shows score vs dateScore pop-up
+     */
+    public void scoreVsDateScore() throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = new Stage();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+
+
+    /*
+    Pre: None
+    Post: Goes back to the account screen menu
+    */
     public void BackToAccountScreen(ActionEvent event) throws IOException {
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Login.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
@@ -142,6 +178,13 @@ public class ControllerCalendar {
         window.setScene(addAssignmentScene);
         window.show();
     }
+
+
+
+    //--------------------------------------------------------------------------------------------------------------
+    //CALENDAR DETAIL AND VISUAL ASPECTS
+
+
 
     /*
      NOTICE: LOTS OF VARIABLES AHEAD
@@ -356,7 +399,6 @@ public class ControllerCalendar {
                         assignmentNames.append(", ");
 
                         // calculating the daily hours
-
                         int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
                         int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
                         int daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
@@ -389,6 +431,16 @@ public class ControllerCalendar {
 
     }
 
+
+
+    //--------------------------------------------------------------------------------------------------------------
+    //DATE SCORE ASPECTS
+
+
+    /*
+    Pre: a date
+    Post: isolates the days
+     */
     public static int isolateDays(String date) {
         int index = date.lastIndexOf("-");
         return Integer.parseInt(date.substring(index + 1));
@@ -409,6 +461,8 @@ public class ControllerCalendar {
         }
     }
 }
+
+
 
 
 

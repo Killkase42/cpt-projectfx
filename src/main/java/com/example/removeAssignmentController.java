@@ -149,14 +149,6 @@ public class removeAssignmentController {
         }
     }
 
-
-
-
-
-
-
-
-
     /*
        Pre: None
        Post: Finds what assignment user selected, sets the text

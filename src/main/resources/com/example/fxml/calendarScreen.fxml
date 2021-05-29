@@ -585,7 +585,7 @@
          <GridPane.margin>
             <Insets bottom="450.0" />
          </GridPane.margin></Button>
-      <Button mnemonicParsing="false" text="Score vs Date Score" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" prefHeight="44.0" prefWidth="128.0" text="Score vs Date Score Help" wrapText="true" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets bottom="330.0" />
          </GridPane.margin>
