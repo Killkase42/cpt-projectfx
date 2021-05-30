@@ -1,0 +1,416 @@
+Index: src/main/resources/com/example/fxml/removeAssignment.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.ComboBox?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.shape.Line?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<AnchorPane fx:id=\"removeBackground\" maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"215.0\" prefWidth=\"468.0\" styleClass=\"background-remove\" stylesheets=\"@/com/example/css/styles.css\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.removeAssignmentController\">\r\n   <children>\r\n      <Button alignment=\"CENTER\" layoutX=\"14.0\" layoutY=\"118.0\" mnemonicParsing=\"false\" onAction=\"#textCheck\" onMouseClicked=\"#comboBoxAssign\" styleClass=\"button-remove-assignment\" stylesheets=\"@/com/example/css/styles.css\" text=\"Remove Assignment\">\r\n         <opaqueInsets>\r\n            <Insets />\r\n         </opaqueInsets>\r\n      </Button>\r\n      <Text fx:id=\"error\" fill=\"RED\" layoutX=\"10.0\" layoutY=\"10.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"You have not selected a assignment from the drop-down menu!\" visible=\"false\" />\r\n      <Text fx:id=\"noAssignmentsIn\" fill=\"RED\" layoutX=\"10.0\" layoutY=\"10.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"There are no assignments added!\" visible=\"false\" />\r\n      <Text fx:id=\"removeSuccess\" fill=\"GREEN\" layoutX=\"10.0\" layoutY=\"10.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Succesfully removed assignment!\" visible=\"false\" />\r\n      <ComboBox fx:id=\"selectedAssignment\" layoutX=\"25.0\" layoutY=\"41.0\" onMouseClicked=\"#comboBoxAssign\" onMouseEntered=\"#setTextDetails\" prefHeight=\"25.0\" prefWidth=\"207.0\" promptText=\"Select Assignment to remove\" styleClass=\"dropdown-assignment-removal\" stylesheets=\"@/com/example/css/styles.css\" visibleRowCount=\"3\" />\r\n      <Button fx:id=\"informationButton\" disable=\"true\" layoutX=\"254.0\" layoutY=\"41.0\" mnemonicParsing=\"false\" onAction=\"#goToShowAssignment\" styleClass=\"button-remove-information\" stylesheets=\"@/com/example/css/styles.css\" text=\"More Info\" />\r\n      <Line fx:id=\"massiveLineThing\" endX=\"36.5\" endY=\"-39.0\" layoutX=\"208.0\" layoutY=\"118.0\" startX=\"36.5\" startY=\"82.0\" stroke=\"#92a2b9\" visible=\"false\" />\r\n      <Label layoutX=\"166.0\" layoutY=\"12.0\" styleClass=\"text-remove-assignment\" stylesheets=\"@/com/example/css/styles.css\" text=\"Assignment Manipulation\" />\r\n      <Label fx:id=\"nameImport\" layoutX=\"253.0\" layoutY=\"74.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-name\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"weightingImport\" layoutX=\"254.0\" layoutY=\"90.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-weighting\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"dueDateImport\" layoutX=\"254.0\" layoutY=\"106.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-due\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"assignedImport\" layoutX=\"254.0\" layoutY=\"122.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-assigned\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"assignmentScoreImport\" layoutX=\"254.0\" layoutY=\"138.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-assignment\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"dateScoreImport\" layoutX=\"254.0\" layoutY=\"154.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-score\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"totalHoursImport\" layoutX=\"254.0\" layoutY=\"170.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-total\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"dailyHoursImport\" layoutX=\"254.0\" layoutY=\"186.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-daily\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Button fx:id=\"closeButton\" cancelButton=\"true\" layoutX=\"14.0\" layoutY=\"166.0\" mnemonicParsing=\"false\" onAction=\"#closeButtonAction\" text=\"Close This Screen\" />\r\n\r\n\r\n\r\n\r\n\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/com/example/fxml/removeAssignment.fxml b/src/main/resources/com/example/fxml/removeAssignment.fxml
+--- a/src/main/resources/com/example/fxml/removeAssignment.fxml	(revision ba05260f3b5b4ca279116a9fe41e4e1a63318dce)
++++ b/src/main/resources/com/example/fxml/removeAssignment.fxml	(date 1622338568834)
+@@ -8,29 +8,27 @@
+ <?import javafx.scene.shape.Line?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane fx:id="removeBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="468.0" styleClass="background-remove" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
++<AnchorPane fx:id="removeBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="468.0" styleClass="background-remove" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
+    <children>
+-      <Button alignment="CENTER" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" styleClass="button-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Remove Assignment">
++      <Button alignment="CENTER" layoutX="55.0" layoutY="152.0" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" styleClass="button-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Remove Assignment">
+          <opaqueInsets>
+             <Insets />
+          </opaqueInsets>
+       </Button>
+-      <Text fx:id="error" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have not selected a assignment from the drop-down menu!" visible="false" />
+-      <Text fx:id="noAssignmentsIn" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
+-      <Text fx:id="removeSuccess" fill="GREEN" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
+-      <ComboBox fx:id="selectedAssignment" layoutX="25.0" layoutY="41.0" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" styleClass="dropdown-assignment-removal" stylesheets="@/com/example/css/styles.css" visibleRowCount="3" />
+-      <Button fx:id="informationButton" disable="true" layoutX="254.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToShowAssignment" styleClass="button-remove-information" stylesheets="@/com/example/css/styles.css" text="More Info" />
+-      <Line fx:id="massiveLineThing" endX="36.5" endY="-39.0" layoutX="208.0" layoutY="118.0" startX="36.5" startY="82.0" stroke="#92a2b9" visible="false" />
+-      <Label layoutX="166.0" layoutY="12.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Assignment Manipulation" />
+-      <Label fx:id="nameImport" layoutX="253.0" layoutY="74.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-name" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="weightingImport" layoutX="254.0" layoutY="90.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-weighting" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="dueDateImport" layoutX="254.0" layoutY="106.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-due" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="assignedImport" layoutX="254.0" layoutY="122.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assigned" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="assignmentScoreImport" layoutX="254.0" layoutY="138.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="dateScoreImport" layoutX="254.0" layoutY="154.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-score" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="totalHoursImport" layoutX="254.0" layoutY="170.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-total" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="dailyHoursImport" layoutX="254.0" layoutY="186.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-daily" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Button fx:id="closeButton" cancelButton="true" layoutX="14.0" layoutY="166.0" mnemonicParsing="false" onAction="#closeButtonAction" text="Close This Screen" />
++      <Text fx:id="error" fill="RED" layoutX="55.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Assignment Selected" visible="false" />
++      <Text fx:id="noAssignmentsIn" fill="RED" layoutX="32.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
++      <Text fx:id="removeSuccess" fill="#7fffd4" layoutX="62.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignment Removed" visible="false" />
++      <ComboBox fx:id="selectedAssignment" layoutX="16.0" layoutY="41.0" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="25.0" prefWidth="207.0" promptText="Select an Assignment" styleClass="dropdown-assignment-removal" stylesheets="@/com/example/css/styles.css" visibleRowCount="3" />
++      <Line fx:id="massiveLineThing" endX="36.5" endY="-39.0" layoutX="199.0" layoutY="92.0" startX="36.5" startY="85.0" stroke="#92a2b9" visible="false" />
++      <Label layoutX="166.0" layoutY="12.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Assignment Information" />
++      <Label fx:id="nameImport" layoutX="244.0" layoutY="48.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-name" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="weightingImport" layoutX="245.0" layoutY="64.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-weighting" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="dueDateImport" layoutX="245.0" layoutY="80.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-due" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="assignedImport" layoutX="245.0" layoutY="96.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assigned" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="assignmentScoreImport" layoutX="245.0" layoutY="112.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="dateScoreImport" layoutX="245.0" layoutY="128.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-score" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="totalHoursImport" layoutX="245.0" layoutY="144.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-total" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="dailyHoursImport" layoutX="245.0" layoutY="160.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-daily" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+ 
+ 
+ 
+Index: src/main/java/com/example/removeAssignmentController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example;\r\n\r\n\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\nimport javafx.event.ActionEvent;\r\nimport javafx.event.EventHandler;\r\nimport javafx.scene.control.Button;\r\nimport javafx.scene.control.ComboBox;\r\nimport javafx.scene.control.Label;\r\nimport javafx.scene.shape.Line;\r\nimport javafx.scene.text.Text;\r\nimport javafx.stage.Stage;\r\n\r\nimport java.io.IOException;\r\nimport java.security.GeneralSecurityException;\r\nimport java.time.LocalDate;\r\nimport java.util.Arrays;\r\n\r\nimport static com.example.ControllerCalendar.dateScore;\r\nimport static com.example.addAssignmentController.Date_To_Days;\r\nimport static com.example.addAssignmentController.deleteYear;\r\n\r\npublic class removeAssignmentController {\r\n\r\n    // button to close screen\r\n    public Button closeButton;\r\n\r\n    // success or error\r\n    public Text error;\r\n    public Text noAssignmentsIn;\r\n    public Text removeSuccess;\r\n    public ComboBox<String> selectedAssignment;\r\n\r\n    // Text fields for information\r\n    public Label nameImport;\r\n    public Label weightingImport;\r\n    public Label dueDateImport;\r\n    public Label assignmentScoreImport;\r\n    public Label assignedImport;\r\n    public Label dateScoreImport;\r\n    public Label totalHoursImport;\r\n    public Label dailyHoursImport;\r\n\r\n\r\n    //The more info button.\r\n    public Button informationButton;\r\n\r\n    // PRESENTING THE ONE. THE ONLY. THE LIIIIIIIIIIIIIINE!!!!!!!!!!\r\n    public Line massiveLineThing;\r\n\r\n\r\n    /*\r\n     Pre: None\r\n     Post: Assigns the values of all assignment names to a comboBox (drop-down menu)\r\n      */\r\n    public void comboBoxAssign() throws GeneralSecurityException, IOException {\r\n        String[][] assignmentInfo = SheetsAPI.PullAssignments();\r\n\r\n        ObservableList<String> data = FXCollections.observableArrayList();\r\n\r\n        for (int i = 1; i < assignmentInfo.length; i++) {\r\n            data.add(assignmentInfo[i][0]);\r\n        }\r\n        selectedAssignment.setItems(data);\r\n    }\r\n\r\n    /*\r\n    Pre: None\r\n    Post: Selects a assignment, and removed it from all related arrays\r\n     */\r\n    public void removeAssignment() throws GeneralSecurityException, IOException {\r\n        removeSuccess.setVisible(false);\r\n        error.setVisible(false);\r\n        noAssignmentsIn.setVisible(false);\r\n        String choice;\r\n        int id = 0;\r\n        choice = selectedAssignment.getValue();\r\n        String[][] assignmentInfo = SheetsAPI.PullAssignments();\r\n\r\n\r\n        //Getting the assignment array id\r\n        for (int i = 1; i < assignmentInfo.length; i++) {\r\n            if (assignmentInfo[i][0].equals(choice)) {\r\n                id = i;\r\n                break;\r\n            }\r\n        }\r\n        // Creating info of array to delete\r\n        String[] delete = new String[6];\r\n        delete[0] = assignmentInfo[id][0];\r\n        delete[1] = assignmentInfo[id][1];\r\n        delete[2] = assignmentInfo[id][2];\r\n        delete[3] = assignmentInfo[id][3];\r\n        delete[4] = assignmentInfo[id][4];\r\n        delete[5] = assignmentInfo[id][5];\r\n\r\n        // Confirmation that user has removed the selected assignment\r\n        removeSuccess.setVisible(true);\r\n\r\n        // Updating date score\r\n        for (int i = ControllerCalendar.isolateDays(assignmentInfo[id][4]);\r\n             i <= ControllerCalendar.isolateDays(String.valueOf(assignmentInfo[id][2])); i++) {\r\n            dateScore[i - 1] -= Integer.parseInt(assignmentInfo[id][3]);\r\n        }\r\n        System.out.println(Arrays.toString(dateScore));\r\n\r\n\r\n        // Resetting assignments.\r\n\r\n        selectedAssignment.setValue(null);\r\n        nameImport.setVisible(false);\r\n        weightingImport.setVisible(false);\r\n        dueDateImport.setVisible(false);\r\n        assignmentScoreImport.setVisible(false);\r\n        assignedImport.setVisible(false);\r\n        dateScoreImport.setVisible(false);\r\n        totalHoursImport.setVisible(false);\r\n        dailyHoursImport.setVisible(false);\r\n\r\n        massiveLineThing.setVisible(false);\r\n\r\n        informationButton.setDisable(true); // Disabling the more info button.\r\n\r\n        String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);\r\n\r\n    }\r\n\r\n    /*\r\n    Pre: None\r\n    Post: Checks to see if user entered correct information\r\n     */\r\n    public void textCheck() throws GeneralSecurityException, IOException {\r\n        removeSuccess.setVisible(false);\r\n        error.setVisible(false);\r\n        noAssignmentsIn.setVisible(false);\r\n        String[][] assignmentInfo = SheetsAPI.PullAssignments();\r\n        String choice = selectedAssignment.getValue();\r\n\r\n\r\n        // Checking if assignment was entered correctly\r\n        if (choice == null) {\r\n         error.setVisible(true);\r\n        } else {\r\n            removeAssignment();\r\n        }\r\n    }\r\n\r\n    /*\r\n       Pre: None\r\n       Post: Finds what assignment user selected, and shows the assignment details\r\n        */\r\n    public void setTextDetails() throws IOException, GeneralSecurityException {\r\n\r\n\r\n        ControllerCalendar.updateDateScore();\r\n\r\n        //once user selects assignment\r\n        selectedAssignment.setOnAction(new EventHandler<ActionEvent>() {\r\n            @Override\r\n            public void handle(ActionEvent event) {\r\n                int id = 0;\r\n                String[][] assignmentInfo = new String[0][];\r\n                try {\r\n                    assignmentInfo = SheetsAPI.PullAssignments();\r\n                } catch (IOException | GeneralSecurityException e) {\r\n                    e.printStackTrace();\r\n                }\r\n\r\n\r\n                // Setting the choice of assigment\r\n                String choice = selectedAssignment.getValue();\r\n\r\n                // Determines the id of the assignment selected\r\n                for (int i = 1; i < assignmentInfo.length; i++) {\r\n                    if (assignmentInfo[i][0].equals(choice)) {\r\n                        id = i;\r\n                        break;\r\n                    } }\r\n\r\n                // Turning date selected into a number that can be identified to datescore\r\n                int dateScoreIndex = Date_To_Days(deleteYear(assignmentInfo[id][2])) - 120;\r\n\r\n                // variables\r\n                String nameRetrieved = assignmentInfo[id][0];\r\n                String weightingRetrieved = assignmentInfo[id][1];\r\n                LocalDate dueDateRetrieved = LocalDate.parse(assignmentInfo[id][2]);\r\n                String scoreRetrieved = assignmentInfo[id][3];\r\n                String dateAssignedRetrieved = assignmentInfo[id][4];\r\n                int totalHoursRetrieved = Integer.parseInt(assignmentInfo[id][5]);\r\n\r\n                // Finding out daily hours\r\n                int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));\r\n                int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateRetrieved)));\r\n                int daily_Hours = totalHoursRetrieved / (assignmentDueDate - currentDate);\r\n\r\n                // Assigning an assignment's information to the labels.\r\n                nameImport.setText(\"Name: \" + nameRetrieved);\r\n                weightingImport.setText(\"Weighting: \" + weightingRetrieved);\r\n                dueDateImport.setText(\"Due Date: \" + dueDateRetrieved + \" (Due in \" + Math.abs(LocalDate.now()\r\n                        .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + \" day(s))\" );\r\n                assignmentScoreImport.setText(\"Score: \" + scoreRetrieved);\r\n                assignedImport.setText(\"Assigned: \" + dateAssignedRetrieved);\r\n                dateScoreImport.setText(\"Date Score on due date: \" + ControllerCalendar.dateScore[dateScoreIndex-1]);\r\n                totalHoursImport.setText(\"Total hours to complete: \" + totalHoursRetrieved);\r\n                dailyHoursImport.setText(\"Daily hours per day: \" + daily_Hours);\r\n\r\n                informationButton.setDisable(false); // Enabling the more info button.\r\n\r\n                // Setting the information labels to be invisible (they become visible when \"more info\" is clicked).\r\n                nameImport.setVisible(false);\r\n                weightingImport.setVisible(false);\r\n                dueDateImport.setVisible(false);\r\n                assignmentScoreImport.setVisible(false);\r\n                assignedImport.setVisible(false);\r\n                dateScoreImport.setVisible(false);\r\n                totalHoursImport.setVisible(false);\r\n                dailyHoursImport.setVisible(false);\r\n\r\n                massiveLineThing.setVisible(false);\r\n\r\n\r\n            }\r\n        });\r\n    }\r\n\r\n    /*\r\n    Pre: None\r\n    Post: Displays more info of the assignment\r\n     */\r\n    public void goToShowAssignment(ActionEvent event) throws IOException {\r\n\r\n        nameImport.setVisible(true);\r\n        weightingImport.setVisible(true);\r\n        dueDateImport.setVisible(true);\r\n        assignmentScoreImport.setVisible(true);\r\n        assignedImport.setVisible(true);\r\n        dateScoreImport.setVisible(true);\r\n        totalHoursImport.setVisible(true);\r\n        dailyHoursImport.setVisible(true);\r\n\r\n        massiveLineThing.setVisible(true);\r\n    }\r\n\r\n    /*\r\n      Pre: None\r\n      Post: Closes current screen\r\n       */\r\n    public void closeButtonAction(ActionEvent event) {\r\n        Stage stage = (Stage) closeButton.getScene().getWindow();\r\n        stage.close();\r\n    }\r\n\r\n}\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/example/removeAssignmentController.java b/src/main/java/com/example/removeAssignmentController.java
+--- a/src/main/java/com/example/removeAssignmentController.java	(revision ba05260f3b5b4ca279116a9fe41e4e1a63318dce)
++++ b/src/main/java/com/example/removeAssignmentController.java	(date 1622338704839)
+@@ -10,7 +10,6 @@
+ import javafx.scene.control.Label;
+ import javafx.scene.shape.Line;
+ import javafx.scene.text.Text;
+-import javafx.stage.Stage;
+ 
+ import java.io.IOException;
+ import java.security.GeneralSecurityException;
+@@ -42,10 +41,6 @@
+     public Label totalHoursImport;
+     public Label dailyHoursImport;
+ 
+-
+-    //The more info button.
+-    public Button informationButton;
+-
+     // PRESENTING THE ONE. THE ONLY. THE LIIIIIIIIIIIIIINE!!!!!!!!!!
+     public Line massiveLineThing;
+ 
+@@ -120,7 +115,7 @@
+ 
+         massiveLineThing.setVisible(false);
+ 
+-        informationButton.setDisable(true); // Disabling the more info button.
++        removeSuccess.setVisible(true);
+ 
+         String assignmentToDelete = SheetsAPI.DeleteAssignment(delete);
+ 
+@@ -140,7 +135,7 @@
+ 
+         // Checking if assignment was entered correctly
+         if (choice == null) {
+-         error.setVisible(true);
++            error.setVisible(true);
+         } else {
+             removeAssignment();
+         }
+@@ -152,7 +147,6 @@
+         */
+     public void setTextDetails() throws IOException, GeneralSecurityException {
+ 
+-
+         ControllerCalendar.updateDateScore();
+ 
+         //once user selects assignment
+@@ -167,16 +161,19 @@
+                     e.printStackTrace();
+                 }
+ 
+-
+                 // Setting the choice of assigment
+                 String choice = selectedAssignment.getValue();
++                removeSuccess.setVisible(false);
++                error.setVisible(false);
++                noAssignmentsIn.setVisible(false);
+ 
+                 // Determines the id of the assignment selected
+                 for (int i = 1; i < assignmentInfo.length; i++) {
+                     if (assignmentInfo[i][0].equals(choice)) {
+                         id = i;
+                         break;
+-                    } }
++                    }
++                }
+ 
+                 // Turning date selected into a number that can be identified to datescore
+                 int dateScoreIndex = Date_To_Days(deleteYear(assignmentInfo[id][2])) - 120;
+@@ -198,58 +195,28 @@
+                 nameImport.setText("Name: " + nameRetrieved);
+                 weightingImport.setText("Weighting: " + weightingRetrieved);
+                 dueDateImport.setText("Due Date: " + dueDateRetrieved + " (Due in " + Math.abs(LocalDate.now()
+-                        .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + " day(s))" );
++                        .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + " day(s))");
+                 assignmentScoreImport.setText("Score: " + scoreRetrieved);
+                 assignedImport.setText("Assigned: " + dateAssignedRetrieved);
+-                dateScoreImport.setText("Date Score on due date: " + ControllerCalendar.dateScore[dateScoreIndex-1]);
++                dateScoreImport.setText("Date Score on due date: " + ControllerCalendar.dateScore[dateScoreIndex - 1]);
+                 totalHoursImport.setText("Total hours to complete: " + totalHoursRetrieved);
+                 dailyHoursImport.setText("Daily hours per day: " + daily_Hours);
+ 
+-                informationButton.setDisable(false); // Enabling the more info button.
+ 
+                 // Setting the information labels to be invisible (they become visible when "more info" is clicked).
+-                nameImport.setVisible(false);
+-                weightingImport.setVisible(false);
+-                dueDateImport.setVisible(false);
+-                assignmentScoreImport.setVisible(false);
+-                assignedImport.setVisible(false);
+-                dateScoreImport.setVisible(false);
+-                totalHoursImport.setVisible(false);
+-                dailyHoursImport.setVisible(false);
+-
+-                massiveLineThing.setVisible(false);
+-
+-
+-            }
+-        });
+-    }
+-
+-    /*
+-    Pre: None
+-    Post: Displays more info of the assignment
+-     */
+-    public void goToShowAssignment(ActionEvent event) throws IOException {
+-
+-        nameImport.setVisible(true);
+-        weightingImport.setVisible(true);
+-        dueDateImport.setVisible(true);
+-        assignmentScoreImport.setVisible(true);
+-        assignedImport.setVisible(true);
+-        dateScoreImport.setVisible(true);
+-        totalHoursImport.setVisible(true);
+-        dailyHoursImport.setVisible(true);
++                nameImport.setVisible(true);
++                weightingImport.setVisible(true);
++                dueDateImport.setVisible(true);
++                assignmentScoreImport.setVisible(true);
++                assignedImport.setVisible(true);
++                dateScoreImport.setVisible(true);
++                totalHoursImport.setVisible(true);
++                dailyHoursImport.setVisible(true);
+ 
+-        massiveLineThing.setVisible(true);
+-    }
+-
+-    /*
+-      Pre: None
+-      Post: Closes current screen
+-       */
+-    public void closeButtonAction(ActionEvent event) {
+-        Stage stage = (Stage) closeButton.getScene().getWindow();
+-        stage.close();
++                massiveLineThing.setVisible(true);
++
++
++            }
++        });
+     }
+-
+ }
+-
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"BranchesTreeState\">\r\n    <expand>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"LOCAL_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </expand>\r\n    <select>\r\n      <path>\r\n        <item name=\"ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"REMOTE_ROOT\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"GROUP_NODE:origin\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n        <item name=\"BRANCH:origin/development\" type=\"e8cecc67:BranchNodeDescriptor\" />\r\n      </path>\r\n    </select>\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"nicks\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/dateScoreVsScoreAdd.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar$1.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar$1.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/DateScorevsScore.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/DateScorevsScore.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/HelpController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/HelpController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController$1.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController$1.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/Help.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/Help.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/addAsignment.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/addAsignment.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/dateScorevsScore.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/dateScorevsScore.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/removeAssignment.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/resources/main/com/example/fxml/removeAssignment.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/DateScorevsScore.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/DateScoreVsScore.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/HelpController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/HelpController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/Help.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/Help.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/addAsignment.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/addAsignment.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/dateScorevsScore.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/dateScoreVsScore.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/removeAssignment.fxml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/com/example/fxml/removeAssignment.fxml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/tokens/StoredCredential\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/tokens/StoredCredential\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"CodeInsightWorkspaceSettings\">\r\n    <option name=\"optimizeImportsOnTheFly\" value=\"true\" />\r\n  </component>\r\n  <component name=\"ExternalProjectsData\">\r\n    <projectState path=\"$PROJECT_DIR$\">\r\n      <ProjectState />\r\n    </projectState>\r\n  </component>\r\n  <component name=\"ExternalProjectsManager\">\r\n    <system id=\"GRADLE\">\r\n      <state>\r\n        <task path=\"$PROJECT_DIR$\">\r\n          <activation />\r\n        </task>\r\n        <projects_view>\r\n          <tree_state>\r\n            <expand>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Tasks\" type=\"e4a08cd1:TasksNode\" />\r\n                <item name=\"application\" type=\"c8890929:TasksNode$1\" />\r\n              </path>\r\n              <path>\r\n                <item name=\"\" type=\"6a2764b6:ExternalProjectsStructure$RootNode\" />\r\n                <item name=\"cpt-projectfx\" type=\"f1a62948:ProjectNode\" />\r\n                <item name=\"Dependencies\" type=\"6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode\" />\r\n              </path>\r\n            </expand>\r\n            <select />\r\n          </tree_state>\r\n        </projects_view>\r\n      </state>\r\n    </system>\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"JavaFXApplication\" />\r\n        <option value=\"Class\" />\r\n        <option value=\"FxmlFile\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Pull.Settings\">\r\n    <option name=\"BRANCH\" value=\"development\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n    <option name=\"RESET_MODE\" value=\"MIXED\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"1sLnE1HrRZE1bgmZRNiEpB5Ykn0\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"codeWithMe.voiceChat.enabledByDefault\" value=\"false\" />\r\n    <property name=\"full.screen.before.presentation.mode\" value=\"false\" />\r\n    <property name=\"last_directory_selection\" value=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/resources/com/example/fxml\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.116009295\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.13140604\" />\r\n    <property name=\"restartRequiresConfirmation\" value=\"false\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"editor.preferences.import\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example/fxml\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\\fxml\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/resources/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example\" />\r\n      <recent name=\"$PROJECT_DIR$/src/main/java/com/example/calendar\" />\r\n      <recent name=\"C:\\Users\\nicho\\IdeaProjects\\cpt-projectfx\\src\\main\\resources\\com\\example\" />\r\n    </key>\r\n    <key name=\"ExtractSuperBase.RECENT_KEYS\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.example\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Gradle.cpt-projectfx [run]\">\r\n    <configuration name=\"Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.Main\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"MainCalendar\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"com.example.calendar.MainCalendar\" />\r\n      <module name=\"cpt-projectfx.main\" />\r\n      <option name=\"VM_PARAMETERS\" value=\"--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml \" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"com.example.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"cpt-projectfx [run]\" type=\"GradleRunConfiguration\" factoryName=\"Gradle\" temporary=\"true\">\r\n      <ExternalSystemSettings>\r\n        <option name=\"executionName\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"externalSystemIdString\" value=\"GRADLE\" />\r\n        <option name=\"scriptParameters\" value=\"--info\" />\r\n        <option name=\"taskDescriptions\">\r\n          <list />\r\n        </option>\r\n        <option name=\"taskNames\">\r\n          <list>\r\n            <option value=\"run\" />\r\n          </list>\r\n        </option>\r\n        <option name=\"vmOptions\" />\r\n      </ExternalSystemSettings>\r\n      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>\r\n      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>\r\n      <DebugAllEnabled>false</DebugAllEnabled>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <list>\r\n      <item itemvalue=\"Application.Main\" />\r\n      <item itemvalue=\"Application.MainCalendar\" />\r\n      <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n    </list>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Gradle.cpt-projectfx [run]\" />\r\n        <item itemvalue=\"Application.MainCalendar\" />\r\n        <item itemvalue=\"Application.Main\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"1d51e7aa-3c32-4247-b9c3-d22f6869aad9\" name=\"Default Changelist\" comment=\"working on storing account info\" />\r\n      <created>1620660623527</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1620660623527</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Improved Sheets API functionality.\">\r\n      <created>1620936254927</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1620936254927</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Added method to upload assignments to Sheet.\">\r\n      <created>1621092667835</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621092667835</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added method to upload assignments to Sheet.\">\r\n      <created>1621092757329</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621092757329</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Fixed problem with build.gradle.\">\r\n      <created>1621103078139</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621103078139</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\r\n      <created>1621210448900</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621210448900</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Added method to pull assignments in Sheet as array of arrays.\">\r\n      <created>1621267920813</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621267920813</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Created method for deleting assignments.\">\r\n      <created>1621557231218</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621557231218</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Created method for deleting assignments.\">\r\n      <created>1621557237672</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621557237672</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Fixed .fxml issue.\">\r\n      <created>1621898183691</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621898183691</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Integrated css and improved login screen UX/UI.\">\r\n      <created>1621901192606</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621901192606</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Improved account creation screen UX/UI.\">\r\n      <created>1621957377716</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621957377716</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Fixed SheetsAPI issue.\">\r\n      <created>1621959548191</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621959548191</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Added option to show/hide password on account screens.\">\r\n      <created>1621971810454</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621971810454</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Fixed small issue with show/hide password.\">\r\n      <created>1621973080652</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1621973080652</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Improved UI/UX for error messages on account screens.\">\r\n      <created>1622054128717</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1622054128717</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"Improved display of account name welcome on calendar screen.\">\r\n      <created>1622165102259</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1622165102259</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"nicks\">\r\n      <created>1622304889787</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1622304889787</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"18\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"UnknownFeatures\">\r\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\"*.css\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/development\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_FILTERS\">\r\n      <map>\r\n        <entry key=\"Branch\">\r\n          <value>\r\n            <list>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"master\" />\r\n                </option>\r\n              </RecentGroup>\r\n              <RecentGroup>\r\n                <option name=\"FILTER_VALUES\">\r\n                  <option value=\"origin/development\" />\r\n                </option>\r\n              </RecentGroup>\r\n            </list>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Improved Sheets API functionality.\" />\r\n    <MESSAGE value=\"working on storing account info\" />\r\n    <MESSAGE value=\"Fixed problem with build.gradle.\" />\r\n    <MESSAGE value=\"Added method to pull assignments in Sheet as array of arrays.\" />\r\n    <MESSAGE value=\"Created method for deleting assignments.\" />\r\n    <MESSAGE value=\"Fixed .fxml issue.\" />\r\n    <MESSAGE value=\"Integrated css and improved login screen UX/UI.\" />\r\n    <MESSAGE value=\"Improved account creation screen UX/UI.\" />\r\n    <MESSAGE value=\"Fixed SheetsAPI issue.\" />\r\n    <MESSAGE value=\"Added option to show/hide password on account screens.\" />\r\n    <MESSAGE value=\"Fixed small issue with show/hide password.\" />\r\n    <MESSAGE value=\"Improved UI/UX for error messages on account screens.\" />\r\n    <MESSAGE value=\"Added account name welcome on calendar screen.\" />\r\n    <MESSAGE value=\"Improved display of account name welcome on calendar screen.\" />\r\n    <MESSAGE value=\"nicks\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"nicks\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <breakpoint enabled=\"true\" type=\"java-exception\">\r\n          <properties class=\"java.lang.RuntimeException\" package=\"java.lang\" />\r\n          <option name=\"timeStamp\" value=\"2\" />\r\n        </breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ba05260f3b5b4ca279116a9fe41e4e1a63318dce)
++++ b/.idea/workspace.xml	(date 1622338549572)
+@@ -29,38 +29,24 @@
+     </select>
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="nicks">
+-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/dateScoreVsScoreAdd.fxml" afterDir="false" />
++    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Improved assignment removal and information UI/UX.">
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/classAnalysis.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/javaCompile.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/javaCompile/taskHistory.bin" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-27__9_02_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-27__9_02_p_m___Default_Changelist_.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-27__9_25_p_m___Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-27__9_25_p_m___Default_Changelist_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar$1.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/ControllerCalendar.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/DateScorevsScore.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/DateScorevsScore.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/HelpController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/HelpController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/addAssignmentController.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController$1.class" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/example/removeAssignmentController.class" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/Help.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/addAsignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/addAsignment.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/calendarScreen.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/dateScorevsScore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/dateScorevsScore.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/resources/main/com/example/fxml/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/com/example/fxml/removeAssignment.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/source-classes-mapping.txt" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/ControllerCalendar.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/DateScorevsScore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/DateScoreVsScore.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/HelpController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/HelpController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/removeAssignmentController.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/Help.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/Help.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/addAsignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/addAsignment.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/calendarScreen.fxml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/dateScorevsScore.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/dateScoreVsScore.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/fxml/removeAssignment.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/fxml/removeAssignment.fxml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+     </list>
+@@ -153,7 +139,7 @@
+     <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+     <property name="full.screen.before.presentation.mode" value="false" />
+     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/example" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/example/fxml" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/java/com/example" />
+     <property name="project.structure.last.edited" value="Modules" />
+     <property name="project.structure.proportion" value="0.116009295" />
+     <property name="project.structure.side.proportion" value="0.13140604" />
+@@ -162,7 +148,6 @@
+   </component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+-      <recent name="$PROJECT_DIR$/src/main/resources/com/example/fxml" />
+       <recent name="$PROJECT_DIR$/src/main/java/com/example" />
+       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
+     </key>
+@@ -367,19 +352,9 @@
+       <option name="project" value="LOCAL" />
+       <updated>1622165102259</updated>
+     </task>
+-    <task id="LOCAL-00017" summary="nicks">
+-      <created>1622304889787</created>
+-      <option name="number" value="00017" />
+-      <option name="presentableId" value="LOCAL-00017" />
+-      <option name="project" value="LOCAL" />
+-      <updated>1622304889787</updated>
+-    </task>
+-    <option name="localTasksCounter" value="18" />
++    <option name="localTasksCounter" value="17" />
+     <servers />
+   </component>
+-  <component name="UnknownFeatures">
+-    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
+-  </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+@@ -440,8 +415,7 @@
+     <MESSAGE value="Improved UI/UX for error messages on account screens." />
+     <MESSAGE value="Added account name welcome on calendar screen." />
+     <MESSAGE value="Improved display of account name welcome on calendar screen." />
+-    <MESSAGE value="nicks" />
+-    <option name="LAST_COMMIT_MESSAGE" value="nicks" />
++    <option name="LAST_COMMIT_MESSAGE" value="Improved display of account name welcome on calendar screen." />
+   </component>
+   <component name="XDebuggerManager">
+     <breakpoint-manager>
+Index: build/resources/main/com/example/fxml/removeAssignment.fxml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n\r\n<?import javafx.geometry.Insets?>\r\n<?import javafx.scene.control.Button?>\r\n<?import javafx.scene.control.ComboBox?>\r\n<?import javafx.scene.control.Label?>\r\n<?import javafx.scene.layout.AnchorPane?>\r\n<?import javafx.scene.shape.Line?>\r\n<?import javafx.scene.text.Text?>\r\n\r\n<AnchorPane fx:id=\"removeBackground\" maxHeight=\"-Infinity\" maxWidth=\"-Infinity\" minHeight=\"-Infinity\" minWidth=\"-Infinity\" prefHeight=\"215.0\" prefWidth=\"468.0\" styleClass=\"background-remove\" stylesheets=\"@/com/example/css/styles.css\" xmlns=\"http://javafx.com/javafx/16\" xmlns:fx=\"http://javafx.com/fxml/1\" fx:controller=\"com.example.removeAssignmentController\">\r\n   <children>\r\n      <Button alignment=\"CENTER\" layoutX=\"14.0\" layoutY=\"118.0\" mnemonicParsing=\"false\" onAction=\"#textCheck\" onMouseClicked=\"#comboBoxAssign\" styleClass=\"button-remove-assignment\" stylesheets=\"@/com/example/css/styles.css\" text=\"Remove Assignment\">\r\n         <opaqueInsets>\r\n            <Insets />\r\n         </opaqueInsets>\r\n      </Button>\r\n      <Text fx:id=\"error\" fill=\"RED\" layoutX=\"10.0\" layoutY=\"10.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"You have not selected a assignment from the drop-down menu!\" visible=\"false\" />\r\n      <Text fx:id=\"noAssignmentsIn\" fill=\"RED\" layoutX=\"10.0\" layoutY=\"10.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"There are no assignments added!\" visible=\"false\" />\r\n      <Text fx:id=\"removeSuccess\" fill=\"GREEN\" layoutX=\"10.0\" layoutY=\"10.0\" strokeType=\"OUTSIDE\" strokeWidth=\"0.0\" text=\"Succesfully removed assignment!\" visible=\"false\" />\r\n      <ComboBox fx:id=\"selectedAssignment\" layoutX=\"25.0\" layoutY=\"41.0\" onMouseClicked=\"#comboBoxAssign\" onMouseEntered=\"#setTextDetails\" prefHeight=\"25.0\" prefWidth=\"207.0\" promptText=\"Select Assignment to remove\" styleClass=\"dropdown-assignment-removal\" stylesheets=\"@/com/example/css/styles.css\" visibleRowCount=\"3\" />\r\n      <Button fx:id=\"informationButton\" disable=\"true\" layoutX=\"254.0\" layoutY=\"41.0\" mnemonicParsing=\"false\" onAction=\"#goToShowAssignment\" styleClass=\"button-remove-information\" stylesheets=\"@/com/example/css/styles.css\" text=\"More Info\" />\r\n      <Line fx:id=\"massiveLineThing\" endX=\"36.5\" endY=\"-39.0\" layoutX=\"208.0\" layoutY=\"118.0\" startX=\"36.5\" startY=\"82.0\" stroke=\"#92a2b9\" visible=\"false\" />\r\n      <Label layoutX=\"166.0\" layoutY=\"12.0\" styleClass=\"text-remove-assignment\" stylesheets=\"@/com/example/css/styles.css\" text=\"Assignment Manipulation\" />\r\n      <Label fx:id=\"nameImport\" layoutX=\"253.0\" layoutY=\"74.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-name\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"weightingImport\" layoutX=\"254.0\" layoutY=\"90.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-weighting\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"dueDateImport\" layoutX=\"254.0\" layoutY=\"106.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-due\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"assignedImport\" layoutX=\"254.0\" layoutY=\"122.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-assigned\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"assignmentScoreImport\" layoutX=\"254.0\" layoutY=\"138.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-assignment\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"dateScoreImport\" layoutX=\"254.0\" layoutY=\"154.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-score\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"totalHoursImport\" layoutX=\"254.0\" layoutY=\"170.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-total\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Label fx:id=\"dailyHoursImport\" layoutX=\"254.0\" layoutY=\"186.0\" prefHeight=\"17.0\" prefWidth=\"208.0\" styleClass=\"text-remove-daily\" stylesheets=\"@/com/example/css/styles.css\" text=\"1\" visible=\"false\" />\r\n      <Button fx:id=\"closeButton\" cancelButton=\"true\" layoutX=\"14.0\" layoutY=\"166.0\" mnemonicParsing=\"false\" onAction=\"#closeButtonAction\" text=\"Close This Screen\" />\r\n\r\n\r\n\r\n\r\n\r\n   </children>\r\n</AnchorPane>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/resources/main/com/example/fxml/removeAssignment.fxml b/build/resources/main/com/example/fxml/removeAssignment.fxml
+--- a/build/resources/main/com/example/fxml/removeAssignment.fxml	(revision ba05260f3b5b4ca279116a9fe41e4e1a63318dce)
++++ b/build/resources/main/com/example/fxml/removeAssignment.fxml	(date 1622338576428)
+@@ -8,29 +8,27 @@
+ <?import javafx.scene.shape.Line?>
+ <?import javafx.scene.text.Text?>
+ 
+-<AnchorPane fx:id="removeBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="468.0" styleClass="background-remove" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
++<AnchorPane fx:id="removeBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="189.0" prefWidth="468.0" styleClass="background-remove" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
+    <children>
+-      <Button alignment="CENTER" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" styleClass="button-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Remove Assignment">
++      <Button alignment="CENTER" layoutX="55.0" layoutY="152.0" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" styleClass="button-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Remove Assignment">
+          <opaqueInsets>
+             <Insets />
+          </opaqueInsets>
+       </Button>
+-      <Text fx:id="error" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have not selected a assignment from the drop-down menu!" visible="false" />
+-      <Text fx:id="noAssignmentsIn" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
+-      <Text fx:id="removeSuccess" fill="GREEN" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
+-      <ComboBox fx:id="selectedAssignment" layoutX="25.0" layoutY="41.0" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" styleClass="dropdown-assignment-removal" stylesheets="@/com/example/css/styles.css" visibleRowCount="3" />
+-      <Button fx:id="informationButton" disable="true" layoutX="254.0" layoutY="41.0" mnemonicParsing="false" onAction="#goToShowAssignment" styleClass="button-remove-information" stylesheets="@/com/example/css/styles.css" text="More Info" />
+-      <Line fx:id="massiveLineThing" endX="36.5" endY="-39.0" layoutX="208.0" layoutY="118.0" startX="36.5" startY="82.0" stroke="#92a2b9" visible="false" />
+-      <Label layoutX="166.0" layoutY="12.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Assignment Manipulation" />
+-      <Label fx:id="nameImport" layoutX="253.0" layoutY="74.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-name" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="weightingImport" layoutX="254.0" layoutY="90.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-weighting" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="dueDateImport" layoutX="254.0" layoutY="106.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-due" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="assignedImport" layoutX="254.0" layoutY="122.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assigned" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="assignmentScoreImport" layoutX="254.0" layoutY="138.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="dateScoreImport" layoutX="254.0" layoutY="154.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-score" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="totalHoursImport" layoutX="254.0" layoutY="170.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-total" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Label fx:id="dailyHoursImport" layoutX="254.0" layoutY="186.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-daily" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+-      <Button fx:id="closeButton" cancelButton="true" layoutX="14.0" layoutY="166.0" mnemonicParsing="false" onAction="#closeButtonAction" text="Close This Screen" />
++      <Text fx:id="error" fill="RED" layoutX="55.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="No Assignment Selected" visible="false" />
++      <Text fx:id="noAssignmentsIn" fill="RED" layoutX="32.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
++      <Text fx:id="removeSuccess" fill="#7fffd4" layoutX="62.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignment Removed" visible="false" />
++      <ComboBox fx:id="selectedAssignment" layoutX="16.0" layoutY="41.0" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="25.0" prefWidth="207.0" promptText="Select an Assignment" styleClass="dropdown-assignment-removal" stylesheets="@/com/example/css/styles.css" visibleRowCount="3" />
++      <Line fx:id="massiveLineThing" endX="36.5" endY="-39.0" layoutX="199.0" layoutY="92.0" startX="36.5" startY="85.0" stroke="#92a2b9" visible="false" />
++      <Label layoutX="166.0" layoutY="12.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Assignment Information" />
++      <Label fx:id="nameImport" layoutX="244.0" layoutY="48.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-name" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="weightingImport" layoutX="245.0" layoutY="64.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-weighting" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="dueDateImport" layoutX="245.0" layoutY="80.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-due" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="assignedImport" layoutX="245.0" layoutY="96.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assigned" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="assignmentScoreImport" layoutX="245.0" layoutY="112.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="dateScoreImport" layoutX="245.0" layoutY="128.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-score" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="totalHoursImport" layoutX="245.0" layoutY="144.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-total" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
++      <Label fx:id="dailyHoursImport" layoutX="245.0" layoutY="160.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-daily" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+ 
+ 
+ 
+Index: build/tmp/compileJava/source-classes-mapping.txt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>com/example/DateScoreVsScore.java\r\n com.example.DateScoreVsScore\r\ncom/example/mainController2.java\r\n com.example.mainController2\r\ncom/example/Main.java\r\n com.example.Main\r\ncom/example/CreateNewAccountController.java\r\n com.example.CreateNewAccountController\r\ncom/example/SheetsAPI.java\r\n com.example.SheetsAPI\r\ncom/example/LoginController.java\r\n com.example.LoginController\r\ncom/example/HelpController.java\r\n com.example.HelpController\r\ncom/example/ControllerCalendar.java\r\n com.example.ControllerCalendar\r\n com.example.ControllerCalendar$1\r\ncom/example/ShowAssignment.java\r\n com.example.ShowAssignment\r\n com.example.ShowAssignment$1\r\ncom/example/addAssignmentController.java\r\n com.example.addAssignmentController\r\ncom/example/removeAssignmentController.java\r\n com.example.removeAssignmentController\r\n com.example.removeAssignmentController$1\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build/tmp/compileJava/source-classes-mapping.txt b/build/tmp/compileJava/source-classes-mapping.txt
+--- a/build/tmp/compileJava/source-classes-mapping.txt	(revision ba05260f3b5b4ca279116a9fe41e4e1a63318dce)
++++ b/build/tmp/compileJava/source-classes-mapping.txt	(date 1622338705542)
+@@ -1,25 +1,25 @@
+-com/example/DateScoreVsScore.java
+- com.example.DateScoreVsScore
++com/example/ControllerCalendar.java
++ com.example.ControllerCalendar
++ com.example.ControllerCalendar$1
+ com/example/mainController2.java
+  com.example.mainController2
+-com/example/Main.java
+- com.example.Main
+-com/example/CreateNewAccountController.java
+- com.example.CreateNewAccountController
+-com/example/SheetsAPI.java
+- com.example.SheetsAPI
+-com/example/LoginController.java
+- com.example.LoginController
+ com/example/HelpController.java
+  com.example.HelpController
+-com/example/ControllerCalendar.java
+- com.example.ControllerCalendar
+- com.example.ControllerCalendar$1
++com/example/LoginController.java
++ com.example.LoginController
++com/example/DateScoreVsScore.java
++ com.example.DateScoreVsScore
++com/example/addAssignmentController.java
++ com.example.addAssignmentController
++com/example/SheetsAPI.java
++ com.example.SheetsAPI
+ com/example/ShowAssignment.java
+  com.example.ShowAssignment
+  com.example.ShowAssignment$1
+-com/example/addAssignmentController.java
+- com.example.addAssignmentController
++com/example/Main.java
++ com.example.Main
++com/example/CreateNewAccountController.java
++ com.example.CreateNewAccountController
+ com/example/removeAssignmentController.java
+  com.example.removeAssignmentController
+  com.example.removeAssignmentController$1
