@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -44,6 +45,15 @@ public class ControllerCalendar {
     public Label May_21;public Label May_22;public Label May_23;public Label May_24;public Label May_25;
     public Label May_26;public Label May_27;public Label May_28;public Label May_29;public Label May_30;
     public Label May_31;
+
+    // ToolTips
+    public Tooltip TP_may1; public Tooltip TP_may2; public Tooltip TP_may3; public Tooltip TP_may4; public Tooltip TP_may5;
+    public Tooltip TP_may6; public Tooltip TP_may7; public Tooltip TP_may8; public Tooltip TP_may9; public Tooltip TP_may10;
+    public Tooltip TP_may11; public Tooltip TP_may12; public Tooltip TP_may13; public Tooltip TP_may14; public Tooltip TP_may15;
+    public Tooltip TP_may16; public Tooltip TP_may17; public Tooltip TP_may18; public Tooltip TP_may19; public Tooltip TP_may20;
+    public Tooltip TP_may21; public Tooltip TP_may22; public Tooltip TP_may23; public Tooltip TP_may24; public Tooltip TP_may25;
+    public Tooltip TP_may26; public Tooltip TP_may27; public Tooltip TP_may28; public Tooltip TP_may29; public Tooltip TP_may30;
+    public Tooltip TP_may31;
 
     /*
     Pre: None
