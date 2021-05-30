@@ -140,22 +140,7 @@ public class ControllerCalendar {
     Post: Shows a help screen popup
      */
     public void helpPopUp() throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
-        Scene addAssignmentScene = new Scene(addAssignmentParent);
-
-        Stage window = new Stage();
-
-        window.setScene(addAssignmentScene);
-        window.show();
-    }
-
-
-    /*
-    Pre: None
-    Post: Shows score vs dateScore pop-up
-     */
-    public void scoreVsDateScore() throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/addAsignment.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Help.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = new Stage();
@@ -357,7 +342,7 @@ public class ControllerCalendar {
     Post: Show the date score and the assignments on a specific date
      */
     public void showAssignmentName_dateScore() throws GeneralSecurityException, IOException {
-        // Whenever user selects date
+
 
         StringBuilder assignmentNames = new StringBuilder();
 
@@ -454,9 +439,16 @@ public class ControllerCalendar {
         Arrays.fill(dateScore, 0);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
         for (int i = 1; i < assignmentInfo.length; i++) {
-            for (int j = isolateDays(assignmentInfo[i][4]);
-                 j <= isolateDays(String.valueOf(assignmentInfo[i][2])); j++) {
-                dateScore[j-1] += Integer.parseInt(assignmentInfo[i][3]);
+            // Variables
+            String dateAssigned = assignmentInfo[i][4];
+            String dateDue = assignmentInfo[i][2];
+            String score = assignmentInfo[i][3];
+
+            // Adding score onto dateScore
+            for (int j = isolateDays(dateAssigned);
+                 j <= isolateDays(String.valueOf(dateDue)); j++) {
+
+                dateScore[j-1] += Integer.parseInt(score);
             }
         }
     }

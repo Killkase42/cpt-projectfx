@@ -25,7 +25,6 @@
       <Text layoutX="344.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between 40 and 50: Hard" />
       <Text layoutX="344.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between 50 and 60: Very Hard" />
       <Text layoutX="344.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bigger than 60: Extreme" />
-      <Button layoutX="373.0" layoutY="406.0" mnemonicParsing="false" onAction="#goToHelp" text="Go Back to Help Menu" />
-      <Button fx:id="closeButton" cancelButton="true" layoutX="36.0" layoutY="406.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="26.0" prefWidth="128.0" text="Close This Screen" />
+      <Button fx:id="closeButton" cancelButton="true" layoutX="14.0" layoutY="402.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="26.0" prefWidth="128.0" text="Close This Screen" />
    </children>
 </AnchorPane>

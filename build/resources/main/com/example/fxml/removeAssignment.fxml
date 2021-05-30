@@ -10,12 +10,12 @@
 
 <AnchorPane fx:id="removeBackground" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="215.0" prefWidth="468.0" styleClass="background-remove" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.removeAssignmentController">
    <children>
-      <Button alignment="CENTER" layoutX="66.0" layoutY="165.0" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" styleClass="button-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Remove Assignment">
+      <Button alignment="CENTER" layoutX="14.0" layoutY="118.0" mnemonicParsing="false" onAction="#textCheck" onMouseClicked="#comboBoxAssign" styleClass="button-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Remove Assignment">
          <opaqueInsets>
             <Insets />
          </opaqueInsets>
       </Button>
-      <Text fx:id="error" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have entered something incorrectly. Please make sure you have typed the exact assignment name" visible="false" />
+      <Text fx:id="error" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have not selected a assignment from the drop-down menu!" visible="false" />
       <Text fx:id="noAssignmentsIn" fill="RED" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="There are no assignments added!" visible="false" />
       <Text fx:id="removeSuccess" fill="GREEN" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Succesfully removed assignment!" visible="false" />
       <ComboBox fx:id="selectedAssignment" layoutX="25.0" layoutY="41.0" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="25.0" prefWidth="207.0" promptText="Select Assignment to remove" styleClass="dropdown-assignment-removal" stylesheets="@/com/example/css/styles.css" visibleRowCount="3" />
@@ -30,6 +30,7 @@
       <Label fx:id="dateScoreImport" layoutX="254.0" layoutY="154.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-score" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
       <Label fx:id="totalHoursImport" layoutX="254.0" layoutY="170.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-total" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
       <Label fx:id="dailyHoursImport" layoutX="254.0" layoutY="186.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-daily" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
+      <Button fx:id="closeButton" cancelButton="true" layoutX="14.0" layoutY="166.0" mnemonicParsing="false" onAction="#closeButtonAction" text="Close This Screen" />
 
 
 

@@ -1,15 +1,22 @@
 package com.example;
 
+import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static com.example.ControllerCalendar.dateScore;
 import static com.example.ControllerCalendar.isolateDays;
@@ -38,8 +45,9 @@ public class addAssignmentController {
     public Text showAssignmentHours;
     public Text showHoursPerDay;
     public Text assignmentScore;
+    public Button closeButton;
 
-// Errors list
+    // Errors list
     List<String> errors = new ArrayList<>();
 
     //--------------------------------------------------------------------------------------------------------------
@@ -169,7 +177,7 @@ public class addAssignmentController {
          dateScore[i-1] += score;
          }
 
-        int printScore = isolateDays(String.valueOf(dueDateAssignment.getValue()));
+        int printDateScore = isolateDays(String.valueOf(dueDateAssignment.getValue()));
 
 
         // Showing assignment details
@@ -178,12 +186,12 @@ public class addAssignmentController {
         showAssignmentDate.setText("Due Date: " + date + " | " +
                 Math.abs(LocalDate.now().getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
         showAssignmentHours.setText("Total Hours: " + hours);
-        showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printScore-1]);
+        showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printDateScore-1]);
         showHoursPerDay.setText("Hours per day: "+ Math.round(daily_Hours));
         assignmentScore.setText("Score:" + score);
 
 
-        // Adding stuff into one array so that it can upload online
+        // Adding information into one array so that it can upload online
 
         String[] assignmentInfoUpload = new String[6];
         assignmentInfoUpload[0] = nameOfAssignment.getText();
@@ -354,6 +362,32 @@ public class addAssignmentController {
     public static String deleteYear(String year) {
         int index = year.indexOf("-");
         return year.substring(index+1);
+    }
+
+    //--------------------------------------------------------------------------------------------------------------
+    // SCREEN EDITS
+
+    /*
+    Pre: None
+    Post: Goes to score help screen
+    */
+    public void goToScoreHelp(ActionEvent event) throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/dateScoreVsScoreAdd.fxml")));
+        Scene addAssignmentScene = new Scene(addAssignmentParent);
+
+        Stage window = new Stage();
+
+        window.setScene(addAssignmentScene);
+        window.show();
+    }
+
+    /*
+    Pre: None
+    Post: Closes current screen
+     */
+    public void closeButtonAction(ActionEvent event) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
     }
 
 }

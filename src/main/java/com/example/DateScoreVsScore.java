@@ -11,16 +11,15 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class HelpController {
-
+public class DateScoreVsScore {
     public Button closeButton;
 
     /*
-    Pre: None
-    Post: Goes to score help screen
-   */
-    public void goToScoreHelp(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/dateScoreVsScore.fxml")));
+           Pre: None
+           Post: Goes to score help screen
+          */
+    public void goToHelp(ActionEvent event) throws IOException {
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/Help.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -30,14 +29,12 @@ public class HelpController {
     }
 
     /*
-    Pre: None
-    Post: Closes current screen
-     */
+   Pre: None
+   Post: Closes current screen
+    */
     public void closeButtonAction(ActionEvent event) {
         Stage stage = (Stage) closeButton.getScene().getWindow();
         stage.close();
     }
-
-
 
 }

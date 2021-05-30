@@ -5,12 +5,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -22,6 +22,9 @@ import static com.example.addAssignmentController.Date_To_Days;
 import static com.example.addAssignmentController.deleteYear;
 
 public class removeAssignmentController {
+
+    // button to close screen
+    public Button closeButton;
 
     // success or error
     public Text error;
@@ -46,6 +49,7 @@ public class removeAssignmentController {
     // PRESENTING THE ONE. THE ONLY. THE LIIIIIIIIIIIIIINE!!!!!!!!!!
     public Line massiveLineThing;
 
+
     /*
      Pre: None
      Post: Assigns the values of all assignment names to a comboBox (drop-down menu)
@@ -62,7 +66,7 @@ public class removeAssignmentController {
     }
 
     /*
-    Pre: the Assignment name, marks, due-date, hours, and score arrays to have at least one variable
+    Pre: None
     Post: Selects a assignment, and removed it from all related arrays
      */
     public void removeAssignment() throws GeneralSecurityException, IOException {
@@ -92,10 +96,7 @@ public class removeAssignmentController {
         delete[5] = assignmentInfo[id][5];
 
         // Confirmation that user has removed the selected assignment
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText("Assignment " + "\"" + assignmentInfo[id][0] + ",\"" + "removed successfully.");
-        alert.showAndWait();
+        removeSuccess.setVisible(true);
 
         // Updating date score
         for (int i = ControllerCalendar.isolateDays(assignmentInfo[id][4]);
@@ -106,6 +107,7 @@ public class removeAssignmentController {
 
 
         // Resetting assignments.
+
         selectedAssignment.setValue(null);
         nameImport.setVisible(false);
         weightingImport.setVisible(false);
@@ -138,12 +140,7 @@ public class removeAssignmentController {
 
         // Checking if assignment was entered correctly
         if (choice == null) {
-            // error alert.
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setHeaderText(null);
-            alert.setContentText("You have not selected a assignment to remove! \n" +
-                    "Select a assignment from the drop-down menu.");
-            alert.showAndWait();
+         error.setVisible(true);
         } else {
             removeAssignment();
         }
@@ -151,11 +148,11 @@ public class removeAssignmentController {
 
     /*
        Pre: None
-       Post: Finds what assignment user selected, sets the text
+       Post: Finds what assignment user selected, and shows the assignment details
         */
     public void setTextDetails() throws IOException, GeneralSecurityException {
 
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+
         ControllerCalendar.updateDateScore();
 
         //once user selects assignment
@@ -163,11 +160,16 @@ public class removeAssignmentController {
             @Override
             public void handle(ActionEvent event) {
                 int id = 0;
+                String[][] assignmentInfo = new String[0][];
+                try {
+                    assignmentInfo = SheetsAPI.PullAssignments();
+                } catch (IOException | GeneralSecurityException e) {
+                    e.printStackTrace();
+                }
 
 
-
+                // Setting the choice of assigment
                 String choice = selectedAssignment.getValue();
-                System.out.println(selectedAssignment.getValue());
 
                 // Determines the id of the assignment selected
                 for (int i = 1; i < assignmentInfo.length; i++) {
@@ -239,4 +241,15 @@ public class removeAssignmentController {
 
         massiveLineThing.setVisible(true);
     }
+
+    /*
+      Pre: None
+      Post: Closes current screen
+       */
+    public void closeButtonAction(ActionEvent event) {
+        Stage stage = (Stage) closeButton.getScene().getWindow();
+        stage.close();
+    }
+
 }
+
