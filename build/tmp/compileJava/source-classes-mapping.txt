@@ -1,16 +1,13 @@
 com/example/CreateNewAccountController.java
  com.example.CreateNewAccountController
-com/example/mainController2.java
- com.example.mainController2
+com/example/SplashScreenController.java
+ com.example.SplashScreenController
 com/example/HelpController.java
  com.example.HelpController
 com/example/LoginController.java
  com.example.LoginController
 com/example/DateScoreVsScore.java
  com.example.DateScoreVsScore
-com/example/ShowAssignment.java
- com.example.ShowAssignment
- com.example.ShowAssignment$1
 com/example/SheetsAPI.java
  com.example.SheetsAPI
 com/example/ControllerCalendar.java
@@ -21,5 +18,8 @@ com/example/removeAssignmentController.java
  com.example.removeAssignmentController$1
 com/example/addAssignmentController.java
  com.example.addAssignmentController
+com/example/ShowAssignment.java
+ com.example.ShowAssignment
+ com.example.ShowAssignment$1
 com/example/Main.java
  com.example.Main

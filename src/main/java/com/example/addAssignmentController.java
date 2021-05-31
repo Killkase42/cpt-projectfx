@@ -30,6 +30,7 @@ public class addAssignmentController {
     public Text notFilledField;
     public Text creationSuccess;
     public Text incorrectField;
+    public Text errorsList;
 
     // The different Fields, used for seeing if things are correctly set up
     public TextField nameOfAssignment;
@@ -47,6 +48,9 @@ public class addAssignmentController {
     public Text assignmentScore;
     public Button closeButton;
 
+
+
+    double daily_Hours;
     // Errors list
     List<String> errors = new ArrayList<>();
 
@@ -54,7 +58,7 @@ public class addAssignmentController {
     //TEXT FIELD CONVERSIONS TO NUMBER ONLY
 
 
-    double daily_Hours;
+
     /*
     Pre: Text fields for Marks and Hours
     Post: Allows class to change textfield to be only number
@@ -104,16 +108,14 @@ public class addAssignmentController {
     Post: Gives out error message if a field is not filled correctly
      */
     public void error() throws IOException {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText("The following errors have been found:");
+
         StringBuilder newLine = new StringBuilder();
 
         for (int i = 0; i < errors.size();i++) {
             newLine.append("\n");
             newLine.append(errors.get(i));
         }
-        alert.setContentText(newLine.toString());
-        alert.showAndWait();
+        errorsList.setText(newLine.toString());
         errors.clear();
 
         // Clearing Fields
@@ -372,7 +374,7 @@ public class addAssignmentController {
     Post: Goes to score help screen
     */
     public void goToScoreHelp(ActionEvent event) throws IOException {
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/dateScoreVsScoreAdd.fxml")));
+        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/dateScoreVsScore.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 
         Stage window = new Stage();

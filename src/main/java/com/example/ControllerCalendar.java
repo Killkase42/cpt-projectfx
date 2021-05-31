@@ -60,7 +60,7 @@ public class ControllerCalendar {
     Post: Sets a welcome message to the main calendar screen
     NOT DONE YET
      */
-    public void setText(String username) throws IOException {
+    public void setText(String username) {
         welcomeText.setText(username);
     }
 
@@ -120,30 +120,6 @@ public class ControllerCalendar {
             window.setScene(addAssignmentScene);
             window.show();
         }
-
-    /*
-    Pre: None
-    Post: Opens check assignment pop-ip
-     */
-    public void checkAssignmentDetailsPopUp() throws IOException, GeneralSecurityException {
-        // checking if no assignment
-        // checking if there is no assignment
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
-        try {
-            if (assignmentInfo[1][0].isEmpty()) {}
-
-        } catch (ArrayIndexOutOfBoundsException e) {
-            errorNoAssignment();
-            return;
-        }
-        Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/showAssignment.fxml")));
-        Scene addAssignmentScene = new Scene(addAssignmentParent);
-
-        Stage window = new Stage();
-
-        window.setScene(addAssignmentScene);
-        window.show();
-    }
 
     /*
     Pre: None
@@ -463,8 +439,6 @@ public class ControllerCalendar {
         }
     }
 }
-
-
 
 
 
