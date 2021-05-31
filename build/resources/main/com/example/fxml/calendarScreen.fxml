@@ -27,7 +27,7 @@
          <GridPane.margin>
             <Insets bottom="150.0" />
          </GridPane.margin></Button>
-      <Button mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" text="Remove Assignment" GridPane.rowIndex="1">
+      <Button mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" prefWidth="130.0" text="View Assignment Information" wrapText="true" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets top="300.0" />
          </GridPane.margin></Button>
@@ -404,133 +404,129 @@
             </Text>
             <Label fx:id="May_1" prefHeight="89.0" prefWidth="97.0" wrapText="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may1" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_17" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may17" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_16" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may16" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_15" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may15" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_14" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may14" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_13" prefHeight="89.0" prefWidth="97.0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may13" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_12" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may12" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_11" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may11" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_10" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may10" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_9" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="3">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may9" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_8" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may8" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_7" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may7" text="Empty Tooltip" />
                </tooltip></Label>
-            <Label prefHeight="57.0" prefWidth="85.0" GridPane.columnIndex="4" GridPane.rowIndex="2" />
             <Label fx:id="May_6" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may6" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_5" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may5" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_4" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may4" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_3" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may3" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_2" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="2">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may2" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_18" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may18" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_19" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may19" text="Empty Tooltip" />
                </tooltip></Label>
             <Label prefHeight="57.0" prefWidth="85.0" />
             <Label fx:id="May_20" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may20" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_21" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may21" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_22" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may22" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_23" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may23" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_24" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may24" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_25" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may25" text="Empty Tooltip" />
                </tooltip></Label>
-            <Label prefHeight="57.0" prefWidth="85.0" />
             <Label fx:id="May_26" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may26" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_27" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may27" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_28" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may28" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_29" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may29" text="Empty Tooltip" />
                </tooltip></Label>
-            <Label prefHeight="57.0" prefWidth="85.0" />
             <Label fx:id="May_30" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="6">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may30" text="Empty Tooltip" />
                </tooltip></Label>
             <Label fx:id="May_31" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <tooltip>
-                  <Tooltip text="Empty Tooltip" />
+                  <Tooltip fx:id="TP_may31" text="Empty Tooltip" />
                </tooltip></Label>
-            <Label prefHeight="57.0" prefWidth="85.0" />
          </children>
          <GridPane.margin>
             <Insets left="19.0" right="10.0" />

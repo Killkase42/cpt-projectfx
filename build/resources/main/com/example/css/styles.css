@@ -30,7 +30,7 @@
     -fx-text-fill: #DC143C;
 }
 
-/* Any dropdown menus. */
+/* Any dropdown menus (comboboxes). */
 .dropdown-assignment-removal{
     -fx-background-color :#314254;
     -fx-background-radius :  12;
@@ -39,7 +39,6 @@
     -fx-border-width: 2px;
     -fx-border-color: #445768;
     -fx-text-fill: #445768;
-
 }
 
 .dropdown-assignment-removal .list-cell {
