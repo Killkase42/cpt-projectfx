@@ -3,8 +3,6 @@ package com.example;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Line;
@@ -49,6 +47,7 @@ public class removeAssignmentController {
      Post: Assigns the values of all assignment names to a comboBox (drop-down menu)
       */
     public void comboBoxAssign() throws GeneralSecurityException, IOException {
+        selectedAssignment.setValue(null);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
         ObservableList<String> data = FXCollections.observableArrayList();
@@ -148,17 +147,8 @@ public class removeAssignmentController {
 
         ControllerCalendar.updateDateScore();
 
-        //once user selects assignment
-        selectedAssignment.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                int id = 0;
-                String[][] assignmentInfo = new String[0][];
-                try {
-                    assignmentInfo = SheetsAPI.PullAssignments();
-                } catch (IOException | GeneralSecurityException e) {
-                    e.printStackTrace();
-                }
+        String[][] assignmentInfo = SheetsAPI.PullAssignments();
+        int id = 0;
 
                 // Setting the choice of assigment
                 String choice = selectedAssignment.getValue();
@@ -216,6 +206,6 @@ public class removeAssignmentController {
 
 
             }
-        });
+
     }
-}
+
