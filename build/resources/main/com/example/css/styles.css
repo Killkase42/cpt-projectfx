@@ -83,7 +83,7 @@
 {
     -fx-background-color: #314254;
     -fx-border-style: solid;
-    -fx-border-width: 1 px;
+    -fx-border-width: 1 ;
     -fx-border-color: #445768;
 }
 
@@ -233,11 +233,3 @@
     -fx-border-color: #3A7E7F;
     -fx-text-fill: #3A7E7F;
 }
-
-
-
-
-
-
-
-
