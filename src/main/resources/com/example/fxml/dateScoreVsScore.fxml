@@ -1,31 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="446.0" prefWidth="604.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DateScoreVsScore">
+<AnchorPane prefHeight="427.0" prefWidth="649.0" styleClass="background-help-secondary" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.DateScoreVsScore">
    <children>
-      <Text layoutX="155.0" layoutY="12.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMCS Calendar Beta Help : Score " textAlignment="CENTER" wrappingWidth="302.22900390625" />
-      <Text layoutX="49.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This screen will tell you the difference between the Score, and the DateScore" textAlignment="CENTER" wrappingWidth="514.22900390625" />
-      <Text layoutX="49.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: Regular Score is for specefic assignments. It is calulated by using our very own Workload Calculator. The Workload Calculator takes into account 2 different variables: " textAlignment="CENTER" wrappingWidth="514.22900390625" />
-      <Text layoutX="56.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Assignment Weighting" textAlignment="CENTER" underline="true" wrappingWidth="506.22900390625" />
-      <Text layoutX="56.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The daily hours a student will take to complete the assignment" textAlignment="CENTER" underline="true" wrappingWidth="506.22900390625" />
-      <Text layoutX="30.0" layoutY="179.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The WorkLoad Calculator will do all the calculations for you. At the end, it will show you a score for that specefic assignment, just labelled &quot;Score&quot;" wrappingWidth="537.90625" />
-      <Line endX="489.5" layoutX="109.0" layoutY="217.0" startX="-109.0" />
-      <Line endX="489.5" layoutX="105.0" layoutY="64.0" startX="-109.0" />
-      <Text layoutX="43.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Score: Date Score is a score given out for specefic dates. Date score is simply calculated by adding the regular score of a assignment onto any dates BEFORE the due-date. DateScore will give you a good idea on how hard a specefic date is for the students" textAlignment="CENTER" wrappingWidth="514.22900390625" />
-      <Line endX="489.5" layoutX="114.0" layoutY="304.0" startX="-109.0" />
-      <Text layoutX="268.0" layoutY="317.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ratings" />
-      <Text layoutX="49.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="This section will give you a verbal meaning to the numerical scores" textAlignment="CENTER" wrappingWidth="514.22900390625" />
-      <Text layoutX="100.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Smaller than 20: Very easy" />
-      <Text layoutX="100.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between 20 and 30: Easy" />
-      <Text layoutX="100.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between 30 and 40: Medium" />
-      <Text layoutX="344.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between 40 and 50: Hard" />
-      <Text layoutX="344.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Between 50 and 60: Very Hard" />
-      <Text layoutX="344.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bigger than 60: Extreme" />
-      <Button layoutX="373.0" layoutY="406.0" mnemonicParsing="false" onAction="#goToHelp" text="General Help" />
-      <Button fx:id="closeButton" cancelButton="true" layoutX="36.0" layoutY="406.0" mnemonicParsing="false" onAction="#closeButtonAction" prefHeight="26.0" prefWidth="128.0" text="Close This Screen" />
+      <Button layoutX="258.0" layoutY="388.0" mnemonicParsing="false" onAction="#goToHelp" styleClass="button-secondary-help" stylesheets="@/com/example/css/styles.css" text="General Features Help" underline="true" />
+      <Label layoutX="230.0" layoutY="12.0" styleClass="text-help-secondary-title" stylesheets="@/com/example/css/styles.css" text="Score, Date Score, and Ratings Help" underline="true" />
+      <Label layoutX="10.0" layoutY="50.0" styleClass="text-help-secondary-heading1" stylesheets="@/com/example/css/styles.css" text="Score" />
+      <Label layoutX="100.0" layoutY="50.0" prefWidth="530.0" styleClass="text-help-secondary-body1" stylesheets="@/com/example/css/styles.css" text="&quot;Score&quot; is a difficulty rating for specific assignments that is calculated by using our very own Workload Calculator. The Workload Calculator takes into account 2 different variables: " wrapText="true" />
+      <Label layoutX="10.0" layoutY="186.0" styleClass="text-help-secondary-heading2" stylesheets="@/com/example/css/styles.css" text="Date Score" />
+      <Label layoutX="100.0" layoutY="186.0" prefWidth="530.0" styleClass="text-help-secondary-body2" stylesheets="@/com/example/css/styles.css" text="Date Score is the workload difficulty of a specific date. Date score is simply calculated by adding the regular Scores of all assignments onto each day BEFORE they are due. Date Score will give an idea of how much work students already have on a given date." wrapText="true" />
+      <Label layoutX="10.0" layoutY="256.0" styleClass="text-help-secondary-heading3" stylesheets="@/com/example/css/styles.css" text="Ratings" />
+      <Label layoutX="100.0" layoutY="256.0" prefWidth="480.0" styleClass="text-help-secondary-body3" stylesheets="@/com/example/css/styles.css" text="Ratings provide a verbal identification for the numerical Scores as follows:" />
+      <Label layoutX="120.0" layoutY="90.0" prefWidth="480.0" styleClass="text-help-secondary-body4" stylesheets="@/com/example/css/styles.css" text="-An assignment's weighting" wrapText="true" />
+      <Label layoutX="120.0" layoutY="110.0" prefWidth="480.0" styleClass="text-help-secondary-body5" stylesheets="@/com/example/css/styles.css" text="-The daily hours a student will spend completing the assignment" />
+      <Label layoutX="100.0" layoutY="133.0" prefWidth="530.0" styleClass="text-help-secondary-body6" stylesheets="@/com/example/css/styles.css" text="The Workload Calculator will do all necessary calculations automatically and ultimately provide a Score for a specific assignment." wrapText="true" />
+      <Label layoutX="145.0" layoutY="280.0" styleClass="text-help-secondary-body7" stylesheets="@/com/example/css/styles.css" text="Less than 20: Very easy" />
+      <Label layoutX="145.0" layoutY="310.0" styleClass="text-help-secondary-body8" stylesheets="@/com/example/css/styles.css" text="Between 20 and 30: Easy" />
+      <Label layoutX="145.0" layoutY="340.0" styleClass="text-help-secondary-body9" stylesheets="@/com/example/css/styles.css" text="Between 30 and 40: Medium" />
+      <Label layoutX="350.0" layoutY="280.0" styleClass="text-help-secondary-body10" stylesheets="@/com/example/css/styles.css" text="Between 40 and 50: Hard" />
+      <Label layoutX="350.0" layoutY="310.0" styleClass="text-help-secondary-body11" stylesheets="@/com/example/css/styles.css" text="Between 50 and 60: Very Hard" />
+      <Label layoutX="350.0" layoutY="340.0" styleClass="text-help-secondary-body12" stylesheets="@/com/example/css/styles.css" text="Greater than 60: Extreme" />
    </children>
 </AnchorPane>
