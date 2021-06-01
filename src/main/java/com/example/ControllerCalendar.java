@@ -361,6 +361,8 @@ public class ControllerCalendar {
 
 
                 int hours = 0;
+                // May 1
+                String CurrentDate = ("2021-05-01");
 
                 // Finding out what assignments on specefic date
                 for (int i = 1; i < assignmentInfo.length; i++) {
@@ -370,7 +372,7 @@ public class ControllerCalendar {
                         assignmentNames.append(", ");
 
                         // calculating the daily hours
-                        int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
+                        int currentDate = Date_To_Days(deleteYear((CurrentDate)));
                         int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
                         int daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
                         hours += daily_Hours;

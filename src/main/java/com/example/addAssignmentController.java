@@ -25,6 +25,9 @@ import static com.example.ControllerCalendar.isolateDays;
 public class addAssignmentController {
 
 
+    // May 1
+    LocalDate currentDate = LocalDate.parse("2021-05-01");
+
 
     // Success or failure text
     public Text notFilledField;
@@ -175,7 +178,7 @@ public class addAssignmentController {
         ControllerCalendar.updateDateScore();
 
 
-        for (int i = isolateDays(String.valueOf(LocalDate.now()));
+        for (int i = isolateDays(String.valueOf(currentDate));
              i <= isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
          dateScore[i-1] += score;
          }
@@ -187,7 +190,7 @@ public class addAssignmentController {
         showAssignmentName.setText("Name: "+name);
         showAssignmentMarks.setText("Weighting: " + marks + "%");
         showAssignmentDate.setText("Due Date: " + date + " | " +
-                Math.abs(LocalDate.now().getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
+                Math.abs(currentDate.getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
         showAssignmentHours.setText("Total Hours: " + hours);
         showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printDateScore-1]);
         showHoursPerDay.setText("Hours per day: "+ Math.round(daily_Hours));
@@ -201,7 +204,7 @@ public class addAssignmentController {
         assignmentInfoUpload[1] = marksAssignment.getText();
         assignmentInfoUpload[2] = String.valueOf(dueDateAssignment.getValue());
         assignmentInfoUpload[3] = String.valueOf(score);
-        assignmentInfoUpload[4] = String.valueOf(LocalDate.now());
+        assignmentInfoUpload[4] = String.valueOf(currentDate);
         assignmentInfoUpload[5] = hours;
 
         // Storing assignment to online stuff
@@ -228,7 +231,7 @@ public class addAssignmentController {
         errors.add("The \"Assignment Due-Date\" field has been left blank!");
 
     // Assignment in the past
-        } else if (dueDateAssignment.getValue().isBefore(LocalDate.now()) || dueDateAssignment.getValue().equals(LocalDate.now())) {
+        } else if (dueDateAssignment.getValue().isBefore(currentDate) || dueDateAssignment.getValue().equals(currentDate)) {
         errors.add("You cannot have a assignment be due today, or a day in the past.");
 
         // Checking for multiple assignments on selected date
@@ -295,13 +298,15 @@ public class addAssignmentController {
      */
     public int WorkLoadCalculator() throws IOException {
         int temp_score = 0;
+        // May 1
+        String CurrentDate = ("2021-05-01");
 
         // Adding the worth to the score
         int worth = Integer.parseInt(marksAssignment.getText());
         temp_score += worth;
 
         // Converting dates into calculator format
-        int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
+        int currentDate = Date_To_Days(deleteYear(CurrentDate));
         int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateAssignment.getValue())));
 
         // Adding daily hours to score

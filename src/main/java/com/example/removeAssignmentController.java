@@ -5,7 +5,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.shape.Line;
@@ -22,8 +21,8 @@ import static com.example.addAssignmentController.deleteYear;
 
 public class removeAssignmentController {
 
-    // button to close screen
-    public Button closeButton;
+    // May 1
+    LocalDate CurrentDate = LocalDate.parse("2021-05-01");
 
     // success or error
     public Text error;
@@ -187,14 +186,14 @@ public class removeAssignmentController {
                 int totalHoursRetrieved = Integer.parseInt(assignmentInfo[id][5]);
 
                 // Finding out daily hours
-                int currentDate = Date_To_Days(deleteYear(String.valueOf(java.time.LocalDate.now())));
+                int currentDate = Date_To_Days(deleteYear(String.valueOf(CurrentDate)));
                 int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateRetrieved)));
                 int daily_Hours = totalHoursRetrieved / (assignmentDueDate - currentDate);
 
                 // Assigning an assignment's information to the labels.
                 nameImport.setText("Name: " + nameRetrieved);
                 weightingImport.setText("Weighting: " + weightingRetrieved);
-                dueDateImport.setText("Due Date: " + dueDateRetrieved + " (Due in " + Math.abs(LocalDate.now()
+                dueDateImport.setText("Due Date: " + dueDateRetrieved + " (Due in " + Math.abs(CurrentDate
                         .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + " day(s))");
                 assignmentScoreImport.setText("Score: " + scoreRetrieved);
                 assignedImport.setText("Assigned: " + dateAssignedRetrieved);
