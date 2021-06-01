@@ -3,7 +3,8 @@
     -fx-background-color : #314254;
 }
 
-.foreground-login, .foreground-create-account, .background-remove {
+.foreground-login, .foreground-create-account, .background-remove, .background-help-general,
+    .background-help-secondary {
     -fx-background-color : #253648;
     -fx-border-style: solid;
     -fx-border-radius: 3 3 3 3;
@@ -20,7 +21,12 @@
 
 /* Any text labels. */
 .text-login, .text-remove-name, .text-remove-weighting, .text-remove-due, .text-remove-assigned,
-    .text-remove-assignment, .text-remove-score, .text-remove-total, .text-remove-daily {
+    .text-remove-assignment, .text-remove-score, .text-remove-total, .text-remove-daily, .text-help-general-body1,
+    .text-help-general-body2, .text-help-general-body3, .text-help-general-body4, .text-help-general-body5,
+    .text-help-general-title, .text-help-secondary-body1, .text-help-secondary-body2, .text-help-secondary-body3,
+    .text-help-secondary-body4, .text-help-secondary-body5, .text-help-secondary-body6, .text-help-secondary-body7,
+    .text-help-secondary-body8, .text-help-secondary-body9, .text-help-secondary-body10, .text-help-secondary-body11,
+    .text-help-secondary-body12, .text-help-secondary-title {
     -fx-background-color :transparent;
     -fx-text-fill: #92A2B9;
 }
@@ -28,6 +34,13 @@
 .error-message-login, .error-message-login-1, .error-message-create, .error-message-create-1 {
     -fx-background-color :transparent;
     -fx-text-fill: #DC143C;
+}
+
+.text-help-general-heading1, .text-help-general-heading2, .text-help-general-heading3, .text-help-general-heading4,
+    .text-help-general-heading5, .text-help-secondary-heading1, .text-help-secondary-heading2,
+    .text-help-secondary-heading3 {
+    -fx-background-color :transparent;
+    -fx-text-fill: #3A7E7F;
 }
 
 /* Any dropdown menus (comboboxes). */
@@ -176,24 +189,23 @@
     -fx-text-fill: #3A7E7F;
 }
 
-
-
 /* Button style 2 (text with underline). */
-.button-to-create-account, .button-to-login, .button-to-show-password-login, .button-to-show-password-create {
+.button-to-create-account, .button-to-login, .button-to-show-password-login, .button-to-show-password-create,
+    .button-general-help, .button-secondary-help {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #445768;
 }
 
 .button-to-create-account:hover, .button-to-login:hover, .button-to-show-password-login:hover,
-    .button-to-show-password-create:hover {
+    .button-to-show-password-create:hover, .button-general-help:hover, .button-secondary-help:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #8192A4;
 }
 
 .button-to-create-account:pressed, .button-to-login:pressed, .button-to-show-password-login:pressed,
-    .button-to-show-password-create:pressed {
+    .button-to-show-password-create:pressed, .button-general-help:pressed, .button-secondary-help:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #3A7E7F;

@@ -20,7 +20,7 @@
       <Text fx:id="removeSuccess" fill="#7fffd4" layoutX="62.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignment Removed" visible="false" />
       <ComboBox fx:id="selectedAssignment" layoutX="16.0" layoutY="41.0" onMouseClicked="#comboBoxAssign" onMouseEntered="#setTextDetails" prefHeight="25.0" prefWidth="207.0" promptText="Select an Assignment" styleClass="dropdown-assignment-removal" stylesheets="@/com/example/css/styles.css" visibleRowCount="3" />
       <Line fx:id="massiveLineThing" endX="36.5" endY="-39.0" layoutX="199.0" layoutY="92.0" startX="36.5" startY="85.0" stroke="#92a2b9" visible="false" />
-      <Label layoutX="166.0" layoutY="12.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Assignment Information" />
+      <Label layoutX="166.0" layoutY="12.0" styleClass="text-remove-assignment" stylesheets="@/com/example/css/styles.css" text="Assignment Information" underline="true" />
       <Label fx:id="nameImport" layoutX="244.0" layoutY="48.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-name" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
       <Label fx:id="weightingImport" layoutX="245.0" layoutY="64.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-weighting" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
       <Label fx:id="dueDateImport" layoutX="245.0" layoutY="80.0" prefHeight="17.0" prefWidth="208.0" styleClass="text-remove-due" stylesheets="@/com/example/css/styles.css" text="1" visible="false" />
