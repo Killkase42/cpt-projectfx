@@ -110,12 +110,13 @@ public class addAssignmentController {
     public void error() throws IOException {
 
         StringBuilder newLine = new StringBuilder();
-
+// Adding a space for every error found
         for (int i = 0; i < errors.size();i++) {
-            newLine.append("\n");
+            newLine.append(" ");
             newLine.append(errors.get(i));
         }
         errorsList.setText(newLine.toString());
+       // clearing error list
         errors.clear();
 
         // Clearing Fields
@@ -126,11 +127,11 @@ public class addAssignmentController {
 
         // Clearing assignment details showing
         showAssignmentName.setText("Name: ");
-        showAssignmentDate.setText("Due Date");
-        showAssignmentHours.setText("Total hours: ");
+        showAssignmentDate.setText("Due Date: ");
+        showAssignmentHours.setText("Total Hours: ");
         showAssignmentMarks.setText("Weighting: ");
-        showAssignmentScore.setText("Date Score: ");
-        showHoursPerDay.setText("Hours per day: ");
+        showAssignmentScore.setText("Date Score on Due Date: ");
+        showHoursPerDay.setText("Daily Hours Per Day: ");
         assignmentScore.setText("Score: ");
 
     }
@@ -221,49 +222,57 @@ public class addAssignmentController {
         incorrectField.setVisible(false);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
-// Checking for multiple assignments on selected date
-        for (int i = 1; i < assignmentInfo.length; i++) {
-            if (dueDateAssignment.getValue().equals(LocalDate.parse(assignmentInfo[i][2]))) {
-                numberOfAssignments += 1;
-            }
-        }
         // Error Checking
-        // Checks for a field not filled out
+        // Assignment due-date left blank
+        if (dueDateAssignment.getValue() == null) {
+        errors.add("The \"Assignment Due-Date\" field has been left blank!");
+
+    // Assignment in the past
+        } else if (dueDateAssignment.getValue().isBefore(LocalDate.now()) || dueDateAssignment.getValue().equals(LocalDate.now())) {
+        errors.add("You cannot have a assignment be due today, or a day in the past.");
+
+        // Checking for multiple assignments on selected date
+        } else {
+            for (int i = 1; i < assignmentInfo.length; i++) {
+                if (dueDateAssignment.getValue().equals(LocalDate.parse(assignmentInfo[i][2]))) {
+                    numberOfAssignments += 1;
+                } } }
+
+        // Name of assignment left blank
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
             errors.add("The \"Name of assignment\" field has been left blank!");
 
+       //Name of assignment a number only
         } else if (!isString(nameOfAssignment)) {
             errors.add("The name of the assignment cannot be only a number!");
 
+        // Assignment the same name as another assignment
         } else {
             for (int i = 1; i < assignmentInfo.length; i++) {
              if (nameOfAssignment.getText().equals(assignmentInfo[i][0])) {
-                 errors.add("There is already a assignment with the name \"" + (nameOfAssignment.getText()) + "\"."); }
-            }
+                 errors.add("There is already a assignment with the name \"" + (nameOfAssignment.getText()) + "\"."); } }
 
-        }if (dueDateAssignment.getValue() == null) {
-            errors.add("The \"Assignment Due-Date\" field has been left blank!");
-
-        } else if (dueDateAssignment.getValue().isBefore(LocalDate.now()) || dueDateAssignment.getValue().equals(LocalDate.now())){
-            errors.add("You cannot have a assignment be due today, or a day in the past.");
-
-
+       // Hours left blank
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
             errors.add("The \"Hours of Assignment\" field has been left blank!");
 
+        // Hours left at 0
         } else if (hoursOfAssignment.getText().equals("0")) {
             errors.add("The hours to complete the assignment cannot be 0!");
 
+        // Marks assignment left blank
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
             errors.add("The \"Weighting of assignment\" field has been left blank!");
+
+        // Marks assignment 0
         } else if (marksAssignment.getText().equals("0")) {
             errors.add("The weighting of the assignment cannot be 0!");
 
-            //Checks if field is filled out incorrectly
+        // Marks greater than 10
         } else if (Integer.parseInt(marksAssignment.getText()) > 10) {
             errors.add("The weighting of the assignment cannot be more than 10!");
 
-            System.out.println(numberOfAssignments);
+       // Number of assignments on specific day more than 3
         }  if (numberOfAssignments > 3) {
             errors.add("The date you have selected already has 3 assignments. Please pick another day");
 

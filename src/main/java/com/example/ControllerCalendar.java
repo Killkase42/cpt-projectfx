@@ -28,7 +28,7 @@ public class ControllerCalendar {
     public static Text welcomeText;
     public Text ChangeableNameDisplay;
 
-    public static int[] dateScore = new int[31];
+    public static int[] dateScore = new int[61];
 
     // For showing details on specific day
     public DatePicker datePicker;

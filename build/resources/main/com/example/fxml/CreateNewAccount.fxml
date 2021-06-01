@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="800.0" styleClass="background-create-account" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.CreateNewAccountController">
    <children>
-      <Pane fx:id="secondaryPane" layoutX="262.0" layoutY="170.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="212.0" prefWidth="246.0" styleClass="foreground-login" stylesheets="@/com/example/css/styles.css">
+      <Pane fx:id="secondaryPane" layoutX="262.0" layoutY="170.0" styleClass="foreground-login" stylesheets="@/com/example/css/styles.css">
          <children>
             <Label layoutX="37.0" layoutY="14.0" prefHeight="53.0" prefWidth="173.0" styleClass="text-login" stylesheets="@/com/example/css/styles.css" text="Create Account" textAlignment="CENTER">
                <font>

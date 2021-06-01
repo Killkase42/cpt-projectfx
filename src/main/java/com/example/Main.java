@@ -14,7 +14,7 @@ import java.util.Objects;
 // Starting the application
 public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) throws IOException, InterruptedException {
         // setting root for splash screen
         AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/splashScreen.fxml")));
         primaryStage.setTitle("SMCS Calender Beta");
@@ -32,14 +32,18 @@ public class Main extends Application {
         fadeIn.setToValue(1);
         fadeIn.setCycleCount(1);
 
+
        //Fade out
         FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), pane);
         fadeOut.setFromValue(1);
         fadeOut.setToValue(0);
         fadeOut.setCycleCount(1);
 
-        //Play fadein
+
+        //Play fadeIn
         fadeIn.play();
+
+       //Thread.sleep(3000);
 
         // Run fade out when fade in finished
         fadeIn.setOnFinished(event -> {

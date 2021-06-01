@@ -20,9 +20,9 @@
       <Text fx:id="showAssignmentMarks" layoutX="262.0" layoutY="78.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Weighting: " wrappingWidth="191.0" />
       <Text fx:id="showAssignmentDate" layoutX="262.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Due Date: " wrappingWidth="190.0" />
       <TextField fx:id="hoursOfAssignment" layoutX="16.0" layoutY="111.0" onMouseClicked="#changeTextField" prefHeight="25.0" prefWidth="217.0" promptText="Hours to Complete Assignment" />
-      <Text fx:id="showAssignmentScore" layoutX="262.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Score on due date:" wrappingWidth="182.0" />
+      <Text fx:id="showAssignmentScore" layoutX="262.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Score on Due Date:" wrappingWidth="182.0" />
       <Text fx:id="showAssignmentHours" layoutX="262.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Total Hours: " wrappingWidth="189.0" />
-      <Text fx:id="showHoursPerDay" layoutX="262.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Hours per day:" wrappingWidth="179.0" />
+      <Text fx:id="showHoursPerDay" layoutX="262.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Hours Per Day:" wrappingWidth="179.0" />
       <Text fx:id="assignmentScore" layoutX="262.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Score: " wrappingWidth="210.22900390625" />
       <Text layoutX="285.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description of Added Assignment" underline="true" />
       <Text layoutX="166.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Adding Assignments" />
