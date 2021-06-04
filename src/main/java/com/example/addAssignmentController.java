@@ -4,10 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -33,7 +30,7 @@ public class addAssignmentController {
     public Text notFilledField;
     public Text creationSuccess;
     public Text incorrectField;
-    public Text errorsList;
+    public Label errorsList;
 
     // The different Fields, used for seeing if things are correctly set up
     public TextField nameOfAssignment;
@@ -42,13 +39,13 @@ public class addAssignmentController {
     public TextField hoursOfAssignment;
 
     //Fields for displaying the info of the assignment
-    public Text showAssignmentName;
-    public Text showAssignmentDate;
-    public Text showAssignmentMarks;
-    public Text showAssignmentScore;
-    public Text showAssignmentHours;
-    public Text showHoursPerDay;
-    public Text assignmentScore;
+    public Label showAssignmentName;
+    public Label showAssignmentDate;
+    public Label showAssignmentMarks;
+    public Label showAssignmentDateScore;
+    public Label showAssignmentHours;
+    public Label showHoursPerDay;
+    public Label showAssignmentScore;
     public Button closeButton;
 
 
@@ -133,9 +130,9 @@ public class addAssignmentController {
         showAssignmentDate.setText("Due Date: ");
         showAssignmentHours.setText("Total Hours: ");
         showAssignmentMarks.setText("Weighting: ");
-        showAssignmentScore.setText("Date Score on Due Date: ");
+        showAssignmentDateScore.setText("Date Score on Due Date: ");
         showHoursPerDay.setText("Daily Hours Per Day: ");
-        assignmentScore.setText("Score: ");
+        showAssignmentScore.setText("Score: ");
 
     }
 
@@ -144,10 +141,7 @@ public class addAssignmentController {
     Post: Gives success message if assignment has been filled out correctly
      */
     public void success() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText(null);
-        alert.setContentText("Assignment Added");
-        alert.showAndWait();
+        errorsList.setText("Account created successfully");
     }
 
 
@@ -174,7 +168,6 @@ public class addAssignmentController {
         score = WorkLoadCalculator();
 
         // Updating the date score
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
         ControllerCalendar.updateDateScore();
 
 
@@ -187,14 +180,14 @@ public class addAssignmentController {
 
 
         // Showing assignment details
-        showAssignmentName.setText("Name: "+name);
+        showAssignmentName.setText("Name: "+ name);
         showAssignmentMarks.setText("Weighting: " + marks + "%");
         showAssignmentDate.setText("Due Date: " + date + " | " +
                 Math.abs(currentDate.getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
         showAssignmentHours.setText("Total Hours: " + hours);
-        showAssignmentScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printDateScore-1]);
+        showAssignmentDateScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printDateScore-1]);
         showHoursPerDay.setText("Hours per day: "+ Math.round(daily_Hours));
-        assignmentScore.setText("Score:" + score);
+        showAssignmentScore.setText("Score:" + score);
 
 
         // Adding information into one array so that it can upload online
@@ -296,7 +289,7 @@ public class addAssignmentController {
     Pre: The weight, or marks, hours and due date of a assignment
     Post: Gives score to assignment based on multiple factors
      */
-    public int WorkLoadCalculator() throws IOException {
+    public int WorkLoadCalculator() {
         int temp_score = 0;
         // May 1
         String CurrentDate = ("2021-05-01");
@@ -387,7 +380,7 @@ public class addAssignmentController {
     Pre: None
     Post: Goes to score help screen
     */
-    public void goToScoreHelp(ActionEvent event) throws IOException {
+    public void goToScoreHelp() throws IOException {
         Parent addAssignmentParent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/dateScoreVsScore.fxml")));
         Scene addAssignmentScene = new Scene(addAssignmentParent);
 

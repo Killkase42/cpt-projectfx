@@ -20,14 +20,15 @@
       <TextField fx:id="hoursOfAssignment" layoutX="16.0" layoutY="111.0" onMouseClicked="#changeTextField" prefHeight="25.0" prefWidth="217.0" promptText="Hours to Complete Assignment" styleClass="add-text-field-hours" stylesheets="@/com/example/css/styles.css" />
       <Button layoutX="337.0" layoutY="181.0" mnemonicParsing="false" onAction="#goToScoreHelp" styleClass="button-add-help" stylesheets="@/com/example/css/styles.css" text="Score Help" underline="true" />
       <Line endX="-12.69921875" endY="107.0" layoutX="265.0" layoutY="54.0" startX="-12.69921875" startY="-0.25" stroke="#92a2b9" />
-      <Text fx:id="errorsList" layoutX="15.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="292.22900390625" />
-      <Label layoutX="270.0" layoutY="45.0" styleClass="text-add-name" stylesheets="@/com/example/css/styles.css" text="Name: " />
-      <Label layoutX="270.0" layoutY="63.0" styleClass="text-add-weighting" stylesheets="@/com/example/css/styles.css" text="Weighting: " />
-      <Label layoutX="270.0" layoutY="81.0" styleClass="text-add-hours-total" stylesheets="@/com/example/css/styles.css" text="Total Hours: " />
-      <Label layoutX="270.0" layoutY="99.0" styleClass="text-add-hours-daily" stylesheets="@/com/example/css/styles.css" text="Daily Hours Per Day:" />
-      <Label layoutX="270.0" layoutY="117.0" styleClass="text-add-due-date" stylesheets="@/com/example/css/styles.css" text="Due Date: " />
-      <Label layoutX="270.0" layoutY="135.0" styleClass="text-add-score" stylesheets="@/com/example/css/styles.css" text="Score: " />
-      <Label layoutX="270.0" layoutY="153.0" styleClass="text-add-date-score" stylesheets="@/com/example/css/styles.css" text="Date Score on Due Date:" />
+      <Label fx:id="showAssignmentName" layoutX="270.0" layoutY="45.0" styleClass="text-add-name" stylesheets="@/com/example/css/styles.css" text="Name: " />
+      <Label fx:id="showAssignmentMarks" layoutX="270.0" layoutY="63.0" styleClass="text-add-weighting" stylesheets="@/com/example/css/styles.css" text="Weighting: " />
+      <Label fx:id="showAssignmentHours" layoutX="270.0" layoutY="81.0" styleClass="text-add-hours-total" stylesheets="@/com/example/css/styles.css" text="Total Hours: " />
+      <Label fx:id="showHoursPerDay" layoutX="270.0" layoutY="99.0" styleClass="text-add-hours-daily" stylesheets="@/com/example/css/styles.css" text="Daily Hours Per Day:" />
+      <Label fx:id="showAssignmentDate" layoutX="270.0" layoutY="117.0" styleClass="text-add-due-date" stylesheets="@/com/example/css/styles.css" text="Due Date: " />
+      <Label fx:id="showAssignmentScore" layoutX="270.0" layoutY="135.0" styleClass="text-add-score" stylesheets="@/com/example/css/styles.css" text="Score: " />
+      <Label fx:id="showAssignmentDateScore" layoutX="270.0" layoutY="153.0" styleClass="text-add-date-score" stylesheets="@/com/example/css/styles.css" text="Date Score on Due Date:" />
       <Label layoutX="205.0" layoutY="14.0" styleClass="text-add-title" stylesheets="@/com/example/css/styles.css" text="Adding Assignments" underline="true" />
+      <Label fx:id="success" layoutX="15.0" layoutY="186.0" prefHeight="17.0" prefWidth="252.0" text="Assignment succesfully created!" visible="false" />
+      <Label fx:id="errorsList" layoutX="7.0" layoutY="185.0" prefHeight="17.0" prefWidth="324.0" />
    </children>
 </AnchorPane>
