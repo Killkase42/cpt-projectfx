@@ -146,7 +146,7 @@ public class addAssignmentController {
     public void success() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setHeaderText(null);
-        alert.setContentText("Assignment created successfully!");
+        alert.setContentText("Assignment Added");
         alert.showAndWait();
     }
 

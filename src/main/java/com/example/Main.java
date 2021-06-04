@@ -18,7 +18,7 @@ public class Main extends Application {
         // setting root for splash screen
         AnchorPane root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("fxml/splashScreen.fxml")));
         primaryStage.setTitle("SMCS Calender Beta");
-        primaryStage.setScene(new Scene(root, 800, 600));
+        primaryStage.setScene(new Scene(root, 859, 689));
         primaryStage.show();
 
         // setting pane

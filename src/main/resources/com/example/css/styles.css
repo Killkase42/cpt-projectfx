@@ -4,11 +4,11 @@
 }
 
 .foreground-login, .foreground-create-account, .background-remove, .background-help-general,
-    .background-help-secondary {
+    .background-help-secondary, .background-splash, .background-add-assignment {
     -fx-background-color : #253648;
     -fx-border-style: solid;
     -fx-border-radius: 3 3 3 3;
-    -fx-border-width: 5px;
+    -fx-border-width: 5;
     -fx-border-color: #253648;
     -fx-border-insets: -2;
 }
@@ -26,7 +26,9 @@
     .text-help-general-title, .text-help-secondary-body1, .text-help-secondary-body2, .text-help-secondary-body3,
     .text-help-secondary-body4, .text-help-secondary-body5, .text-help-secondary-body6, .text-help-secondary-body7,
     .text-help-secondary-body8, .text-help-secondary-body9, .text-help-secondary-body10, .text-help-secondary-body11,
-    .text-help-secondary-body12, .text-help-secondary-title {
+    .text-help-secondary-body12, .text-help-secondary-title, .text-splash-title, .text-add-title, .text-add-name,
+    .text-add-weighting, .text-add-hours-total, .text-add-hours-daily, .text-add-due-date, .text-add-score,
+    .text-add-date-score {
     -fx-background-color :transparent;
     -fx-text-fill: #92A2B9;
 }
@@ -38,13 +40,13 @@
 
 .text-help-general-heading1, .text-help-general-heading2, .text-help-general-heading3, .text-help-general-heading4,
     .text-help-general-heading5, .text-help-secondary-heading1, .text-help-secondary-heading2,
-    .text-help-secondary-heading3 {
+    .text-help-secondary-heading3, .text-splash-names {
     -fx-background-color :transparent;
     -fx-text-fill: #3A7E7F;
 }
 
 /* Any dropdown menus (comboboxes). */
-.dropdown-assignment-removal{
+.dropdown-assignment-removal {
     -fx-background-color :#314254;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -52,6 +54,16 @@
     -fx-border-width: 2px;
     -fx-border-color: #445768;
     -fx-text-fill: #445768;
+}
+
+.dropdown-assignment-removal:hover {
+    -fx-background-color :#314254;
+    -fx-background-radius :  12;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 3 3 3;
+    -fx-border-width: 2px;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
 }
 
 .dropdown-assignment-removal .list-cell {
@@ -156,19 +168,119 @@
     -fx-border-color: #445768;
 }
 
+/* Any date pickers. */
+.add-calendar-box > * {
+    -fx-background-color :#253648;
+    -fx-background-insets: 0 0 -1 0;
+    -fx-background-radius :  0;
+    -fx-border-style: solid;
+    -fx-border-radius: 3 0 0 3;
+    -fx-border-width: 2 0 2 2 px;
+    -fx-border-color: #445768;
+    -fx-text-fill: #445768;
+ }
+
+.add-calendar-box > .arrow-button  {
+    -fx-background-color :#314254;
+    -fx-background-insets: 0 0 0 0;
+    -fx-background-radius :  0;
+    -fx-border-style: solid;
+    -fx-border-radius: 0 3 3 0;
+    -fx-border-width: 2 2 2 0 px;
+    -fx-border-color: #445768;
+    -fx-text-fill: #445768;
+     -fx-effect: dropshadow( gaussian , #253648 , 5 , 5 , 5 , 5 );
+ }
+
+.add-calendar-box .day-cell {
+    -fx-background-color: #253648;
+        -fx-border-style: solid;
+        -fx-border-width: 1;
+        -fx-border-color: #445768;
+        -fx-text-fill: #445768;
+}
+
+.add-calendar-box .cell:hover {
+    -fx-background-color: #253648;
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
+}
+
+.add-calendar-box .cell:pressed {
+    -fx-background-color: #253648;
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: #3A7E7F;
+    -fx-text-fill: #3A7E7F;
+ }
+
+.add-calendar-box .cell:focused {
+    -fx-background-color: #253648;
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: #3A7E7F;
+    -fx-text-fill: #3A7E7F;
+ }
+
+.add-calendar-box .day-name-cell {
+    -fx-background-color: #253648;
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-insets: 0 0 1 0;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
+}
+
+.add-calendar-box .day-name-cell:hover {
+    -fx-background-color: #253648;
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
+}
+
+.add-calendar-box .day-name-cell:pressed {
+    -fx-background-color: #253648;
+    -fx-border-style: solid;
+    -fx-border-width: 1;
+    -fx-border-color: #8192A4;
+    -fx-text-fill: #8192A4;
+}
+
+.add-calendar-box  .month-year-pane {
+    -fx-background-color: #253648;
+}
+
+.add-calendar-box  .month-year-pane .label {
+    -fx-background-color: #253648;
+    -fx-text-fill: #8192A4;
+}
+
+.add-calendar-box  .month-year-pane .right-button, .add-calendar-box  .month-year-pane .left-button {
+    -fx-background-color: #253648;
+}
+
+
+
+
+
+
 
 /* Button style 1 (button). */
-.button-login, .button-create-account, .button-remove-information, .button-remove-assignment {
+.button-login, .button-create-account, .button-remove-information, .button-remove-assignment, .button-add-assignment {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
     -fx-border-radius: 3 3 3 3;
-    -fx-border-width: 2px;
+    -fx-border-width: 2;
     -fx-border-color: #445768;
     -fx-text-fill: #445768;
 }
 
-.button-login:hover, .button-create-account:hover, .button-remove-information:hover, .button-remove-assignment:hover {
+.button-login:hover, .button-create-account:hover, .button-remove-information:hover, .button-remove-assignment:hover,
+    .button-add-assignment:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -179,7 +291,7 @@
 }
 
 .button-login:pressed, .button-create-account:pressed, .button-remove-information:pressed,
-    .button-remove-assignment:pressed {
+    .button-remove-assignment:pressed, .button-add-assignment:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -191,21 +303,23 @@
 
 /* Button style 2 (text with underline). */
 .button-to-create-account, .button-to-login, .button-to-show-password-login, .button-to-show-password-create,
-    .button-general-help, .button-secondary-help {
+    .button-general-help, .button-secondary-help, .button-add-help {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #445768;
 }
 
 .button-to-create-account:hover, .button-to-login:hover, .button-to-show-password-login:hover,
-    .button-to-show-password-create:hover, .button-general-help:hover, .button-secondary-help:hover {
+    .button-to-show-password-create:hover, .button-general-help:hover, .button-secondary-help:hover,
+    .button-add-help:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #8192A4;
 }
 
 .button-to-create-account:pressed, .button-to-login:pressed, .button-to-show-password-login:pressed,
-    .button-to-show-password-create:pressed, .button-general-help:pressed, .button-secondary-help:pressed {
+    .button-to-show-password-create:pressed, .button-general-help:pressed, .button-secondary-help:pressed,
+    .button-add-help:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #3A7E7F;
@@ -213,7 +327,8 @@
 
 /* The text fields*/
 .username-text-field, .password-text-field, .password-show-text-field-login, .username-text-field-create,
-    .password-text-field-create, .password-show-text-field-create {
+    .password-text-field-create, .password-show-text-field-create, .add-text-field-name, .add-text-field-weighting,
+    .add-text-field-hours {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;
@@ -224,7 +339,8 @@
 }
 
 .username-text-field:focused, .password-text-field:focused, .password-show-text-field-login:focused,
-    .username-text-field-create:focused, .password-text-field-create:focused, .password-show-text-field-create:focused {
+    .username-text-field-create:focused, .password-text-field-create:focused, .password-show-text-field-create:focused,
+    .add-text-field-name:focused, .add-text-field-weighting:focused, .add-text-field-hours:focused {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-border-style: solid;

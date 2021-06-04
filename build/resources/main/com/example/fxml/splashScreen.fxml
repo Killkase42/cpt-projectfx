@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.SplashScreenController">
+<AnchorPane prefHeight="689.0" prefWidth="859.0" styleClass="background-splash" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.SplashScreenController">
    <children>
-      <Text layoutX="154.0" layoutY="193.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SMCS Calendar Beta">
+      <Label layoutX="231.0" layoutY="376.0" styleClass="text-splash-names" stylesheets="@/com/example/css/styles.css" text="By: Arjun S, Nicholas V, Francesco V, and Benjamin">
          <font>
-            <Font name="System Bold" size="33.0" />
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="283.0" styleClass="text-splash-title" stylesheets="@/com/example/css/styles.css" text="SMCS Calendar (Beta)">
+         <font>
+            <Font name="System Bold" size="64.0" />
          </font>
-      </Text>
-      <Text layoutX="179.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="By: Arjun, Nicholas, Francesco and Benjamin" />
+      </Label>
    </children>
 </AnchorPane>
