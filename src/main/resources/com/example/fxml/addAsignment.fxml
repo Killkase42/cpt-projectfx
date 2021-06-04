@@ -28,7 +28,7 @@
       <Label fx:id="showAssignmentScore" layoutX="270.0" layoutY="135.0" styleClass="text-add-score" stylesheets="@/com/example/css/styles.css" text="Score: " />
       <Label fx:id="showAssignmentDateScore" layoutX="270.0" layoutY="153.0" styleClass="text-add-date-score" stylesheets="@/com/example/css/styles.css" text="Date Score on Due Date:" />
       <Label layoutX="205.0" layoutY="14.0" styleClass="text-add-title" stylesheets="@/com/example/css/styles.css" text="Adding Assignments" underline="true" />
-      <Label fx:id="success" layoutX="15.0" layoutY="186.0" prefHeight="17.0" prefWidth="252.0" text="Assignment succesfully created!" visible="false" />
-      <Label fx:id="errorsList" layoutX="7.0" layoutY="185.0" prefHeight="17.0" prefWidth="324.0" />
+      <Label fx:id="success" layoutX="15.0" layoutY="186.0" prefHeight="17.0" prefWidth="252.0" styleClass="text-add-success" stylesheets="@/com/example/css/styles.css" text="Assignment succesfully created!" visible="false" />
+      <Label fx:id="errorsList" layoutX="7.0" layoutY="185.0" prefHeight="17.0" prefWidth="324.0" styleClass="text-add-errors" stylesheets="@/com/example/css/styles.css" />
    </children>
 </AnchorPane>
