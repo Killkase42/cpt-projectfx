@@ -26,16 +26,16 @@ import static com.example.addAssignmentController.deleteYear;
 public class ControllerCalendar {
 
     public static Text welcomeText;
-    public Text ChangeableNameDisplay;
+    public Label ChangeableNameDisplay;
 
     public static int[] dateScore = new int[61];
 
     // For showing details on specific day
     public DatePicker datePicker;
-    public Text assignmentOnDate;
-    public Text DateScoreOnDate;
-    public Text hoursOnDay;
-    public Text rating;
+    public Label assignmentOnDate;
+    public Label DateScoreOnDate;
+    public Label hoursOnDay;
+    public Label rating;
 
     // Labels for all the dates
     public Label May_1;public Label May_2;public Label May_3;public Label May_4;public Label May_5;

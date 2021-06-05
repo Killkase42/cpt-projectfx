@@ -9,14 +9,12 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
    <children>
-      <Button layoutX="15.0" layoutY="297.0" mnemonicParsing="false" onAction="#addAssignmentPopUp" text="Add Assignment" />
-      <Button layoutX="11.0" layoutY="363.0" mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" prefWidth="130.0" text="View Assignment Information" wrapText="true" />
-      <Button layoutX="15.0" layoutY="649.0" mnemonicParsing="false" onAction="#BackToAccountScreen" prefHeight="26.0" prefWidth="83.0" text="Log Out" />
       <GridPane gridLinesVisible="true" layoutX="165.0" layoutY="60.0" prefHeight="499.0" prefWidth="680.0">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -542,7 +540,7 @@
             </Label>
          </children>
       </GridPane>
-      <Text layoutX="195.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="May" wrappingWidth="46.6513671875">
+      <Text layoutX="195.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="May" wrappingWidth="97.0">
          <font>
             <Font name="System Bold" size="23.0" />
          </font>
@@ -552,15 +550,32 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <Button layoutX="16.0" layoutY="425.0" mnemonicParsing="false" onAction="#addAssignmentToCalendar" text="Update Assignments" wrapText="true" />
-      <Text fx:id="welcomeText" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <DatePicker fx:id="datePicker" editable="false" layoutX="165.0" layoutY="569.0" prefHeight="24.0" prefWidth="219.0" promptText="Select date to show all details" />
-      <Text fx:id="assignmentOnDate" layoutX="401.0" layoutY="587.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Assignments:" wrappingWidth="458.29632568359375" />
-      <Text fx:id="DateScoreOnDate" layoutX="398.0" layoutY="614.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Date Score:" wrappingWidth="463.7884521484375" />
-      <Text fx:id="hoursOnDay" layoutX="401.0" layoutY="645.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daily Hours:" wrappingWidth="332.837890625" />
-      <Text fx:id="rating" layoutX="401.0" layoutY="667.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Rating: " wrappingWidth="469.8408203125" />
-      <Text fx:id="ChangeableNameDisplay" layoutX="112.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="72.0" />
-      <Label fx:id="nameWelcoming" layoutX="-10.0" layoutY="21.0" prefHeight="17.0" prefWidth="134.0" text="       Welcome, comrade" />
-      <Button layoutX="12.0" layoutY="110.0" mnemonicParsing="false" onAction="#helpPopUp" text="Help" />
+      <AnchorPane prefHeight="689.0" prefWidth="145.0" styleClass="background-calendar-menu" stylesheets="@/com/example/css/styles.css">
+         <children>
+            <Button layoutY="55.0" mnemonicParsing="false" onAction="#addAssignmentPopUp" prefHeight="42.0" prefWidth="145.0" styleClass="button-calendar-add" stylesheets="@/com/example/css/styles.css" text="Add Assignment" />
+            <Button layoutY="102.0" mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" prefHeight="42.0" prefWidth="145.0" styleClass="button-calendar-info" stylesheets="@/com/example/css/styles.css" text="Assignment Information" wrapText="true" />
+            <Button layoutY="150.0" mnemonicParsing="false" onAction="#addAssignmentToCalendar" prefHeight="42.0" prefWidth="145.0" styleClass="button-calendar-update" stylesheets="@/com/example/css/styles.css" text="Update Assignments" wrapText="true" />
+            <Button layoutX="15.0" layoutY="26.0" mnemonicParsing="false" onAction="#BackToAccountScreen" styleClass="button-calendar-logout" stylesheets="@/com/example/css/styles.css" text="Log Out" underline="true" />
+            <Button layoutX="80.0" layoutY="26.0" mnemonicParsing="false" onAction="#helpPopUp" styleClass="button-calendar-help" stylesheets="@/com/example/css/styles.css" text="Help!" underline="true" />
+            <Label fx:id="nameWelcoming" layoutX="10.0" layoutY="10.0" styleClass="text-calendar-welcome" stylesheets="@/com/example/css/styles.css" text="Welcome, " />
+            <Label fx:id="ChangeableNameDisplay" layoutX="65.0" layoutY="10.0" prefHeight="17.0" prefWidth="33.0" styleClass="text-calendar-namedis" stylesheets="@/com/example/css/styles.css" />
+            <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="99.5" startX="-109.0" />
+            <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="147.5" startX="-109.0" />
+
+
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="147.0" layoutY="569.0" prefHeight="121.0" prefWidth="712.0" styleClass="background-calendar-secondary" stylesheets="@/com/example/css/styles.css">
+         <children>
+            <DatePicker fx:id="datePicker" editable="false" layoutX="8.0" layoutY="53.0" prefHeight="24.0" prefWidth="219.0" promptText="Select a Date to Display Info" styleClass="background-calendar-box" stylesheets="@/com/example/css/styles.css" />
+            <Label fx:id="assignmentOnDate" layoutX="244.0" layoutY="20.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-assignment" stylesheets="@/com/example/css/styles.css" text="Assignments:" wrapText="true" />
+            <Label fx:id="DateScoreOnDate" layoutX="244.0" layoutY="66.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-datescore" stylesheets="@/com/example/css/styles.css" text="Date Score:" />
+            <Label fx:id="hoursOnDay" layoutX="244.0" layoutY="89.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-hours" stylesheets="@/com/example/css/styles.css" text="Daily Hours:" />
+            <Label fx:id="rating" layoutX="244.0" layoutY="43.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-rating" stylesheets="@/com/example/css/styles.css" text="Rating: " />
+            <Label layoutX="72.0" layoutY="20.0" styleClass="text-calendar-titleinfo" stylesheets="@/com/example/css/styles.css" text="Daily Information" underline="true" />
+            <Line fx:id="massiveLineThing1" endX="36.5" endY="14.0" layoutX="199.0" layoutY="15.0" startX="36.5" startY="85.0" stroke="#92a2b9" />
+         </children>
+      </AnchorPane>
+      <Line endX="145.0" fill="#253648" layoutX="-1.0" startX="145.0" startY="689.0" />
    </children>
 </AnchorPane>

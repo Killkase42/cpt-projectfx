@@ -1,5 +1,5 @@
 /* The pane colours of the screens. */
-.background-login, .background-create-account {
+.background-login, .background-create-account, .background-calendar-menu {
     -fx-background-color : #314254;
 }
 
@@ -7,7 +7,15 @@
     .background-help-secondary, .background-splash, .background-add-assignment {
     -fx-background-color : #253648;
     -fx-border-style: solid;
-    -fx-border-radius: 3 3 3 3;
+    -fx-border-radius: 3;
+    -fx-border-width: 5;
+    -fx-border-color: #253648;
+    -fx-border-insets: -2;
+}
+
+.background-calendar-secondary {
+    -fx-background-color : #253648;
+    -fx-border-style: solid;
     -fx-border-width: 5;
     -fx-border-color: #253648;
     -fx-border-insets: -2;
@@ -28,7 +36,8 @@
     .text-help-secondary-body8, .text-help-secondary-body9, .text-help-secondary-body10, .text-help-secondary-body11,
     .text-help-secondary-body12, .text-help-secondary-title, .text-splash-title, .text-add-title, .text-add-name,
     .text-add-weighting, .text-add-hours-total, .text-add-hours-daily, .text-add-due-date, .text-add-score,
-    .text-add-date-score {
+    .text-add-date-score, .text-calendar-welcome, .text-calendar-namedis, .text-calendar-assignment,
+    .text-calendar-datescore, .text-calendar-hours, .text-calendar-rating, .text-calendar-titleinfo {
     -fx-background-color :transparent;
     -fx-text-fill: #92A2B9;
 }
@@ -40,7 +49,7 @@
 
 .text-add-success {
     -fx-background-color :transparent;
-    -fx-text-fill: 7FFFD4;
+    -fx-text-fill: #7FFFD4;
 }
 
 .text-help-general-heading1, .text-help-general-heading2, .text-help-general-heading3, .text-help-general-heading4,
@@ -174,7 +183,7 @@
 }
 
 /* Any date pickers. */
-.add-calendar-box > * {
+.add-calendar-box > *, .background-calendar-box > * {
     -fx-background-color :#253648;
     -fx-background-insets: 0 0 -1 0;
     -fx-background-radius :  0;
@@ -185,7 +194,7 @@
     -fx-text-fill: #445768;
  }
 
-.add-calendar-box > .arrow-button  {
+.add-calendar-box > .arrow-button, .background-calendar-box > .arrow-button  {
     -fx-background-color :#314254;
     -fx-background-insets: 0 0 0 0;
     -fx-background-radius :  0;
@@ -197,7 +206,7 @@
      -fx-effect: dropshadow( gaussian , #253648 , 5 , 5 , 5 , 5 );
  }
 
-.add-calendar-box .day-cell {
+.add-calendar-box .day-cell, .background-calendar-box .day-cell {
     -fx-background-color: #253648;
         -fx-border-style: solid;
         -fx-border-width: 1;
@@ -205,7 +214,7 @@
         -fx-text-fill: #445768;
 }
 
-.add-calendar-box .cell:hover {
+.add-calendar-box .cell:hover, .background-calendar-box .cell:hover {
     -fx-background-color: #253648;
     -fx-border-style: solid;
     -fx-border-width: 1;
@@ -213,7 +222,7 @@
     -fx-text-fill: #8192A4;
 }
 
-.add-calendar-box .cell:pressed {
+.add-calendar-box .cell:pressed, .background-calendar-box .cell-pressed {
     -fx-background-color: #253648;
     -fx-border-style: solid;
     -fx-border-width: 1;
@@ -221,7 +230,7 @@
     -fx-text-fill: #3A7E7F;
  }
 
-.add-calendar-box .cell:focused {
+.add-calendar-box .cell:focused, .background-calendar-box .cell-focused {
     -fx-background-color: #253648;
     -fx-border-style: solid;
     -fx-border-width: 1;
@@ -229,7 +238,7 @@
     -fx-text-fill: #3A7E7F;
  }
 
-.add-calendar-box .day-name-cell {
+.add-calendar-box .day-name-cell, .background-calendar-box .day-name-cell {
     -fx-background-color: #253648;
     -fx-border-style: solid;
     -fx-border-width: 1;
@@ -238,7 +247,7 @@
     -fx-text-fill: #8192A4;
 }
 
-.add-calendar-box .day-name-cell:hover {
+.add-calendar-box .day-name-cell:hover, .background-calendar-box .day-name-cell:hover {
     -fx-background-color: #253648;
     -fx-border-style: solid;
     -fx-border-width: 1;
@@ -246,7 +255,7 @@
     -fx-text-fill: #8192A4;
 }
 
-.add-calendar-box .day-name-cell:pressed {
+.add-calendar-box .day-name-cell:pressed, .background-calendar-box .day-name-cell:pressed {
     -fx-background-color: #253648;
     -fx-border-style: solid;
     -fx-border-width: 1;
@@ -254,16 +263,17 @@
     -fx-text-fill: #8192A4;
 }
 
-.add-calendar-box  .month-year-pane {
+.add-calendar-box  .month-year-pane, .background-calendar-box .month-year-pane {
     -fx-background-color: #253648;
 }
 
-.add-calendar-box  .month-year-pane .label {
+.add-calendar-box  .month-year-pane .label, .background-calendar-box .month-year-pane .label {
     -fx-background-color: #253648;
     -fx-text-fill: #8192A4;
 }
 
-.add-calendar-box  .month-year-pane .right-button, .add-calendar-box  .month-year-pane .left-button {
+.add-calendar-box  .month-year-pane .right-button, .add-calendar-box  .month-year-pane .left-button,
+    .background-calendar-box .month-year-pane .right-button, .background-calendar-box .month-year-pane .left-button {
     -fx-background-color: #253648;
 }
 
@@ -273,7 +283,7 @@
 
 
 
-/* Button style 1 (button). */
+/* Button style 1 (button, rounded). */
 .button-login, .button-create-account, .button-remove-information, .button-remove-assignment, .button-add-assignment {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
@@ -306,9 +316,28 @@
     -fx-text-fill: #3A7E7F;
 }
 
+/* Button style 1.5 (button, sharp). */
+.button-calendar-add, .button-calendar-info, .button-calendar-update {
+    -fx-background-color :transparent;
+
+    -fx-text-fill: #8192A4;
+}
+
+.button-calendar-add:hover, .button-calendar-info:hover, .button-calendar-update:hover {
+    -fx-background-color :#445768;
+
+    -fx-text-fill: #8192A4;
+}
+
+.button-calendar-add:pressed, .button-calendar-info:pressed, .button-calendar-update:pressed {
+    -fx-background-color :#445768;
+
+    -fx-text-fill: #3A7E7F;
+}
+
 /* Button style 2 (text with underline). */
 .button-to-create-account, .button-to-login, .button-to-show-password-login, .button-to-show-password-create,
-    .button-general-help, .button-secondary-help, .button-add-help {
+    .button-general-help, .button-secondary-help, .button-add-help, .button-calendar-logout, .button-calendar-help {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #445768;
@@ -316,7 +345,7 @@
 
 .button-to-create-account:hover, .button-to-login:hover, .button-to-show-password-login:hover,
     .button-to-show-password-create:hover, .button-general-help:hover, .button-secondary-help:hover,
-    .button-add-help:hover {
+    .button-add-help:hover, .button-calendar-logout:hover, .button-calendar-help:hover {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #8192A4;
@@ -324,7 +353,7 @@
 
 .button-to-create-account:pressed, .button-to-login:pressed, .button-to-show-password-login:pressed,
     .button-to-show-password-create:pressed, .button-general-help:pressed, .button-secondary-help:pressed,
-    .button-add-help:pressed {
+    .button-add-help:pressed, .button-calendar-logout:pressed, .button-calendar-help:pressed {
     -fx-background-color :transparent;
     -fx-background-radius :  12;
     -fx-text-fill: #3A7E7F;

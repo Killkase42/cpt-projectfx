@@ -6,7 +6,7 @@
 
 <AnchorPane prefHeight="689.0" prefWidth="859.0" styleClass="background-splash" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.SplashScreenController">
    <children>
-      <Label layoutX="231.0" layoutY="376.0" styleClass="text-splash-names" stylesheets="@/com/example/css/styles.css" text="By: Arjun S, Nicholas V, Francesco V, and Benjamin">
+      <Label layoutX="224.0" layoutY="376.0" styleClass="text-splash-names" stylesheets="@/com/example/css/styles.css" text="By Arjun S, Nicholas V, Francesco V, and Benjamin Z">
          <font>
             <Font size="18.0" />
          </font></Label>
