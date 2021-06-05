@@ -58,10 +58,9 @@ public class ControllerCalendar {
     /*
     Pre: None
     Post: Sets a welcome message to the main calendar screen
-    NOT DONE YET
      */
-    public void setText(String username) {
-        welcomeText.setText(username);
+    public void setText() {
+        ChangeableNameDisplay.setText(LoginController.nameAccount);
     }
 
     /*
@@ -163,8 +162,7 @@ public class ControllerCalendar {
      Post: Adds any assignments to the calendar
      */
     public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
-        // THIS IS WHAT CHANGES THE NAME FOR THE PERSON THAT LOGGED IN
-        ChangeableNameDisplay.setText(LoginController.nameAccount);
+
 
         updateDateScore();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
@@ -327,7 +325,7 @@ public class ControllerCalendar {
     Pre: None
     Post: Show the date score and the assignments on a specific date
      */
-    public void showAssignmentName_dateScore() throws GeneralSecurityException, IOException {
+    public void showAssignmentName_dateScore() {
 
 
         StringBuilder assignmentNames = new StringBuilder();

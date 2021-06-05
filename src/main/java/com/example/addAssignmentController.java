@@ -1,10 +1,11 @@
 package com.example;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -22,6 +23,7 @@ import static com.example.ControllerCalendar.isolateDays;
 public class addAssignmentController {
 
 
+
     // May 1
     LocalDate currentDate = LocalDate.parse("2021-05-01");
 
@@ -31,6 +33,7 @@ public class addAssignmentController {
     public Text creationSuccess;
     public Text incorrectField;
     public Label errorsList;
+    public Label successText;
 
     // The different Fields, used for seeing if things are correctly set up
     public TextField nameOfAssignment;
@@ -46,11 +49,9 @@ public class addAssignmentController {
     public Label showAssignmentHours;
     public Label showHoursPerDay;
     public Label showAssignmentScore;
-    public Button closeButton;
-
-
 
     double daily_Hours;
+
     // Errors list
     List<String> errors = new ArrayList<>();
 
@@ -112,8 +113,8 @@ public class addAssignmentController {
         StringBuilder newLine = new StringBuilder();
 // Adding a space for every error found
         for (int i = 0; i < errors.size();i++) {
-            newLine.append(" ");
             newLine.append(errors.get(i));
+            newLine.append("\n ");
         }
         errorsList.setText(newLine.toString());
        // clearing error list
@@ -141,7 +142,7 @@ public class addAssignmentController {
     Post: Gives success message if assignment has been filled out correctly
      */
     public void success() {
-        errorsList.setText("Account created successfully");
+        successText.setVisible(true);
     }
 
 
@@ -207,25 +208,26 @@ public class addAssignmentController {
 
     /*
      Pre: None
-     Post: Deciding what the "Submit Assignment" button should do
+     Post: Deciding what the "Submit Assignment" button should do, mainly error checking
      */
     public void checkFieldStatus() throws IOException, GeneralSecurityException {
         int numberOfAssignments = 0;
-
-
         notFilledField.setVisible(false);
         creationSuccess.setVisible(false);
         incorrectField.setVisible(false);
+
+        successText.setVisible(false);
+        errors.clear();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
         // Error Checking
         // Assignment due-date left blank
         if (dueDateAssignment.getValue() == null) {
-        errors.add("The \"Assignment Due-Date\" field has been left blank!");
+        errors.add("\"Assignment Due-Date\" field left blank!");
 
     // Assignment in the past
         } else if (dueDateAssignment.getValue().isBefore(currentDate) || dueDateAssignment.getValue().equals(currentDate)) {
-        errors.add("You cannot have a assignment be due today, or a day in the past.");
+        errors.add("Due-date cannot be today or before today!");
 
         // Checking for multiple assignments on selected date
         } else {
@@ -236,41 +238,41 @@ public class addAssignmentController {
 
         // Name of assignment left blank
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
-            errors.add("The \"Name of assignment\" field has been left blank!");
+            errors.add("\"Name of assignment\" field is blank!");
 
        //Name of assignment a number only
         } else if (!isString(nameOfAssignment)) {
-            errors.add("The name of the assignment cannot be only a number!");
+            errors.add("Name of the assignment cannot be a number!");
 
         // Assignment the same name as another assignment
         } else {
             for (int i = 1; i < assignmentInfo.length; i++) {
              if (nameOfAssignment.getText().equals(assignmentInfo[i][0])) {
-                 errors.add("There is already a assignment with the name \"" + (nameOfAssignment.getText()) + "\"."); } }
+                 errors.add("Assignment already with that name."); } }
 
        // Hours left blank
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
-            errors.add("The \"Hours of Assignment\" field has been left blank!");
+            errors.add("\"Hours of Assignment\" field left blank!");
 
         // Hours left at 0
         } else if (hoursOfAssignment.getText().equals("0")) {
-            errors.add("The hours to complete the assignment cannot be 0!");
+            errors.add("The hours cannot be 0!");
 
         // Marks assignment left blank
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
-            errors.add("The \"Weighting of assignment\" field has been left blank!");
+            errors.add("\"Weighting of assignment\" field left blank!");
 
         // Marks assignment 0
         } else if (marksAssignment.getText().equals("0")) {
-            errors.add("The weighting of the assignment cannot be 0!");
+            errors.add("Weighting cannot be 0!");
 
         // Marks greater than 10
         } else if (Integer.parseInt(marksAssignment.getText()) > 10) {
-            errors.add("The weighting of the assignment cannot be more than 10!");
+            errors.add("Weighting cannot be more than 10!");
 
        // Number of assignments on specific day more than 3
         }  if (numberOfAssignments > 3) {
-            errors.add("The date you have selected already has 3 assignments. Please pick another day");
+            errors.add("That date already has 3 assignments.");
 
             // checking if any errors happened
         }  if (errors.size() > 0) {
@@ -390,14 +392,6 @@ public class addAssignmentController {
         window.show();
     }
 
-    /*
-    Pre: None
-    Post: Closes current screen
-     */
-    public void closeButtonAction(ActionEvent event) {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
 
 }
 

@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="689.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#setText" prefHeight="689.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
    <children>
       <GridPane gridLinesVisible="true" layoutX="165.0" layoutY="60.0" prefHeight="499.0" prefWidth="680.0">
          <columnConstraints>
@@ -550,7 +550,7 @@
             <Font size="23.0" />
          </font>
       </Text>
-      <AnchorPane prefHeight="689.0" prefWidth="145.0" styleClass="background-calendar-menu" stylesheets="@/com/example/css/styles.css">
+      <AnchorPane onMouseMoved="#setText" prefHeight="689.0" prefWidth="145.0" styleClass="background-calendar-menu" stylesheets="@/com/example/css/styles.css">
          <children>
             <Button layoutY="55.0" mnemonicParsing="false" onAction="#addAssignmentPopUp" prefHeight="42.0" prefWidth="145.0" styleClass="button-calendar-add" stylesheets="@/com/example/css/styles.css" text="Add Assignment" />
             <Button layoutY="102.0" mnemonicParsing="false" onAction="#RemoveAssignmentPopUp" prefHeight="42.0" prefWidth="145.0" styleClass="button-calendar-info" stylesheets="@/com/example/css/styles.css" text="Assignment Information" wrapText="true" />
@@ -565,7 +565,7 @@
 
          </children>
       </AnchorPane>
-      <AnchorPane layoutX="147.0" layoutY="569.0" prefHeight="121.0" prefWidth="712.0" styleClass="background-calendar-secondary" stylesheets="@/com/example/css/styles.css">
+      <AnchorPane layoutX="147.0" layoutY="569.0" onMouseMoved="#showAssignmentName_dateScore" prefHeight="121.0" prefWidth="712.0" styleClass="background-calendar-secondary" stylesheets="@/com/example/css/styles.css">
          <children>
             <DatePicker fx:id="datePicker" editable="false" layoutX="8.0" layoutY="53.0" prefHeight="24.0" prefWidth="219.0" promptText="Select a Date to Display Info" styleClass="background-calendar-box" stylesheets="@/com/example/css/styles.css" />
             <Label fx:id="assignmentOnDate" layoutX="244.0" layoutY="20.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-assignment" stylesheets="@/com/example/css/styles.css" text="Assignments:" wrapText="true" />
