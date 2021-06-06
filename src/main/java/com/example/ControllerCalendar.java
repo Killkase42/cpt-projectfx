@@ -7,11 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.Tooltip;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,10 +23,11 @@ import static com.example.addAssignmentController.deleteYear;
 
 public class ControllerCalendar {
 
-    public static Text welcomeText;
     public Label ChangeableNameDisplay;
+    public Label noAssignmnents;
 
     public static int[] dateScore = new int[61];
+    public static double[] dailyHoursScore = new double[31];
 
     // For showing details on specific day
     public DatePicker datePicker;
@@ -55,6 +54,7 @@ public class ControllerCalendar {
     public Tooltip TP_may26; public Tooltip TP_may27; public Tooltip TP_may28; public Tooltip TP_may29; public Tooltip TP_may30;
     public Tooltip TP_may31;
 
+
     /*
     Pre: None
     Post: Sets a welcome message to the main calendar screen
@@ -68,11 +68,7 @@ public class ControllerCalendar {
     Post: Sets error message if no assignment has been added
      */
     public void errorNoAssignment() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setHeaderText(null);
-        alert.setContentText("There are no assignment currently added." + "\n" +
-                "Please add a assignment by clicking the \"Add Assignment\" button. ");
-        alert.showAndWait();
+        noAssignmnents.setVisible(true);
     }
 
 
@@ -164,7 +160,7 @@ public class ControllerCalendar {
     public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
 
 
-        updateDateScore();
+        updateDateAndDailyHoursScore();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
         // welcomeText.setText(LoginController.welcome);
@@ -347,7 +343,7 @@ public class ControllerCalendar {
 
                //updates dateScore
                 try {
-                    updateDateScore();
+                    updateDateAndDailyHoursScore();
                 } catch (GeneralSecurityException | IOException e) {
                     e.printStackTrace();
                 }
@@ -356,11 +352,7 @@ public class ControllerCalendar {
                         .Date_To_Days(addAssignmentController.deleteYear(date_selected)) - 120;
                 // printing datescore out
                 DateScoreOnDate.setText("Date score: " + dateScore[date_selected_number-1]);
-
-
-                int hours = 0;
-                // May 1
-                String CurrentDate = ("2021-05-01");
+                hoursOnDay.setText("Daily Hours: " + dailyHoursScore[date_selected_number-1]);
 
                 // Finding out what assignments on specefic date
                 for (int i = 1; i < assignmentInfo.length; i++) {
@@ -368,14 +360,6 @@ public class ControllerCalendar {
                         // adding it to the text
                         assignmentNames.append(assignmentInfo[i][0]);
                         assignmentNames.append(", ");
-
-                        // calculating the daily hours
-                        int currentDate = Date_To_Days(deleteYear((CurrentDate)));
-                        int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
-                        int daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
-                        hours += daily_Hours;
-                        System.out.println(hours);
-                        hoursOnDay.setText("Daily hours: " + hours);
 
                     }
                 }
@@ -421,8 +405,12 @@ public class ControllerCalendar {
     Pre: None
     Post: Updates the date score
      */
-    public static void updateDateScore() throws GeneralSecurityException, IOException {
+    public static void updateDateAndDailyHoursScore() throws GeneralSecurityException, IOException {
+        String CurrentDate = ("2021-05-01");
+
+        //clearing arrays
         Arrays.fill(dateScore, 0);
+        Arrays.fill(dailyHoursScore,0);
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
         for (int i = 1; i < assignmentInfo.length; i++) {
             // Variables
@@ -430,13 +418,23 @@ public class ControllerCalendar {
             String dateDue = assignmentInfo[i][2];
             String score = assignmentInfo[i][3];
 
-            // Adding score onto dateScore
+            //converts dates into readable
+            double currentDate = Date_To_Days(deleteYear((CurrentDate)));
+            double assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[i][2])));
+            //calulating daily hours
+            double daily_Hours = Integer.parseInt(assignmentInfo[i][5]) / (assignmentDueDate - currentDate);
+            double roundedDailyHours = Math.round(daily_Hours * 100.0) / 100.0;
+
+            // Adding score onto dateScore and daily hours score
             for (int j = isolateDays(dateAssigned);
                  j <= isolateDays(String.valueOf(dateDue)); j++) {
-
                 dateScore[j-1] += Integer.parseInt(score);
+                dailyHoursScore[j-1] += roundedDailyHours;
+
             }
+            System.out.println(Arrays.toString(dailyHoursScore));
         }
+
     }
 }
 

@@ -111,7 +111,7 @@ public class addAssignmentController {
     public void error() throws IOException {
 
         StringBuilder newLine = new StringBuilder();
-// Adding a space for every error found
+// going to new line for every error found
         for (int i = 0; i < errors.size();i++) {
             newLine.append(errors.get(i));
             newLine.append("\n ");
@@ -169,15 +169,18 @@ public class addAssignmentController {
         score = WorkLoadCalculator();
 
         // Updating the date score
-        ControllerCalendar.updateDateScore();
+        ControllerCalendar.updateDateAndDailyHoursScore();
 
 
+        // Adding date score to new assignment
         for (int i = isolateDays(String.valueOf(currentDate));
              i <= isolateDays(String.valueOf(dueDateAssignment.getValue())); i++) {
          dateScore[i-1] += score;
          }
 
         int printDateScore = isolateDays(String.valueOf(dueDateAssignment.getValue()));
+
+        double roundedDailyHours = Math.round(daily_Hours*100.0)/100.0;
 
 
         // Showing assignment details
@@ -187,7 +190,7 @@ public class addAssignmentController {
                 Math.abs(currentDate.getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
         showAssignmentHours.setText("Total Hours: " + hours);
         showAssignmentDateScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printDateScore-1]);
-        showHoursPerDay.setText("Hours per day: "+ Math.round(daily_Hours));
+        showHoursPerDay.setText("Hours per day: "+ roundedDailyHours);
         showAssignmentScore.setText("Score:" + score);
 
 
@@ -211,12 +214,10 @@ public class addAssignmentController {
      Post: Deciding what the "Submit Assignment" button should do, mainly error checking
      */
     public void checkFieldStatus() throws IOException, GeneralSecurityException {
+        //resetting text boxes and variables
         int numberOfAssignments = 0;
-        notFilledField.setVisible(false);
-        creationSuccess.setVisible(false);
-        incorrectField.setVisible(false);
-
         successText.setVisible(false);
+        errorsList.setText("");
         errors.clear();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
@@ -236,6 +237,7 @@ public class addAssignmentController {
                     numberOfAssignments += 1;
                 } } }
 
+
         // Name of assignment left blank
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
             errors.add("\"Name of assignment\" field is blank!");
@@ -250,7 +252,8 @@ public class addAssignmentController {
              if (nameOfAssignment.getText().equals(assignmentInfo[i][0])) {
                  errors.add("Assignment already with that name."); } }
 
-       // Hours left blank
+
+            // Hours left blank
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
             errors.add("\"Hours of Assignment\" field left blank!");
 
@@ -258,9 +261,14 @@ public class addAssignmentController {
         } else if (hoursOfAssignment.getText().equals("0")) {
             errors.add("The hours cannot be 0!");
 
-        // Marks assignment left blank
+        } else if (Integer.parseInt(hoursOfAssignment.getText()) > 31) {
+            errors.add("Assignment hours cannot be over 31.");
+
+
+            // Marks assignment left blank
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
             errors.add("\"Weighting of assignment\" field left blank!");
+
 
         // Marks assignment 0
         } else if (marksAssignment.getText().equals("0")) {
@@ -270,7 +278,8 @@ public class addAssignmentController {
         } else if (Integer.parseInt(marksAssignment.getText()) > 10) {
             errors.add("Weighting cannot be more than 10!");
 
-       // Number of assignments on specific day more than 3
+
+            // Number of assignments on specific day more than 3
         }  if (numberOfAssignments > 3) {
             errors.add("That date already has 3 assignments.");
 
@@ -297,12 +306,12 @@ public class addAssignmentController {
         String CurrentDate = ("2021-05-01");
 
         // Adding the worth to the score
-        int worth = Integer.parseInt(marksAssignment.getText());
+        double worth = Integer.parseInt(marksAssignment.getText());
         temp_score += worth;
 
         // Converting dates into calculator format
-        int currentDate = Date_To_Days(deleteYear(CurrentDate));
-        int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateAssignment.getValue())));
+        double currentDate = Date_To_Days(deleteYear(CurrentDate));
+        double assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateAssignment.getValue())));
 
         // Adding daily hours to score
         // Calculation of Daily Hours

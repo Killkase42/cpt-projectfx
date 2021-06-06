@@ -561,6 +561,7 @@
             <Label fx:id="ChangeableNameDisplay" layoutX="65.0" layoutY="10.0" prefHeight="17.0" prefWidth="33.0" styleClass="text-calendar-namedis" stylesheets="@/com/example/css/styles.css" />
             <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="99.5" startX="-109.0" />
             <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="147.5" startX="-109.0" />
+            <Label fx:id="noAssignmnents" layoutX="4.0" layoutY="192.0" prefHeight="145.0" prefWidth="138.0" text="There are no assignments in the system yet, please create a assignment by selecting the &quot;add assignment button." textFill="RED" visible="false" wrapText="true" />
 
 
          </children>

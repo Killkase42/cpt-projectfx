@@ -27,14 +27,14 @@ public class Main extends Application {
         root.getChildren().setAll(pane);
 
         // Fade in
-        FadeTransition fadeIn = new FadeTransition(Duration.seconds(2), pane);
+        FadeTransition fadeIn = new FadeTransition(Duration.seconds(1.5), pane);
         fadeIn.setFromValue(0);
         fadeIn.setToValue(1);
         fadeIn.setCycleCount(1);
 
 
        //Fade out
-        FadeTransition fadeOut = new FadeTransition(Duration.seconds(2), pane);
+        FadeTransition fadeOut = new FadeTransition(Duration.seconds(1.5), pane);
         fadeOut.setFromValue(1);
         fadeOut.setToValue(0);
         fadeOut.setCycleCount(1);
@@ -42,8 +42,6 @@ public class Main extends Application {
 
         //Play fadeIn
         fadeIn.play();
-
-       //Thread.sleep(3000);
 
         // Run fade out when fade in finished
         fadeIn.setOnFinished(event -> {

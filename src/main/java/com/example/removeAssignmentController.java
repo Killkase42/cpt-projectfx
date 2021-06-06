@@ -127,7 +127,6 @@ public class removeAssignmentController {
         removeSuccess.setVisible(false);
         error.setVisible(false);
         noAssignmentsIn.setVisible(false);
-        String[][] assignmentInfo = SheetsAPI.PullAssignments();
         String choice = selectedAssignment.getValue();
 
 
@@ -145,7 +144,7 @@ public class removeAssignmentController {
         */
     public void setTextDetails() throws IOException, GeneralSecurityException {
 
-        ControllerCalendar.updateDateScore();
+        ControllerCalendar.updateDateAndDailyHoursScore();
 
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
         int id = 0;
@@ -165,7 +164,7 @@ public class removeAssignmentController {
                 }
 
                 // Turning date selected into a number that can be identified to datescore
-                int dateScoreIndex = Date_To_Days(deleteYear(assignmentInfo[id][2])) - 120;
+                int dateAndHoursScoreIndex = Date_To_Days(deleteYear(assignmentInfo[id][2])) - 120;
 
                 // variables
                 String nameRetrieved = assignmentInfo[id][0];
@@ -175,10 +174,8 @@ public class removeAssignmentController {
                 String dateAssignedRetrieved = assignmentInfo[id][4];
                 int totalHoursRetrieved = Integer.parseInt(assignmentInfo[id][5]);
 
-                // Finding out daily hours
-                int currentDate = Date_To_Days(deleteYear(String.valueOf(CurrentDate)));
-                int assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(dueDateRetrieved)));
-                int daily_Hours = totalHoursRetrieved / (assignmentDueDate - currentDate);
+                double daily_Hours = ControllerCalendar.dailyHoursScore[dateAndHoursScoreIndex-1];
+                int dateScore = ControllerCalendar.dateScore[dateAndHoursScoreIndex - 1];
 
                 // Assigning an assignment's information to the labels.
                 nameImport.setText("Name: " + nameRetrieved);
@@ -187,7 +184,7 @@ public class removeAssignmentController {
                         .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + " day(s))");
                 assignmentScoreImport.setText("Score: " + scoreRetrieved);
                 assignedImport.setText("Assigned: " + dateAssignedRetrieved);
-                dateScoreImport.setText("Date Score on due date: " + ControllerCalendar.dateScore[dateScoreIndex - 1]);
+                dateScoreImport.setText("Date Score on due date: " + dateScore);
                 totalHoursImport.setText("Total hours to complete: " + totalHoursRetrieved);
                 dailyHoursImport.setText("Daily hours per day: " + daily_Hours);
 
