@@ -186,11 +186,11 @@ public class addAssignmentController {
         // Showing assignment details
         showAssignmentName.setText("Name: "+ name);
         showAssignmentMarks.setText("Weighting: " + marks + "%");
-        showAssignmentDate.setText("Due Date: " + date + " | " +
-                Math.abs(currentDate.getDayOfMonth() - date.getDayOfMonth()) + " days until assignment is due." );
-        showAssignmentHours.setText("Total Hours: " + hours);
+        showAssignmentDate.setText("Due Date: " + date + "(Due in " +
+                Math.abs(currentDate.getDayOfMonth() - date.getDayOfMonth()) + " Day(s))" );
+        showAssignmentHours.setText("Total Hours to Complete: " + hours);
         showAssignmentDateScore.setText("Date Score for " + dueDateAssignment.getValue() + ": " + dateScore[printDateScore-1]);
-        showHoursPerDay.setText("Hours per day: "+ roundedDailyHours);
+        showHoursPerDay.setText("Suggested Hours per Day: "+ roundedDailyHours);
         showAssignmentScore.setText("Score:" + score);
 
 
@@ -224,11 +224,11 @@ public class addAssignmentController {
         // Error Checking
         // Assignment due-date left blank
         if (dueDateAssignment.getValue() == null) {
-        errors.add("\"Assignment Due-Date\" Field is Empty");
+        errors.add("-\"Assignment Due Date\" Field is Empty");
 
     // Assignment in the past
         } else if (dueDateAssignment.getValue().isBefore(currentDate) || dueDateAssignment.getValue().equals(currentDate)) {
-        errors.add("Due-date cannot be today or before today!");
+        errors.add("-Due Date Cannot be Today or Before Today");
 
         // Checking for multiple assignments on selected date
         } else {
@@ -240,48 +240,48 @@ public class addAssignmentController {
 
         // Name of assignment left blank
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
-            errors.add("\"Name of assignment\" Field is Empty");
+            errors.add("-\"Name of Assignment\" Field is Empty");
 
        //Name of assignment a number only
         } else if (!isString(nameOfAssignment)) {
-            errors.add("Name of the assignment cannot be a number!");
+            errors.add("-Name of the Assignment Cannot be a Number");
 
         // Assignment the same name as another assignment
         } else {
             for (int i = 1; i < assignmentInfo.length; i++) {
              if (nameOfAssignment.getText().equals(assignmentInfo[i][0])) {
-                 errors.add("Assignment already with that name."); } }
+                 errors.add("-Assignment with Specified Name Already Exists"); } }
 
 
             // Hours left blank
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
-            errors.add("\"Hours of Assignment\" Field is Empty");
+            errors.add("-\"Hours of Assignment\" Field is Empty");
 
         // Hours left at 0
         } else if (hoursOfAssignment.getText().equals("0")) {
-            errors.add("The hours cannot be 0!");
+            errors.add("-Assignment Hours Cannot be 0");
 
         } else if (Integer.parseInt(hoursOfAssignment.getText()) > 31) {
-            errors.add("Assignment hours cannot be over 31.");
+            errors.add("-Assignment Hours Cannot be Over 31");
 
 
             // Marks assignment left blank
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
-            errors.add("\"Weighting of assignment\" Field is Empty");
+            errors.add("-\"Weighting of Assignment\" Field is Empty");
 
 
         // Marks assignment 0
         } else if (marksAssignment.getText().equals("0")) {
-            errors.add("Weighting cannot be 0!");
+            errors.add("-Assignment Weighting Cannot be 0");
 
         // Marks greater than 10
         } else if (Integer.parseInt(marksAssignment.getText()) > 10) {
-            errors.add("Weighting cannot be more than 10!");
+            errors.add("-Assignment Weighting Cannot be Over 10");
 
 
             // Number of assignments on specific day more than 3
         }  if (numberOfAssignments > 3) {
-            errors.add("That date already has 3 assignments.");
+            errors.add("-Specified Date Already has 3 Assignments");
 
             // checking if any errors happened
         }  if (errors.size() > 0) {

@@ -184,9 +184,9 @@ public class removeAssignmentController {
                         .getDayOfMonth() - dueDateRetrieved.getDayOfMonth()) + " day(s))");
                 assignmentScoreImport.setText("Score: " + scoreRetrieved);
                 assignedImport.setText("Assigned: " + dateAssignedRetrieved);
-                dateScoreImport.setText("Date Score on due date: " + dateScore);
-                totalHoursImport.setText("Total hours to complete: " + totalHoursRetrieved);
-                dailyHoursImport.setText("Daily hours per day: " + daily_Hours);
+                dateScoreImport.setText("Date Score on Due Date: " + dateScore);
+                totalHoursImport.setText("Total Hours to Complete: " + totalHoursRetrieved);
+                dailyHoursImport.setText("Suggested Hours per Day: " + daily_Hours);
 
 
                 // Setting the information labels to be invisible (they become visible when "more info" is clicked).
