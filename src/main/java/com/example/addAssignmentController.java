@@ -224,7 +224,7 @@ public class addAssignmentController {
         // Error Checking
         // Assignment due-date left blank
         if (dueDateAssignment.getValue() == null) {
-        errors.add("\"Assignment Due-Date\" field left blank!");
+        errors.add("\"Assignment Due-Date\" Field is Empty");
 
     // Assignment in the past
         } else if (dueDateAssignment.getValue().isBefore(currentDate) || dueDateAssignment.getValue().equals(currentDate)) {
@@ -240,7 +240,7 @@ public class addAssignmentController {
 
         // Name of assignment left blank
         if (nameOfAssignment.getText() == null || nameOfAssignment.getText().isEmpty()) {
-            errors.add("\"Name of assignment\" field is blank!");
+            errors.add("\"Name of assignment\" Field is Empty");
 
        //Name of assignment a number only
         } else if (!isString(nameOfAssignment)) {
@@ -255,7 +255,7 @@ public class addAssignmentController {
 
             // Hours left blank
         } if (hoursOfAssignment.getText() == null || hoursOfAssignment.getText().isEmpty() ) {
-            errors.add("\"Hours of Assignment\" field left blank!");
+            errors.add("\"Hours of Assignment\" Field is Empty");
 
         // Hours left at 0
         } else if (hoursOfAssignment.getText().equals("0")) {
@@ -267,7 +267,7 @@ public class addAssignmentController {
 
             // Marks assignment left blank
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
-            errors.add("\"Weighting of assignment\" field left blank!");
+            errors.add("\"Weighting of assignment\" Field is Empty");
 
 
         // Marks assignment 0

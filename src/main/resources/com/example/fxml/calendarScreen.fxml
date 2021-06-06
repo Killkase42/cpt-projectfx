@@ -11,11 +11,10 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#setText" prefHeight="689.0" prefWidth="859.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#setText" prefHeight="689.0" prefWidth="859.0" styleClass="background-calendar-calendar" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ControllerCalendar">
    <children>
-      <GridPane gridLinesVisible="true" layoutX="165.0" layoutY="60.0" prefHeight="499.0" prefWidth="680.0">
+      <GridPane gridLinesVisible="true" layoutX="161.0" layoutY="50.0" prefHeight="499.0" prefWidth="680.0" styleClass="grid-calendar" stylesheets="@/com/example/css/styles.css">
          <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -35,521 +34,561 @@
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sunday" textAlignment="CENTER" wrappingWidth="63.45654296875" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Saturday" textAlignment="CENTER" wrappingWidth="64.0546875" GridPane.columnIndex="6" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Friday" textAlignment="CENTER" wrappingWidth="63.56640625" GridPane.columnIndex="5" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Thursday" textAlignment="CENTER" wrappingWidth="62.51123046875" GridPane.columnIndex="4" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Wednesday" textAlignment="CENTER" wrappingWidth="63.4697265625" GridPane.columnIndex="3">
-               <font>
-                  <Font size="12.0" />
-               </font>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Tuesday" textAlignment="CENTER" wrappingWidth="61.15673828125" GridPane.columnIndex="2" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Monday" textAlignment="CENTER" wrappingWidth="62.5986328125" GridPane.columnIndex="1" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="25" GridPane.columnIndex="2" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="24" GridPane.columnIndex="1" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="23" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="22" GridPane.columnIndex="6" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="21" GridPane.columnIndex="5" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="20" GridPane.columnIndex="4" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="19" GridPane.columnIndex="3" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="18" GridPane.columnIndex="2" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="17" GridPane.columnIndex="1" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="16" GridPane.rowIndex="4">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="15" GridPane.columnIndex="6" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="14" GridPane.columnIndex="5" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="13" GridPane.columnIndex="4" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="12" GridPane.columnIndex="3" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="11" GridPane.columnIndex="2" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="9" GridPane.rowIndex="3">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="8" GridPane.columnIndex="6" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="7" GridPane.columnIndex="5" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="6" GridPane.columnIndex="4" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="4" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.rowIndex="2">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="6" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="30" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="29" GridPane.columnIndex="6" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="28" GridPane.columnIndex="5" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="27" GridPane.columnIndex="4" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="26" GridPane.columnIndex="3" GridPane.rowIndex="5">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="31" GridPane.columnIndex="1" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="30" GridPane.columnIndex="5" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="29" GridPane.columnIndex="4" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="28" GridPane.columnIndex="3" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="27" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="26" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="25" GridPane.rowIndex="1">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="5" GridPane.columnIndex="6" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="4" GridPane.columnIndex="5" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="3" GridPane.columnIndex="4" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="2" GridPane.columnIndex="3" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Text opacity="0.5" strokeType="OUTSIDE" strokeWidth="0.0" text="1" GridPane.columnIndex="2" GridPane.rowIndex="6">
-               <font>
-                  <Font size="16.0" />
-               </font>
-               <GridPane.margin>
-                  <Insets bottom="60.0" left="5.0" />
-               </GridPane.margin>
-            </Text>
-            <Label fx:id="May_1" prefHeight="89.0" prefWidth="97.0" wrapText="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <Label fx:id="last1" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-last25" stylesheets="@/com/example/css/styles.css" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip fx:id="TP_may32" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="last2" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-last26" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip fx:id="TP_may33" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="last3" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-last27" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip fx:id="TP_may34" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="last4" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-last28" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip fx:id="TP_may35" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="last5" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-last29" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip fx:id="TP_may36" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="last6" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-last30" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <tooltip>
+                  <Tooltip fx:id="TP_may37" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="next1" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-next1" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <tooltip>
+                  <Tooltip fx:id="TP_may321" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="next2" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-next2" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="3" GridPane.rowIndex="6">
+               <tooltip>
+                  <Tooltip fx:id="TP_may322" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="next3" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-next3" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="4" GridPane.rowIndex="6">
+               <tooltip>
+                  <Tooltip fx:id="TP_may323" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="next4" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-next4" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="5" GridPane.rowIndex="6">
+               <tooltip>
+                  <Tooltip fx:id="TP_may324" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="next5" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-next5" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="6" GridPane.rowIndex="6">
+               <tooltip>
+                  <Tooltip fx:id="TP_may325" text="Empty Tooltip" />
+               </tooltip>
+            </Label>
+            <Label fx:id="May_1" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current1" stylesheets="@/com/example/css/styles.css" wrapText="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <tooltip>
                   <Tooltip fx:id="TP_may1" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_17" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <Label fx:id="May_17" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current17" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may17" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_16" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="4">
+            <Label fx:id="May_16" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current16" stylesheets="@/com/example/css/styles.css" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may16" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_15" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="3">
+            <Label fx:id="May_15" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current15" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may15" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_14" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <Label fx:id="May_14" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current14" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may14" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_13" prefHeight="89.0" prefWidth="97.0" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <Label fx:id="May_13" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current13" stylesheets="@/com/example/css/styles.css" textAlignment="CENTER" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may13" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_12" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <Label fx:id="May_12" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current12" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may12" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_11" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <Label fx:id="May_11" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current11" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may11" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_10" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <Label fx:id="May_10" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current10" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may10" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_9" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="3">
+            <Label fx:id="May_9" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current9" stylesheets="@/com/example/css/styles.css" GridPane.rowIndex="3">
                <tooltip>
                   <Tooltip fx:id="TP_may9" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_8" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="2">
+            <Label fx:id="May_8" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current8" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may8" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_7" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <Label fx:id="May_7" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current7" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may7" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_6" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <Label fx:id="May_6" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current6" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may6" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_5" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <Label fx:id="May_5" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current5" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may5" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_4" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Label fx:id="May_4" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current4" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may4" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_3" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Label fx:id="May_3" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current3" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may3" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_2" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="2">
+            <Label fx:id="May_2" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current2" stylesheets="@/com/example/css/styles.css" GridPane.rowIndex="2">
                <tooltip>
                   <Tooltip fx:id="TP_may2" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_18" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <Label fx:id="May_18" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current18" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may18" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_19" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <Label fx:id="May_19" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current19" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may19" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label prefHeight="57.0" prefWidth="85.0" />
-            <Label fx:id="May_20" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <Label fx:id="May_20" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current20" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may20" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_21" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="4">
+            <Label fx:id="May_21" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current21" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may21" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_22" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="4">
+            <Label fx:id="May_22" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current22" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <tooltip>
                   <Tooltip fx:id="TP_may22" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_23" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="5">
+            <Label fx:id="May_23" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current23" stylesheets="@/com/example/css/styles.css" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may23" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_24" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <Label fx:id="May_24" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current24" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may24" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_25" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="2" GridPane.rowIndex="5">
+            <Label fx:id="May_25" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current25" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="2" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may25" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_26" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="3" GridPane.rowIndex="5">
+            <Label fx:id="May_26" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current26" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="3" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may26" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_27" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="4" GridPane.rowIndex="5">
+            <Label fx:id="May_27" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current27" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="4" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may27" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_28" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="5" GridPane.rowIndex="5">
+            <Label fx:id="May_28" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current28" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="5" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may28" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_29" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="6" GridPane.rowIndex="5">
+            <Label fx:id="May_29" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current29" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="6" GridPane.rowIndex="5">
                <tooltip>
                   <Tooltip fx:id="TP_may29" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_30" prefHeight="89.0" prefWidth="97.0" GridPane.rowIndex="6">
+            <Label fx:id="May_30" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current30" stylesheets="@/com/example/css/styles.css" GridPane.rowIndex="6">
                <tooltip>
                   <Tooltip fx:id="TP_may30" text="Empty Tooltip" />
                </tooltip>
             </Label>
-            <Label fx:id="May_31" prefHeight="89.0" prefWidth="97.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Label fx:id="May_31" prefHeight="89.0" prefWidth="97.0" styleClass="assignments-grid-current31" stylesheets="@/com/example/css/styles.css" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <tooltip>
                   <Tooltip fx:id="TP_may31" text="Empty Tooltip" />
                </tooltip>
             </Label>
+            <Label styleClass="grid-current25" stylesheets="@/com/example/css/styles.css" text="25" GridPane.columnIndex="2" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current24" stylesheets="@/com/example/css/styles.css" text="24" GridPane.columnIndex="1" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current23" stylesheets="@/com/example/css/styles.css" text="23" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current22" stylesheets="@/com/example/css/styles.css" text="22" GridPane.columnIndex="6" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current21" stylesheets="@/com/example/css/styles.css" text="21" GridPane.columnIndex="5" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current20" stylesheets="@/com/example/css/styles.css" text="20" GridPane.columnIndex="4" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current19" stylesheets="@/com/example/css/styles.css" text="19" GridPane.columnIndex="3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current18" stylesheets="@/com/example/css/styles.css" text="18" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current17" stylesheets="@/com/example/css/styles.css" text="17" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current16" stylesheets="@/com/example/css/styles.css" text="16" GridPane.rowIndex="4">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current15" stylesheets="@/com/example/css/styles.css" text="15" GridPane.columnIndex="6" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current14" stylesheets="@/com/example/css/styles.css" text="14" GridPane.columnIndex="5" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current13" stylesheets="@/com/example/css/styles.css" text="13" GridPane.columnIndex="4" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current12" stylesheets="@/com/example/css/styles.css" text="12" GridPane.columnIndex="3" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current11" stylesheets="@/com/example/css/styles.css" text="11" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current10" stylesheets="@/com/example/css/styles.css" text="10" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current9" stylesheets="@/com/example/css/styles.css" text="9" GridPane.rowIndex="3">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current8" stylesheets="@/com/example/css/styles.css" text="8" GridPane.columnIndex="6" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current7" stylesheets="@/com/example/css/styles.css" text="7" GridPane.columnIndex="5" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current6" stylesheets="@/com/example/css/styles.css" text="6" GridPane.columnIndex="4" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current5" stylesheets="@/com/example/css/styles.css" text="5" GridPane.columnIndex="3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current4" stylesheets="@/com/example/css/styles.css" text="4" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current3" stylesheets="@/com/example/css/styles.css" text="3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current2" stylesheets="@/com/example/css/styles.css" text="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current1" stylesheets="@/com/example/css/styles.css" text="1" GridPane.columnIndex="6" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current30" stylesheets="@/com/example/css/styles.css" text="30" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current29" stylesheets="@/com/example/css/styles.css" text="29" GridPane.columnIndex="6" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current28" stylesheets="@/com/example/css/styles.css" text="28" GridPane.columnIndex="5" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current27" stylesheets="@/com/example/css/styles.css" text="27" GridPane.columnIndex="4" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current26" stylesheets="@/com/example/css/styles.css" text="26" GridPane.columnIndex="3" GridPane.rowIndex="5">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-current31" stylesheets="@/com/example/css/styles.css" text="31" GridPane.columnIndex="1" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-last30" stylesheets="@/com/example/css/styles.css" text="30" GridPane.columnIndex="5" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-last29" stylesheets="@/com/example/css/styles.css" text="29" GridPane.columnIndex="4" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-last28" stylesheets="@/com/example/css/styles.css" text="28" GridPane.columnIndex="3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-last27" stylesheets="@/com/example/css/styles.css" text="27" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-last26" stylesheets="@/com/example/css/styles.css" text="26" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-last25" stylesheets="@/com/example/css/styles.css" text="25" GridPane.rowIndex="1">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-next5" stylesheets="@/com/example/css/styles.css" text="5" GridPane.columnIndex="6" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-next4" stylesheets="@/com/example/css/styles.css" text="4" GridPane.columnIndex="5" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-next3" stylesheets="@/com/example/css/styles.css" text="3" GridPane.columnIndex="4" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-next2" stylesheets="@/com/example/css/styles.css" text="2" GridPane.columnIndex="3" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label opacity="0.5" styleClass="grid-next1" stylesheets="@/com/example/css/styles.css" text="1" GridPane.columnIndex="2" GridPane.rowIndex="6">
+               <font>
+                  <Font size="16.0" />
+               </font>
+               <GridPane.margin>
+                  <Insets bottom="60.0" left="5.0" />
+               </GridPane.margin>
+            </Label>
+            <Label styleClass="grid-sunday" stylesheets="@/com/example/css/styles.css" text="        Sunday" />
+            <Label styleClass="grid-monday" stylesheets="@/com/example/css/styles.css" text="        Monday" GridPane.columnIndex="1" />
+            <Label styleClass="grid-tuesday" stylesheets="@/com/example/css/styles.css" text="     Wednesday" GridPane.columnIndex="3" />
+            <Label styleClass="grid-wednesday" stylesheets="@/com/example/css/styles.css" text="        Tuesday" GridPane.columnIndex="2" />
+            <Label styleClass="grid-thursday" stylesheets="@/com/example/css/styles.css" text="       Thursday" GridPane.columnIndex="4" />
+            <Label styleClass="grid-friday" stylesheets="@/com/example/css/styles.css" text="         Friday" GridPane.columnIndex="5" />
+            <Label styleClass="grid-saturday" stylesheets="@/com/example/css/styles.css" text="        Saturday" GridPane.columnIndex="6" />
          </children>
       </GridPane>
-      <Text layoutX="195.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="May" wrappingWidth="97.0">
-         <font>
-            <Font name="System Bold" size="23.0" />
-         </font>
-      </Text>
-      <Text layoutX="764.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2021">
-         <font>
-            <Font size="23.0" />
-         </font>
-      </Text>
       <AnchorPane onMouseMoved="#setText" prefHeight="689.0" prefWidth="145.0" styleClass="background-calendar-menu" stylesheets="@/com/example/css/styles.css">
          <children>
             <Button layoutY="55.0" mnemonicParsing="false" onAction="#addAssignmentPopUp" prefHeight="42.0" prefWidth="145.0" styleClass="button-calendar-add" stylesheets="@/com/example/css/styles.css" text="Add Assignment" />
@@ -561,7 +600,6 @@
             <Label fx:id="ChangeableNameDisplay" layoutX="65.0" layoutY="10.0" prefHeight="17.0" prefWidth="33.0" styleClass="text-calendar-namedis" stylesheets="@/com/example/css/styles.css" />
             <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="99.5" startX="-109.0" />
             <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="147.5" startX="-109.0" />
-            <Label fx:id="noAssignmnents" layoutX="4.0" layoutY="192.0" prefHeight="145.0" prefWidth="138.0" text="There are no assignments in the system yet, please create a assignment by selecting the &quot;add assignment button." textFill="RED" visible="false" wrapText="true" />
 
 
          </children>
@@ -575,8 +613,19 @@
             <Label fx:id="rating" layoutX="244.0" layoutY="43.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-rating" stylesheets="@/com/example/css/styles.css" text="Rating: " />
             <Label layoutX="72.0" layoutY="20.0" styleClass="text-calendar-titleinfo" stylesheets="@/com/example/css/styles.css" text="Daily Information" underline="true" />
             <Line fx:id="massiveLineThing1" endX="36.5" endY="14.0" layoutX="199.0" layoutY="15.0" startX="36.5" startY="85.0" stroke="#92a2b9" />
+            <Label fx:id="noAssignmnents" layoutX="54.0" layoutY="90.0" styleClass="text-calendar-assignmenterror" stylesheets="@/com/example/css/styles.css" text="No Assignments Found" visible="false" wrapText="true" />
          </children>
       </AnchorPane>
       <Line endX="145.0" fill="#253648" layoutX="-1.0" startX="145.0" startY="689.0" />
+      <Label layoutX="235.0" layoutY="8.0" styleClass="text-calendar-may" stylesheets="@/com/example/css/styles.css" text="May">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="717.0" layoutY="8.0" styleClass="text-calendar-2021" stylesheets="@/com/example/css/styles.css" text="2021">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

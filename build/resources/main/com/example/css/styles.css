@@ -21,6 +21,21 @@
     -fx-border-insets: -2;
 }
 
+.background-calendar-calendar {
+    -fx-background-color : #18212A;
+    -fx-border-style: solid;
+    -fx-border-width: 5;
+    -fx-border-color: #18212A;
+    -fx-border-insets: -2;
+}
+
+.grid-calendar {
+    -fx-background-color: #8192A4;
+    -fx-border-style: solid;
+    -fx-border-width: 3;
+    -fx-border-color: #8192A4;
+}
+
 /* Any lines */
 .massiveLineThing {
     -fx-background-color :transparent;
@@ -37,12 +52,14 @@
     .text-help-secondary-body12, .text-help-secondary-title, .text-splash-title, .text-add-title, .text-add-name,
     .text-add-weighting, .text-add-hours-total, .text-add-hours-daily, .text-add-due-date, .text-add-score,
     .text-add-date-score, .text-calendar-welcome, .text-calendar-namedis, .text-calendar-assignment,
-    .text-calendar-datescore, .text-calendar-hours, .text-calendar-rating, .text-calendar-titleinfo {
+    .text-calendar-datescore, .text-calendar-hours, .text-calendar-rating, .text-calendar-titleinfo, .text-calendar-may,
+    .text-calendar-2021 {
     -fx-background-color :transparent;
     -fx-text-fill: #92A2B9;
 }
 
-.error-message-login, .error-message-login-1, .error-message-create, .error-message-create-1, .text-add-errors {
+.error-message-login, .error-message-login-1, .error-message-create, .error-message-create-1, .text-add-errors,
+    .text-calendar-assignmenterror {
     -fx-background-color :transparent;
     -fx-text-fill: #DC143C;
 }
@@ -57,6 +74,45 @@
     .text-help-secondary-heading3, .text-splash-names {
     -fx-background-color :transparent;
     -fx-text-fill: #3A7E7F;
+}
+
+.assignments-grid-current1, .assignments-grid-current2, .assignments-grid-current3, .assignments-grid-current4,
+    .assignments-grid-current5, .assignments-grid-current6, .assignments-grid-current7, .assignments-grid-current8,
+    .assignments-grid-current9, .assignments-grid-current10, .assignments-grid-current11, .assignments-grid-current12,
+    .assignments-grid-current13, .assignments-grid-current14, .assignments-grid-current15, .assignments-grid-current16,
+    .assignments-grid-current17, .assignments-grid-current18, .assignments-grid-current19, .assignments-grid-current20,
+    .assignments-grid-current21, .assignments-grid-current22, .assignments-grid-current23, .assignments-grid-current24,
+    .assignments-grid-current25, .assignments-grid-current26, .assignments-grid-current27, .assignments-grid-current28,
+    .assignments-grid-current29, .assignments-grid-current30, .assignments-grid-current31 {
+    -fx-background-color :#445768;
+    -fx-text-fill: #8192A4;
+}
+
+.grid-current1, .grid-current2, .grid-current3, .grid-current4, .grid-current5, .grid-current6, .grid-current7,
+    .grid-current8, .grid-current9, .grid-current10, .grid-current11, .grid-current12, .grid-current13, .grid-current14,
+    .grid-current15, .grid-current16, .grid-current17, .grid-current18, .grid-current19, .grid-current20,
+    .grid-current21, .grid-current22, .grid-current23, .grid-current24, .grid-current25, .grid-current26,
+    .grid-current27, .grid-current28, .grid-current29, .grid-current30, .grid-current31 {
+    -fx-background-color :transparent;
+    -fx-text-fill: #3A7E7F;
+}
+
+.assignments-grid-last25, .assignments-grid-last26, .assignments-grid-last27, .assignments-grid-last28,
+    .assignments-grid-last29, .assignments-grid-last30, .assignments-grid-next1, .assignments-grid-next2,
+    .assignments-grid-next3, .assignments-grid-next4, .assignments-grid-next5 {
+    -fx-background-color :#314254;
+    -fx-text-fill: #8192A4;
+}
+
+.grid-last25, .grid-last26, .grid-last27, .grid-last28, .grid-last29, .grid-last30, .grid-next1, .grid-next2,
+    .grid-next3, .grid-next4, .grid-next5 {
+    -fx-background-color :transparent;
+    -fx-text-fill: #8192A4;
+}
+
+.grid-sunday, .grid-monday, .grid-tuesday, .grid-wednesday, .grid-thursday, .grid-friday, .grid-saturday {
+    -fx-background-color :transparent;
+    -fx-text-fill: #445768;
 }
 
 /* Any dropdown menus (comboboxes). */
