@@ -600,7 +600,7 @@
             <Label fx:id="ChangeableNameDisplay" layoutX="65.0" layoutY="10.0" prefHeight="17.0" prefWidth="33.0" styleClass="text-calendar-namedis" stylesheets="@/com/example/css/styles.css" />
             <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="99.5" startX="-109.0" />
             <Line endX="20.0" fill="#253648" layoutX="118.0" layoutY="147.5" startX="-109.0" />
-            <Label fx:id="noAssignmnents" layoutX="10.0" layoutY="195.0" styleClass="text-calendar-assignmenterror" stylesheets="@/com/example/css/styles.css" text="No Assignments Found" visible="false" wrapText="true" />
+            <Label fx:id="noAssignmentsError" layoutX="10.0" layoutY="195.0" styleClass="text-calendar-assignmenterror" stylesheets="@/com/example/css/styles.css" text="No Assignments Found" visible="false" wrapText="true" />
 
 
          </children>
@@ -614,6 +614,7 @@
             <Label fx:id="rating" layoutX="244.0" layoutY="43.0" prefHeight="17.0" prefWidth="457.0" styleClass="text-calendar-rating" stylesheets="@/com/example/css/styles.css" text="Rating: " />
             <Label layoutX="72.0" layoutY="20.0" styleClass="text-calendar-titleinfo" stylesheets="@/com/example/css/styles.css" text="Daily Information" underline="true" />
             <Line fx:id="massiveLineThing1" endX="36.5" endY="14.0" layoutX="199.0" layoutY="15.0" startX="36.5" startY="85.0" stroke="#92a2b9" />
+            <Label fx:id="outsideOfMayError" layoutX="-1.0" layoutY="-8.0" prefHeight="17.0" prefWidth="690.0" text="You cannot select a date outside of May, as this program is a beta!" textFill="RED" visible="false" />
          </children>
       </AnchorPane>
       <Line endX="145.0" fill="#253648" layoutX="-1.0" startX="145.0" startY="689.0" />

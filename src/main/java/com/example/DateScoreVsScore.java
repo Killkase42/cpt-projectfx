@@ -5,17 +5,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class DateScoreVsScore {
-    public Button closeButton;
 
     /*
-           Pre: None
+           Pre: user clicks "general features help" button
            Post: Goes to score help screen
           */
     public void goToHelp(ActionEvent event) throws IOException {
@@ -28,13 +26,5 @@ public class DateScoreVsScore {
         window.show();
     }
 
-    /*
-   Pre: None
-   Post: Closes current screen
-    */
-    public void closeButtonAction(ActionEvent event) {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
 
 }

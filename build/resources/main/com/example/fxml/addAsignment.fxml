@@ -8,9 +8,9 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="296.0" prefWidth="510.0" styleClass="background-add-assignment" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.addAssignmentController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="308.0" prefWidth="509.0" styleClass="background-add-assignment" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.addAssignmentController">
    <children>
-      <Button layoutX="71.0" layoutY="259.0" mnemonicParsing="false" onAction="#checkFieldStatus" styleClass="button-add-assignment" stylesheets="@/com/example/css/styles.css" text="Add Assignment" />
+      <Button layoutX="71.0" layoutY="268.0" mnemonicParsing="false" onAction="#checkFieldStatus" styleClass="button-add-assignment" stylesheets="@/com/example/css/styles.css" text="Add Assignment" />
       <TextField fx:id="nameOfAssignment" layoutX="16.0" layoutY="41.0" prefHeight="25.0" prefWidth="217.0" promptText="Name of Assignment" styleClass="add-text-field-name" stylesheets="@/com/example/css/styles.css" />
       <TextField fx:id="marksAssignment" layoutX="16.0" layoutY="76.0" onMouseClicked="#changeTextField" prefHeight="25.0" prefWidth="217.0" promptText="Weighing on Next Report Card (1-10)" styleClass="add-text-field-weighting" stylesheets="@/com/example/css/styles.css" />
       <DatePicker fx:id="dueDateAssignment" editable="false" layoutX="16.0" layoutY="146.0" prefHeight="25.0" prefWidth="217.0" promptText="Assignment Due Date" styleClass="add-calendar-box" stylesheets="@/com/example/css/styles.css" />
@@ -29,6 +29,6 @@
       <Label fx:id="showAssignmentDateScore" layoutX="254.0" layoutY="113.0" prefWidth="244.0" styleClass="text-add-date-score" stylesheets="@/com/example/css/styles.css" text="Date Score on Due Date:" />
       <Label layoutX="200.0" layoutY="12.0" styleClass="text-add-title" stylesheets="@/com/example/css/styles.css" text="Adding Assignments" underline="true" />
       <Label fx:id="successText" layoutX="15.0" layoutY="186.0" prefHeight="17.0" prefWidth="252.0" styleClass="text-add-success" stylesheets="@/com/example/css/styles.css" text="Assignment succesfully created!" textFill="GREEN" visible="false" />
-      <Label fx:id="errorsList" layoutX="12.0" layoutY="174.0" prefHeight="83.0" prefWidth="232.0" styleClass="text-add-errors" stylesheets="@/com/example/css/styles.css" wrapText="true" />
+      <Label fx:id="errorsList" layoutX="12.0" layoutY="174.0" prefHeight="95.0" prefWidth="278.0" styleClass="text-add-errors" stylesheets="@/com/example/css/styles.css" wrapText="true" />
    </children>
 </AnchorPane>

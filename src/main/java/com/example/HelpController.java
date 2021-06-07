@@ -5,7 +5,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -13,10 +12,8 @@ import java.util.Objects;
 
 public class HelpController {
 
-    public Button closeButton;
-
     /*
-    Pre: None
+    Pre: User clicks "Help with score, date score, and ratings" button
     Post: Goes to score help screen
    */
     public void goToScoreHelp(ActionEvent event) throws IOException {
@@ -28,16 +25,4 @@ public class HelpController {
         window.setScene(addAssignmentScene);
         window.show();
     }
-
-    /*
-    Pre: None
-    Post: Closes current screen
-     */
-    public void closeButtonAction(ActionEvent event) {
-        Stage stage = (Stage) closeButton.getScene().getWindow();
-        stage.close();
-    }
-
-
-
 }

@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -129,16 +130,16 @@ public class addAssignmentController {
         // Clearing assignment details showing
         showAssignmentName.setText("Name: ");
         showAssignmentDate.setText("Due Date: ");
-        showAssignmentHours.setText("Total Hours: ");
+        showAssignmentHours.setText("Total Hours to Complete: ");
         showAssignmentMarks.setText("Weighting: ");
         showAssignmentDateScore.setText("Date Score on Due Date: ");
-        showHoursPerDay.setText("Daily Hours Per Day: ");
+        showHoursPerDay.setText("Suggested Hours Per Day: ");
         showAssignmentScore.setText("Score: ");
 
     }
 
     /*
-    Pre: None
+    Pre: Assignment trying to be added passes all error checking
     Post: Gives success message if assignment has been filled out correctly
      */
     public void success() {
@@ -151,8 +152,8 @@ public class addAssignmentController {
 
 
     /*
-     Pre: None
-     Post:Stores the assignment info into arrays and in online sheets
+     Pre: Assignment trying to be added passes all error checking
+     Post:Stores the assignment info into arrays and in online sheets, as well as shows the info
      */
     public void storeAssignment() throws IOException, GeneralSecurityException {
         String name;
@@ -210,7 +211,7 @@ public class addAssignmentController {
     }
 
     /*
-     Pre: None
+     Pre: User clicked "add assignment" button
      Post: Deciding what the "Submit Assignment" button should do, mainly error checking
      */
     public void checkFieldStatus() throws IOException, GeneralSecurityException {
@@ -221,14 +222,27 @@ public class addAssignmentController {
         errors.clear();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
+        // Setting variable for the date score
+        int dateScoreIndex = Date_To_Days(deleteYear(String.valueOf(dueDateAssignment.getValue())))-120;
+
+        ControllerCalendar.updateDateAndDailyHoursScore();
+
         // Error Checking
         // Assignment due-date left blank
         if (dueDateAssignment.getValue() == null) {
-        errors.add("-\"Assignment Due Date\" Field is Empty");
+            errors.add("-\"Assignment Due Date\" Field is Empty");
 
-    // Assignment in the past
+        // Assignment in the past
         } else if (dueDateAssignment.getValue().isBefore(currentDate) || dueDateAssignment.getValue().equals(currentDate)) {
         errors.add("-Due Date Cannot be Today or Before Today");
+
+            // If date is outside of may
+        } else if ((dueDateAssignment.getValue().isAfter(LocalDate.of(2021, Month.MAY,31)))) {
+            errors.add("-You cannot have a day outside of May!");
+
+        // if date datescore is too high
+        } else if (dateScore[dateScoreIndex] >= 60) {
+            errors.add("-The date-score for that date is over 60!");
 
         // Checking for multiple assignments on selected date
         } else {
@@ -268,7 +282,6 @@ public class addAssignmentController {
             // Marks assignment left blank
         }if (marksAssignment.getText() == null || marksAssignment.getText().isEmpty()) {
             errors.add("-\"Weighting of Assignment\" Field is Empty");
-
 
         // Marks assignment 0
         } else if (marksAssignment.getText().equals("0")) {
@@ -388,7 +401,7 @@ public class addAssignmentController {
     // SCREEN EDITS
 
     /*
-    Pre: None
+    Pre: User clicked "Score help" button
     Post: Goes to score help screen
     */
     public void goToScoreHelp() throws IOException {
