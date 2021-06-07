@@ -2,16 +2,16 @@ com/example/CreateNewAccountController.java
  com.example.CreateNewAccountController
 com/example/Main.java
  com.example.Main
-com/example/LoginController.java
- com.example.LoginController
-com/example/SheetsAPI.java
- com.example.SheetsAPI
-com/example/SplashScreenController.java
- com.example.SplashScreenController
-com/example/DateScoreVsScore.java
- com.example.DateScoreVsScore
 com/example/HelpController.java
  com.example.HelpController
+com/example/SplashScreenController.java
+ com.example.SplashScreenController
+com/example/LoginController.java
+ com.example.LoginController
+com/example/DateScoreVsScore.java
+ com.example.DateScoreVsScore
+com/example/SheetsAPI.java
+ com.example.SheetsAPI
 com/example/ControllerCalendar.java
  com.example.ControllerCalendar
  com.example.ControllerCalendar$1

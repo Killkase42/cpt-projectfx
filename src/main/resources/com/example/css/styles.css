@@ -59,7 +59,7 @@
 }
 
 .error-message-login, .error-message-login-1, .error-message-create, .error-message-create-1, .text-add-errors,
-    .text-calendar-assignmenterror {
+    .text-calendar-assignmenterror, . text-calendar-BETAERROR {
     -fx-background-color :transparent;
     -fx-text-fill: #DC143C;
 }

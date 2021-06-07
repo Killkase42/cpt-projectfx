@@ -238,7 +238,7 @@ public class addAssignmentController {
 
             // If date is outside of may
         } else if ((dueDateAssignment.getValue().isAfter(LocalDate.of(2021, Month.MAY,31)))) {
-            errors.add("-You cannot have a day outside of May!");
+            errors.add("-You cannot select a date outside of May, as this program is a beta!");
 
         // if date datescore is too high
         } else if (dateScore[dateScoreIndex] >= 60) {
