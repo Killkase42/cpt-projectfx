@@ -174,8 +174,11 @@ public class ControllerCalendar {
      */
     public void addAssignmentToCalendar() throws IOException, GeneralSecurityException {
 
+        //reseting errors
         noAssignmentsError.setVisible(false);
         outsideOfMayError.setVisible(false);
+
+        toolTipsUpdate();
 
         // checking if there is no assignment
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
@@ -189,9 +192,9 @@ public class ControllerCalendar {
 
 
         updateDateAndDailyHoursScore();
+        
         assignmentInfo = SheetsAPI.PullAssignments();
 
-        // welcomeText.setText(LoginController.welcome);
         May_1.setText("");May_2.setText("");May_3.setText("");May_4.setText("");May_5.setText("");May_6.setText("");
         May_7.setText("");May_8.setText("");May_9.setText("");May_10.setText("");May_11.setText("");May_12.setText("");
         May_13.setText("");May_14.setText("");May_15.setText("");May_16.setText("");May_17.setText("");May_18.setText("");May_19.setText("");
@@ -212,126 +215,129 @@ public class ControllerCalendar {
 
         for (int i = 1; i < assignmentInfo.length; i++) {
 
-            if (Objects.equals(assignmentInfo[i][2], "2021-05-01")) {
-                newLine.append("\n");
-                newLine.append(assignmentInfo[i][0]);
-            } else if (Objects.equals(assignmentInfo[i][2], "2021-05-02")) {
-                newLine2.append("\n");
-                newLine2.append(assignmentInfo[i][0]);
-            } else if (Objects.equals(assignmentInfo[i][2], "2021-05-03")) {
-                newLine3.append("\n");
-                newLine3.append(assignmentInfo[i][0]);
-            } else if (Objects.equals(assignmentInfo[i][2], "2021-05-04")) {
-                newLine4.append("\n");
-                newLine4.append(assignmentInfo[i][0]);
+            String assignmentDate = assignmentInfo[i][2];
+            String assignmentName = assignmentInfo[i][0];
+          
+            if (Objects.equals(assignmentDate, "2021-05-01")) {
+                newLine.append("\n-");
+                newLine.append(assignmentName);
+            } else if (Objects.equals(assignmentDate, "2021-05-02")) {
+                newLine2.append("\n-");
+                newLine2.append(assignmentName);
+            } else if (Objects.equals(assignmentDate, "2021-05-03")) {
+                newLine3.append("\n-");
+                newLine3.append(assignmentName);
+            } else if (Objects.equals(assignmentDate, "2021-05-04")) {
+                newLine4.append("\n-");
+                newLine4.append(assignmentName);
             }
-             else if (Objects.equals(assignmentInfo[i][2],("2021-05-05"))) {
-                newLine5.append("\n");
-                newLine5.append(assignmentInfo[i][0]);
+             else if (Objects.equals(assignmentDate,("2021-05-05"))) {
+                newLine5.append("\n-");
+                newLine5.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-06"))) {
-                newLine6.append("\n");
-                newLine6.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-06"))) {
+                newLine6.append("\n-");
+                newLine6.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-07"))) {
-                newLine7.append("\n");
-                newLine7.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-07"))) {
+                newLine7.append("\n-");
+                newLine7.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-08"))) {
-                newLine8.append("\n");
-                newLine8.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-08"))) {
+                newLine8.append("\n-");
+                newLine8.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-09"))) {
-                newLine9.append("\n");
-                newLine9.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-09"))) {
+                newLine9.append("\n-");
+                newLine9.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-10"))) {
-                newLine10.append("\n");
-                newLine10.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-10"))) {
+                newLine10.append("\n-");
+                newLine10.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-11"))) {
-                newLine11.append("\n");
-                newLine11.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-11"))) {
+                newLine11.append("\n-");
+                newLine11.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-12"))) {
-                newLine12.append("\n");
-                newLine12.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-12"))) {
+                newLine12.append("\n-");
+                newLine12.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-13"))) {
-                newLine13.append("\n");
-                newLine13.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-13"))) {
+                newLine13.append("\n-");
+                newLine13.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-14"))) {
-                newLine14.append("\n");
-                newLine14.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-14"))) {
+                newLine14.append("\n-");
+                newLine14.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-15"))) {
-                newLine15.append("\n");
-                newLine15.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-15"))) {
+                newLine15.append("\n-");
+                newLine15.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-16"))) {
-                newLine16.append("\n");
-                newLine16.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-16"))) {
+                newLine16.append("\n-");
+                newLine16.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-17"))) {
-                newLine17.append("\n");
-                newLine17.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-17"))) {
+                newLine17.append("\n-");
+                newLine17.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-18"))) {
-                newLine18.append("\n");
-                newLine18.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-18"))) {
+                newLine18.append("\n-");
+                newLine18.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-19"))) {
-                newLine19.append("\n");
-                newLine19.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-19"))) {
+                newLine19.append("\n-");
+                newLine19.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-20"))) {
-                newLine20.append("\n");
-                newLine20.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-20"))) {
+                newLine20.append("\n-");
+                newLine20.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-21"))) {
-                newLine21.append("\n");
-                newLine21.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-21"))) {
+                newLine21.append("\n-");
+                newLine21.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-22"))) {
-                newLine22.append("\n");
-                newLine22.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-22"))) {
+                newLine22.append("\n-");
+                newLine22.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-23"))) {
-                newLine23.append("\n");
-                newLine23.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-23"))) {
+                newLine23.append("\n-");
+                newLine23.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-24"))) {
-                newLine24.append("\n");
-                newLine24.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-24"))) {
+                newLine24.append("\n-");
+                newLine24.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-25"))) {
-                newLine25.append("\n");
-                newLine25.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-25"))) {
+                newLine25.append("\n-");
+                newLine25.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-26"))) {
-                newLine26.append("\n");
-                newLine26.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-26"))) {
+                newLine26.append("\n-");
+                newLine26.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-27"))) {
-                newLine27.append("\n");
-                newLine27.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-27"))) {
+                newLine27.append("\n-");
+                newLine27.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-28"))) {
-                newLine28.append("\n");
-                newLine28.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-28"))) {
+                newLine28.append("\n-");
+                newLine28.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-29"))) {
-                newLine29.append("\n");
-                newLine29.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-29"))) {
+                newLine29.append("\n-");
+                newLine29.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-30"))) {
-                newLine30.append("\n");
-                newLine30.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-30"))) {
+                newLine30.append("\n-");
+                newLine30.append(assignmentName);
             }
-            else if (Objects.equals(assignmentInfo[i][2],("2021-05-31"))) {
-                newLine31.append("\n");
-                newLine31.append(assignmentInfo[i][0]);
+            else if (Objects.equals(assignmentDate,("2021-05-31"))) {
+                newLine31.append("\n-");
+                newLine31.append(assignmentName);
             }
         }
 
@@ -427,6 +433,50 @@ public class ControllerCalendar {
 
     }
 
+    /*
+    Pre: Pressed "Update Assignments" button
+    Post: updates the tooltips
+     */
+    public void toolTipsUpdate() throws GeneralSecurityException, IOException {
+            updateDateAndDailyHoursScore();
+
+            TP_may1.setText("May 1: \n" + "Date Score:" + dateScore[0] + "\n" + "Daily Hours: " + dailyHoursScore[0]);
+            TP_may2.setText("May 2: \n" + "Date Score:" + dateScore[1] + "\n" + "Daily Hours: " + dailyHoursScore[1]);
+            TP_may3.setText("May 3: \n" + "Date Score:" + dateScore[2] + "\n" + "Daily Hours: " + dailyHoursScore[2]);
+            TP_may4.setText("May 4: \n" + "Date Score:" + dateScore[3] + "\n" + "Daily Hours: " + dailyHoursScore[3]);
+            TP_may5.setText("May 5: \n" + "Date Score:" + dateScore[4] + "\n" + "Daily Hours: " + dailyHoursScore[4]);
+            TP_may6.setText("May 6: \n" + "Date Score:" + dateScore[5] + "\n" + "Daily Hours: " + dailyHoursScore[5]);
+            TP_may7.setText("May 7: \n" + "Date Score:" + dateScore[6] + "\n" + "Daily Hours: " + dailyHoursScore[6]);
+            TP_may8.setText("May 8: \n" + "Date Score:" + dateScore[7] + "\n" + "Daily Hours: " + dailyHoursScore[7]);
+            TP_may9.setText("May 9: \n" + "Date Score:" + dateScore[8] + "\n" + "Daily Hours: " + dailyHoursScore[8]);
+            TP_may10.setText("May 10: \n" + "Date Score:" + dateScore[9] + "\n" + "Daily Hours: " + dailyHoursScore[9]);
+            TP_may11.setText("May 11: \n" + "Date Score:" + dateScore[10] + "\n" + "Daily Hours: " + dailyHoursScore[10]);
+            TP_may12.setText("May 12: \n" + "Date Score:" + dateScore[11] + "\n" + "Daily Hours: " + dailyHoursScore[11]);
+            TP_may13.setText("May 13: \n" + "Date Score:" + dateScore[12] + "\n" + "Daily Hours: " + dailyHoursScore[12]);
+            TP_may14.setText("May 14: \n" + "Date Score:" + dateScore[13] + "\n" + "Daily Hours: " + dailyHoursScore[13]);
+            TP_may15.setText("May 15: \n" + "Date Score:" + dateScore[14] + "\n" + "Daily Hours: " + dailyHoursScore[14]);
+            TP_may16.setText("May 16: \n" + "Date Score:" + dateScore[15] + "\n" + "Daily Hours: " + dailyHoursScore[15]);
+            TP_may17.setText("May 17: \n" + "Date Score:" + dateScore[16] + "\n" + "Daily Hours: " + dailyHoursScore[16]);
+            TP_may18.setText("May 18: \n" + "Date Score:" + dateScore[17] + "\n" + "Daily Hours: " + dailyHoursScore[17]);
+            TP_may19.setText("May 19: \n" + "Date Score:" + dateScore[18] + "\n" + "Daily Hours: " + dailyHoursScore[18]);
+            TP_may20.setText("May 20: \n" + "Date Score:" + dateScore[19] + "\n" + "Daily Hours: " + dailyHoursScore[19]);
+            TP_may21.setText("May 21: \n" + "Date Score:" + dateScore[20] + "\n" + "Daily Hours: " + dailyHoursScore[20]);
+            TP_may22.setText("May 22: \n" + "Date Score:" + dateScore[21] + "\n" + "Daily Hours: " + dailyHoursScore[21]);
+            TP_may23.setText("May 23: \n" + "Date Score:" + dateScore[22] + "\n" + "Daily Hours: " + dailyHoursScore[22]);
+            TP_may24.setText("May 24: \n" + "Date Score:" + dateScore[23] + "\n" + "Daily Hours: " + dailyHoursScore[23]);
+            TP_may25.setText("May 25: \n" + "Date Score:" + dateScore[24] + "\n" + "Daily Hours: " + dailyHoursScore[24]);
+            TP_may26.setText("May 26: \n" + "Date Score:" + dateScore[25] + "\n" + "Daily Hours: " + dailyHoursScore[25]);
+            TP_may27.setText("May 27: \n" + "Date Score:" + dateScore[26] + "\n" + "Daily Hours: " + dailyHoursScore[26]);
+            TP_may28.setText("May 28: \n" + "Date Score:" + dateScore[27] + "\n" + "Daily Hours: " + dailyHoursScore[27]);
+            TP_may29.setText("May 29: \n" + "Date Score:" + dateScore[28] + "\n" + "Daily Hours: " + dailyHoursScore[28]);
+            TP_may30.setText("May 30: \n" + "Date Score:" + dateScore[29] + "\n" + "Daily Hours: " + dailyHoursScore[29]);
+            TP_may31.setText("May 31: \n" + "Date Score:" + dateScore[30] + "\n" + "Daily Hours: " + dailyHoursScore[30]);
+
+
+
+        }
+
+
 
 
     //--------------------------------------------------------------------------------------------------------------
@@ -473,6 +523,10 @@ public class ControllerCalendar {
                 dailyHoursScore[j-1] += roundedDailyHours;
 
             }
+        }
+// Making sure everything is rounded properly
+        for (int i = 0; i < 31; i++) {
+            dailyHoursScore[i] = Math.round(dailyHoursScore[i] * 100.0) / 100.0;
         }
 
     }
