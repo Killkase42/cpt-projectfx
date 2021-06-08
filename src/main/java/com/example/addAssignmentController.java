@@ -222,9 +222,6 @@ public class addAssignmentController {
         errors.clear();
         String[][] assignmentInfo = SheetsAPI.PullAssignments();
 
-        // Setting variable for the date score
-        int dateScoreIndex = Date_To_Days(deleteYear(String.valueOf(dueDateAssignment.getValue())))-120;
-
         ControllerCalendar.updateDateAndDailyHoursScore();
 
         // Error Checking
@@ -241,7 +238,7 @@ public class addAssignmentController {
             errors.add("-You cannot select a date outside of May, as this program is a beta!");
 
         // if date datescore is too high
-        } else if (dateScore[dateScoreIndex] >= 60) {
+        } else if (dateScore[Date_To_Days(deleteYear(String.valueOf(dueDateAssignment.getValue())))-120] >= 60) {
             errors.add("-The date-score for that date is over 60!");
 
         // Checking for multiple assignments on selected date
@@ -293,7 +290,7 @@ public class addAssignmentController {
 
 
             // Number of assignments on specific day more than 3
-        }  if (numberOfAssignments > 3) {
+        }  if (numberOfAssignments >= 3) {
             errors.add("-Specified Date Already has 3 Assignments");
 
             // checking if any errors happened

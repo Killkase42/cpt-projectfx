@@ -173,9 +173,15 @@ public class removeAssignmentController {
                 String scoreRetrieved = assignmentInfo[id][3];
                 String dateAssignedRetrieved = assignmentInfo[id][4];
                 int totalHoursRetrieved = Integer.parseInt(assignmentInfo[id][5]);
-
-                double daily_Hours = ControllerCalendar.dailyHoursScore[dateAndHoursScoreIndex-1];
+                //Converts data into readable numbers.
                 int dateScore = ControllerCalendar.dateScore[dateAndHoursScoreIndex - 1];
+
+                // getting daily hours
+                double currentDate = Date_To_Days(deleteYear(String.valueOf((CurrentDate))));
+                double assignmentDueDate = Date_To_Days(deleteYear(String.valueOf(assignmentInfo[id][2])));
+                double daily_Hours = Integer.parseInt(assignmentInfo[id][5]) / (assignmentDueDate - currentDate);
+                double roundedDailyHours = Math.round(daily_Hours * 100.0) / 100.0;
+
 
                 // Assigning an assignment's information to the labels.
                 nameImport.setText("Name: " + nameRetrieved);
@@ -186,7 +192,7 @@ public class removeAssignmentController {
                 assignedImport.setText("Assigned: " + dateAssignedRetrieved);
                 dateScoreImport.setText("Date Score on Due Date: " + dateScore);
                 totalHoursImport.setText("Total Hours to Complete: " + totalHoursRetrieved);
-                dailyHoursImport.setText("Suggested Hours per Day: " + daily_Hours);
+                dailyHoursImport.setText("Suggested Hours per Day: " + roundedDailyHours);
 
 
                 // Setting the information labels to be invisible (they become visible when "more info" is clicked).
