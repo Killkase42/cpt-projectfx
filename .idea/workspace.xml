@@ -3,12 +3,70 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/development" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="a36da9c2-c65f-4aa9-abee-ba08442659ed" name="Default Changelist" comment="" />
+    <list default="true" id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="Reverted to earlier state">
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.8/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/StoredCredential" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/checksums.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/classAnalysis.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/javaCompile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/md5-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/sha1-checksums.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31,_2_37_p_m__[Default_Changelist]/workspace-id.txt.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31_1_41_p_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31_1_41_p_m___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-05-31__2_37_p_m___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m__[Default_Changelist]/buildOutputCleanup.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m__[Default_Changelist]/executionHistory.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m__[Default_Changelist]/executionHistory.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m__[Default_Changelist]/fileHashes.bin" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m__[Default_Changelist]/fileHashes.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m__[Default_Changelist]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2021-06-01_10_47_a_m___Default_Changelist_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/addAssignmentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tokens/StoredCredential" beforeDir="false" afterPath="$PROJECT_DIR$/tokens/StoredCredential" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
@@ -39,6 +97,11 @@
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="application" type="c8890929:TasksNode$1" />
               </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="cpt-projectfx" type="f1a62948:ProjectNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
             </expand>
             <select />
           </tree_state>
@@ -50,13 +113,17 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaFXApplication" />
-        <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
+  <component name="Git.Pull.Settings">
+    <option name="BRANCH" value="development" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -67,29 +134,70 @@
     </file-type-list>
   </component>
   <component name="ProjectId" id="1sLnE1HrRZE1bgmZRNiEpB5Ykn0" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="codeWithMe.voiceChat.enabledByDefault" value="false" />
+    <property name="full.screen.before.presentation.mode" value="false" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/example" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/example/fxml" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.116009295" />
+    <property name="project.structure.side.proportion" value="0.13140604" />
+    <property name="restartRequiresConfirmation" value="false" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.import" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example/fxml" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example" />
       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example\fxml" />
+      <recent name="$PROJECT_DIR$/src/main/resources/com/example" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example" />
+      <recent name="$PROJECT_DIR$/src/main/java/com/example/calendar" />
       <recent name="C:\Users\nicho\IdeaProjects\cpt-projectfx\src\main\resources\com\example" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="com.example" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.example" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.cpt-projectfx [run]">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.Main" />
       <module name="cpt-projectfx.main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainCalendar" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.calendar.MainCalendar" />
+      <module name="cpt-projectfx.main" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;$USER_HOME$/Desktop/javafx-sdk-16/lib&quot; --add-modules javafx.controls,javafx.fxml " />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.*" />
@@ -105,7 +213,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
+        <option name="scriptParameters" value="--info" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -121,9 +229,15 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.MainCalendar" />
+      <item itemvalue="Gradle.cpt-projectfx [run]" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.cpt-projectfx [run]" />
+        <item itemvalue="Application.MainCalendar" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -131,23 +245,248 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="a36da9c2-c65f-4aa9-abee-ba08442659ed" name="Default Changelist" comment="" />
+      <changelist id="1d51e7aa-3c32-4247-b9c3-d22f6869aad9" name="Default Changelist" comment="working on storing account info" />
       <created>1620660623527</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1620660623527</updated>
     </task>
+    <task id="LOCAL-00001" summary="Improved Sheets API functionality.">
+      <created>1620936254927</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1620936254927</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Added method to upload assignments to Sheet.">
+      <created>1621092667835</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1621092667835</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added method to upload assignments to Sheet.">
+      <created>1621092757329</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1621092757329</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Fixed problem with build.gradle.">
+      <created>1621103078139</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1621103078139</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added method to pull assignments in Sheet as array of arrays.">
+      <created>1621210448900</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1621210448900</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added method to pull assignments in Sheet as array of arrays.">
+      <created>1621267920813</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1621267920813</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Created method for deleting assignments.">
+      <created>1621557231218</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1621557231218</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Created method for deleting assignments.">
+      <created>1621557237672</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1621557237672</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fixed .fxml issue.">
+      <created>1621898183691</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1621898183691</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Integrated css and improved login screen UX/UI.">
+      <created>1621901192606</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1621901192606</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Improved account creation screen UX/UI.">
+      <created>1621957377716</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1621957377716</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Fixed SheetsAPI issue.">
+      <created>1621959548191</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1621959548191</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added option to show/hide password on account screens.">
+      <created>1621971810454</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1621971810454</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fixed small issue with show/hide password.">
+      <created>1621973080652</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621973080652</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Improved UI/UX for error messages on account screens.">
+      <created>1622054128717</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1622054128717</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Improved display of account name welcome on calendar screen.">
+      <created>1622165102259</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1622165102259</updated>
+    </task>
+    <task id="LOCAL-00017" summary="nicks">
+      <created>1622304889787</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1622304889787</updated>
+    </task>
+    <task id="LOCAL-00018" summary="Improved assignment removal and information UI/UX.">
+      <created>1622338953914</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1622338953914</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Improved calendar UX/UI and made small changes to other screens.">
+      <created>1622948427115</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622948427115</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Improved calendar UX/UI.">
+      <created>1622949108446</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622949108446</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Revert &quot;Tool Tip functionality&quot;&#10;&#10;This reverts commit bcec2a68">
+      <created>1623160179382</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1623160179382</updated>
+    </task>
+    <task id="LOCAL-00022" summary="Reverted to earlier state">
+      <created>1623160664405</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1623160664405</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.css" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/development" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/development" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Improved Sheets API functionality." />
+    <MESSAGE value="working on storing account info" />
+    <MESSAGE value="Fixed problem with build.gradle." />
+    <MESSAGE value="Added method to pull assignments in Sheet as array of arrays." />
+    <MESSAGE value="Created method for deleting assignments." />
+    <MESSAGE value="Fixed .fxml issue." />
+    <MESSAGE value="Integrated css and improved login screen UX/UI." />
+    <MESSAGE value="Improved account creation screen UX/UI." />
+    <MESSAGE value="Fixed SheetsAPI issue." />
+    <MESSAGE value="Added option to show/hide password on account screens." />
+    <MESSAGE value="Fixed small issue with show/hide password." />
+    <MESSAGE value="Improved UI/UX for error messages on account screens." />
+    <MESSAGE value="Added account name welcome on calendar screen." />
+    <MESSAGE value="Improved display of account name welcome on calendar screen." />
+    <MESSAGE value="nicks" />
+    <MESSAGE value="Improved assignment removal and information UI/UX." />
+    <MESSAGE value="Improved calendar UX/UI and made small changes to other screens." />
+    <MESSAGE value="Improved calendar UX/UI." />
+    <MESSAGE value="Revert &quot;Tool Tip functionality&quot;&#10;&#10;This reverts commit bcec2a68" />
+    <MESSAGE value="Reverted to earlier state" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reverted to earlier state" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.RuntimeException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

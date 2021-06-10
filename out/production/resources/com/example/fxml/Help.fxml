@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="427.0" prefWidth="649.0" styleClass="background-help-general" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.HelpController">
+   <children>
+      <Label layoutX="265.0" layoutY="12.0" styleClass="text-help-general-title" stylesheets="@/com/example/css/styles.css" text="General Features Help" underline="true" />
+      <Label layoutX="10.0" layoutY="50.0" styleClass="text-help-general-heading1" stylesheets="@/com/example/css/styles.css" text="Adding Assignments" />
+      <Label layoutX="150.0" layoutY="50.0" prefWidth="480.0" styleClass="text-help-general-body1" stylesheets="@/com/example/css/styles.css" text="Select the &quot;Add Assignment&quot; button and fill in the requested information. Once added, an assignment is able to be seen on the calender and will have a difficulty score depending on its specified details." wrapText="true" />
+      <Label layoutX="10.0" layoutY="230.0" styleClass="text-help-general-heading2" stylesheets="@/com/example/css/styles.css" text="Updating Assignments" />
+      <Label layoutX="150.0" layoutY="230.0" prefWidth="480.0" styleClass="text-help-general-body2" stylesheets="@/com/example/css/styles.css" text="Before and after manipulating assignments, it is useful to press the &quot;Update Assignments&quot; button. This will update the calender so all up-to-date assignments can be seen, as well as all tool tips" wrapText="true" />
+      <Label layoutX="10.0" layoutY="125.0" styleClass="text-help-general-heading3" stylesheets="@/com/example/css/styles.css" text="Removing Assignments" />
+      <Label layoutX="150.0" layoutY="125.0" prefWidth="480.0" styleClass="text-help-general-body3" stylesheets="@/com/example/css/styles.css" text="Select the &quot;Assignment Information&quot; button, and then select the desired assignment to remove from the combo box. When you have selected a assignment, you will be able to see its details: the due date, date score, etc. Once you are ready, click the &quot;Remove Assignment&quot; button to remove the assignment. You may have to wait several seconds for the removal process to complete." wrapText="true" />
+      <Label layoutX="10.0" layoutY="280.0" styleClass="text-help-general-heading4" stylesheets="@/com/example/css/styles.css" text="Displaying a Day's Data" wrapText="true" />
+      <Label layoutX="150.0" layoutY="280.0" prefWidth="480.0" styleClass="text-help-general-body4" stylesheets="@/com/example/css/styles.css" text="Select the calendar box below the calendar to view a date selector. Here you can select a day to view the assignments and the difficulty score of that day." wrapText="true" />
+      <Button layoutX="209.0" layoutY="388.0" mnemonicParsing="false" onAction="#goToScoreHelp" styleClass="button-general-help" stylesheets="@/com/example/css/styles.css" text="Help with Score, Date Score, and Ratings" underline="true" />
+      <Label layoutX="10.0" layoutY="333.0" styleClass="text-help-general-heading5" stylesheets="@/com/example/css/styles.css" text="Closing Pop-up Menus" wrapText="true" />
+      <Label layoutX="150.0" layoutY="333.0" prefWidth="480.0" styleClass="text-help-general-body5" stylesheets="@/com/example/css/styles.css" text="To close any pop-up menu, click the red &quot;X&quot; window decoration at the top right of the pop-up screen." wrapText="true" />
+   </children>
+</AnchorPane>

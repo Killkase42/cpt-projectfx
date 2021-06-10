@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="689.0" prefWidth="859.0" styleClass="background-splash" stylesheets="@/com/example/css/styles.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.SplashScreenController">
+   <children>
+      <Label layoutX="224.0" layoutY="376.0" styleClass="text-splash-names" stylesheets="@/com/example/css/styles.css" text="By Arjun S, Nicholas V, Francesco V, and Benjamin Z">
+         <font>
+            <Font size="18.0" />
+         </font></Label>
+      <Label layoutX="102.0" layoutY="283.0" styleClass="text-splash-title" stylesheets="@/com/example/css/styles.css" text="SMCS Calendar (Beta)">
+         <font>
+            <Font name="System Bold" size="64.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
